@@ -1,0 +1,108 @@
+html, body {
+    /* background-color: white; */
+    background-color: #222627;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 200;
+    margin: 0;
+}
+
+.bg-black{
+    background-color: #222627;
+}
+
+.bg-red{
+    background-color: #DC4437;
+}
+
+.bg-dove{
+    background-color: #4C5051;
+}
+
+.bg-grey{
+    background-color: #383C3D;
+}
+
+/* .hero-scroll{
+    overflow-y:hidden;
+    max-height: 506px;
+}
+
+.hero-scroll:hover{
+    scrollbar-color: #222627;
+    overflow-y:scroll;
+    overflow: overlay
+}
+
+.hero-scroll::-webkit-scrollbar{
+    width: 5px;
+}
+
+.hero-scroll::-webkit-scrollbar-thumb{
+    background: #DC4437;
+    border-radius: 10px;
+} */
+
+.text-link:hover{
+    color: #F9ED20;
+}
+
+/* .bg-black{
+    background-color: #000000
+}
+
+.bg-dark-black{
+    background-color: #111111
+}
+
+.bg-dark-blue{
+    background-color: #0B0F26
+}
+
+.bg-orange-web{
+    background-color: #F9ED20
+}
+
+.bg-platinum{
+    background-color: #E7EBE6
+}
+
+.bg-denim{
+    background-color: #2260B4;
+}
+
+.bg-link:hover{
+    background-color: #111111;
+}
+
+.text-dark-blue{
+    color: #0B0F26;
+}
+
+.text-platinum{
+    color: #E7EBE6;
+}
+
+.text-white{
+    color: white;
+}
+
+.link-dark-blue, .link-dark-blue:hover{
+    color: #0B0F26;
+}
+
+.link-white{
+    color: white;
+}
+
+.link-white:hover{
+    color: #F9ED20
+}
+
+.link:hover{
+    color: #F9ED20
+}
+
+.dropdown-hover:hover{
+    background-color: #F9ED20;
+} */
+
