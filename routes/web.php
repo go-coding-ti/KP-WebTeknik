@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 
+
 //Admin Route
 //Route::get('/', 'AdminController\BeritaController@index')->name('admin-berita');
 
@@ -33,8 +34,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/berita/{id}/edit', 'AdminController\BeritaController@edit')->name('admin-berita-edit');
     Route::post('/berita/update', 'AdminController\BeritaController@update')->name('admin-berita-update');
     Route::get('/berita/{id}/delete', 'AdminController\BeritaController@destroy')->name('admin-berita-delete');
-
-
 
     //Agenda Controller
     Route::get('/agenda', 'AdminController\AgendaController@index')->name('admin-agenda-home');
