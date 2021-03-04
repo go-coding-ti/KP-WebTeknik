@@ -9,4 +9,8 @@ use Illuminate\Notifications\Notifiable;
 class Berita extends Authenticatable
 {
     use Notifiable;
+
+    protected $fillable = [
+        'id_berita', 'judul', 'isi_berita', 'file'
+    ];
 }

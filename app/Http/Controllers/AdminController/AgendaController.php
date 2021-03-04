@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminController;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Agenda;
 
@@ -15,7 +16,7 @@ class AgendaController extends Controller
     public function index()
     {
         $data = Agenda::orderBy('id_agenda', 'DESC')->get();
-        return view('admin.adminagenda', compact('data'));
+        return view('adminpages.adminAgendaHome', compact('data'));
     }
 
     /**

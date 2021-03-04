@@ -16,7 +16,7 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-              <a class= "btn btn-success text-white" href="{{route('admin-create')}}"><i class="fas fa-plus"></i> Tambah Berita</a>
+              <a class= "btn btn-success text-white" href="{{route('admin-berita-create')}}"><i class="fas fa-plus"></i> Tambah Berita</a>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
@@ -37,7 +37,7 @@
                     <tr>
                       <td>{{$berita->judul}}</td>
                       <td>{{$berita->isi_berita}}</td>
-                      <td><a style="margin-right:7px" class="btn btn-info btn-sm" ><i class="fas fa-pencil-alt"></i></a><a class="btn btn-danger btn-sm" href="/admin/{{$berita->id_berita}}/delete" onclick="return confirm('Apakah Anda Yakin ?')"><i class="fas fa-trash"></i></a></td>
+                      <td><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/berita/{{$berita->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a><a class="btn btn-danger btn-sm" href="/admin/berita/{{$berita->id}}/delete" onclick="return confirm('Apakah Anda Yakin ?')"><i class="fas fa-trash"></i></a></td>
                     </tr>
                   @endforeach
                   </tbody>

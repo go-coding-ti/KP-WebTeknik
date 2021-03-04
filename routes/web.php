@@ -22,20 +22,20 @@ Route::get('/', function () {
 Route::get('/', 'AdminController\BeritaController@index')->name('admin-berita');
 
 Route::prefix('admin')->group(function () {
-    Route::get('/', 'AdminController\HomeController@Home')->name('admin-home');
+
+	//Admin Home Route Belum Fix
+    Route::get('/', 'AdminController\BeritaController@index')->name('admin-home');
 
     //Berita Controller
     Route::get('/berita', 'AdminController\BeritaController@index')->name('admin-berita-home');
+    Route::get('/berita/create', 'AdminController\BeritaController@create')->name('admin-berita-create');
+    Route::post('/berita/store', 'AdminController\BeritaController@store')->name('admin-berita-store');
+    Route::get('/berita/{id}/edit', 'AdminController\BeritaController@edit')->name('admin-berita-edit');
+    Route::post('/berita/update', 'AdminController\BeritaController@update')->name('admin-berita-update');
+    Route::get('/berita/{id}/delete', 'AdminController\BeritaController@destroy')->name('admin-berita-delete');
 
 
 
-
-
-
-    Route::get('/{id}/delete', 'ValidatorController@destroy')->name('admin-delete');
-    Route::get('/create', 'ValidatorController@index')->name('admin-create');
-    Route::post('/store', 'ValidatorController@store')->name('admin-store');
-
-    //agenda
-    Route::get('/agenda', 'AgendaController@index')->name('admin-agenda');
+    //Agenda Controller
+    Route::get('/agenda', 'AdminController\AgendaController@index')->name('admin-agenda-home');
 });
