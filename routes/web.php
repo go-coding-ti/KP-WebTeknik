@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 
 //Admin Route
-Route::get('/', 'AdminController\BeritaController@index')->name('admin-berita');
+//Route::get('/', 'AdminController\BeritaController@index')->name('admin-berita');
 
 Route::prefix('admin')->group(function () {
 
