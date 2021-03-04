@@ -26,42 +26,42 @@
             <li class="list-inline-item py-4">
                 <a href="#">About</a>
             </li>
-            <li class="list-inline-item fw-bold bg-info m-0 py-4 px-0">
+            <li class="list-inline-item more-links fw-bold m-0 py-4 px-0">
                 <a href="#" class="desktop-item">Services</a>
                 <input type="checkbox" id="showMoreDrop">
-                <label for="showMoreDrop" class="mobile-item">Services</label>
-                <ul class="drop-more-menu px-0">
-                    <li>
+                <label for="showMoreDrop" class="mobile-item text-start px-4">Service</label>
+                <ul class="drop-more-menu p-0">
+                    <li class="p-0 m-0">
                         <a href="#">Drop Menu 1</a>
                     </li>
-                    <li>
+                    <li class="p-0 m-0">
                         <a href="#">Drop Menu 2</a>
                     </li>
-                    <li>
+                    <li class="p-0 m-0">
                         <a href="#">Drop Menu 3</a>
                     </li>
-                    <li>
+                    <li class="p-0 m-0">
                         <a href="#" class="desktop-item">More Items</a>
                         <input type="checkbox" id="showMoreItems">
-                        <label for="showMoreItems" class="mobile-item">More Items</label>
-                        <ul class="drop-menu-more p-0 text-center">
-                            <li>
+                        <label for="showMoreItems" class="mobile-item ps-1 text-start ms-3 fw-bold">More Items</label>
+                        <ul class="drop-menu-more p-0 ps-3 text-center">
+                            <li class="p-0 m-0">
                                 <a href="#">Sub Menu 1</a>
                             </li>
-                            <li>
+                            <li class="p-0 m-0">
                                 <a href="#">Sub Menu 2</a>
                             </li>
-                            <li>
+                            <li class="p-0 m-0">
                                 <a href="#">Sub Menu 3</a>
                             </li>
                         </ul>
                     </li>
                 </ul>
             </li>
-            <li class="list-inline-item fw-bold bg-primary m-0 px-0 py-4">
+            <li class="list-inline-item fw-bold m-0 px-0 py-4">
                 <a href="#" class="desktop-item">Dropdown Menu</a>
                 <input type="checkbox" id="showDrop">
-                <label for="showDrop" class="mobile-item">Dropdown Menu</label>
+                <label for="showDrop" class="mobile-item text-start px-4">Dropdown Menu</label>
                 <ul class="drop-menu p-0">
                     <li>
                         <a href="#">Drop menu 1</a>
@@ -80,7 +80,7 @@
             <li class="list-inline-item fw-bold m-0 px-0 py-4">
                 <a href="#" class="desktop-item">Mega Menu</a>
                 <input type="checkbox" id="showMega">
-                <label for="showMega" class="mobile-item">Mega Menu</label>
+                <label for="showMega" class="mobile-item text-start p-0 m-0 px-4">Mega Menu</label>
                 <div class="mega-box">
                     <div class="content bg-red">
                         <div class="row">
@@ -116,7 +116,7 @@
                     </div>
                 </div>
             </li>
-            <li class="list-inline-item bg-info py-4">
+            <li class="list-inline-item py-4">
                 <a href="#">Feedback</a>
             </li>
         </ul>
