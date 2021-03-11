@@ -45,7 +45,7 @@ class BeritaController extends Controller
     public function update(Request $request){
     	$berita = Berita::find($request->id);
     	$berita->judul = $request->judul;
-    	$berita->isi_berita =  $request->isi_berita;
+    	$berita->isi_berita =  $request->konten;
     	$berita->update();
     	return redirect('/admin/berita')->with('success', 'Data berhasil diedit!');
 

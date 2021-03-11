@@ -82,9 +82,8 @@
           <div id="collapsePage" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Page Menu:</h6>
-              <a class="collapse-item" href="utilities-color.html">Page 1</a>
-              <a class="collapse-item" href="utilities-border.html">Page 2</a>
-              <a class="collapse-item" href="utilities-animation.html">Page 3</a>
+              <a class="collapse-item" href="utilities-color.html" ><i class="fas fa-fw fa-plus"></i>   Add Page</a>
+              <a class="collapse-item" href="/admin/pages"><i class="fas fa-fw fa-list"></i>  List Page</a>
             </div>
           </div>
         </li>

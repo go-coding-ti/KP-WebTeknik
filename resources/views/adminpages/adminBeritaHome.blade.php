@@ -37,7 +37,7 @@
                     <tr>
                       <td>{{$berita->judul}}</td>
                       <td>{{$berita->isi_berita}}</td>
-                      <td><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/berita/{{$berita->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a><a class="btn btn-danger btn-sm" href="/admin/berita/{{$berita->id}}/delete" onclick="return confirm('Apakah Anda Yakin ?')"><i class="fas fa-trash"></i></a></td>
+                      <td><a style="margin-right:7px" href="/admin/berita"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/berita/{{$berita->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a><a class="btn btn-danger btn-sm" href="/admin/berita/{{$berita->id}}/delete" onclick="return confirm('Apakah Anda Yakin ?')"><i class="fas fa-trash"></i></a></td>
                     </tr>
                   @endforeach
                   </tbody>

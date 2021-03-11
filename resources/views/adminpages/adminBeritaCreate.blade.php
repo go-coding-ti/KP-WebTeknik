@@ -13,7 +13,7 @@
                             <tr>
                                 <td><label for="judul">Judul Berita</label></td>
                                 <td>
-                                    <textarea type="text" class="form-control" name="judul" id="judul" rows="1" placeholder="Judul Berita"></textarea>
+                                    <textarea type="date" class="form-control" name="judul" id="judul" rows="1" placeholder="Judul Berita"></textarea>
                                     <!-- @if($errors->has('judul'))
                                         <span class="text-danger" role="alert">
                                             <strong>{{ $errors->first('judul') }}</strong>
