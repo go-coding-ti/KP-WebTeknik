@@ -5,7 +5,7 @@
               <h6 class="m-0 font-weight-bold text-primary">Tambah Page</h6>
             </div>
             <div class="card-body">
-            <form id="form-product" method="post" action="{{route('admin-page-create')}}" enctype="multipart/form-data">
+            <form id="form-product" method="post" action="{{route('admin-page-store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-lg-6 col-sm-12">
@@ -14,14 +14,7 @@
                     </div>
                     <div class="col-lg-6 col-sm-12">
                         <label for="title">Tanggal Publish</label>
-                        <div class="input-group mb-3">
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-fw fa-calendar"></span>
-                                </div>
-                            </div>
-                            <input type="text" class="form-control" name="telegram" placeholder="Tanggal Publish">
-                        </div>
+                        <input type="date" class="form-control" name="tanggal" placeholder="Tanggal Publish">
                     </div>
                 </div>
                 <div class="form-group form-group mt-4">
@@ -69,6 +62,14 @@
             minHeight: null, // set minimum height of editor
             maxHeight: null, // set maximum height of editor
             focus: false // set focus to editable area after initializing summernote
+        });
+
+        $(function(){
+            $(".tanggal").datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true,
+                todayHighlight: true,
+            });
         });
 
         $('#blog_category-name').selectpicker();

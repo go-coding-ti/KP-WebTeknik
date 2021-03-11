@@ -34,17 +34,22 @@
                     </tr>
                   </tfoot> -->
                   <tbody>
-                  @foreach ($data as $i => $berita)
+                  @foreach ($data as $i => $page)
                     <tr>
-                      <td>{{$berita->judul}}</td>
-                      <td>{{$berita->isi_berita}}</td>
+                      <td>{{$page->title_ina}}</td>
+                      <td>{{$page->title_eng}}</td>
                       <td>
                         <label class="switch">
-                          <input type="checkbox">
+                        @if($page->status == "aktif")
+                          <input type="checkbox" id="status" onclick="statusBtn({{$page->id}});" checked>
+                        @else
+                          <input type="checkbox" id="status" onclick="statusBtn()">
+                        @endif
                           <span class="slider round"></span>
                         </label>
+                      
                       </td>
-                      <td><a style="margin-right:7px" href="/admin/berita"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/berita/{{$berita->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a><a class="btn btn-danger btn-sm" href="/admin/berita/{{$berita->id}}/delete" onclick="return confirm('Apakah Anda Yakin ?')"><i class="fas fa-trash"></i></a></td>
+                      <td><a style="margin-right:7px" href="/admin/berita"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/berita/{{$page->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a><a class="btn btn-danger btn-sm" href="/admin/berita/{{$page->id}}/delete" onclick="return confirm('Apakah Anda Yakin ?')"><i class="fas fa-trash"></i></a></td>
                     </tr>
                   @endforeach
                   </tbody>
@@ -94,4 +99,37 @@
 
       </div>
       <!-- /.container-fluid -->
+@endsection
+
+@section('custom_javascript')
+<script>
+  function statusBtn(id) {
+    alert(id);
+    var checkBox = document.getElementById("status");
+    // If the checkbox is checked, display the output text
+    if (checkBox.checked == true){
+      $.ajax({
+        url: "{{url('admin/pages/status')}}",
+        type: "POST",
+        data: {
+        status: 'aktif'
+      },
+        success: function(result){
+          alert("berhasil");
+        }
+     });
+    } else {
+      $.ajax({
+        url: "{{url('admin/pages/status')}}",
+        type: "POST",
+        data: {
+        status: 'tidak aktif'
+      },
+        success: function(result){
+          alert("berhasil");
+        }
+     });
+    }
+  }
+</script>
 @endsection
