@@ -47,15 +47,20 @@ class PageController extends Controller
 
 
         $file = $request->file('lampiran');
-        $fileLocation = "storage/app/public/lampiran/pages";
+        $fileLocation = $file->store('lampiran');
         $filename = $file->getClientOriginalName();
-        $page->file = $fileLocation."/".$filename;
+        $page->file = $fileLocation;
         $file->move($fileLocation, $page->file);
 
+
+
         $galeri = $request->file('galeri');
-        $galeriLocation = "storage/app/public/galeri/pages";
+        $galeriLocation = $galeri->store('galeri');
+        // $galeriLocation = "galeri";
         $galeriname = $galeri->getClientOriginalName();
-        $page->galeri = $galeriLocation."/".$galeriname;
+        $page->galeri = $galeriLocation;
+        // $path = '/image/galeri/';
+        // Storage::disk('public')->put($path);
         $galeri->move($galeriLocation, $page->galeri);
 
         
