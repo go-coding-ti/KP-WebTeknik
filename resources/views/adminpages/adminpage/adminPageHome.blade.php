@@ -40,10 +40,11 @@
                       <td>{{$page->title_eng}}</td>
                       <td>
                         <label class="switch">
+                         <input id="signup-token_{{$page->id}}" name="_token" type="hidden" value="{{csrf_token()}}">
                         @if($page->status == "aktif")
-                          <input type="checkbox" id="status" onclick="statusBtn({{$page->id}});" checked>
+                          <input type="checkbox" id="status_{{$page->id}}" onclick="statusBtn({{$page->id}});" checked>
                         @else
-                          <input type="checkbox" id="status" onclick="statusBtn()">
+                          <input type="checkbox" id="status_{{$page->id}}" onclick="statusBtn({{$page->id}})">
                         @endif
                           <span class="slider round"></span>
                         </label>
@@ -103,33 +104,57 @@
 
 @section('custom_javascript')
 <script>
-  function statusBtn(id) {
-    alert(id);
-    var checkBox = document.getElementById("status");
+$(document).ready(function(e){
+});
+function statusBtn(id) {
+    var checkBox = document.getElementById("status_"+id);
     // If the checkbox is checked, display the output text
     if (checkBox.checked == true){
-      $.ajax({
-        url: "{{url('admin/pages/status')}}",
-        type: "POST",
-        data: {
-        status: 'aktif'
-      },
-        success: function(result){
-          alert("berhasil");
+      swal({
+          title: 'Anda yakin ingin mengaktifkan pages ini?',
+          icon: 'warning',
+          buttons: ["Tidak", "Ya"],
+      }).then(function(value) {
+          if (value) {
+            jQuery.ajax({  
+              url: "{{url('admin/pages/status')}}",
+              type: "POST",
+              data: {
+                _token: $('#signup-token_'+id).val(),
+                id: id,
+                status: 'aktif',
+            },
+              success: function(result){
+              }
+          });
+        }else{
+          document.getElementById("status_"+id).checked = false;
         }
-     });
+      });
     } else {
-      $.ajax({
-        url: "{{url('admin/pages/status')}}",
-        type: "POST",
-        data: {
-        status: 'tidak aktif'
-      },
-        success: function(result){
-          alert("berhasil");
+      swal({
+          title: 'Anda yakin ingin menonaktifkan pages ini?',
+          icon: 'warning',
+          buttons: ["Tidak", "Ya"],
+      }).then(function(value) {
+          if (value) {
+            jQuery.ajax({
+              url: "{{url('admin/pages/status')}}",
+              type: "POST",
+              data: {
+                _token: $('#signup-token_'+id).val(),
+                id: id,
+                status: 'tidak_aktif',
+            },
+              success: function(result){
+              }
+          });
+        }else{  
+          document.getElementById("status_"+id).checked = true;
         }
-     });
+      });
     }
   }
+
 </script>
 @endsection

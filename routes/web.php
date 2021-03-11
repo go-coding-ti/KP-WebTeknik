@@ -36,6 +36,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/pages/create', 'AdminController\PageController@create')->name('admin-page-create');
     Route::post('/pages/store', 'AdminController\PageController@store')->name('admin-page-store');
 
+    Route::post('/pages/status', 'AdminController\PageController@status')->name('admin-page-status');
+
     //Berita Controller
     Route::get('/berita', 'AdminController\BeritaController@index')->name('admin-berita-home');
     Route::get('/berita/create', 'AdminController\BeritaController@create')->name('admin-berita-create');

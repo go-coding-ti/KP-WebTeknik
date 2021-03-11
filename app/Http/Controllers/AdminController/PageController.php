@@ -125,5 +125,8 @@ class PageController extends Controller
         $page = Page::find($request->id);
         $page->status = $request->status;
         $page->update();
+        $view = view('adminpages.adminpage.adminPageHome');
+
+        return response()->json(['success' => 'berhasil', 'view' => $view]);
     }
 }
