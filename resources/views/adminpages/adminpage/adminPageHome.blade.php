@@ -4,10 +4,8 @@
     <div class="container-fluid">
 
         <hr style="margin-top: 20px" class="sidebar-divider my-0">
-
         <h1 class="h3 mb-2 text-gray-800">Pages</h1>
-          <p class="mb-4">Daftar Halaman Website Fakultas Teknik Universitas Udayana</p>
-
+          <p class="mb-4">Daftar Pages Fakultas Teknik Universitas Udayana</p>
           <!-- DataTales Example -->
           <!-- Copy drisini -->
           <div class="card shadow mb-4">
@@ -50,7 +48,7 @@
                         </label>
                       
                       </td>
-                      <td><a style="margin-right:7px" href="/admin/berita"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/berita/{{$page->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a><a class="btn btn-danger btn-sm" href="/admin/berita/{{$page->id}}/delete" onclick="return confirm('Apakah Anda Yakin ?')"><i class="fas fa-trash"></i></a></td>
+                      <td><a style="margin-right:7px" href="/admin/pages/{{$page->title_slug}}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/berita/{{$page->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a><a class="btn btn-danger btn-sm" href="/admin/berita/{{$page->id}}/delete" onclick="return confirm('Apakah Anda Yakin ?')"><i class="fas fa-trash"></i></a></td>
                     </tr>
                   @endforeach
                   </tbody>

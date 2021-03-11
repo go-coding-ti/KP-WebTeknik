@@ -1,5 +1,7 @@
 @extends('adminlayout.layout')
 @section('content')
+
+
 <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Tambah Page</h6>
@@ -10,7 +12,12 @@
                 <div class="row">
                     <div class="col-lg-6 col-sm-12">
                         <label for="title">Title Ina</label>
-                        <input type="text" class="form-control" id="titleina" name="titleina" placeholder="Title Ina" required>
+                        <input type="text" class="form-control @error ('title_ina') is-invalid @enderror"  id="title_ina" name="title_ina" placeholder="Title Ina" required>
+                        @error('title_ina')
+                            <div class="invalid-feedback text-start">
+                                {{$message}}
+                            </div>
+                        @enderror 
                     </div>
                     <div class="col-lg-6 col-sm-12">
                         <label for="title">Tanggal Publish</label>
@@ -19,15 +26,15 @@
                 </div>
                 <div class="form-group form-group mt-4">
                     <label for="description">Content Ina</label>
-                    <textarea id="contentina" class="summernote" name="contentina" required></textarea>
+                    <textarea id="content_ina" class="summernote" name="content_ina" required></textarea>
                 </div>
                 <div class="form group mt-5">
                     <label for="title">Title Eng</label>
-                    <input type="text" class="form-control" id="titleeng" name="titleeng" placeholder="Title Eng" required>
+                    <input type="text" class="form-control" id="title_eng" name="title_eng" placeholder="Title Eng" required>
                 </div>
                 <div class="form-group form-group mt-4">
                     <label for="description">Content Eng</label>
-                    <textarea id="contenteng" class="summernote" name="contenteng" required></textarea>
+                    <textarea id="content_eng" class="summernote" name="content_eng" required></textarea>
                 </div>
                 <div class="form-group mt-4">
                     <label for="lampiran">File Lampiran</label>

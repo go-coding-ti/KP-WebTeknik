@@ -4,6 +4,7 @@ namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Page;
 use App\PageImage;
 use Illuminate\Support\Facades\Storage;
@@ -26,10 +27,10 @@ class PageController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'titleina' => 'required|min:3',
-            'contentina' => 'required|min:8',
-            'titleeng' => 'required|min:3',
-            'contenteng' => 'required|min:8'
+            'title_ina' => 'required|min:3|unique:pages',
+            'content_ina' => 'required|min:8',
+            'title_eng' => 'required|min:3',
+            'content_eng' => 'required|min:8'
         ]);
 
         if($validator->fails()){
@@ -39,28 +40,39 @@ class PageController extends Controller
         $arrImage = [];
 
         $page = new Page();
-        $page->title_ina = $request->titleina;
-        $page->title_eng = $request->titleeng;
+        $page->title_ina = $request->title_ina;
+        $page->title_eng = $request->title_eng;
+        $page->title_slug = Str::slug($request->title_ina);
         $page->status = 'aktif';
         $page->tanggal_publish = $request->tanggal;
-        $page->url_video = $request->urlvideo;
+        
+
+        if($request->urlvideo != ""){
+            $page->url_video = $request->urlvideo;
+        }
 
 
-        $file = $request->file('lampiran');
-        $fileLocation = "storage/app/public/lampiran/pages";
-        $filename = $file->getClientOriginalName();
-        $page->file = $fileLocation."/".$filename;
-        $file->move($fileLocation, $page->file);
-
-        $galeri = $request->file('galeri');
-        $galeriLocation = "storage/app/public/galeri/pages";
-        $galeriname = $galeri->getClientOriginalName();
-        $page->galeri = $galeriLocation."/".$galeriname;
-        $galeri->move($galeriLocation, $page->galeri);
+        if($request->file('galeri')!=""){
+            $galeri = $request->file('galeri');
+            $galeriLocation = $galeri->store('galeri');
+            // $galeriLocation = "galeri";
+            $galeriname = $galeri->getClientOriginalName();
+            $page->galeri = $galeriLocation;
+            // $path = '/image/galeri/';
+            // Storage::disk('public')->put($path);
+            $galeri->move($galeriLocation, $page->galeri);
+        }
+        if($request->file('lampiran')!=""){
+            $file = $request->file('lampiran');
+            $fileLocation = $file->store('lampiran');
+            $filename = $file->getClientOriginalName();
+            $page->file = $fileLocation;
+            $file->move($fileLocation, $page->file);
+        }
 
         
-        $detailina = $request->contentina;
-        $detaileng = $request->contenteng;
+        $detailina = $request->content_ina;
+        $detaileng = $request->content_eng;
         libxml_use_internal_errors(true);
         $dom = new \domdocument();
         $dom->loadHtml($detailina, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
@@ -73,7 +85,7 @@ class PageController extends Controller
             if (preg_match('/data:image/', $src)) {
                 preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
                 $mimeType = $groups['mime'];
-                $path = '/image/pages/'.$page->titleina.'/'. uniqid('', true) . '.' . $mimeType;
+                $path = '/image/pages/'.$page->title_ina.'/'. uniqid('', true) . '.' . $mimeType;
                 Storage::disk('public')->put($path, file_get_contents($src));
                 $image->removeAttribute('src');
                 $link = asset('storage'.$path);
@@ -118,6 +130,12 @@ class PageController extends Controller
     	$berita->update();
     	return redirect('/admin/berita')->with('success', 'Data berhasil diedit!');
 
+    }
+
+    public function show($pagetitle)
+    {
+        $page = Page::where('title_slug', $pagetitle)->first();
+        return view('adminpages.adminpage.adminPageShow', compact('page'));
     }
 
     public function status(Request $request)
