@@ -20,6 +20,13 @@
   <link href="{{ asset('assets/admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
   <link href="{{ asset('assets/admin/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
+  <link href="{{asset('/assets/admin/css/admin.css')}}" rel="stylesheet">
+
+  <!--summernote-->
+  <!-- include libraries(jQuery, bootstrap) -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 </head>
 
@@ -104,6 +111,9 @@
   <script src="{{ asset('assets/admin/vendor/datatables/dataTables.bootstrap4.min.js')}}"></script>
   <script src="{{ asset('assets/admin/js/demo/datatables-demo.js')}}"></script>
 
+  <!-- summernote css/js -->
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
   @yield('custom_javascript')
 </body>
 

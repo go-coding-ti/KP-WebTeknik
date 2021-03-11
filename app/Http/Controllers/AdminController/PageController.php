@@ -4,19 +4,19 @@ namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Berita;
+use App\Page;
 
-class BeritaController extends Controller
+class PageController extends Controller
 {
     public function index(){
-        $data = Berita::orderBy('id', 'DESC')->get();
+        $data = Page::orderBy('id', 'DESC')->get();
         // dd(isset($data));
-        return view('adminpages.adminBeritaHome', compact('data'));
+        return view('adminpages.adminpage.adminPageHome', compact('data'));
     }
 
 
     public function create(){
-        return view('adminpages.adminBeritaCreate');
+        return view('adminpages.adminpage.adminPageCreate');
     }
 
     public function store(Request $request)

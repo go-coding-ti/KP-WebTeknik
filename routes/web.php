@@ -18,6 +18,9 @@ Route::get('/', function () {
 });
 
 
+//Pages Front End Roites
+
+
 
 //Admin Route
 //Route::get('/', 'AdminController\BeritaController@index')->name('admin-berita');
@@ -26,6 +29,11 @@ Route::prefix('admin')->group(function () {
 
 	//Admin Home Route Belum Fix
     Route::get('/', 'AdminController\BeritaController@index')->name('admin-home');
+
+
+    //Pages Controller
+    Route::get('/pages', 'AdminController\PageController@index')->name('admin-page-home');
+    Route::get('/pages/create', 'AdminController\PageController@create')->name('admin-page-create');
 
     //Berita Controller
     Route::get('/berita', 'AdminController\BeritaController@index')->name('admin-berita-home');
