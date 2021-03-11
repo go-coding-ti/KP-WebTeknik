@@ -15,7 +15,9 @@
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"/>
 
         <!-- Styles -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
+
+        <link rel="stylesheet" href="{{ url('css/style.css')}}">
+        <link rel="stylesheet" href="{{ url('admin-template/style.css') }}">
 
     </head>
     <body>
@@ -47,6 +49,17 @@
         {{-- FOOTER --}}
             @include('layouts/Footer')
         {{-- FOOTER End --}}
+
+            <!-- jQuery-2.2.4 js -->
+            <script src="{{ url('admin-template/js/jquery/jquery-2.2.4.min.js') }}"></script>
+            <!-- Popper js -->
+            <script src="{{ url('admin-template/js/bootstrap/popper.min.js') }}"></script>
+            <!-- Bootstrap js -->
+            <script src="{{ url('admin-template/js/bootstrap/bootstrap.min.js') }}"></script>
+            <!-- All Plugins js -->
+            <script src="{{ url('admin-template/js/plugins/plugins.js') }}"></script>
+            <!-- Active js -->
+            <script src="{{ url('admin-template/js/active.js') }}"></script>
 
         {{-- BOOTSTRAP JC CDN --}}
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>

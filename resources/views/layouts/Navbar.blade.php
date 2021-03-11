@@ -1,4 +1,4 @@
-<nav class="d-none d-sm-block navbar navbar-expand-lg navbar-dark bg-black">
+{{-- <nav class="d-none d-sm-block navbar navbar-expand-lg navbar-dark bg-black">
     <div class="container-fluid d-flex justify-content-end px-4">
         <a class="nav-link link-light fw-bold link" href="#"><strong>UNUD</strong></a>
         <a class="nav-link link-light fw-bold link" href="#"><strong>Fakultas Teknik</strong></a>
@@ -122,4 +122,142 @@
         </ul>
         <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
     </div>
-</nav>
+</nav> --}}
+
+<header class="header-area">
+    <!-- Top Header Area -->
+    <div class="top-header-area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6">
+                    <!-- Breaking News Widget -->
+                    <div class="breaking-news-area d-flex align-items-center">
+                        <div class="news-title">
+                            <p class="small">Breaking News</p>
+                        </div>
+                        <div id="breakingNewsTicker" class="ticker">
+                            <ul>
+                                <li><a class="text-decoration-none" href="single-post.html">10 Things Amazon Echo Can Do</a></li>
+                                <li><a class="text-decoration-none" href="single-post.html">Welcome to Colorlib Family.</a></li>
+                                <li><a class="text-decoration-none" href="single-post.html">Boys 'doing well' after Thai</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="top-meta-data d-flex align-items-center justify-content-end">
+                        <!-- Top Social Info -->
+                        <div class="top-social-info">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-youtube-play"></i></a>
+                        </div>
+                        <!-- Top Search Area -->
+                        <div class="top-search-area">
+                            <form action="index.html" method="post">
+                                <input type="search" name="top-search" id="topSearch" placeholder="Search...">
+                                <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            </form>
+                        </div>
+                        <!-- Login -->
+                        <a href="login.html" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navbar Area -->
+    <div class="vizew-main-menu" id="sticker">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+
+                <!-- Menu -->
+                <nav class="classy-navbar justify-content-between" id="vizewNav">
+
+                    <!-- Nav brand -->
+                    <a href="index.html" class="nav-brand"><img src="img/core-img/logo.png" alt=""></a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <div class="classy-menu">
+
+                        <!-- Close Button -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul>
+                                <li class="active"><a href="index.html">Home</a></li>
+                                <li><a href="archive-list.html">Archives</a></li>
+                                <li><a href="#">Pages</a>
+                                    <ul class="dropdown">
+                                        <li><a href="index.html">- Home</a></li>
+                                        <li><a href="archive-list.html">- Archive List</a></li>
+                                        <li><a href="archive-grid.html">- Archive Grid</a></li>
+                                        <li><a href="single-post.html">- Single Post</a></li>
+                                        <li><a href="video-post.html">- Single Video Post</a></li>
+                                        <li><a href="contact.html">- Contact</a></li>
+                                        <li><a href="typography.html">- Typography</a></li>
+                                        <li><a href="login.html">- Login</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Features</a>
+                                    <div class="megamenu">
+                                        <ul class="single-mega cn-col-4">
+                                            <li><a href="index.html">- Home</a></li>
+                                            <li><a href="archive-list.html">- Archive List</a></li>
+                                            <li><a href="archive-grid.html">- Archive Grid</a></li>
+                                            <li><a href="single-post.html">- Single Post</a></li>
+                                            <li><a href="video-post.html">- Single Video Post</a></li>
+                                            <li><a href="contact.html">- Contact</a></li>
+                                            <li><a href="typography.html">- Typography</a></li>
+                                            <li><a href="login.html">- Login</a></li>
+                                        </ul>
+                                        <ul class="single-mega cn-col-4">
+                                            <li><a href="index.html">- Home</a></li>
+                                            <li><a href="archive-list.html">- Archive List</a></li>
+                                            <li><a href="archive-grid.html">- Archive Grid</a></li>
+                                            <li><a href="single-post.html">- Single Post</a></li>
+                                            <li><a href="video-post.html">- Single Video Post</a></li>
+                                            <li><a href="contact.html">- Contact</a></li>
+                                            <li><a href="typography.html">- Typography</a></li>
+                                            <li><a href="login.html">- Login</a></li>
+                                        </ul>
+                                        <ul class="single-mega cn-col-4">
+                                            <li><a href="index.html">- Home</a></li>
+                                            <li><a href="archive-list.html">- Archive List</a></li>
+                                            <li><a href="archive-grid.html">- Archive Grid</a></li>
+                                            <li><a href="single-post.html">- Single Post</a></li>
+                                            <li><a href="video-post.html">- Single Video Post</a></li>
+                                            <li><a href="contact.html">- Contact</a></li>
+                                            <li><a href="typography.html">- Typography</a></li>
+                                            <li><a href="login.html">- Login</a></li>
+                                        </ul>
+                                        <ul class="single-mega cn-col-4">
+                                            <li><a href="index.html">- Home</a></li>
+                                            <li><a href="archive-list.html">- Archive List</a></li>
+                                            <li><a href="archive-grid.html">- Archive Grid</a></li>
+                                            <li><a href="single-post.html">- Single Post</a></li>
+                                            <li><a href="video-post.html">- Single Video Post</a></li>
+                                            <li><a href="contact.html">- Contact</a></li>
+                                            <li><a href="typography.html">- Typography</a></li>
+                                            <li><a href="login.html">- Login</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
