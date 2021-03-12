@@ -49,7 +49,7 @@
             <i class="fas fa-fw fa-list"></i>
             <span>Category</span>
           </a>
-          <div id="collapseCategory" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
+          <div id="collapseCategory" class="collapse" aria-labelledby="headingCategory" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Category Menu:</h6>
               <a class="collapse-item" href="utilities-color.html">Category 1</a>

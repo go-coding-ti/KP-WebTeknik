@@ -59,7 +59,9 @@
                         <label for="galeri">Galeri</label>
                     </div>
                     <div class="col-lg-12 col-sm-12">
-                        <img style="max-height: 150px; max-width: 200px" src="{{url($page->galeri)}}" alt=""> 
+                        @if($page->galeri != "")
+                            <img style="max-height: 150px; max-width: 200px" src="{{url($page->galeri)}}" alt=""> 
+                        @endif
                         <input type="file" class="form-control-file" id="galeri" name="galeri">
                     </div>
                 </div>
