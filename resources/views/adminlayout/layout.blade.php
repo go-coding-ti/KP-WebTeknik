@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SIM Konten Fakultas Teknik</title>
+  <title>@yield('title')</title>
   <link rel="shortcut icon" type="image/x-icon" href="assets/admin/img/unud.png" />
 
   <!-- Custom fonts for this template-->

@@ -1,4 +1,5 @@
 @extends('adminlayout.layout')
+@section('title', 'List Pages')
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
@@ -40,7 +41,7 @@
                         <label class="switch">
                          <input id="signup-token_{{$page->id}}" name="_token" type="hidden" value="{{csrf_token()}}">
                         @if($page->status == "aktif")
-                          <input type="checkbox" id="status_{{$page->id}}" onclick="statusBtn({{$page->id}});" checked>
+                          <input type="checkbox" id="status_{{$page->id}}" onclick="statusBtn({{$page->id}})" checked>
                         @else
                           <input type="checkbox" id="status_{{$page->id}}" onclick="statusBtn({{$page->id}})">
                         @endif
@@ -48,7 +49,7 @@
                         </label>
                       
                       </td>
-                      <td><a style="margin-right:7px" href="/admin/pages/{{$page->title_slug}}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/berita/{{$page->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a><a class="btn btn-danger btn-sm" href="/admin/berita/{{$page->id}}/delete" onclick="return confirm('Apakah Anda Yakin ?')"><i class="fas fa-trash"></i></a></td>
+                      <td><a style="margin-right:7px" href="/admin/pages/{{$page->title_slug}}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/pages/{{$page->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a><a class="btn btn-danger btn-sm" onclick="deletePage({{$page->id}})" href="#"><i class="fas fa-trash"></i></a></td>
                     </tr>
                   @endforeach
                   </tbody>
@@ -102,8 +103,36 @@
 
 @section('custom_javascript')
 <script>
-$(document).ready(function(e){
-});
+//Soft Delete Page
+function deletePage(id){
+  swal({
+    title: 'Anda yakin ingin menghapus page ini?',
+    icon: 'warning',
+    buttons: ["Tidak", "Ya"],
+  }).then(function(value) {
+    if (value) {
+    jQuery.ajax({  
+      url: 'pages/delete/'+id,
+      type: "GET",
+        success: function(result){
+          location.reload();
+        }
+      });
+    }
+  });
+}
+
+//Success Alert
+function alertSuccess(msg){
+  swal({
+    title: "Sukses",
+    text: msg,
+    icon: "success",
+    button: "Ok",
+  });
+}
+
+//Switch Status Page
 function statusBtn(id) {
     var checkBox = document.getElementById("status_"+id);
     // If the checkbox is checked, display the output text
