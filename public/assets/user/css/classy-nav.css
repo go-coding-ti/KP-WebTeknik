@@ -91,7 +91,8 @@ img {
     font-weight: 500;
     color: #565656;
     display: inline-block;
-    margin-right: 30px; }
+    /* margin-right: 0px; */
+  }
     .classy-navbar .nav-brand:focus, .classy-navbar .nav-brand:hover {
       font-size: 26px;
       font-weight: 500; }
@@ -328,8 +329,10 @@ img {
   -ms-flex-align: center;
   -ms-grid-row-align: center;
   align-items: center; }
+
+  /* khusus */
 .breakpoint-off .classynav ul li .dropdown {
-  width: 180px;
+  width: max-content;
   position: absolute;
   background-color: #ffffff;
   top: 120%;

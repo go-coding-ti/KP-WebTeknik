@@ -31,7 +31,7 @@
         {{-- HERO PANEL End --}}
 
         {{-- VIDEO PANEL --}}
-            {{-- @include('layouts/Video') --}}
+            @include('layouts/Video')
         {{-- VIDEO PANEL End --}}
 
         {{-- TRENDING --}}

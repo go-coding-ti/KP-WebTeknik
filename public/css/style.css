@@ -17,11 +17,27 @@ html, body {
     background-color: #4C5051;
 }
 
+.text-black{
+    color: #222627;
+}
+
 .bg-grey{
     background-color: #383C3D;
 }
 
+.pagination:hover{
+    background-color: #383838;
+}
+
+.hover:hover{
+    background-color: #4C5051;
+}
+
 .text-link:hover{
-    color: #F9ED20;
+    color: white;
+}
+
+.link-hover:hover{
+    color: #DC4437;
 }
 
