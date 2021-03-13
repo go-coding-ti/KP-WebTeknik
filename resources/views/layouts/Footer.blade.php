@@ -1,68 +1,60 @@
-<footer class="text-muted p-0 mt-5 bg-dark">
-    <div class="container pt-5">
-        <p class="float-end">
-            <a class="text-decoration-none fw-bold card p-2 bg-link bg-dark-blue text-white" href="#">Back to Top</a>
+<footer class="text-muted p-0 mt-5 bg-grey">
+    {{-- <div class="container pt-5">
+        <p class="float-end mb-1">
+            <a href="">Back to top</a>
         </p>
-    </div>
-    <div class="container pb-5 mb-5">
+    </div> --}}
+    <div class="container pb-5 mb-5 pt-5">
         <div class="row">
             <div class="col-md mb-5">
                 <p class="fw-bold h5 text-white text-start">KONTAK</p>
                 <hr class="border border-light dropdown-divider">
-                <p class="fw-bold text-start">
-                    <a href="" class="text-decoration-none link-white">Jl. Kampus Unud Jimbaran Badung, Bali 80361</a>
-                </p>
-                <p class="fw-bold text-start small">
-                    <a href="" class="text-decoration-none link-white">Nomor Telepon: +62 (361) 703320</a>
-                </p>
-                <p class="fw-bold text-start small">
-                    <a href="" class="text-decoration-none link-white">Fax: +62 (361) 703320</a>
-                </p>
-                <p class="fw-bold text-start small">
-                    <a href="" class="text-decoration-none link-white">Email: ft@unud.ac.id</a>
-                </p>
+                <p class="fw-bold text-start text-light">Jl. Kampus Unud Jimbaran Badung, Bali 80361</p>
+                <p class="fw-bold text-start text-light">Nomor Telepon: +62 (361) 703320</p>
+                <p class="fw-bold text-start text-light">Fax: +62 (361) 703320</p>
+                <p class="fw-bold text-start text-light">Email: ft@unud.ac.id</p>
             </div>
             <div class="col-md">
                 <p class="fw-bold h5 text-white text-start">INFORMASI</p>
                 <hr class="border border-light dropdown-divider">
                 <p class="fw-bold text-start">
                 <p class="fw-bold text-start small">
-                    <a href="" class="text-decoration-none link-white">Universitas Udayana</a>
+                    <a href="" class="text-decoration-none link-light link-hover">Universitas Udayana</a>
                 </p>
                 <p class="fw-bold text-start small">
-                    <a href="" class="text-decoration-none link-white">LPDP</a>
+                    <a href="" class="text-decoration-none link-light link-hover">LPDP</a>
                 </p>
                 <p class="fw-bold text-start small">
-                    <a href="" class="text-decoration-none link-white">LPPM Udayana</a>
+                    <a href="" class="text-decoration-none link-light link-hover">LPPM Udayana</a>
                 </p>
                 <p class="fw-bold text-start small">
-                    <a href="" class="text-decoration-none link-white">Career Development Center</a>
+                    <a href="" class="text-decoration-none link-light link-hover">Career Development Center</a>
                 </p>
                 <p class="fw-bold text-start small">
-                    <a href="" class="text-decoration-none link-white">Alumni</a>
+                    <a href="" class="text-decoration-none link-light link-hover">Alumni</a>
                 </p>
                 <p class="fw-bold text-start small">
-                    <a href="" class="text-decoration-none link-white">Science Direct</a>
+                    <a href="" class="text-decoration-none link-light link-hover">Science Direct</a>
                 </p>
             </div>
             <div class="col-md mt-5">
                 <p class="fw-bold text-start small">
-                    <a href="" class="text-decoration-none link-white">Universitas Udayana</a>
+                    <a href="" class="text-decoration-none link-light link-hover">Universitas Udayana</a>
                 </p>
                 <p class="fw-bold text-start small">
-                    <a href="" class="text-decoration-none link-white">LPDP</a>
+                    <a href="" class="text-decoration-none link-light link-hover">LPDP</a>
                 </p>
                 <p class="fw-bold text-start small">
-                    <a href="" class="text-decoration-none link-white">LPPM Udayana</a>
+                    <a href="" class="text-decoration-none link-light link-hover">LPPM Udayana</a>
                 </p>
                 <p class="fw-bold text-start small">
-                    <a href="" class="text-decoration-none link-white">Career Development Center</a>
+                    <a href="" class="text-decoration-none link-light link-hover">Career Development Center</a>
                 </p>
                 <p class="fw-bold text-start small">
-                    <a href="" class="text-decoration-none link-white">Alumni</a>
+                    <a href="" class="text-decoration-none link-light link-hover">Alumni</a>
                 </p>
                 <p class="fw-bold text-start small">
-                    <a href="" class="text-decoration-none link-white">Science Direct</a>
+                    <a href="" class="text-decoration-none link-light link-hover">Science Direct</a>
                 </p>
             </div>
         </div>
@@ -71,7 +63,7 @@
         <div class="row">
             <hr class="border border-light dropdown-divider">
             <div class="col-md">
-                <p class="fw-bold">Copyright &copy 2021 Fakultas Teknik, Universitas Udayana</p>
+                <p class="fw-bold">Copyright &copy 2021 | Fakultas Teknik, Universitas Udayana</p>
             </div>
         </div>
     </div>

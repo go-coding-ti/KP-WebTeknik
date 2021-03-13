@@ -1,125 +1,119 @@
-<nav class="d-none d-sm-block navbar navbar-expand-lg navbar-dark bg-black">
-    <div class="container-fluid d-flex justify-content-end px-4">
-        <a class="nav-link link-light fw-bold link" href="#"><strong>UNUD</strong></a>
-        <a class="nav-link link-light fw-bold link" href="#"><strong>Fakultas Teknik</strong></a>
-    </div>
-</nav>
-<nav class="navbar sticky-top bg-red shadow-sm p-0">
-    <div class="container-fluid wrapper bg-red d-flex align-content-center">
-        <nav class="navbar navbar-white p-0">
-            <div class="container-fluid">
-                <a class="navbar-brand p-0" href="#">
-                    <img src="https://s2itp.unud.ac.id/wp-content/uploads/2018/02/logo-unud-2018.png" alt="" width="70" height="70" class="d-inline-block align-top">
-                </a>
-                <a class="navbar-brand link-light fw-bold fs-5 text-wrap" style="max-width: 200px" href="#">Fakultas Teknik Universitas Udayana</a>
+<header class="header-area">
+  <div class="top-header-area">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-12 col-md-6">
+          <div class="breaking-news-area d-flex align-items-center">
+            <div class="news-title">
+              <p class="small">PENGUMUMAN!</p>
             </div>
-        </nav>
-        <input type="radio" name="slider" id="menu-btn">
-        <input type="radio" name="slider" id="close-btn">
-        <ul class="list-inline my-auto nav-links">
-            <label for="close-btn" class="btn close-btn">
-                <i class="fas fa-times"></i>
-            </label>
-            <li class="list-inline-item py-4">
-                <a href="#">Home</a>
-            </li>
-            <li class="list-inline-item py-4">
-                <a href="#">About</a>
-            </li>
-            <li class="list-inline-item fw-bold bg-info m-0 py-4 px-0">
-                <a href="#" class="desktop-item">Services</a>
-                <input type="checkbox" id="showMoreDrop">
-                <label for="showMoreDrop" class="mobile-item">Services</label>
-                <ul class="drop-more-menu px-0">
-                    <li>
-                        <a href="#">Drop Menu 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Drop Menu 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Drop Menu 3</a>
-                    </li>
-                    <li>
-                        <a href="#" class="desktop-item">More Items</a>
-                        <input type="checkbox" id="showMoreItems">
-                        <label for="showMoreItems" class="mobile-item">More Items</label>
-                        <ul class="drop-menu-more p-0 text-center">
-                            <li>
-                                <a href="#">Sub Menu 1</a>
-                            </li>
-                            <li>
-                                <a href="#">Sub Menu 2</a>
-                            </li>
-                            <li>
-                                <a href="#">Sub Menu 3</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li class="list-inline-item fw-bold bg-primary m-0 px-0 py-4">
-                <a href="#" class="desktop-item">Dropdown Menu</a>
-                <input type="checkbox" id="showDrop">
-                <label for="showDrop" class="mobile-item">Dropdown Menu</label>
-                <ul class="drop-menu p-0">
-                    <li>
-                        <a href="#">Drop menu 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Drop menu 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Drop menu 3</a>
-                    </li>
-                    <li>
-                        <a href="#">Drop menu 4</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="list-inline-item fw-bold m-0 px-0 py-4">
-                <a href="#" class="desktop-item">Mega Menu</a>
-                <input type="checkbox" id="showMega">
-                <label for="showMega" class="mobile-item">Mega Menu</label>
-                <div class="mega-box">
-                    <div class="content bg-red">
-                        <div class="row">
-                            <img src="img.jpg" alt="">
-                        </div>
-                        <div class="row">
-                            <header>Design Services</header>
-                            <ul class="mega-links">
-                                <li><a href="#">Graphics</a></li>
-                                <li><a href="#">Vectors</a></li>
-                                <li><a href="#">Business cards</a></li>
-                                <li><a href="#">Custom logo</a></li>
-                            </ul>
-                        </div>
-                        <div class="row">
-                            <header>Email Services</header>
-                            <ul class="mega-links">
-                                <li><a href="#">Personal Email</a></li>
-                                <li><a href="#">Business Email</a></li>
-                                <li><a href="#">Mobile Email</a></li>
-                                <li><a href="#">Web Marketing</a></li>
-                            </ul>
-                        </div>
-                        <div class="row">
-                            <header>Security services</header>
-                            <ul class="mega-links">
-                                <li><a href="#">Site Seal</a></li>
-                                <li><a href="#">VPS Hosting</a></li>
-                                <li><a href="#">Privacy Seal</a></li>
-                                <li><a href="#">Website design</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="list-inline-item bg-info py-4">
-                <a href="#">Feedback</a>
-            </li>
-        </ul>
-        <label for="menu-btn" class="btn menu-btn"><i class="fas fa-bars"></i></label>
+            <div id="breakingNewsTicker" class="ticker">
+              <ul>
+                <li><a class="text-decoration-none" href="single-post.html">Pengumuman SBMPTN</a></li>
+                <li><a class="text-decoration-none" href="single-post.html">Pendaftaran KKN</a></li>
+                <li><a class="text-decoration-none" href="single-post.html">Jadwal PKKMB Fakultas</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="top-meta-data d-flex align-items-center justify-content-end">
+            <div class="top-social-info">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-google-plus-g"></i></a>
+            </div>
+            <div class="top-search-area">
+              <div class="btn-group" bis_skin_checked="1">
+                <a href="" class="btn btn-sm btn-outline-danger border-0 text-decoration-none">ID</a>
+                <a href="" class="btn btn-sm btn-outline-danger border-0 text-decoration-none">EN</a>
+              </div>
+            </div>
+            <a href="login.html" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
     </div>
-</nav>
+  </div>
+  <div class="vizew-main-menu" id="sticker">
+    <div class="classy-nav-container breakpoint-off">
+      <div class="container">
+        <nav class="classy-navbar justify-content-between" id="vizewNav">
+          <nav class="navbar">
+            <div class="container-fluid p-0 m-0 justify-content-center">
+              <img class="navbar-brand p-0 m-0" src="https://s2itp.unud.ac.id/wp-content/uploads/2018/02/logo-unud-2018.png" alt="" width="65" height="65">
+              <a class="navbar-brand link-light fw-bold fs-6 text-wrap text-start mx-2" style="max-width: 150px; color: white" href="#">Fakultas Teknik Universitas Udayana</a>
+            </div>
+          </nav>
+          <div class="classy-navbar-toggler">
+            <span class="navbarToggler"><span></span><span></span><span></span></span>
+          </div>
+          <div class="classy-menu">
+            <div class="classycloseIcon">
+              <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+            </div>
+            <div class="classynav">
+              <ul>
+                <li class="active"><a href="index.html">Beranda</a></li>
+                <li><a href="#">Akademik</a>
+                  <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
+                    <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Pedoman Akademik</a></li>
+                    <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> KRS Online</a></li>
+                    <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Penerimaan Mahasiswa Baru</a></li>
+                    <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Kalendar Akademik</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Prodi</a>
+                  <div class="megamenu">
+                    <ul class="single-mega cn-col-3 text-start">
+                      <li><a class="text-muted" href="index.html"><i class="fas fa-external-link"></i> Aristektur</a></li>
+                      <li><a class="text-muted" href="archive-list.html"><i class="fas fa-external-link"></i> Teknik Elektro</a></li>
+                      <li><a class="text-muted" href="archive-grid.html"><i class="fas fa-external-link"></i> Teknik Sipil</a></li>
+                      <li><a class="text-muted" href="single-post.html"><i class="fas fa-external-link"></i> Teknik Mesin</a></li>
+                      <li><a class="text-muted" href="video-post.html"><i class="fas fa-external-link"></i> Teknologi Informasi</a></li>
+                      <li><a class="text-muted" href="contact.html"><i class="fas fa-external-link"></i> Teknik Industri</a></li>
+                      <li><a class="text-muted" href="typography.html"><i class="fas fa-external-link"></i> Teknik Lingkungan</a></li>
+                    </ul>
+                    <ul class="single-mega cn-col-3">
+                      <li><a class="text-muted" href="index.html"><i class="fas fa-external-link"></i> Arsitektur</a></li>
+                      <li><a class="text-muted" href="archive-list.html"><i class="fas fa-external-link"></i> Teknik Elektro</a></li>
+                      <li><a class="text-muted" href="archive-grid.html"><i class="fas fa-external-link"></i> Teknik Mesin</a></li>
+                      <li><a class="text-muted" href="single-post.html"><i class="fas fa-external-link"></i> Teknik Sipil</a></li>
+                      <li><a class="text-muted" href="video-post.html"><i class="fas fa-external-link"></i> Program S3 Ilmu Teknik</a></li>
+                    </ul>
+                    <ul class="single-mega cn-col-3">
+                      <li><a class="text-muted" href="index.html"><i class="fas fa-external-link"></i> Tropical Living</a></li>
+                      <li><a class="text-muted" href="archive-list.html"><i class="fas fa-external-link"></i> Global Engineering Program</a></li>
+                    </ul>
+                  </div>
+                </li>
+                  <li><a href="#">Kemahasiswaan</a>
+                    <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
+                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Satuan Kredit Partisipan</a></li>
+                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Organisasi Kemahasiswaan</a></li>
+                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Senat Mahasiswa FT UNUD</a></li>
+                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Bursa SMFT</a></li>
+                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Data Bursa SMFT</a></li>
+                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Kalendar Akademik</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Alumni</a>
+                    <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
+                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Recana Gedung Alumni</a></li>
+                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> List Data Alumni</a></li>
+                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Forum Alumni</a></li>
+                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Bursa SMFT</a></li>
+                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Input Data Alumni</a></li>
+                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Survey Alumni</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="index.html">Tentang</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
