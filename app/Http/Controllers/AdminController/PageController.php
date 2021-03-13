@@ -4,8 +4,10 @@ namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Page;
 use App\PageImage;
+use Carbon;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File; 
@@ -13,7 +15,7 @@ use Illuminate\Support\Facades\File;
 class PageController extends Controller
 {
     public function index(){
-        $data = Page::orderBy('id', 'DESC')->get();
+        $data = Page::where('deleted_at', NULL)->get();
         // dd(isset($data));
         return view('adminpages.adminpage.adminPageHome', compact('data'));
     }
@@ -26,10 +28,10 @@ class PageController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'titleina' => 'required|min:3',
-            'contentina' => 'required|min:8',
-            'titleeng' => 'required|min:3',
-            'contenteng' => 'required|min:8'
+            'title_ina' => 'required|min:3|unique:pages',
+            'content_ina' => 'required|min:8',
+            'title_eng' => 'required|min:3',
+            'content_eng' => 'required|min:8'
         ]);
 
         if($validator->fails()){
@@ -39,33 +41,40 @@ class PageController extends Controller
         $arrImage = [];
 
         $page = new Page();
-        $page->title_ina = $request->titleina;
-        $page->title_eng = $request->titleeng;
+        $page->title_ina = $request->title_ina;
+        $page->title_eng = $request->title_eng;
+        $page->title_slug = Str::slug($request->title_ina);
         $page->status = 'aktif';
         $page->tanggal_publish = $request->tanggal;
-        $page->url_video = $request->urlvideo;
+        
+
+        if($request->urlvideo != ""){
+            $page->url_video = $request->urlvideo;
+        }
 
 
-        $file = $request->file('lampiran');
-        $fileLocation = $file->store('lampiran');
-        $filename = $file->getClientOriginalName();
-        $page->file = $fileLocation;
-        $file->move($fileLocation, $page->file);
-
-
-
-        $galeri = $request->file('galeri');
-        $galeriLocation = $galeri->store('galeri');
-        // $galeriLocation = "galeri";
-        $galeriname = $galeri->getClientOriginalName();
-        $page->galeri = $galeriLocation;
-        // $path = '/image/galeri/';
-        // Storage::disk('public')->put($path);
-        $galeri->move($galeriLocation, $page->galeri);
+        if($request->file('galeri')!=""){
+            $galeri = $request->file('galeri');
+            $galeriLocation = '/image/pages/'.$request->title_ina.'/galeri';
+            $galeriname = $galeri->getClientOriginalName();
+            $path = $galeriLocation."/".$galeriname;
+            $page->galeri = '/storage'.$path;
+            Storage::disk('public')->put($path, file_get_contents($galeri));
+            //$galeri->move($galeriLocation, $page->galeri);
+        }
+        if($request->file('lampiran')!=""){
+            $file = $request->file('lampiran');
+            $fileLocation = '/file/pages/'.$request->title_ina.'/lampiran';
+            $filename = $file->getClientOriginalName();
+            $path = $fileLocation."/".$filename;
+            $page->file = '/storage'.$path;
+            $page->file_name = $filename;
+            Storage::disk('public')->put($path, file_get_contents($file));
+        }
 
         
-        $detailina = $request->contentina;
-        $detaileng = $request->contenteng;
+        $detailina = $request->content_ina;
+        $detaileng = $request->content_eng;
         libxml_use_internal_errors(true);
         $dom = new \domdocument();
         $dom->loadHtml($detailina, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
@@ -78,7 +87,7 @@ class PageController extends Controller
             if (preg_match('/data:image/', $src)) {
                 preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
                 $mimeType = $groups['mime'];
-                $path = '/image/pages/'.$page->titleina.'/'. uniqid('', true) . '.' . $mimeType;
+                $path = '/image/pages/'.$page->title_ina.'/content/'. uniqid('', true) . '.' . $mimeType;
                 Storage::disk('public')->put($path, file_get_contents($src));
                 $image->removeAttribute('src');
                 $link = asset('storage'.$path);
@@ -105,24 +114,140 @@ class PageController extends Controller
 
     public function destroy($id)
     {
-    	$berita = Berita::find($id);
-        $berita->delete();
-        
-        return redirect()->route('admin-berita-home');
+    	$page = Page::find($id);
+        $page->delete();
+        return redirect('/admin/pages');
     }
 
     public function edit($id){
-    	$berita = Berita::where('id', $id)->get()->first();
-        return view('adminpages.adminBeritaEdit', compact('berita'));
+    	$page = Page::where('id', $id)->get()->first();
+        return view('adminpages.adminpage.adminPageEdit', compact('page'));
     }
 
-    public function update(Request $request){
-    	$berita = Berita::find($request->id);
-    	$berita->judul = $request->judul;
-    	$berita->isi_berita =  $request->konten;
-    	$berita->update();
-    	return redirect('/admin/berita')->with('success', 'Data berhasil diedit!');
+    public function update($id, Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title_ina' => 'required|min:3',
+            'content_ina' => 'required|min:8',
+            'title_eng' => 'required|min:3',
+            'content_eng' => 'required|min:8'
+        ]);
 
+        if($validator->fails()){
+            return back()->withErrors($validator);
+        }
+
+        $page = Page::find($id);
+        $arrImage = [];
+        $idImage = [];
+
+        $page->title_ina = $request->title_ina;
+        $page->title_eng = $request->title_eng;
+        $page->title_slug = Str::slug($request->title_ina);
+        $page->status = 'aktif';
+        $page->tanggal_publish = $request->tanggal;
+        
+
+        if($request->urlvideo != ""){
+            $page->url_video = $request->urlvideo;
+        }
+
+
+        if($request->file('galeri')!=""){
+            $galeri = $request->file('galeri');
+            $galeriLocation = '/image/pages/'.$request->title_ina.'/galeri';
+            $galeriname = $galeri->getClientOriginalName();
+            $path = $galeriLocation."/".$galeriname;
+            $page->galeri = '/storage'.$path;
+            Storage::disk('public')->put($path, file_get_contents($galeri));
+        }
+        if($request->file('lampiran')!=""){
+            $file = $request->file('lampiran');
+            $fileLocation = '/file/pages/'.$request->title_ina.'/lampiran';
+            $filename = $file->getClientOriginalName();
+            $path = $fileLocation."/".$filename;
+            $page->file = '/storage'.$path;
+            $page->file_name = $filename;
+            Storage::disk('public')->put($path, file_get_contents($file));
+        }
+
+        
+        $detailina = $request->content_ina;
+        $detaileng = $request->content_eng;
+        libxml_use_internal_errors(true);
+        $dom = new \domdocument();
+        $dom->loadHtml($detailina, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $domeng = new \domdocument();
+        $domeng->loadHtml($detaileng, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $images = $dom->getElementsByTagName('img');
+
+
+
+        $pageImage = PageImage::where('id_page','=', $id)->get();
+
+        //variabel dummy
+                $arrsrc = [];
+                $arrfoto = [];
+                $status = '';
+        //variabel dummy
+
+        foreach ($images as $count => $image) {
+            $src = $image->getAttribute('src');
+            if (preg_match('/data:image/', $src)) {
+                preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
+                $mimeType = $groups['mime'];
+                $path = '/image/pages/'.$page->title_ina.'/content/'. uniqid('', true) . '.' . $mimeType;
+                Storage::disk('public')->put($path, file_get_contents($src));
+                $image->removeAttribute('src');
+                $link = asset('storage'.$path);
+                $image->setAttribute('src', $link);
+                array_push($arrImage, $path);
+            }
+            if($pageImage != null){
+                foreach($pageImage as $item){
+                    $src = str_replace('/',' ',$src);
+                    $item->image = str_replace(' ','%20',$item->image);
+                    $item->image = str_replace('/', ' ',$item->image);
+                    array_push($arrsrc, $src);
+                    array_push($arrfoto, $item->image);
+                    if(preg_match('/'.$item->image.'/',$src)){
+                        array_push($arrsrc, 'true');
+                        array_push($idImage, $item->id_blog_image);
+                    break;
+                    }
+                }   
+            }
+        }
+
+        $pageImages = PageImage::whereNotIn('id', $idImage)->where('id_page',$id)->get();
+        PageImage::whereNotIn('id', $idImage)->where('id_page',$id)->delete();
+        foreach($pageImages as $item){
+            Storage::disk('public')->delete($item->image);
+        }
+
+        $detailina = $dom->savehtml();
+        $page->content_ina = $detailina;
+        $detaileng = $dom->savehtml();
+        $page->content_eng = $detaileng;
+        $page->save();
+
+        foreach($arrImage as $item){
+            $pageImage = new PageImage();
+            $pageImage->id_page = $page->id;
+            $pageImage->image = $item;
+            $pageImage->save();
+        }
+
+        $page->update();
+
+        return redirect('admin/pages');
+    }
+
+
+    public function show($pagetitle)
+    {
+        $page = Page::where('title_slug', $pagetitle)->first();
+        return view('adminpages.adminpage.adminPageShow', compact('page'));
     }
 
     public function status(Request $request)
@@ -130,5 +255,8 @@ class PageController extends Controller
         $page = Page::find($request->id);
         $page->status = $request->status;
         $page->update();
+        $view = view('adminpages.adminpage.adminPageHome');
+
+        return response()->json(['success' => 'berhasil', 'view' => $view]);
     }
 }
