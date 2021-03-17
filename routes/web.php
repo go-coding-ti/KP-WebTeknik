@@ -12,11 +12,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('pages/index');
+Route::redirect('/', '/id');
+Route::group(['prefix' => '{language}'], function () {
+    Route::get('/', function () {
+        return view('pages/index');
+    });
 });
 
+
+// Route::get('/lang', function () {
+//     App::setlocale('id');
+//     dd(App::getLocale());
+// });
 
 //Pages Front End Routes
 

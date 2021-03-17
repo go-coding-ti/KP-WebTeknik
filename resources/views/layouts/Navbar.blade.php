@@ -26,8 +26,14 @@
             </div>
             <div class="top-search-area">
               <div class="btn-group" bis_skin_checked="1">
-                <a href="" class="btn btn-sm btn-outline-danger border-0 text-decoration-none">ID</a>
-                <a href="" class="btn btn-sm btn-outline-danger border-0 text-decoration-none">EN</a>
+                @if (App::getLocale() == 'en')
+                  <a href="{{ request()->route()->getName().'id' }}" class="btn btn-sm btn-outline-danger border-0 text-decoration-none">ID</a>
+                  <a href="{{ request()->route()->getName().'en' }}" class="btn btn-sm btn-danger border-0 text-decoration-none">EN</a>
+                @endif
+                @if (App::getLocale() == 'id')
+                  <a href="{{ request()->route()->getName().'id' }}" class="btn btn-sm btn-danger border-0 text-decoration-none">ID</a>
+                  <a href="{{ request()->route()->getName().'en' }}" class="btn btn-sm btn-outline-danger border-0 text-decoration-none">EN</a>
+                @endif
               </div>
             </div>
             <a href="login.html" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
@@ -55,7 +61,12 @@
             </div>
             <div class="classynav">
               <ul>
-                <li class="active"><a href="index.html">Beranda</a></li>
+                @if (App::getLocale() == 'en')
+                  <li class="active"><a href="index.html">Home</a></li>
+                @endif
+                @if (App::getLocale() == 'id')
+                  <li class="active"><a href="index.html">Beranda</a></li>
+                @endif
                 <li><a href="#">Akademik</a>
                   <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
                     <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Pedoman Akademik</a></li>
