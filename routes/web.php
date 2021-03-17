@@ -29,7 +29,15 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function () {
 
 	//Admin Home Route Belum Fix
-    Route::get('/', 'AdminController\BeritaController@index')->name('admin-home');
+    Route::get('/', 'AdminController\HomeController@index')->name('admin-home');
+
+    //Kategori Controller
+    Route::get('/category', 'AdminController\KategoriController@index')->name('admin-kategori-home');
+    Route::post('/category/store', 'AdminController\KategoriController@store')->name('admin-kategori-store');
+    Route::get('/category/{id}/edit', 'AdminController\KategoriController@edit')->name('admin-kategori-edit');
+    Route::put('/category/{id}', 'AdminController\KategoriController@update')->name('admin-kategori-update');
+    Route::delete('/category/{id}/delete', 'AdminController\KategoriController@destroy')->name('admin-kategori-destroy');
+
 
 
     //Pages Controller

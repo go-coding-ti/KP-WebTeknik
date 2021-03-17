@@ -6,7 +6,7 @@
           <div class="sidebar-brand-icon">
             <img style="height: 37px;" src="{{asset('assets/admin/img/unud.png')}}">
           </div>
-          <div style="font-size: 20px" class="sidebar-brand-text mx-3">Konten</div>
+          <div style="font-size: 15px" class="sidebar-brand-text mx-3">Web Teknik</div>
         </a>
         
         <!-- Divider -->
@@ -22,42 +22,29 @@
         <!-- Divider -->
         <hr style="margin-top: 20px" class="sidebar-divider my-0">
   
-        <!-- Nav Item - Dashboard -->
-<!--         <li class="nav-item">
-          <a class="nav-link" href="/admin">
-            <i class="fas fa-fw fa-money-check"></i>
-            <span>Kelola Berita</span></a>
-        </li>
-          <li class="nav-item">
-          <a class="nav-link" href="/admin/agenda">
-            <i class="fas fa-fw fa-list"></i>
-            <span>Kelola Agenda</span></a>
-        </li> -->
-  
-        <!-- Divider -->
-        <!--<hr class="sidebar-divider">-->
-  
-        <!-- Heading -->
-        <!--<div class="sidebar-heading">
-          Interface
-        </div>-->
+<!-- Nav Item - Dashboard -->
+      <li class="nav-item active">
+        <a class="nav-link" href="/admin">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
   
         <!-- Nav Item - Pages Collapse Menu -->
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategory" aria-expanded="true" aria-controls="collapseCategory">
+          <a class="nav-link collapsed"href="/admin/category" aria-expanded="true" aria-controls="collapseCategory">
             <i class="fas fa-fw fa-list"></i>
             <span>Category</span>
           </a>
-          <div id="collapseCategory" class="collapse" aria-labelledby="headingCategory" data-parent="#accordionSidebar">
+          <!-- <div id="collapseCategory" class="collapse" aria-labelledby="headingCategory" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Category Menu:</h6>
-              <a class="collapse-item" href="utilities-color.html">Category 1</a>
-              <a class="collapse-item" href="utilities-border.html">Category 2</a>
-              <a class="collapse-item" href="utilities-animation.html">Category 3</a>
-              <a class="collapse-item" href="utilities-other.html">Other Category</a>
+              <a class="collapse-item" href="/admin/category"><i class="fas fa-fw fa-list"></i>  List Category</a>
             </div>
-          </div>
+          </div> -->
         </li>
 
         <li class="nav-item">
@@ -68,8 +55,8 @@
           <div id="collapsePost" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Post Menu:</h6>
-              <a class="collapse-item" href="/admin/berita">Berita</a>
-              <a class="collapse-item" href="/admin/agenda">Agenda</a>
+              <a class="collapse-item" href="/admin/pages/create" ><i class="fas fa-fw fa-plus"></i>   Add Post</a>
+              <a class="collapse-item" href="/admin/pages"><i class="fas fa-fw fa-list"></i>  List Post</a>
             </div>
           </div>
         </li>
@@ -96,10 +83,8 @@
           <div id="collapseGallery" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Gallery Menu:</h6>
-              <a class="collapse-item" href="utilities-color.html">Gallery 1</a>
-              <a class="collapse-item" href="utilities-border.html">Gallery 2</a>
-              <a class="collapse-item" href="utilities-animation.html">Gallery 3</a>
-              <a class="collapse-item" href="utilities-other.html">Other Gallery</a>
+              <a class="collapse-item" href="/admin/pages/create" ><i class="fas fa-fw fa-plus"></i>   Add Galery</a>
+              <a class="collapse-item" href="/admin/pages"><i class="fas fa-fw fa-list"></i>  List Galery</a>
             </div>
           </div>
         </li>
@@ -112,10 +97,8 @@
           <div id="collapseSlide" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Slide Show Menu:</h6>
-              <a class="collapse-item" href="utilities-color.html">Slide Show 1</a>
-              <a class="collapse-item" href="utilities-border.html">Slide Show 2</a>
-              <a class="collapse-item" href="utilities-animation.html">Slide Show 3</a>
-              <a class="collapse-item" href="utilities-other.html">Other Category</a>
+              <a class="collapse-item" href="/admin/pages/create" ><i class="fas fa-fw fa-plus"></i>   Add Slide Show</a>
+              <a class="collapse-item" href="/admin/pages"><i class="fas fa-fw fa-list"></i>  List Slide Show</a>
             </div>
           </div>
         </li>
@@ -160,10 +143,9 @@
           <div id="collapsePengaturan" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Pengaturan Menu:</h6>
-              <a class="collapse-item" href="utilities-color.html">Pengaturan 1</a>
-              <a class="collapse-item" href="utilities-border.html">Pengaturan 2</a>
-              <a class="collapse-item" href="utilities-animation.html">Pengaturan 3</a>
-              <a class="collapse-item" href="utilities-other.html">Other Category</a>
+              <a class="collapse-item" href="/admin/pages/create" ><i class="fas fa-fw fa-list"></i>  Menu</a>
+              <a class="collapse-item" href="/admin/pages/create" ><i class="fas fa-fw fa-cog"></i>  Preferences</a>
+              <a class="collapse-item" href="/admin/pages"><i class="fas fa-fw fa-share"></i>  Social Media</a>
             </div>
           </div>
         </li>
@@ -176,10 +158,8 @@
           <div id="collapseVideo" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Menu Video:</h6>
-              <a class="collapse-item" href="utilities-color.html">Video 1</a>
-              <a class="collapse-item" href="utilities-border.html">Video 2</a>
-              <a class="collapse-item" href="utilities-animation.html">Video 3</a>
-              <a class="collapse-item" href="utilities-other.html">Other Category</a>
+              <a class="collapse-item" href="/admin/pages/create" ><i class="fas fa-fw fa-plus"></i>   Add Video</a>
+              <a class="collapse-item" href="/admin/pages"><i class="fas fa-fw fa-list"></i>  List Video</a>
             </div>
           </div>
         </li>
