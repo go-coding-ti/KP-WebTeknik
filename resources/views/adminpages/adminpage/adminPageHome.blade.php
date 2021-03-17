@@ -1,13 +1,12 @@
 @extends('adminlayout.layout')
+@section('title', 'List Pages')
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
         <hr style="margin-top: 20px" class="sidebar-divider my-0">
-
         <h1 class="h3 mb-2 text-gray-800">Pages</h1>
-          <p class="mb-4">Daftar Halaman Website Fakultas Teknik Universitas Udayana</p>
-
+          <p class="mb-4">Daftar Pages Fakultas Teknik Universitas Udayana</p>
           <!-- DataTales Example -->
           <!-- Copy drisini -->
           <div class="card shadow mb-4">
@@ -40,16 +39,17 @@
                       <td>{{$page->title_eng}}</td>
                       <td>
                         <label class="switch">
+                         <input id="signup-token_{{$page->id}}" name="_token" type="hidden" value="{{csrf_token()}}">
                         @if($page->status == "aktif")
-                          <input type="checkbox" id="status" onclick="statusBtn({{$page->id}});" checked>
+                          <input type="checkbox" id="status_{{$page->id}}" onclick="statusBtn({{$page->id}})" checked>
                         @else
-                          <input type="checkbox" id="status" onclick="statusBtn()">
+                          <input type="checkbox" id="status_{{$page->id}}" onclick="statusBtn({{$page->id}})">
                         @endif
                           <span class="slider round"></span>
                         </label>
                       
                       </td>
-                      <td><a style="margin-right:7px" href="/admin/berita"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/berita/{{$page->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a><a class="btn btn-danger btn-sm" href="/admin/berita/{{$page->id}}/delete" onclick="return confirm('Apakah Anda Yakin ?')"><i class="fas fa-trash"></i></a></td>
+                      <td><a style="margin-right:7px" href="/admin/pages/{{$page->title_slug}}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/pages/{{$page->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a><a class="btn btn-danger btn-sm" onclick="deletePage({{$page->id}})" href="#"><i class="fas fa-trash"></i></a></td>
                     </tr>
                   @endforeach
                   </tbody>
@@ -103,33 +103,85 @@
 
 @section('custom_javascript')
 <script>
-  function statusBtn(id) {
-    alert(id);
-    var checkBox = document.getElementById("status");
+//Soft Delete Page
+function deletePage(id){
+  swal({
+    title: 'Anda yakin ingin menghapus page ini?',
+    icon: 'warning',
+    buttons: ["Tidak", "Ya"],
+  }).then(function(value) {
+    if (value) {
+    jQuery.ajax({  
+      url: 'pages/delete/'+id,
+      type: "GET",
+        success: function(result){
+          location.reload();
+        }
+      });
+    }
+  });
+}
+
+//Success Alert
+function alertSuccess(msg){
+  swal({
+    title: "Sukses",
+    text: msg,
+    icon: "success",
+    button: "Ok",
+  });
+}
+
+//Switch Status Page
+function statusBtn(id) {
+    var checkBox = document.getElementById("status_"+id);
     // If the checkbox is checked, display the output text
     if (checkBox.checked == true){
-      $.ajax({
-        url: "{{url('admin/pages/status')}}",
-        type: "POST",
-        data: {
-        status: 'aktif'
-      },
-        success: function(result){
-          alert("berhasil");
+      swal({
+          title: 'Anda yakin ingin mengaktifkan pages ini?',
+          icon: 'warning',
+          buttons: ["Tidak", "Ya"],
+      }).then(function(value) {
+          if (value) {
+            jQuery.ajax({  
+              url: "{{url('admin/pages/status')}}",
+              type: "POST",
+              data: {
+                _token: $('#signup-token_'+id).val(),
+                id: id,
+                status: 'aktif',
+            },
+              success: function(result){
+              }
+          });
+        }else{
+          document.getElementById("status_"+id).checked = false;
         }
-     });
+      });
     } else {
-      $.ajax({
-        url: "{{url('admin/pages/status')}}",
-        type: "POST",
-        data: {
-        status: 'tidak aktif'
-      },
-        success: function(result){
-          alert("berhasil");
+      swal({
+          title: 'Anda yakin ingin menonaktifkan pages ini?',
+          icon: 'warning',
+          buttons: ["Tidak", "Ya"],
+      }).then(function(value) {
+          if (value) {
+            jQuery.ajax({
+              url: "{{url('admin/pages/status')}}",
+              type: "POST",
+              data: {
+                _token: $('#signup-token_'+id).val(),
+                id: id,
+                status: 'tidak_aktif',
+            },
+              success: function(result){
+              }
+          });
+        }else{  
+          document.getElementById("status_"+id).checked = true;
         }
-     });
+      });
     }
   }
+
 </script>
 @endsection

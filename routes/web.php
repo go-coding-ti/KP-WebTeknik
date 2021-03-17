@@ -18,7 +18,8 @@ Route::get('/', function () {
 });
 
 
-//Pages Front End Roites
+//Pages Front End Routes
+
 
 
 
@@ -35,6 +36,11 @@ Route::prefix('admin')->group(function () {
     Route::get('/pages', 'AdminController\PageController@index')->name('admin-page-home');
     Route::get('/pages/create', 'AdminController\PageController@create')->name('admin-page-create');
     Route::post('/pages/store', 'AdminController\PageController@store')->name('admin-page-store');
+    Route::get('/pages/{id}/edit', 'AdminController\PageController@edit')->name('admin-page-edit');
+    Route::put('/pages/{id}', 'AdminController\PageController@update')->name('admin-page-update');
+    Route::get('/pages/delete/{id}', 'AdminController\PageController@destroy')->name('admin-page-delete');
+    Route::get('/pages/{pagestitle}', 'AdminController\PageController@show')->name('admin-page-show');
+    Route::post('/pages/status', 'AdminController\PageController@status')->name('admin-page-status');
 
     //Berita Controller
     Route::get('/berita', 'AdminController\BeritaController@index')->name('admin-berita-home');
