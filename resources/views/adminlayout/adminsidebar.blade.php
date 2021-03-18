@@ -158,8 +158,8 @@
           <div id="collapseVideo" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Menu Video:</h6>
-              <a class="collapse-item" href="/admin/pages/create" ><i class="fas fa-fw fa-plus"></i>   Add Video</a>
-              <a class="collapse-item" href="/admin/pages"><i class="fas fa-fw fa-list"></i>  List Video</a>
+              <a class="collapse-item" href="/admin/video/create" ><i class="fas fa-fw fa-plus"></i>   Add Video</a>
+              <a class="collapse-item" href="/admin/video"><i class="fas fa-fw fa-list"></i>  List Video</a>
             </div>
           </div>
         </li>

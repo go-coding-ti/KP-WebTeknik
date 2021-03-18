@@ -4,7 +4,7 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
-        <hr style="margin-top: 20px" class="sidebar-divider my-0">
+        <!-- <hr style="margin-top: 20px" class="sidebar-divider my-0"> -->
         <h1 class="h3 mb-2 text-gray-800">Kategori</h1>
           <p class="mb-4">Daftar Kategori Website Fakultas Teknik Universitas Udayana</p>
 
@@ -19,6 +19,22 @@
                 </div>
               </div>
             @endif
+
+            @if (count($errors)>0)
+            <div class="row">
+              <div class="col-sm-12 alert alert-danger alert-dismissible fade show" role="alert">
+                  <ul>
+                    @foreach ($errors->all() as $item)
+                        <li>{{$item}}</li>
+                    @endforeach
+                  </ul>
+                  <button type="button" class="close" data-dismiss="alert"
+                      aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+            </div>
+          @endif
           <!-- DataTales Example -->
           <!-- Copy drisini -->
           <div class="card shadow mb-4">
@@ -241,87 +257,5 @@ function show(id,status){
         $("#form-delete-category").attr("action", "/admin/category/"+id+"/delete");
         $('#deleteCategory').modal('show');
     }
-
-
-//Soft Delete Page
-function deletePage(id){
-  swal({
-    title: 'Anda yakin ingin menghapus page ini?',
-    icon: 'warning',
-    buttons: ["Tidak", "Ya"],
-  }).then(function(value) {
-    if (value) {
-    jQuery.ajax({  
-      url: 'pages/delete/'+id,
-      type: "GET",
-        success: function(result){
-          location.reload();
-        }
-      });
-    }
-  });
-}
-
-//Success Alert
-function alertSuccess(msg){
-  swal({
-    title: "Sukses",
-    text: msg,
-    icon: "success",
-    button: "Ok",
-  });
-}
-
-//Switch Status Page
-function statusBtn(id) {
-    var checkBox = document.getElementById("status_"+id);
-    // If the checkbox is checked, display the output text
-    if (checkBox.checked == true){
-      swal({
-          title: 'Anda yakin ingin mengaktifkan pages ini?',
-          icon: 'warning',
-          buttons: ["Tidak", "Ya"],
-      }).then(function(value) {
-          if (value) {
-            jQuery.ajax({  
-              url: "{{url('admin/pages/status')}}",
-              type: "POST",
-              data: {
-                _token: $('#signup-token_'+id).val(),
-                id: id,
-                status: 'aktif',
-            },
-              success: function(result){
-              }
-          });
-        }else{
-          document.getElementById("status_"+id).checked = false;
-        }
-      });
-    } else {
-      swal({
-          title: 'Anda yakin ingin menonaktifkan pages ini?',
-          icon: 'warning',
-          buttons: ["Tidak", "Ya"],
-      }).then(function(value) {
-          if (value) {
-            jQuery.ajax({
-              url: "{{url('admin/pages/status')}}",
-              type: "POST",
-              data: {
-                _token: $('#signup-token_'+id).val(),
-                id: id,
-                status: 'tidak_aktif',
-            },
-              success: function(result){
-              }
-          });
-        }else{  
-          document.getElementById("status_"+id).checked = true;
-        }
-      });
-    }
-  }
-
 </script>
 @endsection

@@ -17,13 +17,17 @@ class KategoriController extends Controller
         return view('adminpages.kategori.kategori', compact('data'));
     }
 
-
-    public function create(){
-        return view('adminpages.kategori.create');
-    }
-
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'kategori_ina' => 'required|min:3',
+            'kategori_eng' => 'required|min:3'
+        ]);
+
+        if($validator->fails()){
+            return back()->withInput()->withErrors($validator);
+        }
+
         $kategori = new Kategori();
         $kategori->kategori_ina = $request->kategori_ina;
         $kategori->kategori_eng = $request->kategori_eng;
@@ -40,6 +44,15 @@ class KategoriController extends Controller
 
     public function update($id, Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'kategori_ina' => 'required|min:3',
+            'kategori_eng' => 'required|min:3'
+        ]);
+
+        if($validator->fails()){
+            return back()->withInput()->withErrors($validator);
+        }
+        
         $kategori = Kategori::find($id);
 
         $kategori->kategori_ina = $request->edit_kategori_ina;
