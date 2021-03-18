@@ -58,6 +58,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/pages/{pagestitle}', 'AdminController\PageController@show')->name('admin-page-show');
     Route::post('/pages/status', 'AdminController\PageController@status')->name('admin-page-status');
 
+    //Menu Controller
+    Route::get('/menu', 'AdminController\MenuController@index')->name('admin-menu-home');
+
     //Pengaturan Controller
     //Social Controller
     Route::get('/setting/social', 'AdminController\SocialController@index')->name('admin-social-home');
