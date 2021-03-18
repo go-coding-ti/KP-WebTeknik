@@ -55,8 +55,8 @@
           <div id="collapsePost" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Post Menu:</h6>
-              <a class="collapse-item" href="/admin/pages/create" ><i class="fas fa-fw fa-plus"></i>   Add Post</a>
-              <a class="collapse-item" href="/admin/pages"><i class="fas fa-fw fa-list"></i>  List Post</a>
+              <a class="collapse-item" href="/admin/posts/create" ><i class="fas fa-fw fa-plus"></i>   Add Post</a>
+              <a class="collapse-item" href="/admin/posts"><i class="fas fa-fw fa-list"></i>  List Post</a>
             </div>
           </div>
         </li>
@@ -145,7 +145,7 @@
               <h6 class="collapse-header">Pengaturan Menu:</h6>
               <a class="collapse-item" href="/admin/pages/create" ><i class="fas fa-fw fa-list"></i>  Menu</a>
               <a class="collapse-item" href="/admin/pages/create" ><i class="fas fa-fw fa-cog"></i>  Preferences</a>
-              <a class="collapse-item" href="/admin/pages"><i class="fas fa-fw fa-share"></i>  Social Media</a>
+              <a class="collapse-item" href="/admin/setting/social"><i class="fas fa-fw fa-share"></i>  Social Media</a>
             </div>
           </div>
         </li>
@@ -158,8 +158,8 @@
           <div id="collapseVideo" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Menu Video:</h6>
-              <a class="collapse-item" href="/admin/video/create" ><i class="fas fa-fw fa-plus"></i>   Add Video</a>
-              <a class="collapse-item" href="/admin/video"><i class="fas fa-fw fa-list"></i>  List Video</a>
+              <a class="collapse-item" href="/admin/videos/create" ><i class="fas fa-fw fa-plus"></i>   Add Video</a>
+              <a class="collapse-item" href="/admin/videos"><i class="fas fa-fw fa-list"></i>  List Video</a>
             </div>
           </div>
         </li>

@@ -31,6 +31,7 @@ class KategoriController extends Controller
         $kategori = new Kategori();
         $kategori->kategori_ina = $request->kategori_ina;
         $kategori->kategori_eng = $request->kategori_eng;
+        $kategori->kategori_lower = Str::lower($request->kategori_eng);
         $kategori->save();
 
         return back()->with('statusInput', 'Category successfully added to record');
@@ -45,8 +46,8 @@ class KategoriController extends Controller
     public function update($id, Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'kategori_ina' => 'required|min:3',
-            'kategori_eng' => 'required|min:3'
+            'edit_kategori_ina' => 'required|min:3',
+            'edit_kategori_eng' => 'required|min:3'
         ]);
 
         if($validator->fails()){
@@ -57,6 +58,7 @@ class KategoriController extends Controller
 
         $kategori->kategori_ina = $request->edit_kategori_ina;
         $kategori->kategori_eng = $request->edit_kategori_eng;
+        $kategori->kategori_lower = Str::lower($request->edit_kategori_eng);
         $kategori->save();
 
         return back()->with('statusInput', 'Category successfully edited');

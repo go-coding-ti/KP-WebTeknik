@@ -3,36 +3,41 @@
 namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
+use App\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Page;
-use App\PageImage;
-use Carbon;
+use App\Post;
+use App\PostImage;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File; 
 
-class PageController extends Controller
+class PostController extends Controller
 {
     public function index(){
-        $data = Page::where('deleted_at', NULL)->get();
-        // dd(isset($data));
-        return view('adminpages.page.page', compact('data'));
+
+        $data = Post::where('deleted_at', NULL)->with('kategori')->get();
+        return view('adminpages.post.post', compact('data'));
     }
 
 
     public function create(){
-        return view('adminpages.page.create');
+        $kategori = Kategori::where('deleted_at', NULL)->get();
+        return view('adminpages.post.create', compact('kategori'));
     }
 
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title_ina' => 'required|min:3|unique:pages',
+            'title_ina' => 'required|min:3|unique:posts',
             'content_ina' => 'required|min:8',
             'title_eng' => 'required|min:3',
-            'content_eng' => 'required|min:8'
+            'content_eng' => 'required|min:8',
+            'kategori' => 'required',
+            'tanggal' => 'required'
         ]);
+
+        $kategori = Kategori::find($request->kategori);
 
         if($validator->fails()){
             return back()->withErrors($validator);
@@ -40,35 +45,31 @@ class PageController extends Controller
 
         $arrImage = [];
 
-        $page = new Page();
-        $page->title_ina = $request->title_ina;
-        $page->title_eng = $request->title_eng;
-        $page->title_slug = Str::slug($request->title_ina);
-        $page->status = 'aktif';
-        $page->tanggal_publish = $request->tanggal;
-        
+        $post = new Post();
+        $post->title_ina = $request->title_ina;
+        $post->title_eng = $request->title_eng;
+        $post->title_slug = Str::slug($request->title_ina);
+        $post->status = 'aktif';
+        $post->tanggal_publish = $request->tanggal;
+        $post->id_kategori = $request->kategori;
 
-        if($request->urlvideo != ""){
-            $page->url_video = $request->urlvideo;
-        }
-
-
-        if($request->file('galeri')!=""){
-            $galeri = $request->file('galeri');
-            $galeriLocation = '/image/pages/'.$request->title_ina.'/galeri';
-            $galeriname = $galeri->getClientOriginalName();
-            $path = $galeriLocation."/".$galeriname;
-            $page->galeri = '/storage'.$path;
-            Storage::disk('public')->put($path, file_get_contents($galeri));
-            //$galeri->move($galeriLocation, $page->galeri);
-        }
         if($request->file('lampiran')!=""){
             $file = $request->file('lampiran');
-            $fileLocation = '/file/pages/'.$request->title_ina.'/lampiran';
+            $fileLocation = '/file/posts/'.$kategori->kategori_lower.'/'.$request->title_ina.'/lampiran';
             $filename = $file->getClientOriginalName();
             $path = $fileLocation."/".$filename;
-            $page->file = '/storage'.$path;
-            $page->file_name = $filename;
+            $post->lampiran = '/storage'.$path;
+            $post->lampiran_name = $filename;
+            Storage::disk('public')->put($path, file_get_contents($file));
+        }
+
+        if($request->file('thumbnail')!=""){
+            $file = $request->file('thumbnail');
+            $fileLocation = '/image/posts/'.$kategori->kategori_lower.'/'.$request->title_ina.'/thumbnail';
+            $filename = $file->getClientOriginalName();
+            $path = $fileLocation."/".$filename;
+            $post->thumbnail = '/storage'.$path;
+            $post->thumbnail_name = $filename;
             Storage::disk('public')->put($path, file_get_contents($file));
         }
 
@@ -87,7 +88,7 @@ class PageController extends Controller
             if (preg_match('/data:image/', $src)) {
                 preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
                 $mimeType = $groups['mime'];
-                $path = '/image/pages/'.$page->title_ina.'/content/'. uniqid('', true) . '.' . $mimeType;
+                $path = '/image/posts/'.$kategori->kategori_lower.'/'.$post->title_ina.'/content/'. uniqid('', true) . '.' . $mimeType;
                 Storage::disk('public')->put($path, file_get_contents($src));
                 $image->removeAttribute('src');
                 $link = asset('storage'.$path);
@@ -97,31 +98,32 @@ class PageController extends Controller
         }
 
         $detailina = $dom->savehtml();
-        $page->content_ina = $detailina;
+        $post->content_ina = $detailina;
         $detaileng = $dom->savehtml();
-        $page->content_eng = $detaileng;
-        $page->save();
+        $post->content_eng = $detaileng;
+        $post->save();
 
         foreach($arrImage as $item){
-            $pageImage = new PageImage();
-            $pageImage->id_page = $page->id;
-            $pageImage->image = $item;
-            $pageImage->save();
+            $postImage = new PostImage();
+            $postImage->id_post = $post->id;
+            $postImage->image = $item;
+            $postImage->save();
         }
 
-        return redirect('/admin/pages')->with('statusInput', 'Page successfully added to record');
+        return redirect('/admin/posts')->with('statusInput', 'Post successfully added to record');
     }
 
     public function destroy($id)
     {
-    	$page = Page::find($id);
-        $page->delete();
-        return redirect('/admin/pages');
+    	$post = Post::find($id);
+        $post->delete();
+        return redirect('/admin/posts')->with('statusInput', 'Post successfully deleted from the record');
     }
 
     public function edit($id){
-    	$page = Page::where('id', $id)->get()->first();
-        return view('adminpages.page.edit', compact('page'));
+        $kategori = Kategori::where('deleted_at', NULL)->get();
+        $post = Post::find($id);
+        return view('adminpages.post.edit', compact('kategori','post'));
     }
 
     public function update($id, Request $request)
@@ -130,44 +132,48 @@ class PageController extends Controller
             'title_ina' => 'required|min:3',
             'content_ina' => 'required|min:8',
             'title_eng' => 'required|min:3',
-            'content_eng' => 'required|min:8'
+            'content_eng' => 'required|min:8',
+            'kategori' => 'required',
+            'tanggal' => 'required'
         ]);
+
+        $kategori = Kategori::find($request->kategori);
 
         if($validator->fails()){
             return back()->withErrors($validator);
         }
 
-        $page = Page::find($id);
+        $post = Post::find($id);
         $arrImage = [];
         $idImage = [];
 
-        $page->title_ina = $request->title_ina;
-        $page->title_eng = $request->title_eng;
-        $page->title_slug = Str::slug($request->title_ina);
-        $page->status = 'aktif';
-        $page->tanggal_publish = $request->tanggal;
-        
-
-        if($request->urlvideo != ""){
-            $page->url_video = $request->urlvideo;
-        }
+        $post->title_ina = $request->title_ina;
+        $post->title_eng = $request->title_eng;
+        $post->title_slug = Str::slug($request->title_ina);
+        $post->status = 'aktif';
+        $post->tanggal_publish = $request->tanggal;
+        $post->id_kategori = $request->kategori;
 
 
-        if($request->file('galeri')!=""){
-            $galeri = $request->file('galeri');
-            $galeriLocation = '/image/pages/'.$request->title_ina.'/galeri';
-            $galeriname = $galeri->getClientOriginalName();
-            $path = $galeriLocation."/".$galeriname;
-            $page->galeri = '/storage'.$path;
-            Storage::disk('public')->put($path, file_get_contents($galeri));
-        }
         if($request->file('lampiran')!=""){
+            Storage::disk('public')->delete($post->lampiran);
             $file = $request->file('lampiran');
-            $fileLocation = '/file/pages/'.$request->title_ina.'/lampiran';
+            $fileLocation = '/file/posts/'.$kategori->kategori_lower.'/'.$request->title_ina.'/lampiran';
             $filename = $file->getClientOriginalName();
             $path = $fileLocation."/".$filename;
-            $page->file = '/storage'.$path;
-            $page->file_name = $filename;
+            $post->lampiran = '/storage'.$path;
+            $post->lampiran_name = $filename;
+            Storage::disk('public')->put($path, file_get_contents($file));
+        }
+
+        if($request->file('thumbnail')!=""){
+            Storage::disk('public')->delete($post->thumbnail);
+            $file = $request->file('thumbnail');
+            $fileLocation = '/image/posts/'.$kategori->kategori_lower.'/'.$request->title_ina.'/thumbnail';
+            $filename = $file->getClientOriginalName();
+            $path = $fileLocation."/".$filename;
+            $post->thumbnail = '/storage'.$path;
+            $post->thumbnail_name = $filename;
             Storage::disk('public')->put($path, file_get_contents($file));
         }
 
@@ -183,7 +189,7 @@ class PageController extends Controller
 
 
 
-        $pageImage = PageImage::where('id_page','=', $id)->get();
+        $postImage = PostImage::where('id_post','=', $id)->get();
 
         //variabel dummy
                 $arrsrc = [];
@@ -196,15 +202,15 @@ class PageController extends Controller
             if (preg_match('/data:image/', $src)) {
                 preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
                 $mimeType = $groups['mime'];
-                $path = '/image/pages/'.$page->title_ina.'/content/'. uniqid('', true) . '.' . $mimeType;
+                $path = '/image/posts/'.$kategori->kategori_lower.'/'.$post->title_ina.'/content/'. uniqid('', true) . '.' . $mimeType;
                 Storage::disk('public')->put($path, file_get_contents($src));
                 $image->removeAttribute('src');
                 $link = asset('storage'.$path);
                 $image->setAttribute('src', $link);
                 array_push($arrImage, $path);
             }
-            if($pageImage != null){
-                foreach($pageImage as $item){
+            if($postImage != null){
+                foreach($postImage as $item){
                     $src = str_replace('/',' ',$src);
                     $item->image = str_replace(' ','%20',$item->image);
                     $item->image = str_replace('/', ' ',$item->image);
@@ -219,43 +225,41 @@ class PageController extends Controller
             }
         }
 
-        $pageImages = PageImage::whereNotIn('id', $idImage)->where('id_page',$id)->get();
-        PageImage::whereNotIn('id', $idImage)->where('id_page',$id)->delete();
-        foreach($pageImages as $item){
+        $postImages = PostImage::whereNotIn('id', $idImage)->where('id_post',$id)->get();
+        PostImage::whereNotIn('id', $idImage)->where('id_post',$id)->delete();
+        foreach($postImages as $item){
             Storage::disk('public')->delete($item->image);
         }
 
         $detailina = $dom->savehtml();
-        $page->content_ina = $detailina;
+        $post->content_ina = $detailina;
         $detaileng = $dom->savehtml();
-        $page->content_eng = $detaileng;
-        $page->save();
+        $post->content_eng = $detaileng;
+        $post->update();
 
         foreach($arrImage as $item){
-            $pageImage = new PageImage();
-            $pageImage->id_page = $page->id;
+            $pageImage = new PostImage();
+            $pageImage->id_post = $post->id;
             $pageImage->image = $item;
             $pageImage->save();
         }
 
-        $page->update();
-
-        return redirect('admin/pages')->with('statusInput', 'Post successfully updated from the record');
+        return redirect('admin/posts')->with('statusInput', 'Post successfully updated from the record');
     }
 
 
-    public function show($pagetitle)
+    public function show($kategori, $judul_slug)
     {
-        $page = Page::where('title_slug', $pagetitle)->first();
-        return view('adminpages.page.show', compact('page'));
+        $post = Post::where('title_slug', $judul_slug)->first();
+        return view('adminpages.post.show', compact('post'));
     }
 
     public function status(Request $request)
     {
-        $page = Page::find($request->id);
-        $page->status = $request->status;
-        $page->update();
-        $view = view('adminpages.page.page');
+        $post = Post::find($request->id);
+        $post->status = $request->status;
+        $post->update();
+        $view = view('adminpages.post.post');
 
         return response()->json(['success' => 'berhasil', 'view' => $view]);
     }

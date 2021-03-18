@@ -47,7 +47,7 @@
                     <tr>
                       <td>{{$video->judul}}</td>
                       <td>{{$video->link}}</td>
-                      <td><a style="margin-right:7px" href="/admin/video/show/{{$video->judul_slug}}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/video/{{$video->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a><a class="btn btn-danger btn-sm" onclick="deletevideo({{$video->id}})" href="#"><i class="fas fa-trash"></i></a></td>
+                      <td><a style="margin-right:7px" href="/admin/videos/show/{{$video->judul_slug}}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/videos/{{$video->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a><a class="btn btn-danger btn-sm" onclick="deletevideo({{$video->id}})" href="#"><i class="fas fa-trash"></i></a></td>
                     </tr>
                   @endforeach
                   </tbody>
@@ -119,8 +119,7 @@
                 </div>
               </form>              
         </div>
-
-        </div>
+      </div>
     </div>
 </div>
 @endsection
@@ -129,7 +128,7 @@
 <script>
 //Delete
 function deletevideo(id){
-        $("#form-delete-video").attr("action", "/admin/video/"+id+"/delete");
+        $("#form-delete-video").attr("action", "/admin/videos/"+id+"/delete");
         $('#deleteModal').modal('show');
     }
 </script>

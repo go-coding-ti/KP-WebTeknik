@@ -3,14 +3,11 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class Berita extends Authenticatable
+class Social extends Authenticatable
 {
-    use Notifiable;
-
-    protected $fillable = [
-        'id_berita', 'judul', 'isi_berita', 'file'
-    ];
+ Use SoftDeletes;   
 }

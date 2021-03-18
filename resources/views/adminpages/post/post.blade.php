@@ -1,28 +1,58 @@
 @extends('adminlayout.layout')
-@section('title', 'List Pages')
+@section('title', 'List Posts')
 @section('content')
+
+
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
-        <hr style="margin-top: 20px" class="sidebar-divider my-0">
-        <h1 class="h3 mb-2 text-gray-800">Pages</h1>
-          <p class="mb-4">Daftar Pages Fakultas Teknik Universitas Udayana</p>
+        <h1 class="h3 mb-2 text-gray-800">Posts</h1>
+          <p class="mb-4">Daftar Posts Fakultas Teknik Universitas Udayana</p>
+
+@if (session()->has('statusInput'))
+      <div class="row">
+        <div class="col-sm-12 alert alert-success alert-dismissible fade show" role="alert">
+            {{session()->get('statusInput')}}
+            <button type="button" class="close" data-dismiss="alert"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+      </div>
+    @endif
+
+    @if (count($errors)>0)
+      <div class="row">
+        <div class="col-sm-12 alert alert-danger alert-dismissible fade show" role="alert">
+            <ul>
+              @foreach ($errors->all() as $item)
+                  <li>{{$item}}</li>
+              @endforeach
+            </ul>
+            <button type="button" class="close" data-dismiss="alert"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+      </div>
+    @endif
           <!-- DataTales Example -->
           <!-- Copy drisini -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">List Page</h6>
+              <h6 class="m-0 font-weight-bold text-primary">List Post</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-              <a class= "btn btn-success text-white" href="{{route('admin-page-create')}}"><i class="fas fa-plus"></i>  Tambah Page</a>
+              <a class= "btn btn-success text-white" href="{{route('admin-post-create')}}"><i class="fas fa-plus"></i>  Tambah Post</a>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>Judul Ina</th>
                       <th>Judul Eng</th>
-                      <th>Status</th>
-                      <th>Action</th>
+                      <th>Kategori</th>
+                      <th width="75">Status</th>
+                      <th width="150">Action</th>
                     </tr>
                   </thead>
 <!--                   <tfoot>
@@ -33,23 +63,24 @@
                     </tr>
                   </tfoot> -->
                   <tbody>
-                  @foreach ($data as $i => $page)
+                  @foreach ($data as $i => $post)
                     <tr>
-                      <td>{{$page->title_ina}}</td>
-                      <td>{{$page->title_eng}}</td>
+                      <td>{{$post->title_ina}}</td>
+                      <td>{{$post->title_eng}}</td>
+                      <td>{{$post->kategori->kategori_ina}}
                       <td>
                         <label class="switch">
-                         <input id="signup-token_{{$page->id}}" name="_token" type="hidden" value="{{csrf_token()}}">
-                        @if($page->status == "aktif")
-                          <input type="checkbox" id="status_{{$page->id}}" onclick="statusBtn({{$page->id}})" checked>
+                         <input id="signup-token_{{$post->id}}" name="_token" type="hidden" value="{{csrf_token()}}">
+                        @if($post->status == "aktif")
+                          <input type="checkbox" id="status_{{$post->id}}" onclick="statusBtn({{$post->id}})" checked>
                         @else
-                          <input type="checkbox" id="status_{{$page->id}}" onclick="statusBtn({{$page->id}})">
+                          <input type="checkbox" id="status_{{$post->id}}" onclick="statusBtn({{$post->id}})">
                         @endif
                           <span class="slider round"></span>
                         </label>
                       
                       </td>
-                      <td><a style="margin-right:7px" href="/admin/pages/{{$page->title_slug}}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/pages/{{$page->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a><a class="btn btn-danger btn-sm" onclick="deletePage({{$page->id}})" href="#"><i class="fas fa-trash"></i></a></td>
+                      <td><a style="margin-right:7px" href="/admin/posts/show/{{$post->kategori->kategori_lower}}/{{$post->title_slug}}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/posts/{{$post->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a><a class="btn btn-danger btn-sm" onclick="deletePost({{$post->id}})" href="#"><i class="fas fa-trash"></i></a></td>
                     </tr>
                   @endforeach
                   </tbody>
@@ -98,21 +129,24 @@
         </div>
 
       </div>
+
       <!-- /.container-fluid -->
 @endsection
 
 @section('custom_javascript')
 <script>
+
+
 //Soft Delete Page
-function deletePage(id){
+function deletePost(id){
   swal({
-    title: 'Anda yakin ingin menghapus page ini?',
+    title: 'Anda yakin ingin menghapus post ini?',
     icon: 'warning',
     buttons: ["Tidak", "Ya"],
   }).then(function(value) {
     if (value) {
     jQuery.ajax({  
-      url: 'pages/delete/'+id,
+      url: 'posts/delete/'+id,
       type: "GET",
         success: function(result){
           location.reload();
@@ -138,13 +172,13 @@ function statusBtn(id) {
     // If the checkbox is checked, display the output text
     if (checkBox.checked == true){
       swal({
-          title: 'Anda yakin ingin mengaktifkan pages ini?',
+          title: 'Anda yakin ingin mengaktifkan post ini?',
           icon: 'warning',
           buttons: ["Tidak", "Ya"],
       }).then(function(value) {
           if (value) {
             jQuery.ajax({  
-              url: "{{url('admin/pages/status')}}",
+              url: "{{url('admin/post/status')}}",
               type: "POST",
               data: {
                 _token: $('#signup-token_'+id).val(),
@@ -160,13 +194,13 @@ function statusBtn(id) {
       });
     } else {
       swal({
-          title: 'Anda yakin ingin menonaktifkan pages ini?',
+          title: 'Anda yakin ingin menonaktifkan post ini?',
           icon: 'warning',
           buttons: ["Tidak", "Ya"],
       }).then(function(value) {
           if (value) {
             jQuery.ajax({
-              url: "{{url('admin/pages/status')}}",
+              url: "{{url('admin/posts/status')}}",
               type: "POST",
               data: {
                 _token: $('#signup-token_'+id).val(),

@@ -41,7 +41,7 @@ class VideoController extends Controller
         $video->link = $request->urlvideo;
         $video->save();
 
-        return redirect('/admin/video')->with('statusInput', 'Video successfully added to record');;
+        return redirect('/admin/videos')->with('statusInput', 'Video successfully added to record');
     }
 
     public function edit($id){
@@ -68,7 +68,7 @@ class VideoController extends Controller
         $video->link = $request->urlvideo;
         $video->save();
 
-        return redirect('/admin/video')->with('statusInput', 'Video successfully updated');
+        return redirect('/admin/videos')->with('statusInput', 'Video successfully updated');
 
     }
 
@@ -83,6 +83,6 @@ class VideoController extends Controller
     {
     	$video = Video::find($id);
         $video->delete();
-        return redirect('/admin/video')->with('statusInput', 'Video successfully deleted');
+        return redirect('/admin/videos')->with('statusInput', 'Video successfully deleted');
     }
 }

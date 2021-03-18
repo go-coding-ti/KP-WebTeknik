@@ -1,12 +1,12 @@
 @extends('adminlayout.layout')
-@section('title', $video->judul)
+@section('title', $post->title_ina)
 @section('content')
 
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
-        <h1 class="h3 mb-2 text-gray-800">Video</h1>
-          <p class="mb-4">Video {{$video->judul}}</p>
+        <h1 class="h3 mb-2 text-gray-800">Post</h1>
+          <p class="mb-4">Post {{$post->title_ina}}</p>
 
           @if (session()->has('statusInput'))
               <div class="row">
@@ -20,24 +20,41 @@
               </div>
             @endif
           <!-- DataTales Example -->
-          <!-- Copy drisini -->
+          <!-- INDONESIA -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Detail Video</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Detail Post Indonesia</h6>
             </div>
             <div class="card-body">
                 <div class="col px-5 mb-3">
                     <div class="card border-0 bg-grey hover">
                         <div class="card-body text-center">
-                        <iframe src="{{$video->link}}" title="YouTube video" allowfullscreen></iframe>
-                            </div>
-                        <div class="card-body text-center">
-                            <h5 class="card-title text-dark fw-bold">{{$video->judul}}</h5>
-                            <p class="card-text lh-sm text-dark">{{$video->deskripsi}}</p>
-                            <a href="{{$video->link}}" class="card-text text-black small text-decoration-none text-link"><i class="fab fa-youtube"></i> See on YouTube</a>
+                            <h3 class="card-title text-dark fw-bold">{{$post->title_ina}}</h5>
                         </div>
+                        {!! $post->content_ina !!}
                         <div class="form-group mt-4">
-                            <a href="/admin/videos" class="btn btn-danger"><i class="fa sm fa-arrow-left"></i>   Kembali</a>
+                            <a href="/admin/posts" class="btn btn-danger"><i class="fa sm fa-arrow-left"></i>   Kembali</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!-- smpe sini -->
+
+          <!-- ENGLISH -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Detail Post English</h6>
+            </div>
+            <div class="card-body">
+                <div class="col px-5 mb-3">
+                    <div class="card border-0 bg-grey hover">
+                        <div class="card-body text-center">
+                            <h3 class="card-title text-dark fw-bold">{{$post->title_eng}}</h5>
+                        </div>
+                        {!! $post->content_eng !!}
+                        <div class="form-group mt-4">
+                            <a href="/admin/posts" class="btn btn-danger"><i class="fa sm fa-arrow-left"></i>   Kembali</a>
                         </div>
                     </div>
                 </div>

@@ -38,7 +38,7 @@
                     <input type="text" class="form-control" id="urlvideo" name="urlvideo" placeholder="URL Video">
                 </div>
                 <div class="form-group mt-4">
-                    <a href="/admin/video" class="btn btn-danger"><i class="fa fa-times"></i> Batal</a>
+                    <a href="/admin/videos" class="btn btn-danger"><i class="fa fa-times"></i> Batal</a>
                     <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Tambah</button>
                 </div>
             </form>
