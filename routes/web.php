@@ -48,7 +48,7 @@ Route::group(['prefix' => '{language}'], function () {
 Route::prefix('admin')->group(function () {
 
 	//Admin Dashboard
-    Route::get('/', 'AdminController\HomeController@index')->name('admin-home');
+    Route::get('/dashboard', 'AdminController\HomeController@index')->name('admin-home');
 
     //Kategori Controller
     Route::get('/category', 'AdminController\KategoriController@index')->name('admin-kategori-home');
