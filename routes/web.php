@@ -47,9 +47,25 @@ Route::group(['prefix' => '{language}'], function () {
 
 Route::prefix('admin')->group(function () {
 
-	//Admin Home Route Belum Fix
-    Route::get('/', 'AdminController\BeritaController@index')->name('admin-home');
+	//Admin Dashboard
+    Route::get('/', 'AdminController\HomeController@index')->name('admin-home');
 
+    //Kategori Controller
+    Route::get('/category', 'AdminController\KategoriController@index')->name('admin-kategori-home');
+    Route::post('/category/store', 'AdminController\KategoriController@store')->name('admin-kategori-store');
+    Route::get('/category/{id}/edit', 'AdminController\KategoriController@edit')->name('admin-kategori-edit');
+    Route::put('/category/{id}', 'AdminController\KategoriController@update')->name('admin-kategori-update');
+    Route::delete('/category/{id}/delete', 'AdminController\KategoriController@destroy')->name('admin-kategori-destroy');
+
+    //Post Controller
+    Route::get('/posts', 'AdminController\PostController@index')->name('admin-post-home');
+    Route::get('/posts/create', 'AdminController\PostController@create')->name('admin-post-create');
+    Route::post('/posts/store', 'AdminController\PostController@store')->name('admin-post-store');
+    Route::get('/posts/{id}/edit', 'AdminController\PostController@edit')->name('admin-post-edit');
+    Route::post('/posts/{id}', 'AdminController\PostController@update')->name('admin-post-update');
+    Route::get('/posts/delete/{id}', 'AdminController\PostController@destroy')->name('admin-post-delete');
+    Route::get('/posts/show/{kategori}/{judul_slug}', 'AdminController\PostController@show')->name('admin-post-show');
+    Route::post('/posts/status', 'AdminController\PostController@status')->name('admin-post-status');
 
     //Pages Controller
     Route::get('/pages', 'AdminController\PageController@index')->name('admin-page-home');
@@ -61,14 +77,20 @@ Route::prefix('admin')->group(function () {
     Route::get('/pages/{pagestitle}', 'AdminController\PageController@show')->name('admin-page-show');
     Route::post('/pages/status', 'AdminController\PageController@status')->name('admin-page-status');
 
-    //Berita Controller
-    Route::get('/berita', 'AdminController\BeritaController@index')->name('admin-berita-home');
-    Route::get('/berita/create', 'AdminController\BeritaController@create')->name('admin-berita-create');
-    Route::post('/berita/store', 'AdminController\BeritaController@store')->name('admin-berita-store');
-    Route::get('/berita/{id}/edit', 'AdminController\BeritaController@edit')->name('admin-berita-edit');
-    Route::post('/berita/update', 'AdminController\BeritaController@update')->name('admin-berita-update');
-    Route::get('/berita/{id}/delete', 'AdminController\BeritaController@destroy')->name('admin-berita-delete');
+    //Menu Controller
+    Route::get('/menu', 'AdminController\MenuController@index')->name('admin-menu-home');
 
-    //Agenda Controller
-    Route::get('/agenda', 'AdminController\AgendaController@index')->name('admin-agenda-home');
+    //Pengaturan Controller
+    //Social Controller
+    Route::get('/setting/social', 'AdminController\SocialController@index')->name('admin-social-home');
+    Route::post('setting/social/{id}/store', 'AdminController\SocialController@update')->name('admin-social-update');
+
+    //Video Controller
+    Route::get('/videos', 'AdminController\VideoController@index')->name('admin-video-home');
+    Route::get('/videos/create', 'AdminController\VideoController@create')->name('admin-video-create');
+    Route::post('videos/store', 'AdminController\VideoController@store')->name('admin-video-store');
+    Route::get('/videos/{id}/edit', 'AdminController\VideoController@edit')->name('admin-video-edit');
+    Route::put('/videos/{id}', 'AdminController\VideoController@update')->name('admin-video-update');
+    Route::delete('/videos/{id}/delete', 'AdminController\VideoController@destroy')->name('admin-video-destroy');
+    Route::get('/videos/show/{judul_slug}', 'AdminController\VideoController@show')->name('admin-video-show');
 });

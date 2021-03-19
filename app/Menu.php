@@ -3,10 +3,11 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class Agenda extends Authenticatable
+class Menu extends Authenticatable
 {
-    use Notifiable;
+ Use SoftDeletes;   
 }

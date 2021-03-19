@@ -2,15 +2,12 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class Berita extends Authenticatable
+class PostImage extends Authenticatable
 {
-    use Notifiable;
-
-    protected $fillable = [
-        'id_berita', 'judul', 'isi_berita', 'file'
-    ];
+    protected $table = 'post_images';
 }

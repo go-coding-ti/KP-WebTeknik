@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -8,11 +8,7 @@ use App\Berita;
 
 class HomeController extends Controller
 {
-    public function home(){
-
-
-        $data = Berita::orderBy('id_berita', 'DESC')->get();
-        // dd(isset($data));
-        return view('admin.homeadmin', compact('data'));
+    public function index(){
+        return view('adminpages.adminhome');
     }
 }
