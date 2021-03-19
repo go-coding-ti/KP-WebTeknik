@@ -1,70 +1,106 @@
 @extends('adminlayout.layout')
 @section('title', $page->title_ina)
-
-@push('css')
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-@endpush
-
 @section('content')
-<div class="container-fluid">
 
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-1">
-      <h1 class="h3 mb-0 text-gray-800">{{$page->title_ina}}</h1>
-      <!-- <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> -->
-    </div>
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
 
+        <h1 class="h3 mb-2 text-gray-800">Page</h1>
+          <p class="mb-4">Page {{$page->title_ina}}</p>
 
-    <!-- @if (count($errors)>0)
-      <div class="row">
-        <div class="col-sm-12 alert alert-danger alert-dismissible fade show" role="alert">
-            <ul>
-              @foreach ($errors->all() as $item)
-                  <li>{{$item}}</li>
-              @endforeach
-            </ul>
-            <button type="button" class="close" data-dismiss="alert"
-                aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-      </div>
-    @endif -->
-    
-    <!-- Content Row -->
-    <div class="row">
-      <!-- Area Chart -->
-      <div class="col-xl-12 col-lg-7">
-        <div class="card shadow mb-4">
-          <!-- Card Header - Dropdown -->
-          <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold text-primary">Pages Detail</h6>
+          @if (session()->has('statusInput'))
+              <div class="row">
+                <div class="col-sm-12 alert alert-success alert-dismissible fade show" role="alert">
+                    {{session()->get('statusInput')}}
+                    <button type="button" class="close" data-dismiss="alert"
+                        aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+              </div>
+            @endif
+          <!-- DataTales Example -->
+          <!-- INDONESIA -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Detail Page Indonesia</h6>
+            </div>
+            <div class="card-body">
+                <div class="col px-5 mb-3">
+                    <div class="card border-0 bg-grey hover">
+                        <div class="card-body text-center">
+                            <h3 class="card-title text-dark fw-bold">{{$page->title_ina}}</h5>
+                        </div>
+                        {!! $page->content_ina !!}
+                        <div class="form-group mt-4">
+                            <a href="/admin/pages" class="btn btn-danger"><i class="fa sm fa-arrow-left"></i>   Kembali</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
           </div>
-          <!-- Card Body -->
-          <div class="card-body">
-              {!! $page->content_ina !!}
+          <!-- smpe sini -->
+
+          <!-- ENGLISH -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Detail Page English</h6>
+            </div>
+            <div class="card-body">
+                <div class="col px-5 mb-3">
+                    <div class="card border-0 bg-grey hover">
+                        <div class="card-body text-center">
+                            <h3 class="card-title text-dark fw-bold">{{$page->title_eng}}</h5>
+                        </div>
+                        {!! $page->content_eng !!}
+                        <div class="form-group mt-4">
+                            <a href="/admin/pages" class="btn btn-danger"><i class="fa sm fa-arrow-left"></i>   Kembali</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!-- smpe sini -->
+        
+        <!-- Content Row -->
+        <div class="row">
+        <form method="page" enctype="multipart/form-data" action="/admin/profile">
+        
+        </form>
+        </div>
+
+        <!-- Content Row -->
+
+        <div class="row">
+          
+        </div>
+
+        <!-- Content Row -->
+        <div class="row">
+
+          <!-- Content Column -->
+          <div class="col-lg-6 mb-4">
+
+            <!-- Color System -->
+            <div class="row">
+              <div class="card mb-4">
+<!--                 <div class="card-header">
+                  Default Card Example
+                </div>
+                <div class="card-body">
+                  This card uses Bootstrap's default styling with no utility classes added. Global styles are the only things modifying the look and feel of this default card example.
+                </div> -->
+              </div>
+          </div>
+
+          </div>
+
+          <div class="col-lg-6 mb-4">
+
           </div>
         </div>
+
       </div>
+      <!-- /.container-fluid -->
 
-    </div>
-</div>
-
-    
-
-@endsection
-
-@section('custom_javascript')
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-<script>
-    $(document).ready(function(e){
-        var status;
-        $('.summernote').summernote({
-            height: 350, // set editor height
-            minHeight: null, // set minimum height of editor
-            maxHeight: null, // set maximum height of editor
-            focus: false // set focus to editable area after initializing summernote
-        });
-    });
-</script>
 @endsection
