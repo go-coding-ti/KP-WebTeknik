@@ -16,9 +16,21 @@ Route::redirect('/', '/id');
 Route::group(['prefix' => '{language}'], function () {
     Route::get('/', function () {
         return view('pages/index');
-    });
+    })->name('Index');
+
+    Route::get('/video', function () {
+        return view('pages/video');
+    })->name('Video');
 });
 
+
+// Route::get('/', function () {
+//     return view('pages/index');
+// });
+
+// Route::get('/video', function () {
+//     return view('pages/video');
+// });
 
 // Route::get('/lang', function () {
 //     App::setlocale('id');

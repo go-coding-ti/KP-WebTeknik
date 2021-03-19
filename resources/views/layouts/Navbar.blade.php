@@ -26,13 +26,15 @@
             </div>
             <div class="top-search-area">
               <div class="btn-group" bis_skin_checked="1">
+                {{-- <a href="{{ route(Route::currentRouteName(), 'id') }}" class="btn btn-sm btn-outline-danger border-0 text-decoration-none">ID</a>
+                <a href="{{ route(Route::currentRouteName(), 'en') }}" class="btn btn-sm btn-danger border-0 text-decoration-none">EN</a> --}}
                 @if (App::getLocale() == 'en')
-                  <a href="{{ request()->route()->getName().'id' }}" class="btn btn-sm btn-outline-danger border-0 text-decoration-none">ID</a>
-                  <a href="{{ request()->route()->getName().'en' }}" class="btn btn-sm btn-danger border-0 text-decoration-none">EN</a>
+                  <a href="{{ route(Route::currentRouteName(), 'id') }}" class="btn btn-sm btn-outline-danger border-0 text-decoration-none">ID</a>
+                  <a href="{{ route(Route::currentRouteName(), 'en') }}" class="btn btn-sm btn-danger border-0 text-decoration-none">EN</a>
                 @endif
                 @if (App::getLocale() == 'id')
-                  <a href="{{ request()->route()->getName().'id' }}" class="btn btn-sm btn-danger border-0 text-decoration-none">ID</a>
-                  <a href="{{ request()->route()->getName().'en' }}" class="btn btn-sm btn-outline-danger border-0 text-decoration-none">EN</a>
+                  <a href="{{ route(Route::currentRouteName(), 'id') }}" class="btn btn-sm btn-danger border-0 text-decoration-none">ID</a>
+                  <a href="{{ route(Route::currentRouteName(), 'en') }}" class="btn btn-sm btn-outline-danger border-0 text-decoration-none">EN</a>
                 @endif
               </div>
             </div>
@@ -62,61 +64,61 @@
             <div class="classynav">
               <ul>
                 @if (App::getLocale() == 'en')
-                  <li class="active"><a href="index.html">Home</a></li>
+                  <li class="active"><a href="{{  route('Index', app()->getLocale() ) }}">Home</a></li>
                 @endif
                 @if (App::getLocale() == 'id')
-                  <li class="active"><a href="index.html">Beranda</a></li>
+                  <li class="active"><a href="{{ route('Index', app()->getLocale() ) }}">Beranda</a></li>
                 @endif
                 <li><a href="#">Akademik</a>
                   <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
-                    <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Pedoman Akademik</a></li>
-                    <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> KRS Online</a></li>
-                    <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Penerimaan Mahasiswa Baru</a></li>
-                    <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Kalendar Akademik</a></li>
+                    <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Pedoman Akademik</a></li>
+                    <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> KRS Online</a></li>
+                    <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Penerimaan Mahasiswa Baru</a></li>
+                    <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Kalendar Akademik</a></li>
                   </ul>
                 </li>
                 <li><a href="#">Prodi</a>
                   <div class="megamenu">
                     <ul class="single-mega cn-col-3 text-start">
-                      <li><a class="text-muted" href="index.html"><i class="fas fa-external-link"></i> Aristektur</a></li>
-                      <li><a class="text-muted" href="archive-list.html"><i class="fas fa-external-link"></i> Teknik Elektro</a></li>
-                      <li><a class="text-muted" href="archive-grid.html"><i class="fas fa-external-link"></i> Teknik Sipil</a></li>
-                      <li><a class="text-muted" href="single-post.html"><i class="fas fa-external-link"></i> Teknik Mesin</a></li>
-                      <li><a class="text-muted" href="video-post.html"><i class="fas fa-external-link"></i> Teknologi Informasi</a></li>
-                      <li><a class="text-muted" href="contact.html"><i class="fas fa-external-link"></i> Teknik Industri</a></li>
-                      <li><a class="text-muted" href="typography.html"><i class="fas fa-external-link"></i> Teknik Lingkungan</a></li>
+                      <li><a href="index.html"><i class="fas fa-external-link"></i> Aristektur</a></li>
+                      <li><a href="archive-list.html"><i class="fas fa-external-link"></i> Teknik Elektro</a></li>
+                      <li><a href="archive-grid.html"><i class="fas fa-external-link"></i> Teknik Sipil</a></li>
+                      <li><a href="single-post.html"><i class="fas fa-external-link"></i> Teknik Mesin</a></li>
+                      <li><a href="video-post.html"><i class="fas fa-external-link"></i> Teknologi Informasi</a></li>
+                      <li><a href="contact.html"><i class="fas fa-external-link"></i> Teknik Industri</a></li>
+                      <li><a href="typography.html"><i class="fas fa-external-link"></i> Teknik Lingkungan</a></li>
                     </ul>
                     <ul class="single-mega cn-col-3">
-                      <li><a class="text-muted" href="index.html"><i class="fas fa-external-link"></i> Arsitektur</a></li>
-                      <li><a class="text-muted" href="archive-list.html"><i class="fas fa-external-link"></i> Teknik Elektro</a></li>
-                      <li><a class="text-muted" href="archive-grid.html"><i class="fas fa-external-link"></i> Teknik Mesin</a></li>
-                      <li><a class="text-muted" href="single-post.html"><i class="fas fa-external-link"></i> Teknik Sipil</a></li>
-                      <li><a class="text-muted" href="video-post.html"><i class="fas fa-external-link"></i> Program S3 Ilmu Teknik</a></li>
+                      <li><a href="index.html"><i class="fas fa-external-link"></i> Arsitektur</a></li>
+                      <li><a href="archive-list.html"><i class="fas fa-external-link"></i> Teknik Elektro</a></li>
+                      <li><a href="archive-grid.html"><i class="fas fa-external-link"></i> Teknik Mesin</a></li>
+                      <li><a href="single-post.html"><i class="fas fa-external-link"></i> Teknik Sipil</a></li>
+                      <li><a href="video-post.html"><i class="fas fa-external-link"></i> Program S3 Ilmu Teknik</a></li>
                     </ul>
                     <ul class="single-mega cn-col-3">
-                      <li><a class="text-muted" href="index.html"><i class="fas fa-external-link"></i> Tropical Living</a></li>
-                      <li><a class="text-muted" href="archive-list.html"><i class="fas fa-external-link"></i> Global Engineering Program</a></li>
+                      <li><a href="index.html"><i class="fas fa-external-link"></i> Tropical Living</a></li>
+                      <li><a href="archive-list.html"><i class="fas fa-external-link"></i> Global Engineering Program</a></li>
                     </ul>
                   </div>
                 </li>
                   <li><a href="#">Kemahasiswaan</a>
                     <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
-                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Satuan Kredit Partisipan</a></li>
-                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Organisasi Kemahasiswaan</a></li>
-                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Senat Mahasiswa FT UNUD</a></li>
-                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Bursa SMFT</a></li>
-                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Data Bursa SMFT</a></li>
-                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Kalendar Akademik</a></li>
+                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Satuan Kredit Partisipan</a></li>
+                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Organisasi Kemahasiswaan</a></li>
+                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Senat Mahasiswa FT UNUD</a></li>
+                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Bursa SMFT</a></li>
+                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Data Bursa SMFT</a></li>
+                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Kalendar Akademik</a></li>
                     </ul>
                   </li>
                   <li><a href="#">Alumni</a>
                     <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
-                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Recana Gedung Alumni</a></li>
-                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> List Data Alumni</a></li>
-                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Forum Alumni</a></li>
-                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Bursa SMFT</a></li>
-                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Input Data Alumni</a></li>
-                      <li class="p-0"><a class="text-muted" href="single-post.html"><i class="fas fa-link"></i> Survey Alumni</a></li>
+                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Recana Gedung Alumni</a></li>
+                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> List Data Alumni</a></li>
+                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Forum Alumni</a></li>
+                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Bursa SMFT</a></li>
+                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Input Data Alumni</a></li>
+                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Survey Alumni</a></li>
                     </ul>
                   </li>
                   <li><a href="index.html">Tentang</a></li>

@@ -426,7 +426,7 @@
         text-transform: capitalize;
         padding: 0 20px;
         font-size: 14px;
-        color: #0f1112;
+        color: #4C5051;
         line-height: 34px;
         height: 35px; }
         @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -558,6 +558,7 @@
             font-size: 24px;
             display: block;
             color: #ffffff;
+            background-color: transparent;
             margin-bottom: 10px; }
             @media only screen and (min-width: 768px) and (max-width: 991px) {
               .single-feature-post.video-post .post-content .post-title {
@@ -566,7 +567,12 @@
               .single-feature-post.video-post .post-content .post-title {
                 font-size: 16px; } }
             .single-feature-post.video-post .post-content .post-title:hover, .single-feature-post.video-post .post-content .post-title:focus {
-              color: #0f1112; }
+              color: #ffffff;
+            background-color: #DC4437;
+            text-align: center;
+          margin-top: 0.5em;
+          margin-bottom: 0.5em;
+        }
           .single-feature-post.video-post .post-content .post-meta {
             position: relative;
             z-index: 1; }

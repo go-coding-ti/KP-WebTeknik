@@ -46,5 +46,5 @@
 </div>
 
 <div class="container d-flex justify-content-center">
-  <a class="text-decoration-none btn btn-light link-dark-blue" href="">See All</a>
+  <a class="text-decoration-none btn btn-light link-dark-blue" href="{{ route('Video', app()->getLocale() ) }}">See All</a>
 </div>
