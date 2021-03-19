@@ -1,12 +1,16 @@
 @extends('layouts/UserLayout')
 
 @section('content')
-<div class="card mb-3">
-    <img src="..." class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
+<div class="container pt-5">
+    <div class="card mb-3">
+        <div class="ratio ratio-21x9 card-img-top">
+          <iframe src="https://www.youtube.com/embed/ybOI_hQnNz8" title="YouTube video" allowfullscreen></iframe>
+        </div>
+        <div class="card-body text-center">
+          <h5 class="card-title fw-bold">Mars Teknik Udayana</h5>
+          <p class="card-text lh-sm">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <a href="" class="card-text text-black small text-decoration-none link-danger"><i class="fab fa-youtube"></i> See on YouTube</a>
+        </div>
+      </div>
 </div>
 @endsection

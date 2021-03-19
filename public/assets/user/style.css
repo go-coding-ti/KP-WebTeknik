@@ -438,7 +438,7 @@
         .header-area .vizew-main-menu .classy-navbar .classynav ul li ul li a::after {
           color: #0f1112; }
         .header-area .vizew-main-menu .classy-navbar .classynav ul li ul li a:hover, .header-area .vizew-main-menu .classy-navbar .classynav ul li ul li a:focus {
-          color: #db4437; }
+          color: white; }
       .header-area .vizew-main-menu .classy-navbar .classynav ul li.active a {
         border-bottom-color: #ffffff; }
         @media only screen and (min-width: 768px) and (max-width: 991px) {

@@ -71,54 +71,54 @@
                 @endif
                 <li><a href="#">Akademik</a>
                   <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
-                    <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Pedoman Akademik</a></li>
-                    <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> KRS Online</a></li>
-                    <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Penerimaan Mahasiswa Baru</a></li>
-                    <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Kalendar Akademik</a></li>
+                    <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Pedoman Akademik</a></li>
+                    <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> KRS Online</a></li>
+                    <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Penerimaan Mahasiswa Baru</a></li>
+                    <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Kalendar Akademik</a></li>
                   </ul>
                 </li>
                 <li><a href="#">Prodi</a>
                   <div class="megamenu">
                     <ul class="single-mega cn-col-3 text-start">
-                      <li><a href="index.html"><i class="fas fa-external-link"></i> Aristektur</a></li>
-                      <li><a href="archive-list.html"><i class="fas fa-external-link"></i> Teknik Elektro</a></li>
-                      <li><a href="archive-grid.html"><i class="fas fa-external-link"></i> Teknik Sipil</a></li>
-                      <li><a href="single-post.html"><i class="fas fa-external-link"></i> Teknik Mesin</a></li>
-                      <li><a href="video-post.html"><i class="fas fa-external-link"></i> Teknologi Informasi</a></li>
-                      <li><a href="contact.html"><i class="fas fa-external-link"></i> Teknik Industri</a></li>
-                      <li><a href="typography.html"><i class="fas fa-external-link"></i> Teknik Lingkungan</a></li>
+                      <li><a class="hover" href="index.html"><i class="fas fa-external-link"></i> Aristektur</a></li>
+                      <li><a class="hover" href="archive-list.html"><i class="fas fa-external-link"></i> Teknik Elektro</a></li>
+                      <li><a class="hover" href="archive-grid.html"><i class="fas fa-external-link"></i> Teknik Sipil</a></li>
+                      <li><a class="hover" href="single-post.html"><i class="fas fa-external-link"></i> Teknik Mesin</a></li>
+                      <li><a class="hover" href="video-post.html"><i class="fas fa-external-link"></i> Teknologi Informasi</a></li>
+                      <li><a class="hover" href="contact.html"><i class="fas fa-external-link"></i> Teknik Industri</a></li>
+                      <li><a class="hover" href="typography.html"><i class="fas fa-external-link"></i> Teknik Lingkungan</a></li>
                     </ul>
                     <ul class="single-mega cn-col-3">
-                      <li><a href="index.html"><i class="fas fa-external-link"></i> Arsitektur</a></li>
-                      <li><a href="archive-list.html"><i class="fas fa-external-link"></i> Teknik Elektro</a></li>
-                      <li><a href="archive-grid.html"><i class="fas fa-external-link"></i> Teknik Mesin</a></li>
-                      <li><a href="single-post.html"><i class="fas fa-external-link"></i> Teknik Sipil</a></li>
-                      <li><a href="video-post.html"><i class="fas fa-external-link"></i> Program S3 Ilmu Teknik</a></li>
+                      <li><a class="hover" href="index.html"><i class="fas fa-external-link"></i> Arsitektur</a></li>
+                      <li><a class="hover" href="archive-list.html"><i class="fas fa-external-link"></i> Teknik Elektro</a></li>
+                      <li><a class="hover" href="archive-grid.html"><i class="fas fa-external-link"></i> Teknik Mesin</a></li>
+                      <li><a class="hover" href="single-post.html"><i class="fas fa-external-link"></i> Teknik Sipil</a></li>
+                      <li><a class="hover" href="video-post.html"><i class="fas fa-external-link"></i> Program S3 Ilmu Teknik</a></li>
                     </ul>
                     <ul class="single-mega cn-col-3">
-                      <li><a href="index.html"><i class="fas fa-external-link"></i> Tropical Living</a></li>
-                      <li><a href="archive-list.html"><i class="fas fa-external-link"></i> Global Engineering Program</a></li>
+                      <li><a class="hover" href="index.html"><i class="fas fa-external-link"></i> Tropical Living</a></li>
+                      <li><a class="hover" href="archive-list.html"><i class="fas fa-external-link"></i> Global Engineering Program</a></li>
                     </ul>
                   </div>
                 </li>
                   <li><a href="#">Kemahasiswaan</a>
                     <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
-                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Satuan Kredit Partisipan</a></li>
-                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Organisasi Kemahasiswaan</a></li>
-                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Senat Mahasiswa FT UNUD</a></li>
-                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Bursa SMFT</a></li>
-                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Data Bursa SMFT</a></li>
-                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Kalendar Akademik</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Satuan Kredit Partisipan</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Organisasi Kemahasiswaan</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Senat Mahasiswa FT UNUD</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Bursa SMFT</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Data Bursa SMFT</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Kalendar Akademik</a></li>
                     </ul>
                   </li>
                   <li><a href="#">Alumni</a>
                     <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
-                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Recana Gedung Alumni</a></li>
-                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> List Data Alumni</a></li>
-                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Forum Alumni</a></li>
-                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Bursa SMFT</a></li>
-                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Input Data Alumni</a></li>
-                      <li class="p-0"><a href="single-post.html"><i class="fas fa-link"></i> Survey Alumni</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Recana Gedung Alumni</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> List Data Alumni</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Forum Alumni</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Bursa SMFT</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Input Data Alumni</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Survey Alumni</a></li>
                     </ul>
                   </li>
                   <li><a href="index.html">Tentang</a></li>

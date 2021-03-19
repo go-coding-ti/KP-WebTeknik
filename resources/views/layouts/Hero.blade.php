@@ -32,7 +32,7 @@
                   <a href="#" class="btn btn-sm btn-primary text-uppercase p-1 text-white text-decoration-none">Sports</a>
                   <a href="#" class="btn btn-sm btn-success text-uppercase p-1 text-white text-decoration-none">Sports</a>
                   <a href="#" class="btn btn-sm bg-red text-uppercase p-1 text-white text-decoration-none">Sports</a>
-                <a href="single-post.html" class="post-title text-decoration-none link-white fw-bold">Rancangan Judul News Webiste Fakultas Teknik Universitas Udayana 2</a>
+                <a href="single-post.html" class="post-title card border border-0 text-decoration-none link-white fw-bold">Rancangan Judul News Webiste Fakultas Teknik Universitas Udayana 2</a>
                 <div class="post-meta d-flex">
                   <a href="#" class="text-decoration-none">
                     <i class="fas fa-comment" aria-hidden="true"></i>
@@ -54,7 +54,7 @@
                   <a href="#" class="btn btn-sm btn-primary text-uppercase p-1 text-white text-decoration-none">Sports</a>
                   <a href="#" class="btn btn-sm btn-success text-uppercase p-1 text-white text-decoration-none">Sports</a>
                   <a href="#" class="btn btn-sm bg-red text-uppercase p-1 text-white text-decoration-none">Sports</a>
-                <a href="single-post.html" class="post-title text-decoration-none link-white fw-bold">Rancangan Judul News Webiste Fakultas Teknik Universitas Udayana 3</a>
+                <a href="single-post.html" class="post-title card border border-0 text-decoration-none link-white fw-bold">Rancangan Judul News Webiste Fakultas Teknik Universitas Udayana 3</a>
                 <div class="post-meta d-flex">
                   <a href="#" class="text-decoration-none">
                     <i class="fas fa-comment" aria-hidden="true"></i>
@@ -76,7 +76,7 @@
                   <a href="#" class="btn btn-sm btn-primary text-uppercase p-1 text-white text-decoration-none">Sports</a>
                   <a href="#" class="btn btn-sm btn-success text-uppercase p-1 text-white text-decoration-none">Sports</a>
                   <a href="#" class="btn btn-sm bg-red text-uppercase p-1 text-white text-decoration-none">Sports</a>
-                <a href="single-post.html" class="post-title text-decoration-none link-white fw-bold">Rancangan Judul News Webiste Fakultas Teknik Universitas Udayana 4</a>
+                <a href="single-post.html" class="post-title card border border-0 text-decoration-none link-white fw-bold">Rancangan Judul News Webiste Fakultas Teknik Universitas Udayana 4</a>
                 <div class="post-meta d-flex">
                   <a href="#" class="text-decoration-none">
                     <i class="fas fa-comment" aria-hidden="true"></i>
@@ -98,7 +98,7 @@
                   <a href="#" class="btn btn-sm btn-primary text-uppercase p-1 text-white text-decoration-none">Sports</a>
                   <a href="#" class="btn btn-sm btn-success text-uppercase p-1 text-white text-decoration-none">Sports</a>
                   <a href="#" class="btn btn-sm bg-red text-uppercase p-1 text-white text-decoration-none">Sports</a>
-                <a href="single-post.html" class="post-title text-decoration-none link-white fw-bold">Rancangan Judul News Webiste Fakultas Teknik Universitas Udayana 5</a>
+                <a href="single-post.html" class="post-title card border border-0 text-decoration-none link-white fw-bold">Rancangan Judul News Webiste Fakultas Teknik Universitas Udayana 5</a>
                 <div class="post-meta d-flex">
                   <a href="#" class="text-decoration-none">
                     <i class="fas fa-comment" aria-hidden="true"></i>
