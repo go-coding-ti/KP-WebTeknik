@@ -21,6 +21,10 @@ Route::group(['prefix' => '{language}'], function () {
     Route::get('/video', function () {
         return view('pages/video');
     })->name('Video');
+    
+    Route::get('/video/detail', function () {
+        return view('pages/detail-video');
+    })->name('Detail Video');
 });
 
 
