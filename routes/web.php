@@ -81,6 +81,14 @@ Route::prefix('admin')->group(function () {
     Route::get('/pages/{pagestitle}', 'AdminController\PageController@show')->name('admin-page-show');
     Route::post('/pages/status', 'AdminController\PageController@status')->name('admin-page-status');
 
+    //Galery Controller
+    Route::get('/galery', 'AdminController\GaleriController@index')->name('admin-galeri-home');
+    Route::get('/galery/create', 'AdminController\GaleriController@create')->name('admin-galeri-create');
+    Route::post('galery/store', 'AdminController\GaleriController@store')->name('admin-galeri-store');
+    Route::get('/galery/{id}/edit', 'AdminController\GaleriController@edit')->name('admin-galeri-edit');
+    Route::put('/galery/{id}', 'AdminController\GaleriController@update')->name('admin-galeri-update');
+    Route::get('/galery/show/{title_slug}', 'AdminController\GaleriController@show')->name('admin-galeri-show');
+    Route::get('/galery/delete/{id}', 'AdminController\GaleriController@destroy')->name('admin-galeri-delete');
     //Menu Controller
     Route::get('/menu', 'AdminController\MenuController@index')->name('admin-menu-home');
 
