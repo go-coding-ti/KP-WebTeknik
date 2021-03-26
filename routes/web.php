@@ -48,7 +48,7 @@ Route::group(['prefix' => '{language}'], function () {
 Route::prefix('admin')->group(function () {
 
 	//Admin Dashboard
-    Route::get('/', 'AdminController\HomeController@index')->name('admin-home');
+    Route::get('/dashboard', 'AdminController\HomeController@index')->name('admin-home');
 
     //Kategori Controller
     Route::get('/category', 'AdminController\KategoriController@index')->name('admin-kategori-home');
@@ -81,9 +81,16 @@ Route::prefix('admin')->group(function () {
     Route::get('/menu', 'AdminController\MenuController@index')->name('admin-menu-home');
 
     //Pengaturan Controller
+    //Preferences Controller
+    Route::get('/setting/preferences', 'AdminController\PreferenceController@index')->name('admin-preference-home');
+    Route::post('/setting/preferences/store', 'AdminController\PreferenceController@store')->name('admin-preference-store');
+
     //Social Controller
     Route::get('/setting/social', 'AdminController\SocialController@index')->name('admin-social-home');
-    Route::post('setting/social/{id}/store', 'AdminController\SocialController@update')->name('admin-social-update');
+    Route::post('setting/social/store', 'AdminController\SocialController@store')->name('admin-social-store');
+    Route::get('/setting/social/{id}/edit', 'AdminController\SocialController@edit')->name('admin-social-edit');
+    Route::post('/setting/social/{id}', 'AdminController\SocialController@update')->name('admin->social-update');
+    Route::get('/setting/social/delete/{id}', 'AdminController\SocialController@destroy')->name('admin-social-delete');
 
     //Video Controller
     Route::get('/videos', 'AdminController\VideoController@index')->name('admin-video-home');

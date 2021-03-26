@@ -24,7 +24,7 @@
   
 <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="/admin">
+        <a class="nav-link" href="/admin/dashboard">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -144,7 +144,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Pengaturan Menu:</h6>
               <a class="collapse-item" href="/admin/menu" ><i class="fas fa-fw fa-list"></i>  Menu</a>
-              <a class="collapse-item" href="/admin/pages/create" ><i class="fas fa-fw fa-cog"></i>  Preferences</a>
+              <a class="collapse-item" href="/admin/setting/preferences" ><i class="fas fa-fw fa-cog"></i>  Preferences</a>
               <a class="collapse-item" href="/admin/setting/social"><i class="fas fa-fw fa-share"></i>  Social Media</a>
             </div>
           </div>

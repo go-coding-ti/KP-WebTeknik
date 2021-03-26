@@ -33,7 +33,6 @@
                         </div>
                         {!! $page->content_ina !!}
                         <div class="form-group mt-4">
-                            <a href="/admin/pages" class="btn btn-danger"><i class="fa sm fa-arrow-left"></i>   Kembali</a>
                         </div>
                     </div>
                 </div>

@@ -113,8 +113,8 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add New Category</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <h5 class="modal-title" id="addCategory">Add New Category</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
             </button>
         </div>
@@ -141,16 +141,15 @@
     </div>
 </div>
 
-<!-- Show News Category Modal-->
 <div class="modal fade" id="showCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabelshow">Show Category</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-            </button>
-        </div>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="showCategory">Show Category</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal('showCategory')">
+          <span aria-hidden="true">×</span>
+          </button>
+      </div>
         <div class="modal-body">
                 <div class="form-group">
                   <label for="show_kategori_ina">Category Ina</label>
@@ -161,7 +160,7 @@
                   <input type="text" class="form-control" id="show_kategori_eng" readonly>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal" onclick="closeModal('showCategory')">Cancel</button>
                 </div>
         </div>
 
@@ -174,8 +173,8 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabeledit">Edit News Category</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <h5 class="modal-title" id="exampleModalLabeledit">Edit Category</h5>
+            <button class="close" type="button" data-dismiss="editCategory" aria-label="Close" onclick="closeModal('editCategory')">
             <span aria-hidden="true">×</span>
             </button>
         </div>
@@ -193,7 +192,7 @@
                   <input type="text" class="form-control" id="edit_kategori_eng" name="edit_kategori_eng">
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal" onclick="closeModal('editCategory')">Cancel</button>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
               </form>              
@@ -209,7 +208,7 @@
         <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabelhapus">Delete Category</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal('deleteCategory')">
             <span aria-hidden="true">×</span>
             </button>
           </div>
@@ -219,7 +218,7 @@
                 @method('delete')
                 @csrf
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" onclick="closeModal('deleteCategory')" data-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </div>
               </form>              
@@ -256,6 +255,10 @@ function show(id,status){
     function deletebc(id){
         $("#form-delete-category").attr("action", "/admin/category/"+id+"/delete");
         $('#deleteCategory').modal('show');
+    }
+
+    function closeModal(jenis){
+      $('#'+jenis).modal('hide'); 
     }
 </script>
 @endsection

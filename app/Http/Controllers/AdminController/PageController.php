@@ -59,6 +59,7 @@ class PageController extends Controller
             $galeriname = $galeri->getClientOriginalName();
             $path = $galeriLocation."/".$galeriname;
             $page->galeri = '/storage'.$path;
+            $page->galeri_name = $galeriname;
             Storage::disk('public')->put($path, file_get_contents($galeri));
             //$galeri->move($galeriLocation, $page->galeri);
         }
@@ -159,6 +160,7 @@ class PageController extends Controller
             $galeriname = $galeri->getClientOriginalName();
             $path = $galeriLocation."/".$galeriname;
             $page->galeri = '/storage'.$path;
+            $page->galeri_name = $galeriname;
             Storage::disk('public')->put($path, file_get_contents($galeri));
         }
         if($request->file('lampiran')!=""){

@@ -64,11 +64,23 @@
                 </div>
                 <div class="form-group mt-4">
                     <label for="thumbnail">Thumbnail</label>
-                    <input type="file" class="form-control-file" id="thumbnail" name="thumbnail">
+                    <br>
+                    @if($post->thumbnail != "")
+                        <img src="{{$post->thumbnail}}" class="mb-3" style="height:200px;width:320px;" id="propic">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="thumbnail" name="thumbnail">
+                            <label for="thumbnail_label" id="thumbnail_label" class="custom-file-label">{{$post->thumbnail_name}}</label>
+                        </div>
+                    @endif
                 </div>
                 <div class="form-group mt-4">
                     <label for="lampiran">File Lampiran</label>
-                    <input type="file" class="form-control-file" id="lampiran" name="lampiran" required>
+                    <br>    
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="lampiran" name="lampiran">
+                            <label for="lampiran_label" id="lampiran_label" class="custom-file-label">@if($post->lampiran != ""){{$post->lampiran_name}}@else Pilih Lampiran @endif</label>
+                        </div>
+                    {{-- <input type="file" class="form-control-file" id="lampiran" name="lampiran"> --}}
                 </div>
                 <div class="form-group mt-4">
                     <a href="/admin/pages" class="btn btn-danger"><i class="fa fa-times"></i> Batal</a>
@@ -101,24 +113,25 @@
             });
         });
 
-        // $('#blog_category-name').selectpicker();
+    function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+        $('#propic').attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]); // convert to base64 string
+    }
+    }
 
-        // jQuery('#submitBlogCategory').click(function(e){
-        //     jQuery.ajax({
-        //         url: "{{url('admin/kategori')}}",
-        //         type: "POST",
-        //         data: {
-        //             _token: $('#signup-token').val(),
-        //             name: jQuery('#blogCategoryName').val(),
-        //         },
-        //         success: function(result){
-        //             $('.ganti').html(result.view);
-        //             $('#blog_category_name').selectpicker('refresh');
-        //             $('#addBlogCategory').modal('hide');
-        //             console.log(result.view);
-        //         }
-        //     });
-        // });
+    $("#thumbnail").change(function() {
+    readURL(this);
+    document.getElementById('thumbnail_label').innerHTML = document.getElementById('thumbnail').files[0].name;
     });
+
+    $("#lampiran").change(function() {
+    document.getElementById('lampiran_label').innerHTML = document.getElementById('lampiran').files[0].name;
+    });
+
+});
 </script>
 @endsection
