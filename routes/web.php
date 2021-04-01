@@ -25,6 +25,22 @@ Route::group(['prefix' => '{language}'], function () {
     Route::get('/video/detail', function () {
         return view('pages/detail-video');
     })->name('Detail Video');
+
+    Route::get('/staff-pengajar', function () {
+        return view('pages/staff-pengajar');
+    })->name('Staff Pengajar');
+
+    Route::get('/staff-pengajar/detail', function () {
+        return view('pages/detail-staff-pengajar');
+    })->name('Detail Staff Pengajar');
+
+    Route::get('/management', function () {
+        return view('pages/management');
+    })->name('Management');
+
+    Route::get('/management/detail', function () {
+        return view('pages/detail-management');
+    })->name('Detail Management');
 });
 
 

@@ -123,7 +123,7 @@
                 </div>
             </div>
         </div>
-        <div class="container p-0">
+        <div class="container text-center">
             <div class="row">
                 <hr class="border border-light dropdown-divider">
                 <div class="col-md">
