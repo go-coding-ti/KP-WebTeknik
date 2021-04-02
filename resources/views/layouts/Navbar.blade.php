@@ -89,27 +89,33 @@
                       </ul>
                     </div>
                   </li>
-                    <li><a href="#">Kemahasiswaan</a>
-                      <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Satuan Kredit Partisipan</a></li>
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Organisasi Kemahasiswaan</a></li>
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Senat Mahasiswa FT UNUD</a></li>
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Bursa SMFT</a></li>
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Data Bursa SMFT</a></li>
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Kalendar Akademik</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="#">Alumni</a>
-                      <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Recana Gedung Alumni</a></li>
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> List Data Alumni</a></li>
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Forum Alumni</a></li>
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Bursa SMFT</a></li>
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Input Data Alumni</a></li>
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Survey Alumni</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="index.html">Tentang</a></li>
+                  <li><a href="#">Kemahasiswaan</a>
+                    <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Satuan Kredit Partisipan</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Organisasi Kemahasiswaan</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Senat Mahasiswa FT UNUD</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Bursa SMFT</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Data Bursa SMFT</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Kalendar Akademik</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Alumni</a>
+                    <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Recana Gedung Alumni</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> List Data Alumni</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Forum Alumni</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Bursa SMFT</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Input Data Alumni</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Survey Alumni</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Tentang</a>
+                    <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Tentang Teknik</a></li>
+                      <li class="p-0"><a class="hover" href="{{ route("Management", app()->getLocale() ) }}"><i class="fas fa-link"></i> Management</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Staf Pengajar</a></li>
+                    </ul>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -216,27 +222,33 @@
                       </ul>
                     </div>
                   </li>
-                    <li><a href="#">Kemahasiswaan</a>
-                      <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Satuan Kredit Partisipan</a></li>
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Organisasi Kemahasiswaan</a></li>
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Senat Mahasiswa FT UNUD</a></li>
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Bursa SMFT</a></li>
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Data Bursa SMFT</a></li>
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Kalendar Akademik</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="#">Alumni</a>
-                      <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Recana Gedung Alumni</a></li>
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> List Data Alumni</a></li>
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Forum Alumni</a></li>
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Bursa SMFT</a></li>
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Input Data Alumni</a></li>
-                        <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Survey Alumni</a></li>
-                      </ul>
-                    </li>
-                    <li><a href="index.html">Tentang</a></li>
+                  <li><a href="#">Kemahasiswaan</a>
+                    <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Satuan Kredit Partisipan</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Organisasi Kemahasiswaan</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Senat Mahasiswa FT UNUD</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Bursa SMFT</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Data Bursa SMFT</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Kalendar Akademik</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Alumni</a>
+                    <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Recana Gedung Alumni</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> List Data Alumni</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Forum Alumni</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Bursa SMFT</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Input Data Alumni</a></li>
+                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Survey Alumni</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Tentang</a>
+                    <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
+                      <li class="p-0"><a class="hover" href=""><i class="fas fa-link"></i> Tentang Teknik</a></li>
+                      <li class="p-0"><a class="hover" href="{{ route("Management", app()->getLocale() ) }}"><i class="fas fa-link"></i> Management</a></li>
+                      <li class="p-0"><a class="hover" href="{{ route("Staff Pengajar", app()->getLocale() ) }}"><i class="fas fa-link"></i> Staf Pengajar</a></li>
+                    </ul>
+                  </li>
                 </ul>
               </div>
             </div>
