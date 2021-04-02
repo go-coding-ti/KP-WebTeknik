@@ -2,36 +2,41 @@
 
 namespace App\Http\Controllers\AdminController;
 
+use App\BeritaImage;
 use App\Http\Controllers\Controller;
+use App\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\Page;
-use App\PageImage;
-use Carbon;
+use App\Pengumuman;
+use App\PengumumanImage;
+use App\PengumumanKategori;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File; 
 
-class PageController extends Controller
+class PengumumanController extends Controller
 {
     public function index(){
-        $data = Page::where('deleted_at', NULL)->get();
-        // dd(isset($data));
-        return view('adminpages.page.page', compact('data'));
+
+        $data = Pengumuman::where('deleted_at', NULL)->with('kategori')->get();;
+        return view('adminpages.pengumuman.pengumuman', compact('data'));
     }
 
 
     public function create(){
-        return view('adminpages.page.create');
+        $kategori = PengumumanKategori::where('deleted_at', NULL)->get();
+        return view('adminpages.pengumuman.create', compact('kategori'));
     }
 
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title_ina' => 'required|min:3|unique:pages',
+            'title_ina' => 'required|min:3|unique:pengumumans',
             'content_ina' => 'required|min:8',
             'title_eng' => 'required|min:3',
-            'content_eng' => 'required|min:8'
+            'content_eng' => 'required|min:8',
+            'kategori' => 'required',
+            'tanggal' => 'required'
         ]);
 
         if($validator->fails()){
@@ -40,39 +45,23 @@ class PageController extends Controller
 
         $arrImage = [];
 
-        $page = new Page();
-        $page->title_ina = $request->title_ina;
-        $page->title_eng = $request->title_eng;
-        $page->title_slug = Str::slug($request->title_ina);
-        $page->status = 'aktif';
-        $page->tanggal_publish = $request->tanggal;
-        
+        $pengumuman = new Pengumuman();
+        $pengumuman->title_ina = $request->title_ina;
+        $pengumuman->title_eng = $request->title_eng;
+        $pengumuman->title_slug = Str::slug($request->title_ina);
+        $pengumuman->status = 'aktif';
+        $pengumuman->tanggal_publish = $request->tanggal;
+        $pengumuman->id_kategori = $request->kategori;
 
-        if($request->urlvideo != ""){
-            $page->url_video = $request->urlvideo;
-        }
-
-
-        if($request->file('galeri')!=""){
-            $galeri = $request->file('galeri');
-            $galeriLocation = '/image/pages/'.$request->title_ina.'/galeri';
-            $galeriname = $galeri->getClientOriginalName();
-            $path = $galeriLocation."/".$galeriname;
-            $page->galeri = '/storage'.$path;
-            $page->galeri_name = $galeriname;
-            Storage::disk('public')->put($path, file_get_contents($galeri));
-            //$galeri->move($galeriLocation, $page->galeri);
-        }
         if($request->file('lampiran')!=""){
             $file = $request->file('lampiran');
-            $fileLocation = '/file/pages/'.$request->title_ina.'/lampiran';
+            $fileLocation = '/file/news/'.$request->kategori.'/'.$request->title_ina.'/lampiran';
             $filename = $file->getClientOriginalName();
             $path = $fileLocation."/".$filename;
-            $page->file = '/storage'.$path;
-            $page->file_name = $filename;
+            $pengumuman->lampiran = '/storage'.$path;
+            $pengumuman->lampiran_name = $filename;
             Storage::disk('public')->put($path, file_get_contents($file));
         }
-
         
         $detailina = $request->content_ina;
         $detaileng = $request->content_eng;
@@ -88,7 +77,7 @@ class PageController extends Controller
             if (preg_match('/data:image/', $src)) {
                 preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
                 $mimeType = $groups['mime'];
-                $path = '/image/pages/'.$page->title_ina.'/content/'. uniqid('', true) . '.' . $mimeType;
+                $path = '/image/pengumuman/'.$request->kategori.'/'.$pengumuman->title_ina.'/content/'. uniqid('', true) . '.' . $mimeType;
                 Storage::disk('public')->put($path, file_get_contents($src));
                 $image->removeAttribute('src');
                 $link = asset('storage'.$path);
@@ -98,31 +87,32 @@ class PageController extends Controller
         }
 
         $detailina = $dom->savehtml();
-        $page->content_ina = $detailina;
-        $detaileng = $dom->savehtml();
-        $page->content_eng = $detaileng;
-        $page->save();
+        $pengumuman->content_ina = $detailina;
+        $detaileng = $domeng->savehtml();
+        $pengumuman->content_eng = $detaileng;
+        $pengumuman->save();
 
         foreach($arrImage as $item){
-            $pageImage = new PageImage();
-            $pageImage->id_page = $page->id;
-            $pageImage->image = $item;
-            $pageImage->save();
+            $pengumumanImage = new PengumumanImage();
+            $pengumumanImage->id_pengumuman = $pengumuman->id;
+            $pengumumanImage->image = $item;
+            $pengumumanImage->save();
         }
 
-        return redirect('/admin/pages')->with('statusInput', 'Page successfully added to record');
+        return redirect('/admin/announcement')->with('statusInput', 'Pengumuman successfully added to record');
     }
 
     public function destroy($id)
     {
-    	$page = Page::find($id);
-        $page->delete();
-        return redirect('/admin/pages');
+    	$berita = Pengumuman::find($id);
+        $berita->delete();
+        return redirect('/admin/announcement')->with('statusInput', 'Pengumuman successfully deleted from the record');
     }
 
     public function edit($id){
-    	$page = Page::where('id', $id)->get()->first();
-        return view('adminpages.page.edit', compact('page'));
+        $kategori = PengumumanKategori::where('deleted_at', NULL)->get();
+        $pengumuman = Pengumuman::find($id);
+        return view('adminpages.pengumuman.edit', compact('pengumuman', 'kategori'));
     }
 
     public function update($id, Request $request)
@@ -131,48 +121,37 @@ class PageController extends Controller
             'title_ina' => 'required|min:3',
             'content_ina' => 'required|min:8',
             'title_eng' => 'required|min:3',
-            'content_eng' => 'required|min:8'
+            'content_eng' => 'required|min:8',
+            'kategori' => 'required',
+            'tanggal' => 'required'
         ]);
 
         if($validator->fails()){
             return back()->withErrors($validator);
         }
 
-        $page = Page::find($id);
+        $pengumuman = Pengumuman::find($id);
         $arrImage = [];
         $idImage = [];
 
-        $page->title_ina = $request->title_ina;
-        $page->title_eng = $request->title_eng;
-        $page->title_slug = Str::slug($request->title_ina);
-        $page->status = 'aktif';
-        $page->tanggal_publish = $request->tanggal;
-        
-
-        if($request->urlvideo != ""){
-            $page->url_video = $request->urlvideo;
-        }
+        $pengumuman->title_ina = $request->title_ina;
+        $pengumuman->title_eng = $request->title_eng;
+        $pengumuman->title_slug = Str::slug($request->title_ina);
+        $pengumuman->status = 'aktif';
+        $pengumuman->tanggal_publish = $request->tanggal;
+        $pengumuman->id_kategori = $request->kategori;
 
 
-        if($request->file('galeri')!=""){
-            $galeri = $request->file('galeri');
-            $galeriLocation = '/image/pages/'.$request->title_ina.'/galeri';
-            $galeriname = $galeri->getClientOriginalName();
-            $path = $galeriLocation."/".$galeriname;
-            $page->galeri = '/storage'.$path;
-            $page->galeri_name = $galeriname;
-            Storage::disk('public')->put($path, file_get_contents($galeri));
-        }
         if($request->file('lampiran')!=""){
+            Storage::disk('public')->delete($pengumuman->lampiran);
             $file = $request->file('lampiran');
-            $fileLocation = '/file/pages/'.$request->title_ina.'/lampiran';
+            $fileLocation = '/file/news/'.$request->kategori.'/'.$request->title_ina.'/lampiran';
             $filename = $file->getClientOriginalName();
             $path = $fileLocation."/".$filename;
-            $page->file = '/storage'.$path;
-            $page->file_name = $filename;
+            $pengumuman->lampiran = '/storage'.$path;
+            $pengumuman->lampiran_name = $filename;
             Storage::disk('public')->put($path, file_get_contents($file));
         }
-
         
         $detailina = $request->content_ina;
         $detaileng = $request->content_eng;
@@ -184,8 +163,7 @@ class PageController extends Controller
         $images = $dom->getElementsByTagName('img');
 
 
-
-        $pageImage = PageImage::where('id_page','=', $id)->get();
+        $pengumumanImage = PengumumanImage::where('id_pengumuman','=', $id)->get();
 
         //variabel dummy
                 $arrsrc = [];
@@ -198,15 +176,15 @@ class PageController extends Controller
             if (preg_match('/data:image/', $src)) {
                 preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
                 $mimeType = $groups['mime'];
-                $path = '/image/pages/'.$page->title_ina.'/content/'. uniqid('', true) . '.' . $mimeType;
+                $path = '/image/news/'.$request->kategori.'/'.$pengumuman->title_ina.'/content/'. uniqid('', true) . '.' . $mimeType;
                 Storage::disk('public')->put($path, file_get_contents($src));
                 $image->removeAttribute('src');
                 $link = asset('storage'.$path);
                 $image->setAttribute('src', $link);
                 array_push($arrImage, $path);
             }
-            if($pageImage != null){
-                foreach($pageImage as $item){
+            if($pengumumanImage != null){
+                foreach($pengumumanImage as $item){
                     $src = str_replace('/',' ',$src);
                     $item->image = str_replace(' ','%20',$item->image);
                     $item->image = str_replace('/', ' ',$item->image);
@@ -221,42 +199,40 @@ class PageController extends Controller
             }
         }
 
-        $pageImages = PageImage::whereNotIn('id', $idImage)->where('id_page',$id)->get();
-        PageImage::whereNotIn('id', $idImage)->where('id_page',$id)->delete();
-        foreach($pageImages as $item){
+        $pengumumanImage = PengumumanImage::whereNotIn('id', $idImage)->where('id_pengumuman',$id)->get();
+        PengumumanImage::whereNotIn('id', $idImage)->where('id_pengumuman',$id)->delete();
+        foreach($pengumumanImage as $item){
             Storage::disk('public')->delete($item->image);
         }
 
         $detailina = $dom->savehtml();
-        $page->content_ina = $detailina;
-        $detaileng = $dom->savehtml();
-        $page->content_eng = $detaileng;
-        $page->save();
+        $pengumuman->content_ina = $detailina;
+        $detaileng = $domeng->savehtml();
+        $pengumuman->content_eng = $detaileng;
+        $pengumuman->update();
 
         foreach($arrImage as $item){
-            $pageImage = new PageImage();
-            $pageImage->id_page = $page->id;
-            $pageImage->image = $item;
-            $pageImage->save();
+            $pengumumanImage = new PengumumanImage();
+            $pengumumanImage->id_pengumuman = $pengumuman->id;
+            $pengumumanImage->image = $item;
+            $pengumumanImage->save();
         }
 
-        $page->update();
-
-        return redirect('admin/pages')->with('statusInput', 'Post successfully updated from the record');
+        return redirect('admin/announcement')->with('statusInput', 'Pengumuman successfully updated from the record');
     }
 
 
-    public function show($pagetitle)
+    public function show($judul_slug)
     {
-        $page = Page::where('title_slug', $pagetitle)->first();
-        return view('adminpages.page.show', compact('page'));
+        $pengumuman = Pengumuman::where('title_slug', $judul_slug)->first();
+        return view('adminpages.pengumuman.show', compact('pengumuman'));
     }
 
     public function status($id, $status)
     {
-        $page = Page::find($id);
-        $page->status = $status;
-        $page->save();
+        $pengumuman = Pengumuman::find($id);
+        $pengumuman->status = $status;
+        $pengumuman->save();
         return response()->json(['success' => 'berhasil terganti']);
     }
 }

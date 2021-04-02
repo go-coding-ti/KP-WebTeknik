@@ -2,7 +2,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a style="height:50px !important;" class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin">
+        <a style="height:50px !important;" class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/dashboard">
           <div class="sidebar-brand-icon">
             <img style="height: 37px;" src="{{asset('assets/admin/img/unud.png')}}">
           </div>
@@ -35,19 +35,21 @@
         <!-- Nav Item - Pages Collapse Menu -->
 
         <li class="nav-item">
-          <a class="nav-link collapsed"href="/admin/category" aria-expanded="true" aria-controls="collapseCategory">
+          <a class="nav-link collapsed"href="#" aria-expanded="true" aria-controls="collapseCategory" data-toggle="collapse" data-target="#collapseCategory">
             <i class="fas fa-fw fa-list"></i>
-            <span>Category</span>
+            <span>Kategori</span>
           </a>
-          <!-- <div id="collapseCategory" class="collapse" aria-labelledby="headingCategory" data-parent="#accordionSidebar">
+          <div id="collapseCategory" class="collapse" aria-labelledby="headingCategory" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Category Menu:</h6>
-              <a class="collapse-item" href="/admin/category"><i class="fas fa-fw fa-list"></i>  List Category</a>
+              <h6 class="collapse-header">Kategori Menu:</h6>
+              <a class="collapse-item" href="/admin/category"><i class="fas fa-fw fa-list"></i>  Kategori Berita</a>
+              <a class="collapse-item" href="/admin/category/pengumuman"><i class="fas fa-fw fa-list"></i>  Kategori Pengumuman</a>
+              <a class="collapse-item" href="/admin/category/agenda"><i class="fas fa-fw fa-list"></i>  Kategori Agenda</a>
             </div>
-          </div> -->
+          </div>
         </li>
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePost" aria-expanded="true" aria-controls="collapsePost">
             <i class="fas fa-fw fa-keyboard"></i>
             <span>Post</span>
@@ -59,11 +61,53 @@
               <a class="collapse-item" href="/admin/posts"><i class="fas fa-fw fa-list"></i>  List Post</a>
             </div>
           </div>
+        </li> --}}
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBerita" aria-expanded="true" aria-controls="collapseBerita">
+            <i class="fas fa-fw fa-newspaper"></i>
+            <span>Berita</span>
+          </a>
+          <div id="collapseBerita" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Berita Menu:</h6>
+              <a class="collapse-item" href="/admin/news/create" ><i class="fas fa-fw fa-plus"></i>   Add Berita</a>
+              <a class="collapse-item" href="/admin/news"><i class="fas fa-fw fa-list"></i>  List Berita</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePengumuman" aria-expanded="true" aria-controls="collapsePengumuman">
+            <i class="fas fa-fw fa-bullhorn"></i>
+            <span>Pengumuman</span>
+          </a>
+          <div id="collapsePengumuman" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Pengumuman Menu:</h6>
+              <a class="collapse-item" href="/admin/announcement/create" ><i class="fas fa-fw fa-plus"></i>   Add Pengumuman</a>
+              <a class="collapse-item" href="/admin/announcement"><i class="fas fa-fw fa-list"></i>  List Pengumuman</a>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAgenda" aria-expanded="true" aria-controls="collapseAgenda">
+            <i class="fas fa-fw fa-calendar-week"></i>
+            <span>Agenda</span>
+          </a>
+          <div id="collapseAgenda" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Agenda Menu:</h6>
+              <a class="collapse-item" href="/admin/events/create" ><i class="fas fa-fw fa-plus"></i>   Add Agenda</a>
+              <a class="collapse-item" href="/admin/events"><i class="fas fa-fw fa-list"></i>  List Agenda</a>
+            </div>
+          </div>
         </li>
 
         <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true" aria-controls="collapsePage">
-            <i class="fas fa-fw fa-table"></i>
+            <i class="fas fa-fw fa-pager"></i>
             <span>Page</span>
           </a>
           <div id="collapsePage" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
@@ -89,7 +133,7 @@
           </div>
         </li>
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSlide" aria-expanded="true" aria-controls="collapseSlide">
             <i class="fas fa-fw fa-image"></i>
             <span>Slide Show</span>
@@ -101,23 +145,7 @@
               <a class="collapse-item" href="/admin/pages"><i class="fas fa-fw fa-list"></i>  List Slide Show</a>
             </div>
           </div>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseYudisium" aria-expanded="true" aria-controls="collapseYudisium">
-            <i class="fas fa-fw fa-user"></i>
-            <span>Yudisium</span>
-          </a>
-          <div id="collapseYudisium" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Yudisium Menu:</h6>
-              <a class="collapse-item" href="utilities-color.html">Yudisium 1</a>
-              <a class="collapse-item" href="utilities-border.html">Yudisium 2</a>
-              <a class="collapse-item" href="utilities-animation.html">Yudisium 3</a>
-              <a class="collapse-item" href="utilities-other.html">Other Category</a>
-            </div>
-          </div>
-        </li>
+        </li> --}}
 
         <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDownload" aria-expanded="true" aria-controls="collapseDownload">
@@ -127,10 +155,8 @@
           <div id="collapseDownload" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Download Menu:</h6>
-              <a class="collapse-item" href="utilities-color.html">Download 1</a>
-              <a class="collapse-item" href="utilities-border.html">Download 2</a>
-              <a class="collapse-item" href="utilities-animation.html">Download 3</a>
-              <a class="collapse-item" href="utilities-other.html">Other Category</a>
+              <a class="collapse-item" href="/admin/downloads/create" ><i class="fas fa-fw fa-plus"></i>   Add Download</a>
+              <a class="collapse-item" href="/admin/downloads"><i class="fas fa-fw fa-list"></i>  List Download</a>
             </div>
           </div>
         </li>
@@ -164,7 +190,7 @@
           </div>
         </li>
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMiniBox" aria-expanded="true" aria-controls="collapseMiniBox">
             <i class="fas fa-fw fa-file"></i>
             <span>Minibox</span>
@@ -178,7 +204,7 @@
               <a class="collapse-item" href="utilities-other.html">Other Category</a>
             </div>
           </div>
-        </li>
+        </li> --}}
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
   

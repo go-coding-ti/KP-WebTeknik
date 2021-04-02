@@ -45,7 +45,7 @@
                 <div class="form-group mt-4">
                     <label for="galeri">Galeri</label>
                     <br>
-                    <img src="{{$galeri->galeri}}" class="mb-3" style="border: solid 2px #DCDCDC; height:25%;width:25%;" id="galeripic">
+                    <img src="{{$galeri->galeri}}" class="mb-3" style="border: solid 2px #DCDCDC; padding: 5px;height:20%;width:20%;" id="galeripic">
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="galeri" name="galeri" required>
                         <label for="galeri_label" id="galeri_label" class="custom-file-label">{{$galeri->galeri_name}}</label>

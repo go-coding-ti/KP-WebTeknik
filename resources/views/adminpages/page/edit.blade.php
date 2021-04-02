@@ -46,7 +46,7 @@
                     <label for="galeri">Galeri</label>
                     <br>
                     @if($page->galeri != "")
-                        <img src="{{$page->galeri}}" class="mb-3" style="height:200px;width:320px;" id="propic">
+                        <img src="{{$page->galeri}}" class="mb-3" style="border: 2px solid #DCDCDC;padding: 5px;height:20%;width:20%;" id="propic">
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="galeri" name="galeri">
                             <label for="galeri_label" id="galeri_label" class="custom-file-label">{{$page->galeri_name}}</label>

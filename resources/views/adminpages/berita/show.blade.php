@@ -1,12 +1,12 @@
 @extends('adminlayout.layout')
-@section('title', $page->title_ina)
+@section('title', $berita->title_ina)
 @section('content')
 
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
-        <h1 class="h3 mb-2 text-gray-800">Page</h1>
-          <p class="mb-4">Page {{$page->title_ina}}</p>
+        <h1 class="h3 mb-2 text-gray-800">Berita</h1>
+          <p class="mb-4">Berita {{$berita->title_ina}}</p>
 
           @if (session()->has('statusInput'))
               <div class="row">
@@ -23,16 +23,16 @@
           <!-- INDONESIA -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Detail Page Indonesia</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Detail Berita Indonesia</h6>
             </div>
             <div class="card-body">
                 <div class="col px-5 mb-3">
                     <div class="card border-0 bg-grey hover">
                         <div class="card-body text-center">
-                            <h3 class="card-title text-dark fw-bold">{{$page->title_ina}}</h5>
+                            <h3 class="card-title text-dark fw-bold">{{$berita->title_ina}}</h5>
                         </div>
-                        {!! $page->content_ina !!}
-                        <div class="form-group mt-4"> 
+                        {!! $berita->content_ina !!}
+                        <div class="form-group mt-4">
                         </div>
                     </div>
                 </div>
@@ -43,17 +43,17 @@
           <!-- ENGLISH -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Detail Page English</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Detail Berita English</h6>
             </div>
             <div class="card-body">
                 <div class="col px-5 mb-3">
                     <div class="card border-0 bg-grey hover">
                         <div class="card-body text-center">
-                            <h3 class="card-title text-dark fw-bold">{{$page->title_eng}}</h5>
+                            <h3 class="card-title text-dark fw-bold">{{$berita->title_eng}}</h5>
                         </div>
-                        {!! $page->content_eng !!}
+                        {!! $berita->content_eng !!}
                         <div class="form-group mt-4">
-                            <a href="/admin/pages" class="btn btn-danger"><i class="fa sm fa-arrow-left"></i>   Kembali</a>
+                            <a href="/admin/beritas" class="btn btn-danger"><i class="fa sm fa-arrow-left"></i>   Kembali</a>
                         </div>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
         
         <!-- Content Row -->
         <div class="row">
-        <form method="page" enctype="multipart/form-data" action="/admin/profile">
+        <form method="berita" enctype="multipart/form-data" action="/admin/profile">
         
         </form>
         </div>

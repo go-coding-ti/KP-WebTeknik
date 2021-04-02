@@ -92,7 +92,7 @@
                 <label for="logo">Logo Sosial Media</label>
                 <br>
                 <div class="text-center">
-                  <img src="" class="mb-3" style="height:100px;width:100px;" id="propic">
+                  <img src="{{asset('assets/admin/img/pictures_placeholder.png')}}" class="mb-3" style="border: 2px solid #DCDCDC;height:30%;width:30%;" id="propic">
                 </div>
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="logo" name="logo" required>
@@ -136,7 +136,7 @@
                 <label for="logo">Logo Sosial Media</label>
                 <br>
                 <div class="text-center">
-                  <img src="" class="mb-3" style="height:100px;width:100px;" id="edit_propic">
+                  <img src="{{asset('assets/admin/img/pictures_placeholder.png')}}" class="mb-3" style="border: 2px solid #DCDCDC;height:30%;width:30%;" id="edit_propic">
                 </div>
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="edit_logo" name="edit_logo" required>
@@ -179,7 +179,7 @@
                 <label for="logo">Logo Sosial Media</label>
                 <br>
                 <div class="text-center">
-                  <img src="" class="mb-3" style="height:100px;width:100px;" id="show_propic">
+                  <img src="" class="mb-3" style="border: 2px solid #DCDCDC;height:30%;width:30%;" id="show_propic">
                 </div>
             </div>
               <div class="modal-footer">

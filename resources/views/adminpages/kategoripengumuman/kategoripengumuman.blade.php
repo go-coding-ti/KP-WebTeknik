@@ -1,12 +1,12 @@
 @extends('adminlayout.layout')
-@section('title', 'List Kategori')
+@section('title', 'List Kategori Pengumuman')
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
         <!-- <hr style="margin-top: 20px" class="sidebar-divider my-0"> -->
-        <h1 class="h3 mb-2 text-gray-800">Kategori</h1>
-          <p class="mb-4">Daftar Kategori Website Fakultas Teknik Universitas Udayana</p>
+        <h1 class="h3 mb-2 text-gray-800">Kategori Pengumuman</h1>
+          <p class="mb-4">Daftar Kategori pengumuman Website Fakultas Teknik Universitas Udayana</p>
 
           @if (session()->has('statusInput'))
               <div class="row">
@@ -113,14 +113,14 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="addCategory">Tambah Kategori</h5>
+            <h5 class="modal-title" id="addCategory">Tambah Kategori Pengumuman</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
             </button>
         </div>
         <div class="modal-body">
             <p>Masukkan Kategori Baru</p>
-            <form method="post" action="/admin/category/store" enctype="multipart/form-data">
+            <form method="post" action="/admin/category/pengumuman/store" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                   <label for="kategori_ina">Kategori Ina</label>
@@ -129,6 +129,17 @@
                 <div class="form-group">
                   <label for="kategori_eng">Kategori Eng</label>
                   <input type="text" class="form-control" id="kategori_eng" name="kategori_eng" value="{{old('title')}}">
+                </div>
+                <div class="form-group mt-4">
+                    <label for="icon">Icon Kategori</label>
+                    <br>
+                    <div class="text-center">
+                      <img src="{{asset('assets/admin/img/pictures_placeholder.png')}}" class="mb-3" style="border: 2px solid #DCDCDC;height:30%;width:30%;" id="icon">
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="logo" name="logo" required>
+                        <label for="logo_label" id="logo_label" class="custom-file-label">Pilih Icon</label>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
@@ -159,6 +170,13 @@
                   <label for="show_kategori_eng">Kategori Eng</label>
                   <input type="text" class="form-control" id="show_kategori_eng" readonly>
                 </div>
+                <div class="form-group mt-4">
+                  <label for="icon">Icon Kategori</label>
+                  <br>
+                  <div class="text-center">
+                    <img src="{{asset('assets/admin/img/pictures_placeholder.png')}}" class="mb-3" style="border: 2px solid #DCDCDC;height:30%;width:30%;" id="show_icon">
+                  </div>
+              </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal" onclick="closeModal('showCategory')">Cancel</button>
                 </div>
@@ -191,6 +209,17 @@
                   <label for="edit_kategori_eng">Kategori Eng</label>
                   <input type="text" class="form-control" id="edit_kategori_eng" name="edit_kategori_eng">
                 </div>
+                <div class="form-group mt-4">
+                  <label for="icon">Icon Kategori</label>
+                  <br>
+                  <div class="text-center">
+                    <img src="{{asset('assets/admin/img/pictures_placeholder.png')}}" class="mb-3" style="border: 2px solid #DCDCDC;height:30%;width:30%;" id="edit_icon">
+                  </div>
+                  <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="edit_logo" name="edit_logo">
+                      <label for="edit_logo_label" id="edit_logo_label" class="custom-file-label">Pilih Icon</label>
+                  </div>
+              </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal" onclick="closeModal('editCategory')">Cancel</button>
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -234,17 +263,20 @@
 
 function show(id,status){
         jQuery.ajax({
-                url: "/admin/category/"+id+"/edit",
+                url: "/admin/category/pengumuman/"+id+"/edit",
                 method: 'get',
                 success: function(result){
                     if(status == 'show'){
                         $("#show_kategori_ina").val(result.kategori['kategori_ina']);
                         $("#show_kategori_eng").val(result.kategori['kategori_eng']);
+                        $('#show_icon').attr('src', result.kategori['icon']);
                         $('#showCategory').modal('show');
                     }else{
                         $("#edit_kategori_ina").val(result.kategori['kategori_ina']);
                         $("#edit_kategori_eng").val(result.kategori['kategori_eng']);
-                        $("#edit-form-category").attr("action", "/admin/category/"+result.kategori['id']);
+                        $('#edit_logo_label').text(result.kategori['icon_name']);
+                        $('#edit_icon').attr('src', result.kategori['icon']);
+                        $("#edit-form-category").attr("action", "/admin/category/pengumuman/"+result.kategori['id']);
                         $('#editCategory').modal('show');
                     }                   
                     
@@ -253,12 +285,33 @@ function show(id,status){
     }
 
     function deletebc(id){
-        $("#form-delete-category").attr("action", "/admin/category/"+id+"/delete");
+        $("#form-delete-category").attr("action", "/admin/category/pengumuman/"+id+"/delete");
         $('#deleteCategory').modal('show');
     }
 
     function closeModal(jenis){
       $('#'+jenis).modal('hide'); 
     }
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+            $('#icon').attr('src', e.target.result);
+            $('#edit_icon').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    $("#logo").change(function() {
+    readURL(this);
+    document.getElementById('logo_label').innerHTML = document.getElementById('logo').files[0].name;
+    });
+
+    $("#edit_logo").change(function() {
+    readURL(this);
+    document.getElementById('edit_logo_label').innerHTML = document.getElementById('edit_logo').files[0].name;
+    });
 </script>
 @endsection

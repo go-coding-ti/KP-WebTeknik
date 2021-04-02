@@ -1,12 +1,12 @@
 @extends('adminlayout.layout')
-@section('title', 'List Kategori')
+@section('title', 'List Kategori Agenda')
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
         <!-- <hr style="margin-top: 20px" class="sidebar-divider my-0"> -->
-        <h1 class="h3 mb-2 text-gray-800">Kategori</h1>
-          <p class="mb-4">Daftar Kategori Website Fakultas Teknik Universitas Udayana</p>
+        <h1 class="h3 mb-2 text-gray-800">Kategori Agenda</h1>
+          <p class="mb-4">Daftar Kategori Agenda Website Fakultas Teknik Universitas Udayana</p>
 
           @if (session()->has('statusInput'))
               <div class="row">
@@ -113,14 +113,14 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="addCategory">Tambah Kategori</h5>
+            <h5 class="modal-title" id="addCategory">Tambah Kategori Agenda</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
             </button>
         </div>
         <div class="modal-body">
             <p>Masukkan Kategori Baru</p>
-            <form method="post" action="/admin/category/store" enctype="multipart/form-data">
+            <form method="post" action="/admin/category/agenda/store" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                   <label for="kategori_ina">Kategori Ina</label>
@@ -234,7 +234,7 @@
 
 function show(id,status){
         jQuery.ajax({
-                url: "/admin/category/"+id+"/edit",
+                url: "/admin/category/agenda/"+id+"/edit",
                 method: 'get',
                 success: function(result){
                     if(status == 'show'){
@@ -244,7 +244,7 @@ function show(id,status){
                     }else{
                         $("#edit_kategori_ina").val(result.kategori['kategori_ina']);
                         $("#edit_kategori_eng").val(result.kategori['kategori_eng']);
-                        $("#edit-form-category").attr("action", "/admin/category/"+result.kategori['id']);
+                        $("#edit-form-category").attr("action", "/admin/category/agenda/"+result.kategori['id']);
                         $('#editCategory').modal('show');
                     }                   
                     
@@ -253,7 +253,7 @@ function show(id,status){
     }
 
     function deletebc(id){
-        $("#form-delete-category").attr("action", "/admin/category/"+id+"/delete");
+        $("#form-delete-category").attr("action", "/admin/category/agenda/"+id+"/delete");
         $('#deleteCategory').modal('show');
     }
 
