@@ -4,7 +4,7 @@
       {{-- NEWS --}}
           <div class="col-lg-8 p-0 py-2 px-2">
               <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5">
-                <h1 class="h4 fw-bold text-light border-3 border-bottom border-danger p-2 pb-0 mb-0">News</h1>
+                <a href="" class="h4 text-decoration-none fw-bold text-light border-3 border-bottom border-danger p-2 pb-0 mb-0">News</a>
               </div>
               <hr class="border border-light dropdown-divider mb-3 pt-0 mt-0">
               <div class="card mb-3 border-0 bg-black">
@@ -124,7 +124,7 @@
       {{-- NEWS --}}
           <div class="col-lg-8 p-0 py-2 px-2">
               <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5">
-                <h1 class="h4 fw-bold text-light border-3 border-bottom border-danger p-2 pb-0 mb-0">Berita</h1>
+                <a href="{{ route('Berita', app()->getLocale() ) }}" class="h4 text-decoration-none fw-bold text-light border-3 border-bottom border-danger p-2 pb-0 mb-0">Berita</a>
               </div>
               <hr class="border border-light dropdown-divider mb-3 pt-0 mt-0">
               <div class="card mb-3 border-0 bg-black">
