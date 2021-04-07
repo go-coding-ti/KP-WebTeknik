@@ -26,6 +26,14 @@ Route::group(['prefix' => '{language}'], function () {
         return view('pages/detail-video');
     })->name('Detail Video');
 
+    Route::get('/agenda', function () {
+        return view('pages/agenda');
+    })->name('Agenda');
+
+    Route::get('/agenda/detail', function () {
+        return view('pages/detail-agenda');
+    })->name('Detail Agenda');
+
     Route::get('/berita', function () {
         return view('pages/berita');
     })->name('Berita');
