@@ -161,6 +161,7 @@
         </div>
         <div class="rounded p-3 bg-grey text-white mt-3 text-end">
           <a class="btn btn-info" href="">Lihat Publikasi Jurnal</a>
+          <a class="btn btn-info" href="">Lihat Publikasi Jurnal</a>
         </div>
       </div>
     </div>
