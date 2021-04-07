@@ -41,21 +41,11 @@ Route::group(['prefix' => '{language}'], function () {
     Route::get('/management/detail', function () {
         return view('pages/detail-management');
     })->name('Detail Management');
+
+    Route::get('/about', function () {
+        return view('pages/tentang-teknik');
+    })->name('About');
 });
-
-
-// Route::get('/', function () {
-//     return view('pages/index');
-// });
-
-// Route::get('/video', function () {
-//     return view('pages/video');
-// });
-
-// Route::get('/lang', function () {
-//     App::setlocale('id');
-//     dd(App::getLocale());
-// });
 
 //Pages Front End Routes
 
