@@ -34,6 +34,14 @@ Route::group(['prefix' => '{language}'], function () {
         return view('pages/detail-agenda');
     })->name('Detail Agenda');
 
+    Route::get('/pengumuman', function () {
+        return view('pages/pengumuman');
+    })->name('Pengumuman');
+
+    Route::get('/pengumuman/detail', function () {
+        return view('pages/detail-pengumuman');
+    })->name('Detail Pengumuman');
+
     Route::get('/berita', function () {
         return view('pages/berita');
     })->name('Berita');
