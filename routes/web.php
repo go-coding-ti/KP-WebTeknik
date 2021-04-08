@@ -50,6 +50,10 @@ Route::group(['prefix' => '{language}'], function () {
         return view('pages/detail-berita');
     })->name('Detail Berita');
 
+    Route::get('/galeri', function () {
+        return view('pages/galeri');
+    })->name('Galeri');
+
     Route::get('/staff-pengajar', function () {
         return view('pages/staff-pengajar');
     })->name('Staff Pengajar');
