@@ -2,7 +2,7 @@
   <div class="container mt-5 pt-5">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
       <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Agenda</h1>
-      <h1 class="h6 fw-bold pb-1"><a class="text-decoration-none fw-bold card bg-red text-white p-2" href="">See All</a></h1>
+      <h1 class="h6 fw-bold pb-1"><a class="text-decoration-none fw-bold card bg-red text-white p-2" href="{{ route("Agenda", app()->getLocale() ) }}">See All</a></h1>
     </div>
     <hr class="border border-light dropdown-divider">
   </div>
@@ -106,7 +106,7 @@
   <div class="container mt-5 pt-5">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
       <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Agenda</h1>
-      <h1 class="h6 fw-bold pb-1"><a class="text-decoration-none fw-bold card bg-red text-white p-2" href="">See All</a></h1>
+      <h1 class="h6 fw-bold pb-1"><a class="text-decoration-none fw-bold card bg-red text-white p-2" href="{{ route("Agenda", app()->getLocale() ) }}">See All</a></h1>
     </div>
     <hr class="border border-light dropdown-divider">
   </div>

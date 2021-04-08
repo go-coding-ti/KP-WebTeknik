@@ -26,6 +26,34 @@ Route::group(['prefix' => '{language}'], function () {
         return view('pages/detail-video');
     })->name('Detail Video');
 
+    Route::get('/agenda', function () {
+        return view('pages/agenda');
+    })->name('Agenda');
+
+    Route::get('/agenda/detail', function () {
+        return view('pages/detail-agenda');
+    })->name('Detail Agenda');
+
+    Route::get('/pengumuman', function () {
+        return view('pages/pengumuman');
+    })->name('Pengumuman');
+
+    Route::get('/pengumuman/detail', function () {
+        return view('pages/detail-pengumuman');
+    })->name('Detail Pengumuman');
+
+    Route::get('/berita', function () {
+        return view('pages/berita');
+    })->name('Berita');
+
+    Route::get('/berita/detail', function () {
+        return view('pages/detail-berita');
+    })->name('Detail Berita');
+
+    Route::get('/galeri', function () {
+        return view('pages/galeri');
+    })->name('Galeri');
+
     Route::get('/staff-pengajar', function () {
         return view('pages/staff-pengajar');
     })->name('Staff Pengajar');
@@ -41,21 +69,11 @@ Route::group(['prefix' => '{language}'], function () {
     Route::get('/management/detail', function () {
         return view('pages/detail-management');
     })->name('Detail Management');
+
+    Route::get('/about', function () {
+        return view('pages/tentang-teknik');
+    })->name('About');
 });
-
-
-// Route::get('/', function () {
-//     return view('pages/index');
-// });
-
-// Route::get('/video', function () {
-//     return view('pages/video');
-// });
-
-// Route::get('/lang', function () {
-//     App::setlocale('id');
-//     dd(App::getLocale());
-// });
 
 //Pages Front End Routes
 

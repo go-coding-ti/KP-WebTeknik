@@ -32,7 +32,10 @@
                   </a>
                   <div class="card-footer p-3 d-flex justify-content-between border-0">
                     <a href="{{ route("Detail Staff Pengajar", app()->getLocale() ) }}" class="btn btn-primary p-1 my-1">See Detail</a>
-                    <a href="#" class="btn btn-success p-1 my-1">Scopus</a>
+                    <div>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -47,7 +50,10 @@
                   </a>
                   <div class="card-footer p-3 d-flex justify-content-between border-0">
                     <a href="{{ route("Detail Staff Pengajar", app()->getLocale() ) }}" class="btn btn-primary p-1 my-1">See Detail</a>
-                    <a href="#" class="btn btn-success p-1 my-1">Scopus</a>
+                    <div>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -62,7 +68,10 @@
                   </a>
                   <div class="card-footer p-3 d-flex justify-content-between border-0">
                     <a href="{{ route("Detail Staff Pengajar", app()->getLocale() ) }}" class="btn btn-primary p-1 my-1">See Detail</a>
-                    <a href="#" class="btn btn-success p-1 my-1">Scopus</a>
+                    <div>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -81,7 +90,10 @@
                   </a>
                   <div class="card-footer p-3 d-flex justify-content-between border-0">
                     <a href="{{ route("Detail Staff Pengajar", app()->getLocale() ) }}" class="btn btn-primary p-1 my-1">See Detail</a>
-                    <a href="#" class="btn btn-success p-1 my-1">Scopus</a>
+                    <div>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -96,7 +108,10 @@
                   </a>
                   <div class="card-footer p-3 d-flex justify-content-between border-0">
                     <a href="{{ route("Detail Staff Pengajar", app()->getLocale() ) }}" class="btn btn-primary p-1 my-1">See Detail</a>
-                    <a href="#" class="btn btn-success p-1 my-1">Scopus</a>
+                    <div>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -111,7 +126,10 @@
                   </a>
                   <div class="card-footer p-3 d-flex justify-content-between border-0">
                     <a href="{{ route("Detail Staff Pengajar", app()->getLocale() ) }}" class="btn btn-primary p-1 my-1">See Detail</a>
-                    <a href="#" class="btn btn-success p-1 my-1">Scopus</a>
+                    <div>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -154,7 +172,10 @@
                   </a>
                   <div class="card-footer p-3 d-flex justify-content-between border-0">
                     <a href="{{ route("Detail Staff Pengajar", app()->getLocale() ) }}" class="btn btn-primary p-1 my-1">See Detail</a>
-                    <a href="#" class="btn btn-success p-1 my-1">Scopus</a>
+                    <div>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -169,7 +190,10 @@
                   </a>
                   <div class="card-footer p-3 d-flex justify-content-between border-0">
                     <a href="{{ route("Detail Staff Pengajar", app()->getLocale() ) }}" class="btn btn-primary p-1 my-1">See Detail</a>
-                    <a href="#" class="btn btn-success p-1 my-1">Scopus</a>
+                    <div>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -184,7 +208,10 @@
                   </a>
                   <div class="card-footer p-3 d-flex justify-content-between border-0">
                     <a href="{{ route("Detail Staff Pengajar", app()->getLocale() ) }}" class="btn btn-primary p-1 my-1">See Detail</a>
-                    <a href="#" class="btn btn-success p-1 my-1">Scopus</a>
+                    <div>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -203,7 +230,10 @@
                   </a>
                   <div class="card-footer p-3 d-flex justify-content-between border-0">
                     <a href="{{ route("Detail Staff Pengajar", app()->getLocale() ) }}" class="btn btn-primary p-1 my-1">See Detail</a>
-                    <a href="#" class="btn btn-success p-1 my-1">Scopus</a>
+                    <div>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -218,7 +248,10 @@
                   </a>
                   <div class="card-footer p-3 d-flex justify-content-between border-0">
                     <a href="{{ route("Detail Staff Pengajar", app()->getLocale() ) }}" class="btn btn-primary p-1 my-1">See Detail</a>
-                    <a href="#" class="btn btn-success p-1 my-1">Scopus</a>
+                    <div>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -233,7 +266,10 @@
                   </a>
                   <div class="card-footer p-3 d-flex justify-content-between border-0">
                     <a href="{{ route("Detail Staff Pengajar", app()->getLocale() ) }}" class="btn btn-primary p-1 my-1">See Detail</a>
-                    <a href="#" class="btn btn-success p-1 my-1">Scopus</a>
+                    <div>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                      <a href="#" class="btn btn-info p-1 my-1">Scopus</a>
+                    </div>
                   </div>
                 </div>
               </div>

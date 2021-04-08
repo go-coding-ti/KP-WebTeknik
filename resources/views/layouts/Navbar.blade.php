@@ -111,7 +111,7 @@
                   </li>
                   <li><a href="#">Tentang</a>
                     <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
-                      <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Tentang Teknik</a></li>
+                      <li class="p-0"><a class="hover" href="{{ route('About', app()->getLocale() ) }}"><i class="fas fa-link"></i> Tentang Teknik</a></li>
                       <li class="p-0"><a class="hover" href="{{ route("Management", app()->getLocale() ) }}"><i class="fas fa-link"></i> Management</a></li>
                       <li class="p-0"><a class="hover" href="single-post.html"><i class="fas fa-link"></i> Staf Pengajar</a></li>
                     </ul>
@@ -244,7 +244,7 @@
                   </li>
                   <li><a href="#">Tentang</a>
                     <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
-                      <li class="p-0"><a class="hover" href=""><i class="fas fa-link"></i> Tentang Teknik</a></li>
+                      <li class="p-0"><a class="hover" href="{{ route('About', app()->getLocale() ) }}"><i class="fas fa-link"></i> Tentang Teknik</a></li>
                       <li class="p-0"><a class="hover" href="{{ route("Management", app()->getLocale() ) }}"><i class="fas fa-link"></i> Management</a></li>
                       <li class="p-0"><a class="hover" href="{{ route("Staff Pengajar", app()->getLocale() ) }}"><i class="fas fa-link"></i> Staf Pengajar</a></li>
                     </ul>
