@@ -2,13 +2,14 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class Submenu extends Authenticatable
+class Download extends Authenticatable
 {
     use SoftDeletes;
-    protected $table = "submenus";
+    protected $table = 'downloads';
 }

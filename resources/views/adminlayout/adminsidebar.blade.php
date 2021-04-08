@@ -169,7 +169,7 @@
           <div id="collapsePengaturan" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Pengaturan Menu:</h6>
-              <a class="collapse-item" href="/admin/menu" ><i class="fas fa-fw fa-list"></i>  Menu</a>
+              <a class="collapse-item" href="/admin/menus" ><i class="fas fa-fw fa-list"></i>  Website Menu</a>
               <a class="collapse-item" href="/admin/setting/preferences" ><i class="fas fa-fw fa-cog"></i>  Preferences</a>
               <a class="collapse-item" href="/admin/setting/social"><i class="fas fa-fw fa-share"></i>  Social Media</a>
             </div>

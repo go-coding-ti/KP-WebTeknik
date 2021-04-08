@@ -149,8 +149,36 @@ Route::prefix('admin')->group(function () {
     Route::put('/galery/{id}', 'AdminController\GaleriController@update')->name('admin-galeri-update');
     Route::get('/galery/show/{title_slug}', 'AdminController\GaleriController@show')->name('admin-galeri-show');
     Route::get('/galery/delete/{id}', 'AdminController\GaleriController@destroy')->name('admin-galeri-delete');
+
     //Menu Controller
-    Route::get('/menu', 'AdminController\MenuController@index')->name('admin-menu-home');
+    Route::get('/menus', 'AdminController\MenuController@index')->name('admin-menu-home');
+    //Header
+    Route::get('/menus/headers/create', 'AdminController\MenuController@headerCreate')->name('admin-header-create');
+    Route::post('/menus/headers/store', 'AdminController\MenuController@headerStore')->name('admin-header-store');
+    Route::get('/menus/headers/{id}/edit', 'AdminController\MenuController@headerEdit')->name('admin-header-edit');
+    Route::post('/menus/headers/{id}', 'AdminController\MenuController@headerUpdate')->name('admin-header-update');
+    Route::get('/menus/headers/delete/{id}', 'AdminController\MenuController@headerDestroy')->name('admin-header-delete');
+    //Menu
+    Route::get('/menus/menus/create', 'AdminController\MenuController@menuCreate')->name('admin-menu-create');
+    Route::post('/menus/menus/store', 'AdminController\MenuController@menuStore')->name('admin-menu-store');
+    Route::get('/menus/menus/{id}/edit', 'AdminController\MenuController@menuEdit')->name('admin-menu-edit');
+    Route::post('/menus/menus/{id}', 'AdminController\MenuController@menuUpdate')->name('admin-menu-update');
+    Route::get('/menus/menus/delete/{id}', 'AdminController\MenuController@menuDestroy')->name('admin-menu-delete');
+    //Sub Menu
+    Route::get('/menus/submenus/create', 'AdminController\MenuController@submenuCreate')->name('admin-submenu-create');
+    Route::post('/menus/submenus/store', 'AdminController\MenuController@submenuStore')->name('admin-submenu-store');
+    Route::get('/menus/submenus/{id}/edit', 'AdminController\MenuController@submenuEdit')->name('admin-submenu-edit');
+    Route::post('/menus/submenus/{id}', 'AdminController\MenuController@submenuUpdate')->name('admin-submenu-update');
+    Route::get('/menus/submenus/delete/{id}', 'AdminController\MenuController@submenuDestroy')->name('admin-submenu-delete');
+    Route::get('menus/menus/get/{id}', 'AdminController\MenuController@getMenu')->name('admin-menu-get');
+
+    //Download Controller
+    Route::get('/downloads', 'AdminController\DownloadController@index')->name('admin-download-home');
+    Route::get('/downloads/create', 'AdminController\DownloadController@create')->name('admin-download-create');
+    Route::post('/downloads/store', 'AdminController\DownloadController@store')->name('admin-download-store');
+    Route::get('/downloads/{id}/edit', 'AdminController\DownloadController@edit')->name('admin-download-edit');
+    Route::get('/downloads/delete/{id}', 'AdminController\DownloadController@destroy')->name('admin-download-delete');
+    Route::post('/downloads/{id}', 'AdminController\DownloadController@update')->name('admin-download-update');
 
     //Pengaturan Controller
     //Preferences Controller
