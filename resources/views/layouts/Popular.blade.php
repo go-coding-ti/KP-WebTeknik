@@ -1,7 +1,8 @@
 @if (App::getLocale() == 'en')
 <div class="row g-0">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5">
-    <a href="{{ route('Galeri', app()->getLocale() ) }}" class="h4 text-decoration-none fw-bold text-light border-3 border-bottom border-danger p-2 pb-0 mb-0">Galeri</a>
+    <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Galeri</h1>
+    <h1 class="h6 fw-bold pb-1"><a class="text-decoration-none fw-bold card bg-red text-white p-2" href="{{ route("Galeri", app()->getLocale() ) }}">See All</a></h1>
   </div>
   <hr class="border border-light dropdown-divider mb-3 mt-0 pt-0">
   <div class="bg-grey px-3 py-2">
@@ -53,7 +54,8 @@
 @if (App::getLocale() == 'id')
   <div class="row g-0">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5">
-      <a href="{{ route('Galeri', app()->getLocale() ) }}" class="h4 text-decoration-none fw-bold text-light border-3 border-bottom border-danger p-2 pb-0 mb-0">Galeri</a>
+      <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Galeri</h1>
+      <h1 class="h6 fw-bold pb-1"><a class="text-decoration-none fw-bold card bg-red text-white p-2" href="{{ route("Galeri", app()->getLocale() ) }}">See All</a></h1>
     </div>
     <hr class="border border-light dropdown-divider mb-3 mt-0 pt-0">
     <div class="bg-grey px-3 py-2">
