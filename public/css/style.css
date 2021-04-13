@@ -37,6 +37,16 @@ html, body {
     color: white;
 }
 
+.btn-link{
+    background-color: #DC4437;
+    color: white;
+}
+
+.btn-link:hover{
+    background-color: white;
+    color: #DC4437;
+}
+
 .link-hover{
     color: white;
 }

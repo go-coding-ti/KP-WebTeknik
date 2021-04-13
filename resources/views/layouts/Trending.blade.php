@@ -1,8 +1,8 @@
 @if (App::getLocale() == 'en')
   <div class="container mt-5 pt-5">
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-auto">
       <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Events</h1>
-      <h1 class="h6 fw-bold pb-1"><a class="text-decoration-none fw-bold card bg-red text-white p-2" href="{{ route("Agenda", app()->getLocale() ) }}">See All</a></h1>
+      <a class="text-decoration-none fw-bold btn btn-sm bg-red btn-link" href="{{ route("Agenda", app()->getLocale() ) }}">See All</a></h1>
     </div>
     <hr class="border border-light dropdown-divider">
   </div>
@@ -30,11 +30,11 @@
 
 @if (App::getLocale() == 'id')
   <div class="container mt-5 pt-5">
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-auto">
       <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Agenda</h1>
-      <h1 class="h6 fw-bold pb-1"><a class="text-decoration-none fw-bold card bg-red text-white p-2" href="{{ route("Agenda", app()->getLocale() ) }}">See All</a></h1>
+      <a class="text-decoration-none fw-bold btn btn-sm bg-red btn-link" href="{{ route("Agenda", app()->getLocale() ) }}">See All</a></h1>
     </div>
-    <hr class="border border-light dropdown-divider">
+    <hr class="border border-light dropdown-divider mt-0">
   </div>
   <div class="container">
     <div class="row row-cols-1 row-cols-lg-3 px-3 pt-2">

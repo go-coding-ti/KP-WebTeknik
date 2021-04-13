@@ -1,8 +1,8 @@
 @if (App::getLocale() == 'en')
 <div class="row g-0">
-  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-auto">
     <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Galeri</h1>
-    <h1 class="h6 fw-bold pb-1"><a class="text-decoration-none fw-bold card bg-red text-white p-2" href="{{ route("Galeri", app()->getLocale() ) }}">See All</a></h1>
+    <a class="text-decoration-none fw-bold btn btn-sm bg-red btn-link" href="{{ route("Galeri", app()->getLocale() ) }}">See All</a>
   </div>
   <hr class="border border-light dropdown-divider mb-3 mt-0 pt-0">
   <div class="bg-grey px-3 py-2">
@@ -11,7 +11,7 @@
       <div class="row g-0">
         <div class="col-md-5">
           <div class="card-body p-0">
-            <img src="{{$galeri->galeri}}" class="img-fluid img-thumbnail" alt="...">
+            <img src="{{$galeri->galeri}}" class="img-fluid" alt="...">
           </div>
         </div>
         <div class="col-md-7 d-flex align-content-top flex-wrap">
@@ -53,21 +53,21 @@
 
 @if (App::getLocale() == 'id')
   <div class="row g-0">
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-auto">
       <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Galeri</h1>
-      <h1 class="h6 fw-bold pb-1"><a class="text-decoration-none fw-bold card bg-red text-white p-2" href="{{ route("Galeri", app()->getLocale() ) }}">See All</a></h1>
+      <a class="text-decoration-none fw-bold btn btn-sm bg-red btn-link" href="{{ route("Galeri", app()->getLocale() ) }}">See All</a>
     </div>
     <hr class="border border-light dropdown-divider mb-3 mt-0 pt-0">
     <div class="bg-grey px-3 py-2">
       @foreach($galeris as $galeri)
       <div class="card border bg-grey my-1 border-0">
         <div class="row g-0">
-          <div class="col-md-4">
-            <div class="card-body p-0">
-              <img src="{{$galeri->galeri}}" class="img-fluid" alt="...">
+          <div class="col-md-3">
+            <div class="card-body p-0 text-center">
+              <img src="{{$galeri->galeri}}" class="img-fluid" style="height: 5em" alt="...">
             </div>
           </div>
-          <div class="col-md-8 d-flex align-content-top flex-wrap">
+          <div class="col-md-9 d-flex align-content-top flex-wrap">
             <div class="card-body ms-1 px-2 p-0">
               <a href="" class="card-title fw-bold text-decoration-none text-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$galeri->id}}">
                 {{$galeri->title_ina}}

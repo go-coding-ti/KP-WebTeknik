@@ -3,9 +3,9 @@
     <div class="row px-3 p-0">
       {{-- NEWS --}}
           <div class="col-lg-8 p-0 py-2 px-2">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-auto">
               <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Pengumuman</h1>
-              <h1 class="h6 fw-bold pb-1"><a class="text-decoration-none fw-bold card bg-red text-white p-2" href="{{ route("Pengumuman", app()->getLocale() ) }}">See All</a></h1>
+              <a class="text-decoration-none fw-bold btn btn-sm bg-red btn-link" href="{{ route("Pengumuman", app()->getLocale() ) }}">See All</a>
             </div>
               @foreach($pengumumans as $pengumuman)
                 <hr class="border border-light dropdown-divider mb-3 pt-0 mt-0">
@@ -49,9 +49,9 @@
     <div class="row px-3 p-0">
       {{-- NEWS --}}
           <div class="col-lg-8 p-0 py-2 px-2">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-5">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-auto">
               <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Pengumuman</h1>
-              <h1 class="h6 fw-bold pb-1"><a class="text-decoration-none fw-bold card bg-red text-white p-2" href="{{ route("Pengumuman", app()->getLocale() ) }}">See All</a></h1>
+              <a class="text-decoration-none fw-bold btn btn-sm bg-red btn-link" href="{{ route("Pengumuman", app()->getLocale() ) }}">See All</a>
             </div>
             @foreach($pengumumans as $pengumuman)
               <hr class="border border-light dropdown-divider mb-3 pt-0 mt-0">
