@@ -19,7 +19,7 @@
                         <div class="col-md-7 align-content-top flex-wrap">
                           <a href="{{ route("Detail Pengumuman", ['language'=>app()->getLocale(), 'title_slug' => $pengumuman->title_slug]) }}" class="btn btn-sm ms-3 my-1 bg-red text-light fw-bold text-uppercase"><small>{{$pengumuman->kategori->kategori_ina}}</small></a>
                           <div class="card-body ms-1 py-2 px-2 ps-3 p-0">
-                              <a href="{{ route("Detail Pengumuman", ['language'=>app()->getLocale(), 'title_slug' => $pengumuman->title_slug]) }}" class="card-title fw-bold text-decoration-none link-light fs-5 link-hover">{{$pengumuman->title_eng}}</a>
+                              <a href="{{ route("Detail Pengumuman", ['language'=>app()->getLocale(), 'title_slug' => $pengumuman->title_slug]) }}" class="card-title fw-bold text-decoration-none link-light fs-5 link-hovser">{{$pengumuman->title_eng}}</a>
                               <p class="card-text">
                                 <a class="text-decoration-none link-light text-muted small" href="">Posted pada {{ date('d M Y', strtotime($pengumuman->created_at)) }}</a>
                               </p>
@@ -32,30 +32,15 @@
       {{-- NEWS End --}}
 
       <div class="col-lg-4 p-0 py-2 px-2 text-wrap">
+        {{-- POPULAR --}}
+          @include('layouts/Popular')
+        {{-- POPULAR --}}
+
         {{-- TAGS --}}
             @include('layouts/Tag')
         {{-- TAGS --}}
-
-        {{-- POPULAR --}}
-            @include('layouts/Popular')
-        {{-- POPULAR --}}
       </div>
     </div>
-
-    {{-- Pagination --}}
-      <ul class="pagination bg-dark justify-content-center">
-        <li class="page-item">
-          <a class="page-link pagination bg-black link-light border-light" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">1</a></li>
-        <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">2</a></li>
-        <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link pagination bg-black link-light" href="#">Next</a>
-        </li>
-      </ul>
-    {{-- Pagination End --}}
-
   </div>
 @endif
 
@@ -93,29 +78,14 @@
       {{-- NEWS End --}}
 
       <div class="col-lg-4 p-0 py-2 px-2 text-wrap">
+        {{-- POPULAR --}}
+        @include('layouts/Popular')
+        {{-- POPULAR --}}
+
         {{-- TAGS --}}
             @include('layouts/Tag')
         {{-- TAGS --}}
-
-        {{-- POPULAR --}}
-            @include('layouts/Popular')
-        {{-- POPULAR --}}
       </div>
     </div>
-
-    {{-- Pagination --}}
-      <ul class="pagination bg-dark justify-content-center">
-        <li class="page-item">
-          <a class="page-link pagination bg-black link-light border-light" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-        </li>
-        <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">1</a></li>
-        <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">2</a></li>
-        <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link pagination bg-black link-light" href="#">Next</a>
-        </li>
-      </ul>
-    {{-- Pagination End --}}
-
   </div>
 @endif

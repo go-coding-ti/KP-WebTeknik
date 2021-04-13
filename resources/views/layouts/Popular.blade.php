@@ -62,12 +62,12 @@
       @foreach($galeris as $galeri)
       <div class="card border bg-grey my-1 border-0">
         <div class="row g-0">
-          <div class="col-md-5">
+          <div class="col-md-4">
             <div class="card-body p-0">
-              <img src="{{$galeri->galeri}}" class="img-fluid img-thumbnail" alt="...">
+              <img src="{{$galeri->galeri}}" class="img-fluid" alt="...">
             </div>
           </div>
-          <div class="col-md-7 d-flex align-content-top flex-wrap">
+          <div class="col-md-8 d-flex align-content-top flex-wrap">
             <div class="card-body ms-1 px-2 p-0">
               <a href="" class="card-title fw-bold text-decoration-none text-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$galeri->id}}">
                 {{$galeri->title_ina}}
