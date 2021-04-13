@@ -42,30 +42,27 @@
                     <label for="lampiran">File Lampiran</label>
                     <input type="file" class="form-control-file" id="lampiran" name="lampiran">
                 </div> -->
-                <div class="row">
-                    <div class="col-lg-12 col-sm-12">
-                        <label for="lampiran">Lampiran</label>
-                    </div>
-                    <div class="col-lg-12 col-sm-12">
-                        @if($page->file_name != "")
-                            <img style="height: 25px;" src="{{asset('assets/admin/img/document.png')}}"  alt="">
-                            <a href="{{$page->file}}">{{$page->file_name}}</a>
-                        @endif
-                        <input type="file" class="form-control-file" id="galeri" name="galeri">
-                    </div>
+                <div class="form-group mt-4">
+                    <label for="galeri">Galeri</label>
+                    <br>
+                    @if($page->galeri != "")
+                        <img src="{{$page->galeri}}" class="mb-3" style="border: 2px solid #DCDCDC;padding: 5px;height:20%;width:20%;" id="propic">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="galeri" name="galeri">
+                            <label for="galeri_label" id="galeri_label" class="custom-file-label">{{$page->galeri_name}}</label>
+                        </div>
+                    @endif
                 </div>
-                <div class="row">
-                    <div class="col-lg-12 col-sm-12">
-                        <label for="galeri">Galeri</label>
-                    </div>
-                    <div class="col-lg-12 col-sm-12">
-                        @if($page->galeri != "")
-                            <img style="max-height: 150px; max-width: 200px" src="{{url($page->galeri)}}" alt=""> 
-                        @endif
-                        <input type="file" class="form-control-file" id="galeri" name="galeri">
-                    </div>
+                <div class="form-group mt-4">
+                    <label for="lampiran">File Lampiran</label>
+                    <br>    
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="lampiran" name="lampiran">
+                            <label for="lampiran_label" id="lampiran_label" class="custom-file-label">@if($page->file != ""){{$page->file_name}}@else Pilih Lampiran @endif</label>
+                        </div>
+                    {{-- <input type="file" class="form-control-file" id="lampiran" name="lampiran"> --}}
                 </div>
-                <div class="form group mt-5">
+                <div class="form group mt-4">
                     <label for="urlvideo">URL Video</label>
                     <input type="text" class="form-control" id="urlvideo" name="urlvideo" placeholder="URL Video">
                 </div>
@@ -117,6 +114,25 @@
                     console.log(result.view);
                 }
             });
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                $('#propic').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+
+        $("#thumbnail").change(function() {
+        readURL(this);
+        document.getElementById('thumbnail_label').innerHTML = document.getElementById('thumbnail').files[0].name;
+        });
+
+        $("#lampiran").change(function() {
+        document.getElementById('lampiran_label').innerHTML = document.getElementById('lampiran').files[0].name;
         });
     });
 </script>

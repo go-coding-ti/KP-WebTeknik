@@ -25,25 +25,51 @@
               <h6 class="m-0 font-weight-bold text-primary">List Menu</h6>
             </div>
             <div class="card-body">
-                <a class= "btn btn-success text-white mb-4" href="{{route('admin-post-create')}}"><i class="fas fa-plus"></i>  Tambah Menu</a>
-                    @foreach($menu as $menu)
+                <a class= "btn btn-info text-white mb-4" href="{{route('admin-header-create')}}"><i class="fas fa-plus"></i>  Tambah Header</a>
+                <a class= "btn btn-success text-white mb-4" href="{{route('admin-menu-create')}}"><i class="fas fa-plus"></i>  Tambah Menu</a>
+                <a class= "btn btn-primary text-white mb-4" href="{{route('admin-submenu-create')}}"><i class="fas fa-plus"></i>  Tambah Sub Menu</a>
+                <ul class="list-group mb-1">
+                  <li class="list-group-item">Beranda</li>
+                </ul>
+                    @foreach($headers as $header)
                     <ul class="list-group mb-1">
-                        <li class="list-group-item">{{$menu->menu_ina}}
-                            <a style="float:right" class="btn btn-danger btn-sm ml-1" href="#"><i class="fas fa-trash"></i></a>
-                            <a style="float:right" class="btn btn-info btn-sm ml-1" href="#" ><i class="fas fa-pencil-alt" ></i></a>
-                            <a style="float:right" href="#"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a>
+                        <li class="list-group-item">{{$header->header_ina}}
+                            <a style="float:right" class="btn btn-danger btn-sm ml-1" href="#" onclick="deleteHeader({{$header->id}})"><i class="fas fa-trash"></i></a>
+                            <a style="float:right" class="btn btn-info btn-sm ml-1" href="/admin/menus/headers/{{$header->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a>
+                            <a style="float:right" href="{{$header->header_url}}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a>
                         </li>
                     </ul>
-                        @foreach($submenu->where('id_menu', $menu->id) as $sub)
+                      @foreach($menus->where('id_header', $header->id) as $menu)
                         <ul class="list-group ml-5 mb-1">
-                            <li class="list-group-item">{{$sub->submenu_ina}}
-                                <a style="float:right" class="btn btn-danger btn-sm ml-1" href="#"><i class="fas fa-trash"></i></a>
-                                <a style="float:right" class="btn btn-info btn-sm ml-1" href="#" ><i class="fas fa-pencil-alt" ></i></a>
-                                <a style="float:right" href="#"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a>
+                            <li class="list-group-item">{{$menu->menu_ina}}
+                                <a style="float:right" class="btn btn-danger btn-sm ml-1" href="#" onclick="deleteMenu({{$menu->id}})"><i class="fas fa-trash"></i></a>
+                                <a style="float:right" class="btn btn-info btn-sm ml-1" href="/admin/menus/menus/{{$menu->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a>
+                                <a style="float:right" href="{{$menu->menu_url}}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a>
                             </li>
                         </ul>
+                        @foreach($submenus->where('id_menu', $menu->id) as $submenu)
+                          <ul class="list-group ml-5 mb-1">
+                            <li class="list-group-item ml-5">{{$submenu->menu_ina}}
+                                <a style="float:right" class="btn btn-danger btn-sm ml-1" href="#" onclick="deleteSubmenu({{$submenu->id}})"><i class="fas fa-trash"></i></a>
+                                <a style="float:right" class="btn btn-info btn-sm ml-1" href="/admin/menus/submenus/{{$submenu->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a>
+                                <a style="float:right" href="{{$submenu->menu_url}}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a>
+                            </li>
+                          </ul>
+                        @endforeach
+                      @endforeach
                     @endforeach
-                    @endforeach
+                    <ul class="list-group mb-1">
+                      <li class="list-group-item">Tentang</li>
+                    </ul>
+                    <ul class="list-group ml-5 mb-1">
+                      <li class="list-group-item">Tentang Fakultas Teknik</li>
+                    </ul>
+                    <ul class="list-group ml-5 mb-1">
+                      <li class="list-group-item">Manajemen</li>
+                    </ul>
+                    <ul class="list-group ml-5 mb-1">
+                      <li class="list-group-item">Staf Pengajar</li>
+                    </ul>
             </div>
           </div>
           <!-- smpe sini -->
@@ -94,10 +120,62 @@
 
 @section('custom_javascript')
 <script>
-//Delete
-function deletevideo(id){
-        $("#form-delete-video").attr("action", "/admin/videos/"+id+"/delete");
-        $('#deleteModal').modal('show');
+
+//Soft Delete Header
+function deleteHeader(id){
+  swal({
+    title: 'Anda yakin ingin menghapus header ini?',
+    icon: 'warning',
+    buttons: ["Tidak", "Ya"],
+  }).then(function(value) {
+    if (value) {
+    jQuery.ajax({  
+      url: 'menus/headers/delete/'+id,
+      type: "GET",
+        success: function(result){
+          location.reload();
+        }
+      });
     }
+  });
+}
+
+//Soft Delete Menu
+function deleteMenu(id){
+  swal({
+    title: 'Anda yakin ingin menghapus menu ini?',
+    icon: 'warning',
+    buttons: ["Tidak", "Ya"],
+  }).then(function(value) {
+    if (value) {
+    jQuery.ajax({  
+      url: 'menus/menus/delete/'+id,
+      type: "GET",
+        success: function(result){
+          location.reload();
+        }
+      });
+    }
+  });
+}
+
+//Soft Delete SubMenu
+function deleteSubmenu(id){
+  swal({
+    title: 'Anda yakin ingin menghapus sub menu ini?',
+    icon: 'warning',
+    buttons: ["Tidak", "Ya"],
+  }).then(function(value) {
+    if (value) {
+    jQuery.ajax({  
+      url: 'menus/submenus/delete/'+id,
+      type: "GET",
+        success: function(result){
+          location.reload();
+        }
+      });
+    }
+  });
+}
 </script>
 @endsection

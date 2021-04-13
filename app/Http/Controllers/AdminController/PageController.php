@@ -59,6 +59,7 @@ class PageController extends Controller
             $galeriname = $galeri->getClientOriginalName();
             $path = $galeriLocation."/".$galeriname;
             $page->galeri = '/storage'.$path;
+            $page->galeri_name = $galeriname;
             Storage::disk('public')->put($path, file_get_contents($galeri));
             //$galeri->move($galeriLocation, $page->galeri);
         }
@@ -159,6 +160,7 @@ class PageController extends Controller
             $galeriname = $galeri->getClientOriginalName();
             $path = $galeriLocation."/".$galeriname;
             $page->galeri = '/storage'.$path;
+            $page->galeri_name = $galeriname;
             Storage::disk('public')->put($path, file_get_contents($galeri));
         }
         if($request->file('lampiran')!=""){
@@ -250,13 +252,11 @@ class PageController extends Controller
         return view('adminpages.page.show', compact('page'));
     }
 
-    public function status(Request $request)
+    public function status($id, $status)
     {
-        $page = Page::find($request->id);
-        $page->status = $request->status;
-        $page->update();
-        $view = view('adminpages.page.page');
-
-        return response()->json(['success' => 'berhasil', 'view' => $view]);
+        $page = Page::find($id);
+        $page->status = $status;
+        $page->save();
+        return response()->json(['success' => 'berhasil terganti']);
     }
 }

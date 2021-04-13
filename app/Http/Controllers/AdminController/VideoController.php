@@ -26,7 +26,9 @@ class VideoController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'judul' => 'required|min:3|unique:videos',
+            'judul_eng' => 'required|min:3',
             'deskripsi' => 'required|min:10',
+            'deskripsi_eng' => 'required|min:10',
             'urlvideo' => 'required|min:5'
         ]);
 
@@ -36,8 +38,10 @@ class VideoController extends Controller
 
         $video = new Video();
         $video->judul = $request->judul;
+        $video->judul_eng = $request->judul_eng;
         $video->judul_slug = Str::slug($request->judul);
         $video->deskripsi = $request->deskripsi;
+        $video->deskripsi_eng = $request->deskripsi_eng;
         $video->link = $request->urlvideo;
         $video->save();
 
@@ -54,6 +58,7 @@ class VideoController extends Controller
         $validator = Validator::make($request->all(), [
             'judul' => 'required|min:3',
             'deskripsi' => 'required|min:10',
+            'deskripsi_eng' => 'required|min:10',
             'urlvideo' => 'required|min:5'
         ]);
 
@@ -63,8 +68,10 @@ class VideoController extends Controller
 
         $video = Video::find($id);
         $video->judul = $request->judul;
+        $video->judul_eng = $request->judul_eng;
         $video->judul_slug = Str::slug($request->judul);
         $video->deskripsi = $request->deskripsi;
+        $video->deskripsi_eng = $request->deskripsi_eng;
         $video->link = $request->urlvideo;
         $video->save();
 

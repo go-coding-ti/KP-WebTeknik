@@ -38,14 +38,24 @@
                     <textarea id="content_eng" class="summernote" name="content_eng" required></textarea>
                 </div>
                 <div class="form-group mt-4">
-                    <label for="lampiran">File Lampiran</label>
-                    <input type="file" class="form-control-file" id="lampiran" name="lampiran">
+                    <label for="galeri">Galeri</label>
+                    <br>
+                    <img src="{{asset('assets/admin/img/pictures_placeholder.png')}}" class="mb-3" style="border: 2px solid #DCDCDC;padding: 5px;height:20%;width:20%;" id="propic">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="galeri" name="galeri" required>
+                        <label for="galeri_label" id="galeri_label" class="custom-file-label">Pilih Galeri</label>
+                    </div>
                 </div>
                 <div class="form-group mt-4">
-                    <label for="galeri">Galeri</label>
-                    <input type="file" class="form-control-file" id="galeri" name="galeri">
+                    <label for="lampiran">File Lampiran</label>
+                    <br>    
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="lampiran" name="lampiran" required>
+                        <label for="lampiran_label" id="lampiran_label" class="custom-file-label">Pilih Lampiran</label>
+                    </div>
+                    {{-- <input type="file" class="form-control-file" id="lampiran" name="lampiran"> --}}
                 </div>
-                <div class="form group mt-5">
+                <div class="form group mt-4">
                     <label for="urlvideo">URL Video</label>
                     <input type="text" class="form-control" id="urlvideo" name="urlvideo" placeholder="URL Video">
                 </div>
@@ -97,6 +107,24 @@
                     console.log(result.view);
                 }
             });
+        });
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                $('#propic').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+
+        $("#galeri").change(function() {
+        readURL(this);
+        document.getElementById('galeri_label').innerHTML = document.getElementById('galeri').files[0].name;
+        });
+
+        $("#lampiran").change(function() {
+        document.getElementById('lampiran_label').innerHTML = document.getElementById('lampiran').files[0].name;
         });
     });
 </script>

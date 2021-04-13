@@ -9,66 +9,17 @@
   <div class="container">
     <div class="card-group">
       <div class="row row-cols-1 row-cols-lg-3 px-3">
-          <div class="col p-0 py-2 px-2">
-            <a href="" class="card bg-grey hover border-0 link-white text-decoration-none p-0">
-              <img src="https://images.unsplash.com/photo-1599999905374-a7fdced81618?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDI0fGFldTZyTC1qNmV3fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-light fw-bold">Judul Card Title Untuk Section Highlight</h5>
-                <p class="card-text link-light h6">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text link-light text-end"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-            </a>
-          </div>
-          <div class="col p-0 py-2 px-2">
-            <a href="" class="card bg-grey hover border-0 link-white text-decoration-none p-0">
-              <img src="https://images.unsplash.com/photo-1599999905374-a7fdced81618?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDI0fGFldTZyTC1qNmV3fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-light fw-bold">Judul Card Title Untuk Section Highlight</h5>
-                <p class="card-text link-light h6">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text link-light text-end"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-            </a>
-          </div>
-          <div class="col p-0 py-2 px-2">
-            <a href="" class="card bg-grey hover border-0 link-white text-decoration-none p-0">
-              <img src="https://images.unsplash.com/photo-1599999905374-a7fdced81618?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDI0fGFldTZyTC1qNmV3fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-light fw-bold">Judul Card Title Untuk Section Highlight</h5>
-                <p class="card-text link-light h6">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text link-light text-end"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-            </a>
-          </div>
-          <div class="col p-0 py-2 px-2">
-            <a href="" class="card bg-grey hover border-0 link-white text-decoration-none p-0">
-              <img src="https://images.unsplash.com/photo-1599999905374-a7fdced81618?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDI0fGFldTZyTC1qNmV3fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-light fw-bold">Judul Card Title Untuk Section Highlight</h5>
-                <p class="card-text link-light h6">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text link-light text-end"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-            </a>
-          </div>
-          <div class="col p-0 py-2 px-2">
-            <a href="" class="card bg-grey hover border-0 link-white text-decoration-none p-0">
-              <img src="https://images.unsplash.com/photo-1599999905374-a7fdced81618?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDI0fGFldTZyTC1qNmV3fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-light fw-bold">Judul Card Title Untuk Section Highlight</h5>
-                <p class="card-text link-light h6">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text link-light text-end"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-            </a>
-          </div>
-          <div class="col p-0 py-2 px-2">
-            <a href="" class="card bg-grey hover border-0 link-white text-decoration-none p-0">
-              <img src="https://images.unsplash.com/photo-1599999905374-a7fdced81618?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDI0fGFldTZyTC1qNmV3fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-light fw-bold">Judul Card Title Untuk Section Highlight</h5>
-                <p class="card-text link-light h6">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text link-light text-end"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-            </a>
-          </div>
+        @foreach($pengumumans as $pengumuman)
+        <div class="col p-0 py-2 px-2">
+          <a href="{{ route("Detail Pengumuman", ['language'=>app()->getLocale(), 'title_slug' => $pengumuman->title_slug]) }}" class="card bg-grey hover border-0 link-white text-decoration-none p-0">
+            <img src="{{$pengumuman->kategori->icon}}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-light fw-bold">{{$pengumuman->title_eng}}</h5>
+              <p class="card-text link-light text-end"><small class="text-muted">Posted pada {{ date('d M Y', strtotime($pengumuman->created_at)) }}</small></p>
+            </div>
+          </a>
+        </div>
+        @endforeach
       </div>
     </div>    	
   </div>
@@ -85,66 +36,17 @@
   <div class="container">
     <div class="card-group">
       <div class="row row-cols-1 row-cols-lg-3 px-3">
+        @foreach($pengumumans as $pengumuman)
           <div class="col p-0 py-2 px-2">
-            <a href="" class="card bg-grey hover border-0 link-white text-decoration-none p-0">
-              <img src="https://images.unsplash.com/photo-1599999905374-a7fdced81618?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDI0fGFldTZyTC1qNmV3fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
+            <a href="{{ route("Detail Pengumuman", ['language'=>app()->getLocale(), 'title_slug' => $pengumuman->title_slug]) }}" class="card bg-grey hover border-0 link-white text-decoration-none p-0">
+              <img src="{{$pengumuman->kategori->icon}}" class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title text-light fw-bold">Judul Card Title Untuk Section Highlight</h5>
-                <p class="card-text link-light h6">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text link-light text-end"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <h5 class="card-title text-light fw-bold">{{$pengumuman->title_ina}}</h5>
+                <p class="card-text link-light text-end"><small class="text-muted">Diposting pada {{ date('d M Y', strtotime($pengumuman->created_at)) }}</small></p>
               </div>
             </a>
           </div>
-          <div class="col p-0 py-2 px-2">
-            <a href="" class="card bg-grey hover border-0 link-white text-decoration-none p-0">
-              <img src="https://images.unsplash.com/photo-1599999905374-a7fdced81618?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDI0fGFldTZyTC1qNmV3fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-light fw-bold">Judul Card Title Untuk Section Highlight</h5>
-                <p class="card-text link-light h6">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text link-light text-end"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-            </a>
-          </div>
-          <div class="col p-0 py-2 px-2">
-            <a href="" class="card bg-grey hover border-0 link-white text-decoration-none p-0">
-              <img src="https://images.unsplash.com/photo-1599999905374-a7fdced81618?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDI0fGFldTZyTC1qNmV3fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-light fw-bold">Judul Card Title Untuk Section Highlight</h5>
-                <p class="card-text link-light h6">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text link-light text-end"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-            </a>
-          </div>
-          <div class="col p-0 py-2 px-2">
-            <a href="" class="card bg-grey hover border-0 link-white text-decoration-none p-0">
-              <img src="https://images.unsplash.com/photo-1599999905374-a7fdced81618?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDI0fGFldTZyTC1qNmV3fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-light fw-bold">Judul Card Title Untuk Section Highlight</h5>
-                <p class="card-text link-light h6">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text link-light text-end"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-            </a>
-          </div>
-          <div class="col p-0 py-2 px-2">
-            <a href="" class="card bg-grey hover border-0 link-white text-decoration-none p-0">
-              <img src="https://images.unsplash.com/photo-1599999905374-a7fdced81618?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDI0fGFldTZyTC1qNmV3fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-light fw-bold">Judul Card Title Untuk Section Highlight</h5>
-                <p class="card-text link-light h6">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text link-light text-end"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-            </a>
-          </div>
-          <div class="col p-0 py-2 px-2">
-            <a href="" class="card bg-grey hover border-0 link-white text-decoration-none p-0">
-              <img src="https://images.unsplash.com/photo-1599999905374-a7fdced81618?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDI0fGFldTZyTC1qNmV3fHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-light fw-bold">Judul Card Title Untuk Section Highlight</h5>
-                <p class="card-text link-light h6">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <p class="card-text link-light text-end"><small class="text-muted">Last updated 3 mins ago</small></p>
-              </div>
-            </a>
-          </div>
+          @endforeach
       </div>
     </div>    	
   </div>

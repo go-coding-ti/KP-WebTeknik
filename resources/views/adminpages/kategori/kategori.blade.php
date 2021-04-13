@@ -5,8 +5,8 @@
     <div class="container-fluid">
 
         <!-- <hr style="margin-top: 20px" class="sidebar-divider my-0"> -->
-        <h1 class="h3 mb-2 text-gray-800">Kategori</h1>
-          <p class="mb-4">Daftar Kategori Website Fakultas Teknik Universitas Udayana</p>
+        <h1 class="h3 mb-2 text-gray-800">Kategori Berita</h1>
+          <p class="mb-4">Daftar Kategori Berita Fakultas Teknik Universitas Udayana</p>
 
           @if (session()->has('statusInput'))
               <div class="row">
@@ -113,21 +113,21 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add New Category</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <h5 class="modal-title" id="addCategory">Tambah Kategori</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
             </button>
         </div>
         <div class="modal-body">
-            <p>Please insert all the form to add new news category.</p>
+            <p>Masukkan Kategori Baru</p>
             <form method="post" action="/admin/category/store" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                  <label for="kategori_ina">Category Ina</label>
+                  <label for="kategori_ina">Kategori Ina</label>
                   <input type="text" class="form-control" id="kategori_ina" name="kategori_ina" value="{{old('title')}}">
                 </div>
                 <div class="form-group">
-                  <label for="kategori_eng">Category Eng</label>
+                  <label for="kategori_eng">Kategori Eng</label>
                   <input type="text" class="form-control" id="kategori_eng" name="kategori_eng" value="{{old('title')}}">
                 </div>
                 <div class="modal-footer">
@@ -141,27 +141,26 @@
     </div>
 </div>
 
-<!-- Show News Category Modal-->
 <div class="modal fade" id="showCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabelshow">Show Category</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-            </button>
-        </div>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="showCategory">Show Kategori</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal('showCategory')">
+          <span aria-hidden="true">×</span>
+          </button>
+      </div>
         <div class="modal-body">
                 <div class="form-group">
-                  <label for="show_kategori_ina">Category Ina</label>
+                  <label for="show_kategori_ina">Kategori Ina</label>
                   <input type="text" class="form-control" id="show_kategori_ina" readonly>
                 </div>
                 <div class="form-group">
-                  <label for="show_kategori_eng">Category Eng</label>
+                  <label for="show_kategori_eng">Kategori Eng</label>
                   <input type="text" class="form-control" id="show_kategori_eng" readonly>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal" onclick="closeModal('showCategory')">Cancel</button>
                 </div>
         </div>
 
@@ -174,26 +173,26 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabeledit">Edit News Category</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <h5 class="modal-title" id="exampleModalLabeledit">Edit Kategori</h5>
+            <button class="close" type="button" data-dismiss="editCategory" aria-label="Close" onclick="closeModal('editCategory')">
             <span aria-hidden="true">×</span>
             </button>
         </div>
         <div class="modal-body">
-            <p>Change the data that need to edit.</p>
+            <p>Masukkan Data Kategori yang Hendak Diubah.</p>
             <form id="edit-form-category" method="post" action="" enctype="multipart/form-data">
                @method('PUT')
                 @csrf
                 <div class="form-group">
-                  <label for="edit_kategori_ina">Category Ina</label>
+                  <label for="edit_kategori_ina">Kategori Ina</label>
                   <input type="text" class="form-control" id="edit_kategori_ina" name="edit_kategori_ina">
                 </div>
                 <div class="form-group">
-                  <label for="edit_kategori_eng">Category Eng</label>
+                  <label for="edit_kategori_eng">Kategori Eng</label>
                   <input type="text" class="form-control" id="edit_kategori_eng" name="edit_kategori_eng">
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal" onclick="closeModal('editCategory')">Cancel</button>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
               </form>              
@@ -208,18 +207,18 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabelhapus">Delete Category</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <h5 class="modal-title" id="exampleModalLabelhapus">Delete Kategori</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal('deleteCategory')">
             <span aria-hidden="true">×</span>
             </button>
           </div>
           <div class="modal-body">
-            <p>Are you sure want to delete this data?</p>
+            <p>Apakah anda yakin ingin menghapus kategori ini?</p>
             <form id="form-delete-category" method="post" action="">
                 @method('delete')
                 @csrf
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" onclick="closeModal('deleteCategory')" data-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </div>
               </form>              
@@ -256,6 +255,10 @@ function show(id,status){
     function deletebc(id){
         $("#form-delete-category").attr("action", "/admin/category/"+id+"/delete");
         $('#deleteCategory').modal('show');
+    }
+
+    function closeModal(jenis){
+      $('#'+jenis).modal('hide'); 
     }
 </script>
 @endsection

@@ -5,10 +5,12 @@
     </div>
     <hr class="border border-light dropdown-divider mb-3 pt-0 mt-0">
     <ul class="list-inline px-2">
-      <li class="list-inline-item my-1">
-        <a href="" class="btn btn-sm bg-red text-light fw-bold text-uppercase">Teknologi</a>
-      </li>
-      <li class="list-inline-item my-1">
+      @foreach($kategoris as $kategori)
+        <li class="list-inline-item my-1">
+          <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="btn btn-sm bg-red text-light fw-bold text-uppercase">{{$kategori->kategori_eng}}</a>
+        </li>
+      @endforeach
+      {{-- <li class="list-inline-item my-1">
         <a href="" class="btn btn-sm bg-success text-light fw-bold text-uppercase">UKM Teknik</a>
       </li>
       <li class="list-inline-item my-1">
@@ -18,7 +20,7 @@
         <a href="" class="btn btn-sm bg-warning text-light fw-bold text-uppercase">PKKMB Fakultas</a>
       </li>
       <li class="list-inline-item my-1">
-        <a href="" class="btn btn-sm bg-red text-light fw-bold text-uppercase">Kejahatan Cyber</a>
+        <a href="" class="btn btn-sm bg-red text-light fw-bold text-uppercase">Kejahatan Cyber</a> --}}
       </li>
     </ul>
   </div>
@@ -31,10 +33,12 @@
     </div>
     <hr class="border border-light dropdown-divider mb-3 pt-0 mt-0">
     <ul class="list-inline px-2">
-      <li class="list-inline-item my-1">
-        <a href="" class="btn btn-sm bg-red text-light fw-bold text-uppercase">Teknologi</a>
-      </li>
-      <li class="list-inline-item my-1">
+      @foreach($kategoris as $kategori)
+        <li class="list-inline-item my-1">
+          <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="btn btn-sm bg-red text-light fw-bold text-uppercase">{{$kategori->kategori_ina}}</a>
+        </li>
+      @endforeach
+      {{-- <li class="list-inline-item my-1">
         <a href="" class="btn btn-sm bg-success text-light fw-bold text-uppercase">UKM Teknik</a>
       </li>
       <li class="list-inline-item my-1">
@@ -45,7 +49,7 @@
       </li>
       <li class="list-inline-item my-1">
         <a href="" class="btn btn-sm bg-red text-light fw-bold text-uppercase">Kejahatan Cyber</a>
-      </li>
+      </li> --}}
     </ul>
   </div>
 @endif

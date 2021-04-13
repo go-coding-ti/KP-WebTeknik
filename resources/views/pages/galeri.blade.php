@@ -12,67 +12,38 @@
         <div class="container">
             <div class="row">
                 <div class="row row-cols-1 row-cols-md-3 g-4">
+                    @foreach($galeris as $galeri)
                     <div class="col">
                         <div class="card bg-grey text-light">
-                            <a href="" class="text-decoration-none link-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                <img src="https://images.unsplash.com/photo-1617435824047-e85931b1a0bb?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDM1fHhIeFlUTUhMZ09jfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
+                            <a href="" class="text-decoration-none link-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$galeri->id}}">
+                                <img src="{{$galeri->galeri}}" class="card-img-top" alt="...">
                                 <div class="card-body my-auto">
-                                    <p class="text-center my-auto">Deskripsi Singkat Dari Fotonya</p>
+                                    <p class="text-center my-auto">{{$galeri->title_eng}}</p>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="card bg-grey text-light">
-                            <a href="" class="text-decoration-none link-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                <img src="https://images.unsplash.com/photo-1617717663134-5b4cb851be49?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <p class="text-center my-auto">Deskripsi Singkat Dari Fotonya</p>
+                    {{-- Modal Start --}}
+                    <div class="modal fade" id="staticBackdrop{{$galeri->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content bg-grey text-light">
+                                <div class="modal-header border border-dark">
+                                    <h5 class="modal-title fw-bold fs-4" id="staticBackdropLabel">{{$galeri->title_eng}}</h5>
+                                    <button type="button" class="btn btn-dark text-white" data-bs-dismiss="modal"><i class="fas fa-times"></i></button>
                                 </div>
-                            </a>
+                                <div class="modal-body text-center">
+                                    <img id="imageGaleriModal" src="{{$galeri->galeri}}" style="width:50%; height:50%" alt="...">
+                                </div>
+                                <div class="modal-footer d-block border border-dark my-auto">
+                                    <p class="text-center my-auto fs-5" id="deskripsiGaleriModal">{{$galeri->deskripsi_eng}}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="card bg-grey text-light">
-                            <a href="" class="text-decoration-none link-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                <img src="https://images.unsplash.com/photo-1495709276535-bb4928b7b233?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDU2fHhIeFlUTUhMZ09jfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="...">
-                                <div class="card-body">
-                                    <p class="text-center my-auto">Deskripsi Singkat Dari Fotonya</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card bg-grey text-light">
-                            <a href="" class="text-decoration-none link-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                <img src="https://images.unsplash.com/photo-1509109325642-f24fe47683f9?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDk3fHhIeFlUTUhMZ09jfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
-                                <div class="card-body my-auto">
-                                    <p class="text-center my-auto">Deskripsi Singkat Dari Fotonya</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    {{-- Modal End --}}
+                    @endforeach
                 </div>
             </div>
-
-            {{-- Modal Start --}}
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-xl">
-                    <div class="modal-content bg-grey text-light">
-                        <div class="modal-header border border-dark">
-                            <h5 class="modal-title fw-bold fs-4" id="staticBackdropLabel">Galery</h5>
-                            <button type="button" class="btn btn-dark text-white" data-bs-dismiss="modal"><i class="fas fa-times"></i></button>
-                        </div>
-                        <div class="modal-body">
-                            <img src="https://images.unsplash.com/photo-1509109325642-f24fe47683f9?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDk3fHhIeFlUTUhMZ09jfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
-                        </div>
-                        <div class="modal-footer d-block border border-dark my-auto">
-                            <p class="text-center my-auto fs-5">Deskripsi Singkat Dari Fotonya</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- Modal End --}}
         </div>
     @endif
 
@@ -87,67 +58,38 @@
         <div class="container">
             <div class="row">
                 <div class="row row-cols-1 row-cols-md-3 g-4">
+                    @foreach($galeris as $galeri)
                     <div class="col">
                         <div class="card bg-grey text-light">
-                            <a href="" class="text-decoration-none link-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                <img src="https://images.unsplash.com/photo-1617435824047-e85931b1a0bb?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDM1fHhIeFlUTUhMZ09jfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
+                            <a href="" class="text-decoration-none link-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$galeri->id}}">
+                                <img src="{{$galeri->galeri}}" class="card-img-top" alt="...">
                                 <div class="card-body my-auto">
-                                    <p class="text-center my-auto">Deskripsi Singkat Dari Fotonya</p>
+                                    <p class="text-center my-auto">{{$galeri->title_ina}}</p>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="card bg-grey text-light">
-                            <a href="" class="text-decoration-none link-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                <img src="https://images.unsplash.com/photo-1617717663134-5b4cb851be49?ixid=MXwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <p class="text-center my-auto">Deskripsi Singkat Dari Fotonya</p>
+                    {{-- Modal Start --}}
+                    <div class="modal fade" id="staticBackdrop{{$galeri->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content bg-grey text-light">
+                                <div class="modal-header border border-dark">
+                                    <h5 class="modal-title fw-bold fs-4" id="staticBackdropLabel">{{$galeri->title_ina}}</h5>
+                                    <button type="button" class="btn btn-dark text-white" data-bs-dismiss="modal"><i class="fas fa-times"></i></button>
                                 </div>
-                            </a>
+                                <div class="modal-body text-center">
+                                    <img id="imageGaleriModal" src="{{$galeri->galeri}}"style="width:50%; height:50%"  alt="...">
+                                </div>
+                                <div class="modal-footer d-block border border-dark my-auto">
+                                    <p class="text-center my-auto fs-5" id="deskripsiGaleriModal">{{$galeri->deskripsi_ina}}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="card bg-grey text-light">
-                            <a href="" class="text-decoration-none link-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                <img src="https://images.unsplash.com/photo-1495709276535-bb4928b7b233?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDU2fHhIeFlUTUhMZ09jfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="...">
-                                <div class="card-body">
-                                    <p class="text-center my-auto">Deskripsi Singkat Dari Fotonya</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card bg-grey text-light">
-                            <a href="" class="text-decoration-none link-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                <img src="https://images.unsplash.com/photo-1509109325642-f24fe47683f9?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDk3fHhIeFlUTUhMZ09jfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
-                                <div class="card-body my-auto">
-                                    <p class="text-center my-auto">Deskripsi Singkat Dari Fotonya</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    {{-- Modal End --}}
+                    @endforeach
                 </div>
             </div>
-
-            {{-- Modal Start --}}
-            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-xl">
-                    <div class="modal-content bg-grey text-light">
-                        <div class="modal-header border border-dark">
-                            <h5 class="modal-title fw-bold fs-4" id="staticBackdropLabel">Galery</h5>
-                            <button type="button" class="btn btn-dark text-white" data-bs-dismiss="modal"><i class="fas fa-times"></i></button>
-                        </div>
-                        <div class="modal-body">
-                            <img src="https://images.unsplash.com/photo-1509109325642-f24fe47683f9?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDk3fHhIeFlUTUhMZ09jfHxlbnwwfHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="...">
-                        </div>
-                        <div class="modal-footer d-block border border-dark my-auto">
-                            <p class="text-center my-auto fs-5">Deskripsi Singkat Dari Fotonya</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- Modal End --}}
         </div>
     @endif
 @endsection

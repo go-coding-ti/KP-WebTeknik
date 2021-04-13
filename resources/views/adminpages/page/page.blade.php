@@ -143,13 +143,8 @@ function statusBtn(id) {
       }).then(function(value) {
           if (value) {
             jQuery.ajax({  
-              url: "{{url('admin/pages/status')}}",
-              type: "POST",
-              data: {
-                _token: $('#signup-token_'+id).val(),
-                id: id,
-                status: 'aktif',
-            },
+              url: "/admin/pages/status/"+id+"/aktif",
+              type: "GET",
               success: function(result){
               }
           });
@@ -165,13 +160,8 @@ function statusBtn(id) {
       }).then(function(value) {
           if (value) {
             jQuery.ajax({
-              url: "{{url('admin/pages/status')}}",
-              type: "POST",
-              data: {
-                _token: $('#signup-token_'+id).val(),
-                id: id,
-                status: 'tidak_aktif',
-            },
+              url: "/admin/pages/status/"+id+"/tidak_aktif",
+              type: "GET",
               success: function(result){
               }
           });

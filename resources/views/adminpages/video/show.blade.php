@@ -26,10 +26,10 @@
               <h6 class="m-0 font-weight-bold text-primary">Detail Video</h6>
             </div>
             <div class="card-body">
-                <div class="col px-5 mb-3">
+                <div class="col px-12 mb-1">
                     <div class="card border-0 bg-grey hover">
                         <div class="card-body text-center">
-                        <iframe src="{{$video->link}}" title="YouTube video" allowfullscreen></iframe>
+                        <iframe style="width:75%; height:550px" src="{{$video->link}}" title="YouTube video" allowfullscreen></iframe>
                             </div>
                         <div class="card-body text-center">
                             <h5 class="card-title text-dark fw-bold">{{$video->judul}}</h5>

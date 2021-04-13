@@ -27,12 +27,20 @@
                 @csrf
                 @method('PUT')
                 <div class="form group mt-5">
-                    <label for="title">Judul</label>
+                    <label for="title">Judul Ina</label>
                     <input type="text" class="form-control" id="judul" name="judul" value="{{$video->judul}}" required>
                 </div>
+                <div class="form group mt-4">
+                    <label for="title">Judul Eng</label>
+                    <input type="text" class="form-control" id="judul_eng" name="judul_eng" value="{{$video->judul_eng}}" required>
+                </div>
                 <div class="form-group form-group mt-4">
-                    <label for="description">Deskripsi</label>
+                    <label for="description">Deskripsi Ina</label>
                     <textarea id="deskripsi" class="form-control" name="deskripsi" placeholder="Deskripsi Video" rows="10" required>{{$video->deskripsi}}</textarea>
+                </div>
+                <div class="form-group form-group mt-4">
+                    <label for="description">Deskripsi Eng</label>
+                    <textarea id="deskripsi_deskripsi_eng" class="form-control" name="deskripsi_eng" placeholder="Deskripsi Video" rows="10" required></textarea>
                 </div>
                 <div class="form group mt-4">
                     <label for="urlvideo">URL Video</label>

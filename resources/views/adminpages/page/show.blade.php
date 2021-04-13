@@ -32,8 +32,7 @@
                             <h3 class="card-title text-dark fw-bold">{{$page->title_ina}}</h5>
                         </div>
                         {!! $page->content_ina !!}
-                        <div class="form-group mt-4">
-                            <a href="/admin/pages" class="btn btn-danger"><i class="fa sm fa-arrow-left"></i>   Kembali</a>
+                        <div class="form-group mt-4"> 
                         </div>
                     </div>
                 </div>
