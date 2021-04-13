@@ -5,10 +5,7 @@
                 <div class="col-md mb-5">
                     <p class="fw-bold h5 text-white text-start">CONTACT</p>
                     <hr class="border border-light dropdown-divider">
-                    <p class="fw-bold text-start text-light">Kampus Unud Jimbaran Badung St, Bali 80361</p>
-                    <p class="fw-bold text-start text-light">Contact Number: +62 (361) 703320</p>
-                    <p class="fw-bold text-start text-light">Fax: +62 (361) 703320</p>
-                    <p class="fw-bold text-start text-light">Email: ft@unud.ac.id</p>
+                    {!! $preference->footer_eng !!}
                 </div>
                 <div class="col-md">
                     <p class="fw-bold h5 text-white text-start">INFORMATION</p>
@@ -73,10 +70,7 @@
                 <div class="col-md mb-5">
                     <p class="fw-bold h5 text-white text-start">KONTAK</p>
                     <hr class="border border-light dropdown-divider">
-                    <p class="fw-bold text-start text-light">Jl. Kampus Unud Jimbaran Badung, Bali 80361</p>
-                    <p class="fw-bold text-start text-light">Nomor Telepon: +62 (361) 703320</p>
-                    <p class="fw-bold text-start text-light">Fax: +62 (361) 703320</p>
-                    <p class="fw-bold text-start text-light">Email: ft@unud.ac.id</p>
+                    {!! $preference->footer_ina !!}
                 </div>
                 <div class="col-md">
                     <p class="fw-bold h5 text-white text-start">INFORMASI</p>
@@ -127,7 +121,7 @@
             <div class="row">
                 <hr class="border border-light dropdown-divider">
                 <div class="col-md">
-                    <p class="fw-bold">Copyright &copy 2021 | Fakultas Teknik, Universitas Udayana</p>
+                    <p class="fw-bold">Copyright &copy {{ date('Y', strtotime(date('Y-m-d H:i:s'))) }} | Fakultas Teknik, Universitas Udayana</p>
                 </div>
             </div>
         </div>

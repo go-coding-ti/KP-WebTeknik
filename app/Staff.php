@@ -7,11 +7,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class Post extends Authenticatable
+class Staff extends Authenticatable
 {
     use Notifiable;
     use SoftDeletes;
-    public function kategori(){
-        return $this->belongsTo('App\Kategori', 'id_kategori');
+    protected $table = "staffs";
+    public function prodi(){
+        return $this->belongsTo('App\Prodi', 'id_prodi');
     }
+
 }

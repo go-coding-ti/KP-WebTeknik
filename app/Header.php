@@ -12,4 +12,7 @@ class Header extends Authenticatable
 {
     use SoftDeletes;
     protected $table = 'headers';
+    public function menu(){
+        return $this->hasMany('App\Menu', 'id_header');
+    }
 }

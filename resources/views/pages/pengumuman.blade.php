@@ -4,98 +4,32 @@
     @if (App::getLocale() == 'en')
     <div class="container mt-5 pt-5">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-            <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Semua Pengumuman</h1>
-            <h1 class="h6 fw-bold pb-1"><a class="text-decoration-none fw-bold card bg-red text-white p-2" href="{{ route("Index", app()->getLocale() ) }}">Kembali</a></h1>
+            <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">All Events</h1>
+            <h1 class="h6 fw-bold pb-1"><a class="text-decoration-none fw-bold card bg-red text-white p-2" href="{{ route("Index", app()->getLocale() ) }}">Back</a></h1>
         </div>
         <hr class="border border-light dropdown-divider">
     </div>
     <div class="container">
         <div class="row d-flex justify-content-md-center">
             <div class="col-md-12 col-lg-8">
+                @foreach($pengumumans as $pengumuman)
                 <div class="card bg-grey text-light mb-3">
                     <div class="row g-0">
                         <div class="col-md-5 my-auto">
-                            <img src="https://images.unsplash.com/photo-1568725992957-ead7b0259b5f?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8cVBZc0R6dkpPWWN8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="w-100 h-100" alt="...">
+                            <img src="{{$pengumuman->kategori->icon}}" class="w-100 h-100" alt="...">
                         </div>
                         <div class="col-md-7">
                             <div class="card-body">
-                                <h5 class="card-title fw-bold"><a href="{{ route("Detail Pengumuman", app()->getLocale() ) }}" class="text-decoration-none link-light">Judul Pengumuman</a></h5>
-                                <p class="card-text small"><span class="text-muted">Oleh Admin A</span>
+                                <h5 class="card-title fw-bold"><a href="{{ route("Detail Pengumuman", ['language'=>app()->getLocale(), 'title_slug' => $pengumuman->title_slug]) }}" class="text-decoration-none link-light">{{$pengumuman->title_eng}}</a></h5>
+                                <p class="card-text small"><span class="text-muted">By Admin A</span>
                                     <span class="text-muted"> | </span>
-                                    <span class="text-muted">Pada 15-Mar-20</span></p>
-                                <p class="card-text">Deskripsi singkat dari Pengumuman yang ditampilkan nantinya pada list pengumuman</p>
-                                <p class="card-text small">
-                                <span class="text-muted"><i class="fas fa-comments"></i> 27</span>
-                                <span class="fw-bold mx-2 text-muted"> | </span>
-                                <span class="text-muted"><i class="fas fa-eye"></i> 150</span>
+                                    <span class="text-muted">Posted on {{ date('d M Y', strtotime($pengumuman->created_at)) }}</span></p>
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card bg-grey text-light mb-3">
-                    <div class="row g-0">
-                        <div class="col-md-5 my-auto">
-                            <img src="https://images.unsplash.com/photo-1568725992957-ead7b0259b5f?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8cVBZc0R6dkpPWWN8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="w-100 h-100" alt="...">
-                        </div>
-                        <div class="col-md-7">
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold"><a href="{{ route("Detail Pengumuman", app()->getLocale() ) }}" class="text-decoration-none link-light">Judul Pengumuman</a></h5>
-                                <p class="card-text small"><span class="text-muted">Oleh Admin A</span>
-                                    <span class="text-muted"> | </span>
-                                    <span class="text-muted">Pada 15-Mar-20</span></p>
-                                <p class="card-text">Deskripsi singkat dari Pengumuman yang ditampilkan nantinya pada list pengumuman</p>
-                                <p class="card-text small">
-                                <span class="text-muted"><i class="fas fa-comments"></i> 27</span>
-                                <span class="fw-bold mx-2 text-muted"> | </span>
-                                <span class="text-muted"><i class="fas fa-eye"></i> 150</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card bg-grey text-light mb-3">
-                    <div class="row g-0">
-                        <div class="col-md-5 my-auto">
-                            <img src="https://images.unsplash.com/photo-1568725992957-ead7b0259b5f?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8cVBZc0R6dkpPWWN8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="w-100 h-100" alt="...">
-                        </div>
-                        <div class="col-md-7">
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold"><a href="{{ route("Detail Pengumuman", app()->getLocale() ) }}" class="text-decoration-none link-light">Judul Pengumuman</a></h5>
-                                <p class="card-text small"><span class="text-muted">Oleh Admin A</span>
-                                    <span class="text-muted"> | </span>
-                                    <span class="text-muted">Pada 15-Mar-20</span></p>
-                                <p class="card-text">Deskripsi singkat dari Pengumuman yang ditampilkan nantinya pada list pengumuman</p>
-                                <p class="card-text small">
-                                <span class="text-muted"><i class="fas fa-comments"></i> 27</span>
-                                <span class="fw-bold mx-2 text-muted"> | </span>
-                                <span class="text-muted"><i class="fas fa-eye"></i> 150</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card bg-grey text-light mb-3">
-                    <div class="row g-0">
-                        <div class="col-md-5 my-auto">
-                            <img src="https://images.unsplash.com/photo-1568725992957-ead7b0259b5f?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8cVBZc0R6dkpPWWN8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="w-100 h-100" alt="...">
-                        </div>
-                        <div class="col-md-7">
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold"><a href="{{ route("Detail Pengumuman", app()->getLocale() ) }}" class="text-decoration-none link-light">Judul Pengumuman</a></h5>
-                                <p class="card-text small"><span class="text-muted">Oleh Admin A</span>
-                                    <span class="text-muted"> | </span>
-                                    <span class="text-muted">Pada 15-Mar-20</span></p>
-                                <p class="card-text">Deskripsi singkat dari Pengumuman yang ditampilkan nantinya pada list pengumuman</p>
-                                <p class="card-text small">
-                                <span class="text-muted"><i class="fas fa-comments"></i> 27</span>
-                                <span class="fw-bold mx-2 text-muted"> | </span>
-                                <span class="text-muted"><i class="fas fa-eye"></i> 150</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
                 <ul class="pagination bg-dark justify-content-center mt-5">
                     <li class="page-item">
                     <a class="page-link pagination bg-black link-light border-light" href="#" tabindex="-1" aria-disabled="true">Previous</a>
@@ -162,90 +96,24 @@
         <div class="container">
             <div class="row d-flex justify-content-md-center">
                 <div class="col-md-12 col-lg-8">
+                    @foreach($pengumumans as $pengumuman)
                     <div class="card bg-grey text-light mb-3">
                         <div class="row g-0">
                             <div class="col-md-5 my-auto">
-                                <img src="https://images.unsplash.com/photo-1568725992957-ead7b0259b5f?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8cVBZc0R6dkpPWWN8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="w-100 h-100" alt="...">
+                                <img src="{{$pengumuman->kategori->icon}}" class="w-100 h-100" alt="...">
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
-                                    <h5 class="card-title fw-bold"><a href="{{ route("Detail Pengumuman", app()->getLocale() ) }}" class="text-decoration-none link-light">Judul Pengumuman</a></h5>
+                                    <h5 class="card-title fw-bold"><a href="{{ route("Detail Pengumuman", ['language'=>app()->getLocale(), 'title_slug' => $pengumuman->title_slug]) }}" class="text-decoration-none link-light">{{$pengumuman->title_ina}}</a></h5>
                                     <p class="card-text small"><span class="text-muted">Oleh Admin A</span>
                                         <span class="text-muted"> | </span>
-                                        <span class="text-muted">Pada 15-Mar-20</span></p>
-                                    <p class="card-text">Deskripsi singkat dari Pengumuman yang ditampilkan nantinya pada list pengumuman</p>
-                                    <p class="card-text small">
-                                    <span class="text-muted"><i class="fas fa-comments"></i> 27</span>
-                                    <span class="fw-bold mx-2 text-muted"> | </span>
-                                    <span class="text-muted"><i class="fas fa-eye"></i> 150</span>
+                                        <span class="text-muted">Diposting pada {{ date('d M Y', strtotime($pengumuman->created_at)) }}</span></p>
                                     </p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card bg-grey text-light mb-3">
-                        <div class="row g-0">
-                            <div class="col-md-5 my-auto">
-                                <img src="https://images.unsplash.com/photo-1568725992957-ead7b0259b5f?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8cVBZc0R6dkpPWWN8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="w-100 h-100" alt="...">
-                            </div>
-                            <div class="col-md-7">
-                                <div class="card-body">
-                                    <h5 class="card-title fw-bold"><a href="{{ route("Detail Pengumuman", app()->getLocale() ) }}" class="text-decoration-none link-light">Judul Pengumuman</a></h5>
-                                    <p class="card-text small"><span class="text-muted">Oleh Admin A</span>
-                                        <span class="text-muted"> | </span>
-                                        <span class="text-muted">Pada 15-Mar-20</span></p>
-                                    <p class="card-text">Deskripsi singkat dari Pengumuman yang ditampilkan nantinya pada list pengumuman</p>
-                                    <p class="card-text small">
-                                    <span class="text-muted"><i class="fas fa-comments"></i> 27</span>
-                                    <span class="fw-bold mx-2 text-muted"> | </span>
-                                    <span class="text-muted"><i class="fas fa-eye"></i> 150</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card bg-grey text-light mb-3">
-                        <div class="row g-0">
-                            <div class="col-md-5 my-auto">
-                                <img src="https://images.unsplash.com/photo-1568725992957-ead7b0259b5f?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8cVBZc0R6dkpPWWN8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="w-100 h-100" alt="...">
-                            </div>
-                            <div class="col-md-7">
-                                <div class="card-body">
-                                    <h5 class="card-title fw-bold"><a href="{{ route("Detail Pengumuman", app()->getLocale() ) }}" class="text-decoration-none link-light">Judul Pengumuman</a></h5>
-                                    <p class="card-text small"><span class="text-muted">Oleh Admin A</span>
-                                        <span class="text-muted"> | </span>
-                                        <span class="text-muted">Pada 15-Mar-20</span></p>
-                                    <p class="card-text">Deskripsi singkat dari Pengumuman yang ditampilkan nantinya pada list pengumuman</p>
-                                    <p class="card-text small">
-                                    <span class="text-muted"><i class="fas fa-comments"></i> 27</span>
-                                    <span class="fw-bold mx-2 text-muted"> | </span>
-                                    <span class="text-muted"><i class="fas fa-eye"></i> 150</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card bg-grey text-light mb-3">
-                        <div class="row g-0">
-                            <div class="col-md-5 my-auto">
-                                <img src="https://images.unsplash.com/photo-1568725992957-ead7b0259b5f?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8cVBZc0R6dkpPWWN8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="w-100 h-100" alt="...">
-                            </div>
-                            <div class="col-md-7">
-                                <div class="card-body">
-                                    <h5 class="card-title fw-bold"><a href="{{ route("Detail Pengumuman", app()->getLocale() ) }}" class="text-decoration-none link-light">Judul Pengumuman</a></h5>
-                                    <p class="card-text small"><span class="text-muted">Oleh Admin A</span>
-                                        <span class="text-muted"> | </span>
-                                        <span class="text-muted">Pada 15-Mar-20</span></p>
-                                    <p class="card-text">Deskripsi singkat dari Pengumuman yang ditampilkan nantinya pada list pengumuman</p>
-                                    <p class="card-text small">
-                                    <span class="text-muted"><i class="fas fa-comments"></i> 27</span>
-                                    <span class="fw-bold mx-2 text-muted"> | </span>
-                                    <span class="text-muted"><i class="fas fa-eye"></i> 150</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                     <ul class="pagination bg-dark justify-content-center mt-5">
                         <li class="page-item">
                         <a class="page-link pagination bg-black link-light border-light" href="#" tabindex="-1" aria-disabled="true">Previous</a>

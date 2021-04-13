@@ -28,6 +28,9 @@
                 <a class= "btn btn-info text-white mb-4" href="{{route('admin-header-create')}}"><i class="fas fa-plus"></i>  Tambah Header</a>
                 <a class= "btn btn-success text-white mb-4" href="{{route('admin-menu-create')}}"><i class="fas fa-plus"></i>  Tambah Menu</a>
                 <a class= "btn btn-primary text-white mb-4" href="{{route('admin-submenu-create')}}"><i class="fas fa-plus"></i>  Tambah Sub Menu</a>
+                <ul class="list-group mb-1">
+                  <li class="list-group-item">Beranda</li>
+                </ul>
                     @foreach($headers as $header)
                     <ul class="list-group mb-1">
                         <li class="list-group-item">{{$header->header_ina}}
@@ -55,6 +58,18 @@
                         @endforeach
                       @endforeach
                     @endforeach
+                    <ul class="list-group mb-1">
+                      <li class="list-group-item">Tentang</li>
+                    </ul>
+                    <ul class="list-group ml-5 mb-1">
+                      <li class="list-group-item">Tentang Fakultas Teknik</li>
+                    </ul>
+                    <ul class="list-group ml-5 mb-1">
+                      <li class="list-group-item">Manajemen</li>
+                    </ul>
+                    <ul class="list-group ml-5 mb-1">
+                      <li class="list-group-item">Staf Pengajar</li>
+                    </ul>
             </div>
           </div>
           <!-- smpe sini -->

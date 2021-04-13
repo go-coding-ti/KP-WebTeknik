@@ -120,7 +120,7 @@ class AgendaController extends Controller
             $agendaImage->save();
         }
 
-        return redirect('/admin/events')->with('statusInput', 'Berita successfully added to record');
+        return redirect('/admin/events')->with('statusInput', 'Agenda successfully added to record');
     }
 
     public function destroy($id)

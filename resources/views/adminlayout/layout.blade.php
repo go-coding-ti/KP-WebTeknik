@@ -57,7 +57,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Fakultas Teknik Universitas Udayana 2021</span>
+            <span>Copyright &copy; Fakultas Teknik Universitas Udayana  {{ date('Y', strtotime(date('Y-m-d H:i:s'))) }}</span>
           </div>
         </div>
       </footer>

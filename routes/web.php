@@ -12,78 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::redirect('/', '/id');
-Route::group(['prefix' => '{language}'], function () {
-    Route::get('/', function () {
-        return view('pages/index');
-    })->name('Index');
 
-    Route::get('/video', function () {
-        return view('pages/video');
-    })->name('Video');
-    
-    Route::get('/video/detail', function () {
-        return view('pages/detail-video');
-    })->name('Detail Video');
-
-    Route::get('/agenda', function () {
-        return view('pages/agenda');
-    })->name('Agenda');
-
-    Route::get('/agenda/detail', function () {
-        return view('pages/detail-agenda');
-    })->name('Detail Agenda');
-
-    Route::get('/pengumuman', function () {
-        return view('pages/pengumuman');
-    })->name('Pengumuman');
-
-    Route::get('/pengumuman/detail', function () {
-        return view('pages/detail-pengumuman');
-    })->name('Detail Pengumuman');
-
-    Route::get('/berita', function () {
-        return view('pages/berita');
-    })->name('Berita');
-
-    Route::get('/berita/detail', function () {
-        return view('pages/detail-berita');
-    })->name('Detail Berita');
-
-    Route::get('/galeri', function () {
-        return view('pages/galeri');
-    })->name('Galeri');
-
-    Route::get('/staff-pengajar', function () {
-        return view('pages/staff-pengajar');
-    })->name('Staff Pengajar');
-
-    Route::get('/staff-pengajar/detail', function () {
-        return view('pages/detail-staff-pengajar');
-    })->name('Detail Staff Pengajar');
-
-    Route::get('/management', function () {
-        return view('pages/management');
-    })->name('Management');
-
-    Route::get('/management/detail', function () {
-        return view('pages/detail-management');
-    })->name('Detail Management');
-
-    Route::get('/about', function () {
-        return view('pages/tentang-teknik');
-    })->name('About');
-});
-
-//Pages Front End Routes
-
-
-
-
-//Admin Route
-//Route::get('/', 'AdminController\BeritaController@index')->name('admin-berita');
-
-Route::prefix('admin')->group(function () {
+//ADMIN ROUTE
+Route::group(['prefix' => 'admin'], function () {
 
 	//Admin Dashboard
     Route::get('/dashboard', 'AdminController\HomeController@index')->name('admin-home');
@@ -108,16 +39,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/category/pengumuman/{id}/edit', 'AdminController\PengumumanKategoriController@edit')->name('admin-pengumumankategori-edit');
     Route::put('/category/pengumuman/{id}', 'AdminController\PengumumanKategoriController@update')->name('admin-pengumumankategori-update');
     Route::delete('/category/pengumuman/{id}/delete', 'AdminController\PengumumanKategoriController@destroy')->name('admin-pengumumankategori-destroy');
-
-    //Post Controller
-    Route::get('/posts', 'AdminController\PostController@index')->name('admin-post-home');
-    Route::get('/posts/create', 'AdminController\PostController@create')->name('admin-post-create');
-    Route::post('/posts/store', 'AdminController\PostController@store')->name('admin-post-store');
-    Route::get('/posts/{id}/edit', 'AdminController\PostController@edit')->name('admin-post-edit');
-    Route::post('/posts/{id}', 'AdminController\PostController@update')->name('admin-post-update');
-    Route::get('/posts/delete/{id}', 'AdminController\PostController@destroy')->name('admin-post-delete');
-    Route::get('/posts/show/{kategori}/{judul_slug}', 'AdminController\PostController@show')->name('admin-post-show');
-    Route::post('/posts/status', 'AdminController\PostController@status')->name('admin-post-status');
 
     //Berita Controller
     Route::get('/news', 'AdminController\BeritaController@index')->name('admin-berita-home');
@@ -168,6 +89,15 @@ Route::prefix('admin')->group(function () {
     Route::get('/galery/show/{title_slug}', 'AdminController\GaleriController@show')->name('admin-galeri-show');
     Route::get('/galery/delete/{id}', 'AdminController\GaleriController@destroy')->name('admin-galeri-delete');
 
+    //Staff Controller
+    Route::get('/staf', 'AdminController\StaffController@index')->name('admin-staff-home');
+    Route::get('/staf/create', 'AdminController\StaffController@create')->name('admin-staff-create');
+    Route::post('/staf/store', 'AdminController\StaffController@store')->name('admin-staff-store');
+    Route::get('/staf/{id}/edit', 'AdminController\StaffController@edit')->name('admin-staff-edit');
+    Route::post('/staf/{id}', 'AdminController\StaffController@update')->name('admin-staff-update');
+    Route::get('/staf/delete/{id}', 'AdminController\StaffController@destroy')->name('admin-staff-delete');
+    Route::get('/staf/show/{kategori}/{judul_slug}', 'AdminController\StaffController@show')->name('admin-staff-show');
+
     //Menu Controller
     Route::get('/menus', 'AdminController\MenuController@index')->name('admin-menu-home');
     //Header
@@ -203,6 +133,13 @@ Route::prefix('admin')->group(function () {
     Route::get('/setting/preferences', 'AdminController\PreferenceController@index')->name('admin-preference-home');
     Route::post('/setting/preferences/store', 'AdminController\PreferenceController@store')->name('admin-preference-store');
 
+    //Prodi Controller
+    Route::get('/prodi', 'AdminController\ProdiController@index')->name('admin-prodi-home');
+    Route::post('/prodi/store', 'AdminController\ProdiController@store')->name('admin-prodi-store');
+    Route::get('/prodi/{id}/edit', 'AdminController\ProdiController@edit')->name('admin-prodi-edit');
+    Route::put('/prodi/{id}', 'AdminController\ProdiController@update')->name('admin-prodi-update');
+    Route::delete('/prodi/{id}/delete', 'AdminController\ProdiController@destroy')->name('admin-prodi-destroy');
+
     //Social Controller
     Route::get('/setting/social', 'AdminController\SocialController@index')->name('admin-social-home');
     Route::post('setting/social/store', 'AdminController\SocialController@store')->name('admin-social-store');
@@ -219,3 +156,59 @@ Route::prefix('admin')->group(function () {
     Route::delete('/videos/{id}/delete', 'AdminController\VideoController@destroy')->name('admin-video-destroy');
     Route::get('/videos/show/{judul_slug}', 'AdminController\VideoController@show')->name('admin-video-show');
 });
+
+Route::redirect('/', '/id');
+Route::group(['prefix' => '{language}'], function () {
+    Route::get('/', 'HomeController@index')->name('Index');
+
+    //Berita
+    Route::get('/news', 'HomeController@berita')->name('Berita');
+    Route::get('/news/category/{kategori}', 'HomeController@beritaKategori')->name('Berita Kategori');
+    Route::get('/news/{title_slug}', 'HomeController@showBerita')->name('Detail Berita');
+
+    //Agenda
+    Route::get('/events', 'HomeController@agenda')->name('Agenda');
+    Route::get('/events/category/{kategori}', 'HomeController@agendaKategori')->name('Agenda Kategori');
+    Route::get('/events/{title_slug}', 'HomeController@showAgenda')->name('Detail Agenda');
+
+    //Pengumuman
+    Route::get('/announcements', 'HomeController@pengumuman')->name('Pengumuman');
+    Route::get('/announcements/{title_slug}', 'HomeController@showPengumuman')->name('Detail Pengumuman');
+
+    //Galeri
+    Route::get('/gallery', 'HomeController@galeri')->name('Galeri');
+
+    //Video
+    Route::get('/videos', 'HomeController@video')->name('Video');
+    
+    Route::get('/videos/{title_slug}', 'HomeController@videoShow')->name('Detail Video');
+
+    Route::get('/staff-pengajar', function () {
+        return view('pages/staff-pengajar');
+    })->name('Staff Pengajar');
+
+    Route::get('/staff-pengajar/detail', function () {
+        return view('pages/detail-staff-pengajar');
+    })->name('Detail Staff Pengajar');
+
+    Route::get('/management', function () {
+        return view('pages/management');
+    })->name('Management');
+
+    Route::get('/management/detail', function () {
+        return view('pages/detail-management');
+    })->name('Detail Management');
+
+    Route::get('/about', function () {
+        return view('pages/tentang-teknik');
+    })->name('About');
+});
+
+//Pages Front End Routes
+
+
+
+
+//Admin Route
+//Route::get('/', 'AdminController\BeritaController@index')->name('admin-berita');
+

@@ -51,6 +51,7 @@
                       <th>Judul Ina</th>
                       <th>Judul Eng</th>
                       <th>Kategori</th>
+                      <th>Dilihat</th>
                       <th width="75">Status</th>
                       <th width="150">Action</th>
                     </tr>
@@ -68,6 +69,7 @@
                       <td>{{$berita->title_ina}}</td>
                       <td>{{$berita->title_eng}}</td>
                       <td>{{$berita->kategori->kategori_ina}}
+                      <td>{{$berita->read_count}} Kali</td>
                       <td>
                         <label class="switch">
                          <input id="signup-token_{{$berita->id}}" name="_token" type="hidden" value="{{csrf_token()}}">

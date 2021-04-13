@@ -26,12 +26,20 @@
             <form id="form-product" method="post" action="{{route('admin-video-store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="form group mt-5">
-                    <label for="title">Judul</label>
-                    <input type="text" class="form-control" id="judul" name="judul" placeholder="Judul Video" required>
+                    <label for="title">Judul Ina</label>
+                    <input type="text" class="form-control" id="judul" name="judul" placeholder="Judul Video Ina" required>
+                </div>
+                <div class="form group mt-4">
+                    <label for="title">Judul Eng</label>
+                    <input type="text" class="form-control" id="judul_eng" name="judul_eng" placeholder="Judul Video Eng" required>
                 </div>
                 <div class="form-group form-group mt-4">
                     <label for="description">Deskripsi</label>
                     <textarea id="deskripsi" class="form-control" name="deskripsi" placeholder="Deskripsi Video" rows="10" required></textarea>
+                </div>
+                <div class="form-group form-group mt-4">
+                    <label for="description">Deskripsi</label>
+                    <textarea id="deskripsi_deskripsi_eng" class="form-control" name="deskripsi_eng" placeholder="Deskripsi Video" rows="10" required></textarea>
                 </div>
                 <div class="form group mt-4">
                     <label for="urlvideo">URL Video</label>

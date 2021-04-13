@@ -2,18 +2,18 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a style="height:50px !important;" class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/dashboard">
+        <a style="height:60px !important;" class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/dashboard">
           <div class="sidebar-brand-icon">
-            <img style="height: 37px;" src="{{asset('assets/admin/img/unud.png')}}">
+            <img style="height: 45px;" src="{{asset('assets/admin/img/unud.png')}}">
           </div>
-          <div style="font-size: 15px" class="sidebar-brand-text mx-3">Web Teknik</div>
+          <div style="font-size: 12px" class="sidebar-brand-text mx-3 ml-4">Fakultas Teknik Admin</div>
         </a>
         
         <!-- Divider -->
         <hr class="sidebar-divider my-0">
         <div class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin">
           <div class="sidebar-brand-icon">
-            <img class="border" style="height:60px;width:50px;" src="{{asset('assets/admin/img/profile.png')}}">
+            <img class="border" style="height:60px;width:50px; background-color: white; padding: 5px; border: solid black;" src="{{asset('assets/admin/img/profile.png')}}">
           </div>
           <div style="font-size: 10px !important;margin-left:10px;" class="sidebar-brand-text my-3">
             Abdi Purnawan, S.Kom.
@@ -133,6 +133,20 @@
           </div>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStaff" aria-expanded="true" aria-controls="collapseStaff">
+            <i class="fas fa-fw fa-sitemap"></i>
+            <span>Staf & Manajemen</span>
+          </a>
+          <div id="collapseStaff" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Staf & Manajemen:</h6>
+              <a class="collapse-item" href="/admin/manajemen" ><i class="fas fa-fw fa-sitemap"></i>   Manajemen</a>
+              <a class="collapse-item" href="/admin/staf"><i class="fas fa-fw fa-user"></i>  Staf Pengajar</a>
+            </div>
+          </div>
+        </li>
+
         {{-- <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSlide" aria-expanded="true" aria-controls="collapseSlide">
             <i class="fas fa-fw fa-image"></i>
@@ -162,13 +176,14 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePengaturan" aria-expanded="true" aria-controls="collapsePengaturan">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProdi" aria-expanded="true" aria-controls="collapseProdi">
             <i class="fas fa-fw fa-cog"></i>
             <span>Pengaturan</span>
           </a>
-          <div id="collapsePengaturan" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
+          <div id="collapseProdi" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Pengaturan Menu:</h6>
+              <a class="collapse-item" href="/admin/prodi" ><i class="fas fa-fw fa-building"></i>  Program Studi</a>
               <a class="collapse-item" href="/admin/menus" ><i class="fas fa-fw fa-list"></i>  Website Menu</a>
               <a class="collapse-item" href="/admin/setting/preferences" ><i class="fas fa-fw fa-cog"></i>  Preferences</a>
               <a class="collapse-item" href="/admin/setting/social"><i class="fas fa-fw fa-share"></i>  Social Media</a>

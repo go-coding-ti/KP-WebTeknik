@@ -94,7 +94,7 @@ class MenuController extends Controller
             $header->header_url = "#";
             $header->id_page = NULL;
         }
-        $header->save();
+        $header->update();
         return redirect('/admin/menus')->with('statusInput', 'Header successfully updated from record');
     }
 
@@ -169,7 +169,7 @@ class MenuController extends Controller
             $page = Page::find($request->page);
             $menu->menu_url = "/admin/show/".$page->title_slug;
         }
-        $menu->save();
+        $menu->update();
         return redirect('/admin/menus')->with('statusInput', 'Menu successfully updated from the record');
     }
 
@@ -251,7 +251,7 @@ class MenuController extends Controller
             $submenu->menu_url = $request->url_menu;
             $submenu->id_page = NULL;
         }
-        $submenu->save();
+        $submenu->update();
         return redirect('/admin/menus')->with('statusInput', 'Sub Menu successfully updated from the record');
     }
 

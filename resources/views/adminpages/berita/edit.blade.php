@@ -60,7 +60,7 @@
                 </div>
                 <div class="form-group form-group mt-4">
                     <label for="description">Konten Eng</label>
-                    <textarea id="content_eng" class="summernote" name="content_eng" required>{{$berita->content_eng}}"</textarea>
+                    <textarea id="content_eng" class="summernote" name="content_eng" required>{{$berita->content_eng}}</textarea>
                 </div>
                 <div class="form-group mt-4">
                     <label for="thumbnail">Thumbnail</label>

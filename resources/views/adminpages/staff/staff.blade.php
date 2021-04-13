@@ -1,13 +1,13 @@
 @extends('adminlayout.layout')
-@section('title', 'List Posts')
+@section('title', 'List Staf Pengajar')
 @section('content')
 
 
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
-        <h1 class="h3 mb-2 text-gray-800">Posts</h1>
-          <p class="mb-4">Daftar Posts Fakultas Teknik Universitas Udayana</p>
+        <h1 class="h3 mb-2 text-gray-800">Staf Pengajar</h1>
+          <p class="mb-4">Daftar Staf Pengajar Fakultas Teknik Universitas Udayana</p>
 
 @if (session()->has('statusInput'))
       <div class="row">
@@ -40,18 +40,18 @@
           <!-- Copy drisini -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">List Post</h6>
+              <h6 class="m-0 font-weight-bold text-primary">List Staf Pengajar</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-              <a class= "btn btn-success text-white" href="{{route('admin-post-create')}}"><i class="fas fa-plus"></i>  Tambah Post</a>
+              <a class= "btn btn-success text-white" href="{{route('admin-staff-create')}}"><i class="fas fa-plus"></i>  Tambah Staf</a>
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Judul Ina</th>
-                      <th>Judul Eng</th>
-                      <th>Kategori</th>
-                      <th width="75">Status</th>
+                      <th>Nama</th>
+                      <th>NIP</th>
+                      <th>Tanggal Lahir</th>
+                      <th>Program Studi</th>
                       <th width="150">Action</th>
                     </tr>
                   </thead>
@@ -63,24 +63,13 @@
                     </tr>
                   </tfoot> -->
                   <tbody>
-                  @foreach ($data as $i => $post)
+                  @foreach ($data as $i => $staff)
                     <tr>
-                      <td>{{$post->title_ina}}</td>
-                      <td>{{$post->title_eng}}</td>
-                      <td>{{$post->kategori->kategori_ina}}
-                      <td>
-                        <label class="switch">
-                         <input id="signup-token_{{$post->id}}" name="_token" type="hidden" value="{{csrf_token()}}">
-                        @if($post->status == "aktif")
-                          <input type="checkbox" id="status_{{$post->id}}" onclick="statusBtn({{$post->id}})" checked>
-                        @else
-                          <input type="checkbox" id="status_{{$post->id}}" onclick="statusBtn({{$post->id}})">
-                        @endif
-                          <span class="slider round"></span>
-                        </label>
-                      
-                      </td>
-                      <td><a style="margin-right:7px" href="/admin/posts/show/{{$post->kategori->kategori_lower}}/{{$post->title_slug}}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/posts/{{$post->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a><a class="btn btn-danger btn-sm" onclick="deletePost({{$post->id}})" href="#"><i class="fas fa-trash"></i></a></td>
+                      <td>{{$staff->nama}}</td>
+                      <td>{{$staff->nip}}</td>
+                      <td>{{ date('d M Y', strtotime($staff->tanggal_lahir)) }}</td>
+                      <td>{{$staff->prodi->prodi_ina}}
+                      <td><a style="margin-right:7px" href="#"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/news/{{$staff->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a><a class="btn btn-danger btn-sm" onclick="deleteberita({{$staff->id}})" href="#"><i class="fas fa-trash"></i></a></td>
                     </tr>
                   @endforeach
                   </tbody>
@@ -92,7 +81,7 @@
         
         <!-- Content Row -->
         <div class="row">
-        <form method="POST" enctype="multipart/form-data" action="/admin/profile">
+        <form method="berita" enctype="multipart/form-data" action="/admin/profile">
         
         </form>
         </div>
@@ -138,15 +127,15 @@
 
 
 //Soft Delete Page
-function deletePost(id){
+function deleteberita(id){
   swal({
-    title: 'Anda yakin ingin menghapus post ini?',
+    title: 'Anda yakin ingin menghapus berita ini?',
     icon: 'warning',
     buttons: ["Tidak", "Ya"],
   }).then(function(value) {
     if (value) {
     jQuery.ajax({  
-      url: 'posts/delete/'+id,
+      url: 'news/delete/'+id,
       type: "GET",
         success: function(result){
           location.reload();
@@ -172,19 +161,14 @@ function statusBtn(id) {
     // If the checkbox is checked, display the output text
     if (checkBox.checked == true){
       swal({
-          title: 'Anda yakin ingin mengaktifkan post ini?',
+          title: 'Anda yakin ingin mengaktifkan berita ini?',
           icon: 'warning',
           buttons: ["Tidak", "Ya"],
       }).then(function(value) {
           if (value) {
             jQuery.ajax({  
-              url: "{{url('admin/post/status')}}",
-              type: "POST",
-              data: {
-                _token: $('#signup-token_'+id).val(),
-                id: id,
-                status: 'aktif',
-            },
+              url: "/admin/news/status/"+id+"/aktif",
+              type: "GET",
               success: function(result){
               }
           });
@@ -194,19 +178,14 @@ function statusBtn(id) {
       });
     } else {
       swal({
-          title: 'Anda yakin ingin menonaktifkan post ini?',
+          title: 'Anda yakin ingin menonaktifkan berita ini?',
           icon: 'warning',
           buttons: ["Tidak", "Ya"],
       }).then(function(value) {
           if (value) {
             jQuery.ajax({
-              url: "{{url('admin/posts/status')}}",
-              type: "POST",
-              data: {
-                _token: $('#signup-token_'+id).val(),
-                id: id,
-                status: 'tidak_aktif',
-            },
+              url: "/admin/news/status/"+id+"/tidak_aktif",
+              type: "GET",
               success: function(result){
               }
           });

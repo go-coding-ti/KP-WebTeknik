@@ -12,4 +12,7 @@ class Menu extends Authenticatable
 {
     use SoftDeletes;
     protected $table = 'menus';
+    public function submenu(){
+        return $this->hasMany('App\Submenu', 'id_menu');
+    }
 }
