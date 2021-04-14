@@ -53,16 +53,6 @@ class BeritaController extends Controller
         $berita->tanggal_publish = $request->tanggal;
         $berita->id_kategori = $request->kategori;
 
-        if($request->file('lampiran')!=""){
-            $file = $request->file('lampiran');
-            $fileLocation = '/file/news/'.$kategori->kategori_lower.'/'.$request->title_ina.'/lampiran';
-            $filename = $file->getClientOriginalName();
-            $path = $fileLocation."/".$filename;
-            $berita->lampiran = '/storage'.$path;
-            $berita->lampiran_name = $filename;
-            Storage::disk('public')->put($path, file_get_contents($file));
-        }
-
         if($request->file('thumbnail')!=""){
             $file = $request->file('thumbnail');
             $fileLocation = '/image/news/'.$kategori->kategori_lower.'/'.$request->title_ina.'/thumbnail';
@@ -153,18 +143,6 @@ class BeritaController extends Controller
         $berita->status = 'aktif';
         $berita->tanggal_publish = $request->tanggal;
         $berita->id_kategori = $request->kategori;
-
-
-        if($request->file('lampiran')!=""){
-            Storage::disk('public')->delete($berita->lampiran);
-            $file = $request->file('lampiran');
-            $fileLocation = '/file/news/'.$kategori->kategori_lower.'/'.$request->title_ina.'/lampiran';
-            $filename = $file->getClientOriginalName();
-            $path = $fileLocation."/".$filename;
-            $berita->lampiran = '/storage'.$path;
-            $berita->lampiran_name = $filename;
-            Storage::disk('public')->put($path, file_get_contents($file));
-        }
 
         if($request->file('thumbnail')!=""){
             Storage::disk('public')->delete($berita->thumbnail);

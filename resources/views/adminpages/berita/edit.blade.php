@@ -74,15 +74,6 @@
                     @endif
                 </div>
                 <div class="form-group mt-4">
-                    <label for="lampiran">File Lampiran</label>
-                    <br>    
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="lampiran" name="lampiran">
-                            <label for="lampiran_label" id="lampiran_label" class="custom-file-label">@if($berita->lampiran != ""){{$berita->lampiran_name}}@else Pilih Lampiran @endif</label>
-                        </div>
-                    {{-- <input type="file" class="form-control-file" id="lampiran" name="lampiran"> --}}
-                </div>
-                <div class="form-group mt-4">
                     <a href="/admin/pages" class="btn btn-danger"><i class="fa fa-times"></i> Batal</a>
                     <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
                 </div>

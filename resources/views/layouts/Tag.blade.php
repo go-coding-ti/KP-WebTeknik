@@ -7,7 +7,7 @@
     <ul class="list-inline px-2">
       @foreach($kategoris as $kategori)
         <li class="list-inline-item my-1">
-          <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="btn btn-sm bg-red text-light fw-bold text-uppercase">{{$kategori->kategori_eng}}</a>
+          <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $kategori->kategori_lower]) }}" class="btn btn-sm bg-red text-light fw-bold text-uppercase">{{$kategori->kategori_eng}}</a>
         </li>
       @endforeach
       {{-- <li class="list-inline-item my-1">
@@ -35,7 +35,7 @@
     <ul class="list-inline px-2">
       @foreach($kategoris as $kategori)
         <li class="list-inline-item my-1">
-          <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="btn btn-sm bg-red text-light fw-bold text-uppercase">{{$kategori->kategori_ina}}</a>
+          <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $kategori->kategori_lower]) }}" class="btn btn-sm bg-red text-light fw-bold text-uppercase">{{$kategori->kategori_ina}}</a>
         </li>
       @endforeach
       {{-- <li class="list-inline-item my-1">

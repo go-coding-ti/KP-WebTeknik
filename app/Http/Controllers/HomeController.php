@@ -57,7 +57,7 @@ class HomeController extends Controller
 
         $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
 
-        return view('pages/agenda', compact('preference', 'agendas', 'pengumumans', 'headers', 'menus', 'submenus', 'socials'));
+        return view('pages/agenda', compact('preference', 'agendas', 'pengumumans', 'headers', 'menus', 'submenus', 'sosmeds'));
     }
 
     public function agendaKategori($language, $kategori){
@@ -73,7 +73,7 @@ class HomeController extends Controller
 
         $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
 
-        return view('pages/agenda', compact('preference', 'agendas', 'pengumumans', 'headers', 'menus', 'submenus', 'socials'));
+        return view('pages/agenda', compact('preference', 'agendas', 'pengumumans', 'headers', 'menus', 'submenus', 'sosmeds'));
     }
 
     public function showAgenda($language, $title_slug){
@@ -89,7 +89,7 @@ class HomeController extends Controller
         $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
 
 
-        return view('pages/detail-agenda', compact('preference', 'agenda', 'pengumumans', 'headers', 'menus', 'submenus', 'socials'));
+        return view('pages/detail-agenda', compact('preference', 'agenda', 'pengumumans', 'headers', 'menus', 'submenus', 'sosmeds'));
     }
 
     //BERITA PAGE
@@ -106,7 +106,7 @@ class HomeController extends Controller
         $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
 
 
-        return view('pages/berita', compact('preference', 'beritas', 'pengumumans', 'headers', 'menus', 'submenus', 'socials'));
+        return view('pages/berita', compact('preference', 'beritas', 'pengumumans', 'headers', 'menus', 'submenus', 'sosmeds'));
     }
 
     public function beritaKategori($language, $kategori){
@@ -123,7 +123,7 @@ class HomeController extends Controller
         $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
 
 
-        return view('pages/berita', compact('beritas', 'pengumumans', 'headers', 'menus', 'submenus', 'preference', 'socials'));
+        return view('pages/berita', compact('beritas', 'pengumumans', 'headers', 'menus', 'submenus', 'preference', 'sosmeds'));
     }
 
     public function showBerita($language, $title_slug){
@@ -142,7 +142,7 @@ class HomeController extends Controller
 
         $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
 
-        return view('pages/detail-berita', compact('berita', 'beritas', 'pengumumans', 'headers', 'menus', 'submenus', 'preference', 'socials'));
+        return view('pages/detail-berita', compact('berita', 'beritas', 'pengumumans', 'headers', 'menus', 'submenus', 'preference', 'sosmeds'));
     }
 
 
@@ -157,7 +157,7 @@ class HomeController extends Controller
         $submenus = Submenu::get();
 
         $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
-        return view('pages/pengumuman', compact('pengumumans','headers', 'menus', 'submenus', 'preference', 'socials'));
+        return view('pages/pengumuman', compact('pengumumans','headers', 'menus', 'submenus', 'preference', 'sosmeds'));
     }
 
     public function showPengumuman($language, $title_slug){
@@ -173,7 +173,7 @@ class HomeController extends Controller
 
         $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
 
-        return view('pages/detail-pengumuman', compact('pengumuman', 'pengumumans', 'headers', 'menus', 'submenus', 'preference', 'socials'));
+        return view('pages/detail-pengumuman', compact('pengumuman', 'pengumumans', 'headers', 'menus', 'submenus', 'preference', 'sosmeds'));
     }
 
 
@@ -190,7 +190,7 @@ class HomeController extends Controller
 
         $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
 
-        return view('pages/galeri', compact('galeris', 'pengumumans', 'headers', 'menus', 'submenus', 'preference', 'socials'));
+        return view('pages/galeri', compact('galeris', 'pengumumans', 'headers', 'menus', 'submenus', 'preference', 'sosmeds'));
     }
 
 
@@ -207,7 +207,7 @@ class HomeController extends Controller
 
         $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
 
-        return view('pages/video', compact('videos', 'pengumumans', 'headers', 'menus', 'submenus', 'preference', 'socials'));
+        return view('pages/video', compact('videos', 'pengumumans', 'headers', 'menus', 'submenus', 'preference', 'sosmeds'));
     }
     public function videoShow($language, $title_slug){
         $video = Video::where('judul_slug', $title_slug)->first();
@@ -222,6 +222,6 @@ class HomeController extends Controller
 
         $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
 
-        return view('pages/detail-video', compact('video','videos', 'pengumumans', 'headers', 'menus', 'submenus', 'preference', 'socials'));
+        return view('pages/detail-video', compact('video','videos', 'pengumumans', 'headers', 'menus', 'submenus', 'preference', 'sosmeds'));
     }
 }

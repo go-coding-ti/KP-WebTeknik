@@ -81,7 +81,7 @@
                           <div class="card-body ms-1 py-2 px-2 ps-3 p-0">
                               <a href="{{ route("Detail Berita", ['language'=>app()->getLocale(), 'title_slug' => $berita->title_slug]) }}" class="card-title fw-bold text-decoration-none link-light fs-5 link-hover">{{$berita->title_ina}}</a>
                               <p class="card-text">
-                                <a class="text-decoration-none link-light text-muted small" href="">{{ date('d M Y', strtotime($berita->tanggal_publish)) }}</a>
+                                <a class="text-decoration-none link-light text-muted small" href="">{{ date('l, d M Y', strtotime($berita->tanggal_publish)) }}</a>
                               </p>
                               {{-- <p class="card-text pt-2 text-light">{{$berita->content_ina}}</p> --}}
                           </div>

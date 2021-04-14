@@ -72,15 +72,6 @@
                     </div>
                 </div>
                 <div class="form-group mt-4">
-                    <label for="lampiran">File Lampiran</label>
-                    <br>    
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="lampiran" name="lampiran">
-                        <label for="lampiran_label" id="lampiran_label" class="custom-file-label">Pilih Lampiran</label>
-                    </div>
-                    {{-- <input type="file" class="form-control-file" id="lampiran" name="lampiran"> --}}
-                </div>
-                <div class="form-group mt-4">
                     <a href="/admin/pages" class="btn btn-danger"><i class="fa fa-times"></i> Batal</a>
                     <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Tambah</button>
                 </div>
@@ -124,10 +115,6 @@
     $("#thumbnail").change(function() {
     readURL(this);
     document.getElementById('thumbnail_label').innerHTML = document.getElementById('thumbnail').files[0].name;
-    });
-
-    $("#lampiran").change(function() {
-    document.getElementById('lampiran_label').innerHTML = document.getElementById('lampiran').files[0].name;
     });
 });
 </script>
