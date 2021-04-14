@@ -11,25 +11,25 @@
         </div>
         <div class="container">
             <div class="row d-flex justify-content-md-center">
-                <div class="col-md-12 col-lg-8">
-                    <div class="card bg-grey text-light mb-3">
-                        <div class="row g-0">
-                            @foreach($beritas as $berita)
-                            <div class="col-md-5 my-auto">
-                                <img src="{{$berita->thumbnail}}" style="height: 5em" alt="...">
-                            </div>
-                            <div class="col-md-7">
-                                <div class="card-body">
-                                    <h5 class="card-title fw-bold"><a href="{{ route("Detail Berita", ['language'=>app()->getLocale(), 'title_slug' => $berita->title_slug]) }}" class="text-decoration-none link-light">{{$berita->title_eng}}</a></h5>
-                                    <p class="card-text small"><span class="text-muted">{{ date('d M Y', strtotime($berita->tanggal_publish)) }}</span></p>
-                                    {{-- <p class="card-text">Deskripsi singkat dari berita yang ditampilkan nantinya pada list berita</p>
-                                    <p class="card-text small">
-                                    <span class="text-muted"><i class="fas fa-comments"></i> 27</span>
-                                    <span class="fw-bold mx-2 text-muted"> | </span>
-                                    <span class="text-muted"><i class="fas fa-eye"></i> 150</span> --}}
+                <div class="col-12">
+                    <div class="card-group">
+                        <div class="row row-cols-1 row-cols-lg-3 px-3">
+                          @foreach($beritas as $berita)
+                            <div class="col p-0 px-1 mb-3">
+                              <div class="card bg-grey hover border-0 h-100">
+                                <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="link-light text-decoration-none ">
+                                  <img src="{{$berita->thumbnail}}" class="card-img-top mb-1" alt="...">
+                                  <div class="card-body p-3">
+                                    <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="btn btn-sm btn-danger p-1 text-uppercase my-1"><small>{{$berita->kategori->kategori_eng}}</small></a>
+                                    <p class="card-text h5 fw-bold mt-3"><a href="{{ route("Detail Berita", ['language'=>app()->getLocale(), 'title_slug' => $berita->title_slug]) }}" class="text-decoration-none link-light link-hover">{{$berita->title_eng}}</a></p>
+                                  </div>
+                                </a>
+                                <div class="card-footer p-3 text-end border-0">
+                                  <small class="text-muted">Posted on {{ date('d M Y', strtotime($berita->tanggal_publish)) }}</small>
                                 </div>
+                              </div>
                             </div>
-                            @endforeach
+                          @endforeach
                         </div>
                     </div>
                     <ul class="pagination bg-dark justify-content-center mt-5">
@@ -43,45 +43,6 @@
                         <a class="page-link pagination bg-black link-light" href="#">Next</a>
                         </li>
                     </ul>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card bg-grey px-3">
-                        <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Berita Lainnya</h1>
-                        <div class="mb-3 border-0 border-bottom">
-                            <div class="row g-0 py-2">
-                                <div class="col-5 my-auto">
-                                    <img src="https://images.unsplash.com/photo-1568725992957-ead7b0259b5f?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8cVBZc0R6dkpPWWN8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="w-100 h-100" alt="...">
-                                </div>
-                                <div class="col-7">
-                                    <div class="card-body">
-                                        <h6 class="card-title fw-bold"><a href="" class="text-decoration-none link-light">Judul Berita Lainya</a></h6>
-                                        <p class="card-text small">
-                                        <span class="text-muted"><i class="fas fa-comments"></i> 27</span>
-                                        <span class="text-muted mx-2"> | </span>
-                                        <span class="text-muted"><i class="fas fa-eye"></i> 150</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3 border-0 border-bottom">
-                            <div class="row g-0 py-2">
-                                <div class="col-5 my-auto">
-                                    <img src="https://images.unsplash.com/photo-1568725992957-ead7b0259b5f?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8cVBZc0R6dkpPWWN8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="w-100 h-100" alt="...">
-                                </div>
-                                <div class="col-7">
-                                    <div class="card-body">
-                                        <h6 class="card-title fw-bold"><a href="" class="text-decoration-none link-light">Judul Berita Lainya</a></h6>
-                                        <p class="card-text small">
-                                        <span class="text-muted"><i class="fas fa-comments"></i> 27</span>
-                                        <span class="text-muted mx-2"> | </span>
-                                        <span class="text-muted"><i class="fas fa-eye"></i> 150</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -97,25 +58,25 @@
         </div>
         <div class="container">
             <div class="row d-flex justify-content-md-center">
-                <div class="col-md-12 col-lg-8">
-                    <div class="card bg-grey text-light mb-3">
-                        <div class="row g-0">
-                            @foreach($beritas as $berita)
-                            <div class="col-md-5 my-auto">
-                                <img src="{{$berita->thumbnail}}" class="w-100 h-100" alt="...">
-                            </div>
-                            <div class="col-md-7">
-                                <div class="card-body">
-                                    <h5 class="card-title fw-bold"><a href="{{ route("Detail Berita",  [app()->getLocale(), $berita->title_slug]) }}" class="text-decoration-none link-light">{{$berita->title_ina}}</a></h5>
-                                    <p class="card-text small"><span class="text-muted">{{ date('d M Y', strtotime($berita->tanggal_publish)) }}</span></p>
-                                    {{-- <p class="card-text">Deskripsi singkat dari berita yang ditampilkan nantinya pada list berita</p>
-                                    <p class="card-text small">
-                                    <span class="text-muted"><i class="fas fa-comments"></i> 27</span>
-                                    <span class="fw-bold mx-2 text-muted"> | </span>
-                                    <span class="text-muted"><i class="fas fa-eye"></i> 150</span> --}}
+                <div class="col-12">
+                    <div class="card-group">
+                        <div class="row row-cols-1 row-cols-lg-3 px-3">
+                          @foreach($beritas as $berita)
+                            <div class="col p-0 px-1 mb-3">
+                              <div class="card bg-grey hover border-0 h-100">
+                                <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="link-light text-decoration-none ">
+                                  <img src="{{$berita->thumbnail}}" class="card-img-top mb-1" alt="...">
+                                  <div class="card-body p-3">
+                                    <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="btn btn-sm btn-danger p-1 text-uppercase my-1"><small>{{$berita->kategori->kategori_eng}}</small></a>
+                                    <p class="card-text h5 fw-bold mt-3"><a href="{{ route("Detail Berita", ['language'=>app()->getLocale(), 'title_slug' => $berita->title_slug]) }}" class="text-decoration-none link-light link-hover">{{$berita->title_eng}}</a></p>
+                                  </div>
+                                </a>
+                                <div class="card-footer p-3 text-end border-0">
+                                  <small class="text-muted">Posted on {{ date('d M Y', strtotime($berita->tanggal_publish)) }}</small>
                                 </div>
+                              </div>
                             </div>
-                            @endforeach
+                          @endforeach
                         </div>
                     </div>
                     <ul class="pagination bg-dark justify-content-center mt-5">
@@ -129,27 +90,6 @@
                         <a class="page-link pagination bg-black link-light" href="#">Next</a>
                         </li>
                     </ul>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card bg-grey px-3">
-                        <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Berita Lainnya</h1>
-                        <div class="mb-3 border-0 border-bottom">
-                            <div class="row g-0 py-2">
-                                @foreach($beritas as $berita)
-                                <div class="col-5 my-auto">
-                                    <img src="{{$berita->thumbnail}}" class="w-100 h-100" alt="...">
-                                </div>
-                                <div class="col-7">
-                                    <div class="card-body">
-                                        <h6 class="card-title fw-bold"><a href="{{ route("Detail Berita",  [app()->getLocale(), $berita->title_slug]) }}" class="text-decoration-none link-light">{{$berita->title_ina}}</a></h6>
-                                        <p class="card-text small">
-                                        </p>
-                                    </div>
-                                </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

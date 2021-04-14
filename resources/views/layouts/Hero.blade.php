@@ -5,12 +5,12 @@
       <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           @foreach($popularBeritas as $popularBerita)
-          <div class="carousel-item @if($loop->iteration == 1) active @endif" data-bs-interval="3500" id="post-1" role="tabpanel" aria-labelledby="post-1-tab">
-            <div class="carousel-inner single-feature-post video-post bg-img">
+            <div class="carousel-item @if($loop->iteration == 1) active @endif" data-bs-interval="3500" id="{{$popularBerita->id}}" role="tabpanel">
+              <div class="carousel-inner single-feature-post video-post bg-img">
                 <img src="{{$popularBerita->thumbnail}}" class="d-block w-100" alt="...">
                 <div class="post-content">
                   <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $popularBerita->kategori->kategori_lower]) }}" class="btn btn-sm btn-warning text-uppercase p-1 text-white text-decoration-none">{{$popularBerita->kategori->kategori_ina}}</a>
-                  <a href="single-post.html" class="post-title card border border-0 text-decoration-none link-white fw-bold">{{$popularBerita->title_eng}}</a>
+                  <a href="{{$popularBerita->id}}" class="post-title card border border-0 text-decoration-none link-white fw-bold">{{$popularBerita->title_eng}}</a>
                   <div class="post-meta d-flex">
                     <a href="#" class="text-decoration-none">
                       <i class="fas fa-eye" aria-hidden="true"></i>
@@ -19,8 +19,8 @@
                   </div>
                 </div>
                 <span class="video-duration">{{ date('d M Y', strtotime($popularBerita->tanggal_publish)) }}</span>
+              </div>
             </div>
-          </div>
           @endforeach
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"  data-bs-slide="prev">
@@ -37,7 +37,7 @@
       <ul class="nav vizew-nav-tab" role="tablist">
         @foreach($popularBeritas as $popularBerita)
         <li class="nav-item hover">
-          <a class="nav-link active" id="post-1-tab" data-toggle="pill" href="#post-1" role="tab" aria-controls="post-1" aria-selected="true">
+          <a class="nav-link active" id="post-{{$popularBerita->id}}-tab" data-toggle="pill" href="#{{$popularBerita->id}}" role="tab" aria-selected="true">
             <div class="single-blog-post style-2 d-flex align-items-center">
               <div class="post-thumbnail">
                 <img src="{{$popularBerita->thumbnail}}" class="h-100" alt="">
@@ -65,7 +65,7 @@
         <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
             @foreach($popularBeritas as $popularBerita)
-            <div class="carousel-item @if($loop->iteration == 1) active @endif" data-bs-interval="3500" id="post-1" role="tabpanel" aria-labelledby="post-1-tab">
+            <div class="carousel-item @if($loop->iteration == 1) active @endif" data-bs-interval="3500" id="post-{{$popularBerita->id}}" role="tabpanel" aria-labelledby="post-{{$popularBerita->id}}-tab">
               <div class="carousel-inner single-feature-post video-post bg-img">
                   <img src="{{$popularBerita->thumbnail}}" class="d-block w-100" alt="...">
                   <div class="post-content">
@@ -97,7 +97,7 @@
         <ul class="nav vizew-nav-tab" role="tablist">
           @foreach($popularBeritas as $popularBerita)
           <li class="nav-item hover">
-            <a class="nav-link active" id="post-1-tab" data-toggle="pill" href="#post-1" role="tab" aria-controls="post-1" aria-selected="true">
+            <a class="nav-link active" id="post-{{$popularBerita->id}}-tab" data-toggle="pill" href="#post-{{$popularBerita->id}}" role="tab" aria-controls="post-{{$popularBerita->id}}" aria-selected="true">
               <div class="single-blog-post style-2 d-flex align-items-center">
                 <div class="post-thumbnail">
                   <img src="{{$popularBerita->thumbnail}}" class="h-100" alt="">

@@ -15,11 +15,11 @@
                 @foreach($pengumumans as $pengumuman)
                 <div class="card bg-grey text-light mb-3">
                     <div class="row g-0">
-                        <div class="col-md-5 my-auto">
-                            <img src="{{$pengumuman->kategori->icon}}" class="w-100 h-100" alt="...">
+                        <div class="col-md-3 text-center">
+                            <img src="{{$pengumuman->kategori->icon}}" style="height: 8em" alt="...">
                         </div>
-                        <div class="col-md-7">
-                            <div class="card-body">
+                        <div class="col-md-9">
+                            <div class="card-body text-center text-md-start">
                                 <h5 class="card-title fw-bold"><a href="{{ route("Detail Pengumuman", ['language'=>app()->getLocale(), 'title_slug' => $pengumuman->title_slug]) }}" class="text-decoration-none link-light">{{$pengumuman->title_eng}}</a></h5>
                                 <p class="card-text small"><span class="text-muted">By Admin A</span>
                                     <span class="text-muted"> | </span>
@@ -99,11 +99,11 @@
                     @foreach($pengumumans as $pengumuman)
                     <div class="card bg-grey text-light mb-3">
                         <div class="row g-0">
-                            <div class="col-md-5 my-auto">
-                                <img src="{{$pengumuman->kategori->icon}}" class="w-100 h-100" alt="...">
+                            <div class="col-md-3 text-center">
+                                <img src="{{$pengumuman->kategori->icon}}" style="height: 8em" alt="...">
                             </div>
-                            <div class="col-md-7">
-                                <div class="card-body">
+                            <div class="col-md-9">
+                                <div class="card-body text-center text-md-start">
                                     <h5 class="card-title fw-bold"><a href="{{ route("Detail Pengumuman", ['language'=>app()->getLocale(), 'title_slug' => $pengumuman->title_slug]) }}" class="text-decoration-none link-light">{{$pengumuman->title_ina}}</a></h5>
                                     <p class="card-text small"><span class="text-muted">Oleh Admin A</span>
                                         <span class="text-muted"> | </span>

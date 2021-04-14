@@ -9,7 +9,7 @@
   <div class="row row-cols-1 row-cols-lg-3 px-3 pt-2">
     @foreach($videos as $video)
     <div class="col p-0 px-1 mb-3">
-      <div class="card border-0 bg-grey hover">
+      <div class="card border-0 bg-grey hover h-100">
         <div class="ratio ratio-16x9 card-img-top">
           <iframe src="https://www.youtube.com/embed/{{$video->link}}" title="YouTube video" allowfullscreen></iframe>
         </div>
@@ -23,7 +23,7 @@
   </div>
 </div>
 <div class="container d-flex justify-content-center">
-  <a class="text-decoration-none btn btn-light link-dark-blue" href="{{ route('Video', app()->getLocale() ) }}">See All</a>
+  <a class="text-decoration-none fw-bold btn btn-sm bg-red nav-link" href="{{ route('Video', app()->getLocale() ) }}">See All</a>
 </div>
 @endif
 
@@ -38,7 +38,7 @@
     <div class="row row-cols-1 row-cols-lg-3 px-3 pt-2">
       @foreach($videos as $video)
       <div class="col p-0 px-1 mb-3">
-        <div class="card border-0 bg-grey hover">
+        <div class="card border-0 bg-grey hover h-100">
           <div class="ratio ratio-16x9 card-img-top">
             <iframe src="https://www.youtube.com/embed/{{$video->link}}" title="YouTube video" allowfullscreen></iframe>
           </div>
@@ -53,6 +53,6 @@
     </div>
   </div>
   <div class="container d-flex justify-content-center">
-    <a class="text-decoration-none btn btn-light link-dark-blue" href="{{ route('Video', app()->getLocale() ) }}">See All</a>
+    <a class="text-decoration-none fw-bold btn btn-sm bg-red nav-link" href="{{ route('Video', app()->getLocale() ) }}">See All</a>
   </div>
 @endif
