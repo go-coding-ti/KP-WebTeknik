@@ -173,6 +173,7 @@ Route::group(['prefix' => '{language}'], function () {
 
     //Pengumuman
     Route::get('/announcements', 'HomeController@pengumuman')->name('Pengumuman');
+    Route::get('/announcements/category/{kategori}', 'HomeController@pengumumanKategori')->name('Pengumuman Kategori');
     Route::get('/announcements/{title_slug}', 'HomeController@showPengumuman')->name('Detail Pengumuman');
 
     //Galeri

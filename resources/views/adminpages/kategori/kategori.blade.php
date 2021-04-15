@@ -3,11 +3,9 @@
 @section('content')
     <!-- Begin Page Content -->
     <div class="container-fluid">
-
         <!-- <hr style="margin-top: 20px" class="sidebar-divider my-0"> -->
         <h1 class="h3 mb-2 text-gray-800">Kategori Berita</h1>
           <p class="mb-4">Daftar Kategori Berita Fakultas Teknik Universitas Udayana</p>
-
           @if (session()->has('statusInput'))
               <div class="row">
                 <div class="col-sm-12 alert alert-success alert-dismissible fade show" role="alert">
@@ -66,20 +64,11 @@
             </div>
           </div>
           <!-- smpe sini -->
-        
         <!-- Content Row -->
         <div class="row">
-        <form method="POST" enctype="multipart/form-data" action="/admin/profile">
-        
-        </form>
         </div>
-
-        <!-- Content Row -->
-
-        <div class="row">
-          
+        <div class="row"> 
         </div>
-
         <!-- Content Row -->
         <div class="row">
 

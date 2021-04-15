@@ -30,18 +30,22 @@
                               </div>
                             </div>
                           @endforeach
+                  
                         </div>
                     </div>
                     <ul class="pagination bg-dark justify-content-center mt-5">
-                        <li class="page-item">
-                        <a class="page-link pagination bg-black link-light border-light" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                        </li>
-                        <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">3</a></li>
-                        <li class="page-item">
-                        <a class="page-link pagination bg-black link-light" href="#">Next</a>
-                        </li>
+                    @if($beritas->lastPage() > 1)
+                    <li class="page-item">
+                        <!--pagination-->
+                        <ul class="pagination bg-dark">
+                          <a class="page-link pagination bg-black link-light border-light" tabindex="-1" aria-disabled="true" @if($beritas->currentPage() == 1) style="display: none" @endif href="{{ $beritas->url($beritas->currentPage()-1) }}">Previous</a>
+                            @for($i=1; $i <= $beritas->lastPage(); $i++)
+                              <li class="page-item"><a @if($beritas->currentPage() == $i) class="page-link pagination bg-light link-dark link-bold" @else class="page-link pagination bg-black link-light" @endif href="{{ $beritas->url($i)}}">{{ $i }}</a></li>
+                            @endfor
+                          <a role="button" href="{{ $beritas->url($beritas->currentPage()+1) }}" @if($beritas->currentPage() == $beritas->lastPage()) style="display: none"  @endif class="page-link pagination bg-black link-light border-light text-center">Next</a>
+                        </ul>
+                      </li>
+                    @endif
                     </ul>
                 </div>
             </div>
@@ -67,8 +71,8 @@
                                 <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="link-light text-decoration-none ">
                                   <img src="{{$berita->thumbnail}}" class="card-img-top mb-1" alt="...">
                                   <div class="card-body p-3">
-                                    <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="btn btn-sm btn-danger p-1 text-uppercase my-1"><small>{{$berita->kategori->kategori_eng}}</small></a>
-                                    <p class="card-text h5 fw-bold mt-3"><a href="{{ route("Detail Berita", ['language'=>app()->getLocale(), 'title_slug' => $berita->title_slug]) }}" class="text-decoration-none link-light link-hover">{{$berita->title_eng}}</a></p>
+                                    <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="btn btn-sm btn-danger p-1 text-uppercase my-1"><small>{{$berita->kategori->kategori_ina}}</small></a>
+                                    <p class="card-text h5 fw-bold mt-3"><a href="{{ route("Detail Berita", ['language'=>app()->getLocale(), 'title_slug' => $berita->title_slug]) }}" class="text-decoration-none link-light link-hover">{{$berita->title_ina}}</a></p>
                                   </div>
                                 </a>
                                 <div class="card-footer p-3 text-end border-0">
@@ -80,15 +84,18 @@
                         </div>
                     </div>
                     <ul class="pagination bg-dark justify-content-center mt-5">
-                        <li class="page-item">
-                        <a class="page-link pagination bg-black link-light border-light" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                      @if($beritas->lastPage() > 1)
+                      <li class="page-item">
+                          <!--pagination-->
+                          <ul class="pagination bg-dark">
+                            <a class="page-link pagination bg-black link-light border-light" tabindex="-1" aria-disabled="true" @if($beritas->currentPage() == 1) style="display: none" @endif href="{{ $beritas->url($beritas->currentPage()-1) }}">Previous</a>
+                              @for($i=1; $i <= $beritas->lastPage(); $i++)
+                                <li class="page-item"><a @if($beritas->currentPage() == $i) class="page-link pagination bg-light link-dark link-bold" @else class="page-link pagination bg-black link-light" @endif href="{{ $beritas->url($i)}}">{{ $i }}</a></li>
+                              @endfor
+                            <a role="button" href="{{ $beritas->url($beritas->currentPage()+1) }}" @if($beritas->currentPage() == $beritas->lastPage()) style="display: none"  @endif class="page-link pagination bg-black link-light border-light text-center">Next</a>
+                          </ul>
                         </li>
-                        <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">3</a></li>
-                        <li class="page-item">
-                        <a class="page-link pagination bg-black link-light" href="#">Next</a>
-                        </li>
+                      @endif
                     </ul>
                 </div>
             </div>

@@ -59,7 +59,7 @@
                         <p class="text-start"><i class="fas fa-external-link-square-alt"></i> @if($agenda->website != NULL) {{$agenda->website}} @else www.ft.unud.ac.id @endif</p>
                         @if($agenda->lampiran != NULL)
                         <span class="text-start fw-bold">Attachment</span>
-                        <a class="text-start text-light" href="{{$agenda->lampiran}}"><p><i class="fas fa-download"></i> Download Attachment</p></a>
+                        <a class="text-start text-light" href="{{$agenda->lampiran}}" target="_blank"><p><i class="fas fa-download"></i> Download Attachment</p></a>
                     @endif
                     </div>
                 </div>
@@ -126,7 +126,7 @@
                             <p class="text-start"><i class="fas fa-external-link-square-alt"></i> @if($agenda->website != NULL) {{$agenda->website}} @else www.ft.unud.ac.id @endif</p>
                             @if($agenda->lampiran != NULL)
                                 <span class="text-start fw-bold">Lampiran</span>
-                                <a class="text-start text-light" href="{{$agenda->lampiran}}"><p><i class="fas fa-download"></i> Unduh Lampiran</p></a>
+                                <a class="text-start text-light" href="{{$agenda->lampiran}}" target="_blank"><p><i class="fas fa-download"></i> Unduh Lampiran</p></a>
                             @endif                        
                         </div>
                     </div>

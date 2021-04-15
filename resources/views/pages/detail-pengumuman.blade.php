@@ -42,7 +42,7 @@
                 {!! $pengumuman->content_eng !!}
                 @if($pengumuman->lampiran != NULL)
                 <h5 class="text-start fw-bold mt-5">Attachment</h5>
-                <a class="text-start text-light" href="{{$pengumuman->lampiran}}"><p><i class="fas fa-download"></i> Download Attachment</p></a>
+                <a class="text-start text-light" href="{{$pengumuman->lampiran}}" target="_blank"><p><i class="fas fa-download"></i> Download Attachment</p></a>
                 @endif    
             </div>
             <hr class="border border-dark dropdown-divider mt-5 mb-4 mx-5">
@@ -123,7 +123,7 @@
                     {!! $pengumuman->content_ina !!}
                     @if($pengumuman->lampiran != NULL)
                     <h5 class="text-start fw-bold mt-5">Lampiran</h5>
-                    <a class="text-start text-light" href="{{$pengumuman->lampiran}}"><p><i class="fas fa-download"></i> Unduh Lampiran</p></a>
+                    <a class="text-start text-light" href="{{$pengumuman->lampiran}}" target="_blank"><p><i class="fas fa-download"></i> Unduh Lampiran</p></a>
                     @endif    
                 </div>
                 <hr class="border border-dark dropdown-divider mt-5 mb-4 mx-5">

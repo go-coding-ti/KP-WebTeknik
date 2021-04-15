@@ -42,6 +42,20 @@
                     </div>
                     {{-- Modal End --}}
                     @endforeach
+                    <ul class="pagination bg-dark justify-content-center mt-5">
+                        @if($galeris->lastPage() > 1)
+                        <li class="page-item">
+                            <!--pagination-->
+                            <ul class="pagination bg-dark">
+                              <a class="page-link pagination bg-black link-light border-light" tabindex="-1" aria-disabled="true" @if($galeris->currentPage() == 1) style="display: none" @endif href="{{ $galeris->url($galeris->currentPage()-1) }}">Previous</a>
+                                @for($i=1; $i <= $galeris->lastPage(); $i++)
+                                  <li class="page-item"><a @if($galeris->currentPage() == $i) class="page-link pagination bg-light link-dark link-bold" @else class="page-link pagination bg-black link-light" @endif href="{{ $galeris->url($i)}}">{{ $i }}</a></li>
+                                @endfor
+                              <a role="button" href="{{ $galeris->url($galeris->currentPage()+1) }}" @if($galeris->currentPage() == $galeris->lastPage()) style="display: none"  @endif class="page-link pagination bg-black link-light border-light text-center">Next</a>
+                            </ul>
+                          </li>
+                        @endif
+                    </ul>
                 </div>
             </div>
         </div>
@@ -88,6 +102,20 @@
                     </div>
                     {{-- Modal End --}}
                     @endforeach
+                    <ul class="pagination bg-dark justify-content-center mt-5">
+                        @if($galeris->lastPage() > 1)
+                        <li class="page-item">
+                            <!--pagination-->
+                            <ul class="pagination bg-dark">
+                              <a class="page-link pagination bg-black link-light border-light" tabindex="-1" aria-disabled="true" @if($galeris->currentPage() == 1) style="display: none" @endif href="{{ $galeris->url($galeris->currentPage()-1) }}">Previous</a>
+                                @for($i=1; $i <= $galeris->lastPage(); $i++)
+                                  <li class="page-item"><a @if($galeris->currentPage() == $i) class="page-link pagination bg-light link-dark link-bold" @else class="page-link pagination bg-black link-light" @endif href="{{ $galeris->url($i)}}">{{ $i }}</a></li>
+                                @endfor
+                              <a role="button" href="{{ $galeris->url($galeris->currentPage()+1) }}" @if($galeris->currentPage() == $galeris->lastPage()) style="display: none"  @endif class="page-link pagination bg-black link-light border-light text-center">Next</a>
+                            </ul>
+                          </li>
+                        @endif
+                    </ul>
                 </div>
             </div>
         </div>
