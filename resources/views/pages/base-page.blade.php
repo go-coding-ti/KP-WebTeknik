@@ -19,7 +19,7 @@
         <div class="container mt-5 mb-5">
             <img src="https://images.unsplash.com/photo-1615621734603-04c156e22380?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzh8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60" class="img-fluid w-100 ratio ratio-16x9 mb-5" alt="...">
             <div class="card border-danger bg-grey text-light border-2 mx-md-5 mx-2 p-2 p-md-5">
-                <h2 class="fw-bold text-center"></h4>
+                <h2 class="fw-bold text-center">Judulnya</h4>
                 <div class="row mb-5">
                     <div class="col-sm-12 col-md-6 text-md-center">
                         <p class="card-text text-center text-md-start small">
