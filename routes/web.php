@@ -161,6 +161,10 @@ Route::redirect('/', '/id');
 Route::group(['prefix' => '{language}'], function () {
     Route::get('/', 'HomeController@index')->name('Index');
 
+    Route::get('/test', function() {
+        return view("pages/base-page");
+    })->name('Black Page');
+
     //Berita
     Route::get('/news', 'HomeController@berita')->name('Berita');
     Route::get('/news/category/{kategori}', 'HomeController@beritaKategori')->name('Berita Kategori');

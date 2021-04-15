@@ -29,13 +29,6 @@
                             <span class="text-muted">On {{ date('d M Y', strtotime($pengumuman->created_at)) }}</span>
                         </p>
                     </div>
-                    {{-- <div class="col-sm-12 col-md-6">
-                        <p class="card-text small text-center text-md-end text-end">
-                            <span class="text-muted"><i class="fas fa-comments"></i> 27</span>
-                            <span class="fw-bold mx-2"> | </span>
-                            <span class="text-muted"><i class="fas fa-eye"></i> 150</span>
-                        </p>
-                    </div> --}}
                 </div>
                 <embed src="file_name.pdf" width="200" height="200px" hidden/>
                 <img src="{{$pengumuman->thumbnail}}" class="img-thumbnail bg-grey border border-0" alt="..." width="400" hidden>
@@ -47,17 +40,18 @@
             </div>
             <hr class="border border-dark dropdown-divider mt-5 mb-4 mx-5">
             <div class="mx-md-5 mx-2">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-auto">
                     <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Another Announcement</h1>
+                    <a class="text-decoration-none fw-bold btn btn-sm bg-red btn-link" href="{{ route("Pengumuman", app()->getLocale() ) }}">See All</a>
                 </div>
-                <hr class="border border-light dropdown-divider p-0">
+                <hr class="border border-light dropdown-divider mb-3 mt-0 pt-0">
                 @foreach($pengumumans as $pengumuman)
                 <div class="card bg-grey text-light mb-3">
                     <div class="row g-0">
-                        <div class="col-md-5 my-auto">
-                            <img src="{{$pengumuman->kategori->icon}}" class="w-100 h-100" alt="...">
+                        <div class="col-md-3 text-center p-3">
+                            <img src="{{$pengumuman->kategori->icon}}" style="height: 8em" alt="...">
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-9">
                             <div class="card-body">
                                 <h5 class="card-title fw-bold"><a href="" class="text-decoration-none link-light">{{$pengumuman->title_eng}}</a></h5>
                                 <p class="card-text text-start small">
@@ -65,12 +59,6 @@
                                     <span class="fw-bold mx-2"> | </span>
                                     <span class="text-muted">Posted on {{ date('d M Y', strtotime($pengumuman->created_at)) }}</span>
                                 </p>
-                                {{-- <p class="card-text">Deskripsi singkat dari pengumuman yang ditampilkan nantinya pada list pengumuman</p>
-                                <p class="card-text small text-end">
-                                    <span class="text-muted"><i class="fas fa-comments"></i> 27</span>
-                                    <span class="fw-bold mx-2"> | </span>
-                                    <span class="text-muted"><i class="fas fa-eye"></i> 150</span>
-                                </p> --}}
                             </div>
                         </div>
                     </div>
@@ -98,7 +86,6 @@
             </nav>
         </div>
         <div class="container mt-5 mb-5">
-            {{-- <img src="{{$pengumuman->kategori->icon}}" alt="..."> --}}
             <div class="container px-md-5">
                 <div class="card border-danger bg-grey text-light border-2 mx-md-5 mx-2 p-2 p-md-5">
                     <h2 class="fw-bold text-center">{{$pengumuman->title_ina}}</h4>
@@ -110,13 +97,6 @@
                                 <span class="text-muted">Pada {{ date('d M Y', strtotime($pengumuman->created_at)) }}</span>
                             </p>
                         </div>
-                        {{-- <div class="col-sm-12 col-md-6">
-                            <p class="card-text small text-center text-md-end text-end">
-                                <span class="text-muted"><i class="fas fa-comments"></i> 27</span>
-                                <span class="fw-bold mx-2"> | </span>
-                                <span class="text-muted"><i class="fas fa-eye"></i> 150</span>
-                            </p>
-                        </div> --}}
                     </div>
                     <embed src="file_name.pdf" width="200" height="200px" hidden/>
                     <img src="{{$pengumuman->thumbnail}}" class="img-thumbnail bg-grey border border-0" alt="..." width="400" hidden>
@@ -128,15 +108,16 @@
                 </div>
                 <hr class="border border-dark dropdown-divider mt-5 mb-4 mx-5">
                 <div class="mx-md-5 mx-2">
-                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-                        <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Pengumuman Lainya</h1>
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-auto">
+                        <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Pengumuman Lainnya</h1>
+                        <a class="text-decoration-none fw-bold btn btn-sm bg-red btn-link" href="{{ route("Pengumuman", app()->getLocale() ) }}">See All</a>
                     </div>
-                    <hr class="border border-light dropdown-divider p-0">
+                    <hr class="border border-light dropdown-divider mb-3 mt-0 pt-0">
                     @foreach($pengumumans as $pengumuman)
                     <div class="card bg-grey text-light mb-3">
                         <div class="row g-0">
-                            <div class="col-md-5 my-auto">
-                                <img src="{{$pengumuman->kategori->icon}}" class="w-100 h-100" alt="...">
+                            <div class="col-md-5 text-center p-3">
+                                <img src="{{$pengumuman->kategori->icon}}" style="height: 8em" alt="...">
                             </div>
                             <div class="col-md-7">
                                 <div class="card-body">
@@ -146,12 +127,6 @@
                                         <span class="fw-bold mx-2"> | </span>
                                         <span class="text-muted">Diposting pada {{ date('d M Y', strtotime($pengumuman->created_at)) }}</span>
                                     </p>
-                                    {{-- <p class="card-text">Deskripsi singkat dari pengumuman yang ditampilkan nantinya pada list pengumuman</p>
-                                    <p class="card-text small text-end">
-                                        <span class="text-muted"><i class="fas fa-comments"></i> 27</span>
-                                        <span class="fw-bold mx-2"> | </span>
-                                        <span class="text-muted"><i class="fas fa-eye"></i> 150</span>
-                                    </p> --}}
                                 </div>
                             </div>
                         </div>

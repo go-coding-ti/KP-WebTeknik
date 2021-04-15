@@ -39,10 +39,11 @@
                 </div>
                 <hr class="border border-dark dropdown-divider mt-5 mb-4 mx-5">
                 <div class="mx-md-5 mx-2">
-                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-                        <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Berita Lainya</h1>
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-auto">
+                        <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Berita Lainnya</h1>
+                        <a class="text-decoration-none fw-bold btn btn-sm bg-red btn-link" href="{{ route("Berita", app()->getLocale() ) }}">See All</a>
                     </div>
-                    <hr class="border border-light dropdown-divider p-0">
+                    <hr class="border border-light dropdown-divider mb-3 mt-0 pt-0">
                     @foreach ($beritas as $berita)
                     <div class="card bg-grey text-light mb-3">
                         <div class="row g-0">
@@ -108,10 +109,11 @@
                 </div>
                 <hr class="border border-dark dropdown-divider mt-5 mb-4 mx-5">
                 <div class="mx-md-5 mx-2">
-                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center">
-                        <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Berita Lainya</h1>
+                    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center my-auto">
+                        <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Berita Lainnya</h1>
+                        <a class="text-decoration-none fw-bold btn btn-sm bg-red btn-link" href="{{ route("Berita", app()->getLocale() ) }}">See All</a>
                     </div>
-                    <hr class="border border-light dropdown-divider p-0">
+                    <hr class="border border-light dropdown-divider mb-3 mt-0 pt-0">
                     @foreach ($beritas as $berita)
                     <div class="card bg-grey text-light mb-3">
                         <div class="row g-0">

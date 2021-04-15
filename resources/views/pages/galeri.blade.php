@@ -14,7 +14,7 @@
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     @foreach($galeris as $galeri)
                     <div class="col">
-                        <div class="card bg-grey text-light">
+                        <div class="card bg-grey text-light h-100">
                             <a href="" class="text-decoration-none link-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$galeri->id}}">
                                 <img src="{{$galeri->galeri}}" class="card-img-top" alt="...">
                                 <div class="card-body my-auto">
@@ -32,7 +32,7 @@
                                     <button type="button" class="btn btn-dark text-white" data-bs-dismiss="modal"><i class="fas fa-times"></i></button>
                                 </div>
                                 <div class="modal-body text-center">
-                                    <img id="imageGaleriModal" src="{{$galeri->galeri}}" style="width:50%; height:50%" alt="...">
+                                    <img id="imageGaleriModal" src="{{$galeri->galeri}}" style="width:100vh" alt="...">
                                 </div>
                                 <div class="modal-footer d-block border border-dark my-auto">
                                     <p class="text-center my-auto fs-5" id="deskripsiGaleriModal">{{$galeri->deskripsi_eng}}</p>
@@ -74,7 +74,7 @@
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     @foreach($galeris as $galeri)
                     <div class="col">
-                        <div class="card bg-grey text-light">
+                        <div class="card bg-grey text-light h-100">
                             <a href="" class="text-decoration-none link-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop{{$galeri->id}}">
                                 <img src="{{$galeri->galeri}}" class="card-img-top" alt="...">
                                 <div class="card-body my-auto">
@@ -92,7 +92,7 @@
                                     <button type="button" class="btn btn-dark text-white" data-bs-dismiss="modal"><i class="fas fa-times"></i></button>
                                 </div>
                                 <div class="modal-body text-center">
-                                    <img id="imageGaleriModal" src="{{$galeri->galeri}}"style="width:50%; height:50%"  alt="...">
+                                    <img id="imageGaleriModal" src="{{$galeri->galeri}}" style="width:100vh" alt="...">
                                 </div>
                                 <div class="modal-footer d-block border border-dark my-auto">
                                     <p class="text-center my-auto fs-5" id="deskripsiGaleriModal">{{$galeri->deskripsi_ina}}</p>

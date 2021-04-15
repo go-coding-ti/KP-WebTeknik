@@ -23,7 +23,7 @@
   </div>
 </div>
 <div class="container d-flex justify-content-center">
-  <a class="text-decoration-none fw-bold btn btn-sm bg-red nav-link" href="{{ route('Video', app()->getLocale() ) }}">See All</a>
+  <a class="text-decoration-none fw-bold btn btn-sm bg-red btn-link" href="{{ route('Video', app()->getLocale() ) }}">See All</a>
 </div>
 @endif
 
@@ -45,7 +45,6 @@
           <div class="card-body text-center">
             <h5 class="card-title text-light fw-bold">{{$video->judul}}</h5>
             <p class="card-text lh-sm text-light">{{$video->deskripsi}}</p>
-            {{-- <a href="" class="card-text text-black small text-decoration-none text-link"><i class="fab fa-youtube"></i> See on YouTube</a> --}}
           </div>
         </div>
       </div>

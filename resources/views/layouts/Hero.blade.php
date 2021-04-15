@@ -36,14 +36,14 @@
     <div class="col-12 col-md-5 col-lg-4 p-0 px-1">
       <ul class="nav vizew-nav-tab" role="tablist">
         @foreach($popularBeritas as $popularBerita)
-        <li class="nav-item hover">
-          <a class="nav-link active" id="post-{{$popularBerita->id}}-tab" data-toggle="pill" href="#{{$popularBerita->id}}" role="tab" aria-selected="true">
+        <li class="nav-item hover d-flex align-items-center w-100">
+          <a class="nav-link @if($loop->iteration == 1) active @endif w-100" id="post-{{$popularBerita->id}}-tab" data-toggle="pill" href="#{{$popularBerita->id}}" role="tab" aria-selected="true">
             <div class="single-blog-post style-2 d-flex align-items-center">
               <div class="post-thumbnail">
                 <img src="{{$popularBerita->thumbnail}}" class="h-100" alt="">
               </div>
               <div class="post-content">
-                <h6 class="post-title">{{$popularBerita->title_eng}}</h6>
+                <h6 class="post-title">{{ strip_tags(substr($popularBerita->title_eng, 0, 30)) }} ...</h6>
                 <div class="post-meta d-flex justify-content-start">
                   <span><i class="fas fa-eye" aria-hidden="true"></i> {{$popularBerita->read_count}}</span>
                 </div>
@@ -96,14 +96,14 @@
       <div class="col-12 col-md-5 col-lg-4 p-0 px-1">
         <ul class="nav vizew-nav-tab" role="tablist">
           @foreach($popularBeritas as $popularBerita)
-          <li class="nav-item hover">
-            <a class="nav-link active" id="post-{{$popularBerita->id}}-tab" data-toggle="pill" href="#post-{{$popularBerita->id}}" role="tab" aria-controls="post-{{$popularBerita->id}}" aria-selected="true">
+          <li class="nav-item hover d-flex align-items-center w-100">
+            <a class="nav-link @if($loop->iteration == 1) active @endif w-100" id="post-{{$popularBerita->id}}-tab" data-toggle="pill" href="#post-{{$popularBerita->id}}" role="tab" aria-controls="post-{{$popularBerita->id}}" aria-selected="true">
               <div class="single-blog-post style-2 d-flex align-items-center">
                 <div class="post-thumbnail">
                   <img src="{{$popularBerita->thumbnail}}" class="h-100" alt="">
                 </div>
                 <div class="post-content">
-                  <h6 class="post-title">{{$popularBerita->title_ina}}</h6>
+                  <h6 class="post-title">{{ strip_tags(substr($popularBerita->title_ina, 0, 30)) }} ...</h6>
                   <div class="post-meta d-flex justify-content-start">
                     <span><i class="fas fa-eye" aria-hidden="true"></i> {{$popularBerita->read_count}}</span>
                   </div>

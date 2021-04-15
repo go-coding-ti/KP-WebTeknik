@@ -28,33 +28,22 @@
       <div class="col-12 col-md-5 col-lg-4 p-0 px-1">
         <ul class="nav vizew-nav-tab" role="tablist">
           @foreach($videos as $video)
-          <li class="nav-item hover">
-            <a class="nav-link active" href="{{ route("Detail Video", ['language'=>app()->getLocale(), 'title_slug' => $video->judul_slug]) }}">
-              <div class="single-blog-post style-2 d-flex align-items-center">
-                <div class="post-thumbnail">
-                  <img src="http://img.youtube.com/vi/{{$video->link}}/hqdefault.jpg" class="h-100" alt="">
+            <li class="nav-item hover d-flex align-items-center w-100 my-auto">
+              <a class="nav-link @if($loop->iteration == 1) active @endif w-100 h-100 my-auto" href="{{ route("Detail Video", ['language'=>app()->getLocale(), 'title_slug' => $video->judul_slug]) }}" data-toggle="pill" href="#post-{{$video->id}}" role="tab" aria-controls="post-{{$video->id}}" aria-selected="true">
+                <div class="single-blog-post style-2 d-flex align-items-center">
+                  <div class="post-thumbnail">
+                    <img src="http://img.youtube.com/vi/{{$video->link}}/hqdefault.jpg" class="h-100" alt="">
+                  </div>
+                  <div class="post-content">
+                    <h6 class="post-title">{{$video->judul_eng}}</h6>
+                  </div>
                 </div>
-                <div class="post-content">
-                  <h6 class="post-title">{{$video->judul_eng}}</h6>
-                </div>
-              </div>
-            </a>
-          </li>
+              </a>
+            </li>
           @endforeach
         </ul>
       </div>
     </div>
-    <ul class="pagination bg-dark justify-content-center mt-5">
-      <li class="page-item">
-        <a class="page-link pagination bg-black link-light border-light" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-      </li>
-      <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">1</a></li>
-      <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">2</a></li>
-      <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link pagination bg-black link-light" href="#">Next</a>
-      </li>
-    </ul>
   </div>
   
   @endif
@@ -74,7 +63,6 @@
                   <p class="card-text text-light lh-sm">Fakultas Teknik Universitas Udayana</p>
                   <p class="card-text text-light lh-sm">Jl. Kampus Unud Jimbaran Badung, Bali 80361</p>
                   <p class="card-text text-light lh-sm">Phone Number: +62 (361) 703320</p>
-                  {{-- <a href="" class="card-text text-black small text-decoration-none link-danger"><i class="fab fa-youtube"></i> See on YouTube</a> --}}
                 </div>
                 <div class="card-footer text-center">
                   <small class="text-muted">Diposting pada 18 Sep 2020</small>
@@ -86,8 +74,8 @@
       <div class="col-12 col-md-5 col-lg-4 p-0 px-1">
         <ul class="nav vizew-nav-tab" role="tablist">
           @foreach($videos as $video)
-          <li class="nav-item hover">
-            <a class="nav-link active" href="{{ route("Detail Video", ['language'=>app()->getLocale(), 'title_slug' => $video->judul_slug]) }}">
+          <li class="nav-item hover d-flex align-items-center w-100 my-auto">
+            <a class="nav-link @if($loop->iteration == 1) active @endif w-100 h-100 my-auto" href="{{ route("Detail Video", ['language'=>app()->getLocale(), 'title_slug' => $video->judul_slug]) }}">
               <div class="single-blog-post style-2 d-flex align-items-center">
                 <div class="post-thumbnail">
                   <img src="http://img.youtube.com/vi/{{$video->link}}/hqdefault.jpg" class="h-100" alt="">
@@ -102,17 +90,6 @@
         </ul>
       </div>
     </div>
-    <ul class="pagination bg-dark justify-content-center mt-5">
-      <li class="page-item">
-        <a class="page-link pagination bg-black link-light border-light" href="#" tabindex="-1" aria-disabled="true">Sebelumnya</a>
-      </li>
-      <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">1</a></li>
-      <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">2</a></li>
-      <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link pagination bg-black link-light" href="#">Berikutnya</a>
-      </li>
-    </ul>
   </div>
   @endif
 @endsection

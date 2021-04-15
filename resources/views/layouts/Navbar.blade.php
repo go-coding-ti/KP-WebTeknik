@@ -11,7 +11,7 @@
               <div id="breakingNewsTicker" class="ticker">
                 <ul>
                   @foreach($pengumumans as $pengumuman)
-                    <li><a class="text-decoration-none" href="{{ route("Detail Pengumuman", ['language'=>app()->getLocale(), 'title_slug' => $pengumuman->title_slug]) }}">{{$pengumuman->title_eng}}</a></li>
+                    <li><a class="text-decoration-none" href="{{ route("Detail Pengumuman", ['language'=>app()->getLocale(), 'title_slug' => $pengumuman->title_slug]) }}">{{ strip_tags(substr($pengumuman->title_eng, 0, 50)) }} ...</a></li>
                   @endforeach
                 </ul>
               </div>
@@ -109,7 +109,7 @@
               <div id="breakingNewsTicker" class="ticker">
                 <ul>
                   @foreach($pengumumans as $pengumuman)
-                    <li><a class="text-decoration-none" href="{{ route("Detail Pengumuman", ['language'=>app()->getLocale(), 'title_slug' => $pengumuman->title_slug]) }}">{{$pengumuman->title_ina}}</a></li>
+                    <li><a class="text-decoration-none" href="{{ route("Detail Pengumuman", ['language'=>app()->getLocale(), 'title_slug' => $pengumuman->title_slug]) }}">{{ strip_tags(substr($pengumuman->title_ina, 0, 50)) }} ...</a></li>
                   @endforeach
                 </ul>
               </div>

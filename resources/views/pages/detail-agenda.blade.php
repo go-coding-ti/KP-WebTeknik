@@ -95,13 +95,6 @@
                             <span class="text-muted">Pada {{ date('d M Y', strtotime($agenda->created_at)) }}</span>
                         </p>
                     </div>
-                    <div class="col-sm-12 col-md-6">
-                        {{-- <p class="card-text small text-center text-md-end text-end">
-                            <span class="text-muted"><i class="fas fa-comments"></i> 27</span>
-                            <span class="fw-bold mx-2"> | </span>
-                            <span class="text-muted"><i class="fas fa-eye"></i> 150</span>
-                        </p> --}}
-                    </div>
                 </div>
                 <embed src="file_name.pdf" width="200" height="200px" hidden/>
                 <img src="https://images.unsplash.com/photo-1617719787657-81dd0ec1d3ce?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDN8UzRNS0xBc0JCNzR8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="img-thumbnail bg-grey border border-0" alt="..." width="400" hidden>

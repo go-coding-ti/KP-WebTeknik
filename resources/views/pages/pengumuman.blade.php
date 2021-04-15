@@ -11,16 +11,16 @@
     </div>
     <div class="container">
         <div class="row d-flex justify-content-md-center">
-            <div class="col-md-12 col-lg-8">
+            <div class="col-12">
                 @foreach($pengumumans as $pengumuman)
                 <div class="card bg-grey text-light mb-3">
                     <div class="row g-0">
-                        <div class="col-md-3 text-center">
+                        <div class="col-md-3 text-center p-3">
                             <img src="{{$pengumuman->kategori->icon}}" style="height: 8em" alt="...">
                         </div>
                         <div class="col-md-9">
                             <div class="card-body text-center text-md-start">
-                                
+                                <a href="{{ route("Pengumuman Kategori", ['language'=>app()->getLocale(), 'kategori' => $pengumuman->kategori->kategori_lower]) }}" class="btn btn-sm my-1 bg-red text-light fw-bold text-uppercase"><small>{{$pengumuman->kategori->kategori_ina}}</small></a>
                                 <h5 class="card-title fw-bold"><a href="{{ route("Detail Pengumuman", ['language'=>app()->getLocale(), 'title_slug' => $pengumuman->title_slug]) }}" class="text-decoration-none link-light">{{$pengumuman->title_eng}}</a></h5>
                                 <p class="card-text small"><span class="text-muted">By Admin A</span>
                                     <span class="text-muted"> | </span>
@@ -46,45 +46,6 @@
                     @endif
                 </ul>
             </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="card bg-grey px-3">
-                    <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Pengumuman Lainnya</h1>
-                    <div class="mb-3 border-0 border-bottom">
-                        <div class="row g-0 py-2">
-                            <div class="col-5 my-auto">
-                                <img src="https://images.unsplash.com/photo-1568725992957-ead7b0259b5f?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8cVBZc0R6dkpPWWN8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="w-100 h-100" alt="...">
-                            </div>
-                            <div class="col-7">
-                                <div class="card-body">
-                                    <h6 class="card-title fw-bold"><a href="" class="text-decoration-none link-light">Judul Pengumuman Lainya</a></h6>
-                                    <p class="card-text small">
-                                    <span class="text-muted"><i class="fas fa-comments"></i> 27</span>
-                                    <span class="text-muted mx-2"> | </span>
-                                    <span class="text-muted"><i class="fas fa-eye"></i> 150</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-3 border-0 border-bottom">
-                        <div class="row g-0 py-2">
-                            <div class="col-5 my-auto">
-                                <img src="https://images.unsplash.com/photo-1568725992957-ead7b0259b5f?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8cVBZc0R6dkpPWWN8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="w-100 h-100" alt="...">
-                            </div>
-                            <div class="col-7">
-                                <div class="card-body">
-                                    <h6 class="card-title fw-bold"><a href="" class="text-decoration-none link-light">Judul Pengumuman Lainya</a></h6>
-                                    <p class="card-text small">
-                                    <span class="text-muted"><i class="fas fa-comments"></i> 27</span>
-                                    <span class="text-muted mx-2"> | </span>
-                                    <span class="text-muted"><i class="fas fa-eye"></i> 150</span>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     @endif
@@ -99,15 +60,16 @@
         </div>
         <div class="container">
             <div class="row d-flex justify-content-md-center">
-                <div class="col-md-12 col-lg-8">
+                <div class="col-12">
                     @foreach($all_pengumumans as $pengumuman)
                     <div class="card bg-grey text-light mb-3">
                         <div class="row g-0">
-                            <div class="col-md-3 text-center">
+                            <div class="col-md-3 text-center p-3">
                                 <img src="{{$pengumuman->kategori->icon}}" style="height: 8em" alt="...">
                             </div>
                             <div class="col-md-9">
                                 <div class="card-body text-center text-md-start">
+                                    <a href="{{ route("Pengumuman Kategori", ['language'=>app()->getLocale(), 'kategori' => $pengumuman->kategori->kategori_lower]) }}" class="btn btn-sm my-1 bg-red text-light fw-bold text-uppercase"><small>{{$pengumuman->kategori->kategori_ina}}</small></a>
                                     <h5 class="card-title fw-bold"><a href="{{ route("Detail Pengumuman", ['language'=>app()->getLocale(), 'title_slug' => $pengumuman->title_slug]) }}" class="text-decoration-none link-light">{{$pengumuman->title_ina}}</a></h5>
                                     <p class="card-text small"><span class="text-muted">Oleh Admin A</span>
                                         <span class="text-muted"> | </span>
@@ -132,45 +94,6 @@
                           </li>
                         @endif
                     </ul>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="card bg-grey px-3">
-                        <h1 class="h4 fw-bold text-light border-2 border-bottom border-danger p-2">Pengumuman Lainnya</h1>
-                        <div class="mb-3 border-0 border-bottom">
-                            <div class="row g-0 py-2">
-                                <div class="col-5 my-auto">
-                                    <img src="https://images.unsplash.com/photo-1568725992957-ead7b0259b5f?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8cVBZc0R6dkpPWWN8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="w-100 h-100" alt="...">
-                                </div>
-                                <div class="col-7">
-                                    <div class="card-body">
-                                        <h6 class="card-title fw-bold"><a href="" class="text-decoration-none link-light">Judul Pengumuman Lainya</a></h6>
-                                        <p class="card-text small">
-                                        <span class="text-muted"><i class="fas fa-comments"></i> 27</span>
-                                        <span class="text-muted mx-2"> | </span>
-                                        <span class="text-muted"><i class="fas fa-eye"></i> 150</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mb-3 border-0 border-bottom">
-                            <div class="row g-0 py-2">
-                                <div class="col-5 my-auto">
-                                    <img src="https://images.unsplash.com/photo-1568725992957-ead7b0259b5f?ixid=MXwxMjA3fDB8MHx0b3BpYy1mZWVkfDV8cVBZc0R6dkpPWWN8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" class="w-100 h-100" alt="...">
-                                </div>
-                                <div class="col-7">
-                                    <div class="card-body">
-                                        <h6 class="card-title fw-bold"><a href="" class="text-decoration-none link-light">Judul Pengumuman Lainya</a></h6>
-                                        <p class="card-text small">
-                                        <span class="text-muted"><i class="fas fa-comments"></i> 27</span>
-                                        <span class="text-muted mx-2"> | </span>
-                                        <span class="text-muted"><i class="fas fa-eye"></i> 150</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

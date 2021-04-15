@@ -27,9 +27,9 @@
       <div class="col-12 col-md-5 col-lg-4 p-0 px-1">
         <ul class="nav vizew-nav-tab" role="tablist">
           @foreach($videos as $video)
-          <li class="nav-item hover">
-            <a class="nav-link active" href="{{ route("Detail Video", ['language'=>app()->getLocale(), 'title_slug' => $video->judul_slug]) }}">
-              <div class="single-blog-post style-2 d-flex align-items-center">
+          <li class="nav-item hover d-flex align-items-center w-100 my-auto">
+            <a class="nav-link @if($loop->iteration == 1) active @endif w-100 h-100 my-auto href="{{ route("Detail Video", ['language'=>app()->getLocale(), 'title_slug' => $video->judul_slug]) }}" data-toggle="pill" href="#post-{{$video->id}}" role="tab" aria-controls="post-{{$video->id}}" aria-selected="true">
+              <div class="single-blog-post style-2 d-flex align-items-center m-0">
                 <div class="post-thumbnail">
                   <img src="http://img.youtube.com/vi/{{$video->link}}/hqdefault.jpg" class="h-100" alt="">
                 </div>
@@ -43,17 +43,6 @@
         </ul>
       </div>
     </div>
-    <ul class="pagination bg-dark justify-content-center mt-5">
-      <li class="page-item">
-        <a class="page-link pagination bg-black link-light border-light" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-      </li>
-      <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">1</a></li>
-      <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">2</a></li>
-      <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link pagination bg-black link-light" href="#">Next</a>
-      </li>
-    </ul>
   </div>
   
   @endif
@@ -83,9 +72,9 @@
       <div class="col-12 col-md-5 col-lg-4 p-0 px-1">
         <ul class="nav vizew-nav-tab" role="tablist">
           @foreach($videos as $video)
-          <li class="nav-item hover">
-            <a class="nav-link active" href="{{ route("Detail Video", ['language'=>app()->getLocale(), 'title_slug' => $video->judul_slug]) }}">
-              <div class="single-blog-post style-2 d-flex align-items-center">
+          <li class="nav-item hover d-flex align-items-center w-100 my-auto">
+            <a class="nav-link @if($loop->iteration == 1) active @endif w-100 h-100 my-auto href="{{ route("Detail Video", ['language'=>app()->getLocale(), 'title_slug' => $video->judul_slug]) }}" data-toggle="pill" href="#post-{{$video->id}}" role="tab" aria-controls="post-{{$video->id}}" aria-selected="true">
+              <div class="single-blog-post style-2 d-flex align-items-center m-0">
                 <div class="post-thumbnail">
                   <img src="http://img.youtube.com/vi/{{$video->link}}/hqdefault.jpg" class="h-100" alt="">
                 </div>
@@ -99,17 +88,6 @@
         </ul>
       </div>
     </div>
-    <ul class="pagination bg-dark justify-content-center mt-5">
-      <li class="page-item">
-        <a class="page-link pagination bg-black link-light border-light" href="#" tabindex="-1" aria-disabled="true">Sebelumnya</a>
-      </li>
-      <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">1</a></li>
-      <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">2</a></li>
-      <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link pagination bg-black link-light" href="#">Berikutnya</a>
-      </li>
-    </ul>
   </div>
   @endif
 @endsection
