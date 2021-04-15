@@ -72,13 +72,28 @@ class BeritaController extends Controller
         $domeng = new \domdocument();
         $domeng->loadHtml($detaileng, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $images = $dom->getElementsByTagName('img');
+        $imageseng = $domeng->getElementsByTagName('img');
 
         foreach ($images as $count => $image) {
             $src = $image->getAttribute('src');
             if (preg_match('/data:image/', $src)) {
                 preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
                 $mimeType = $groups['mime'];
-                $path = '/image/news/'.$kategori->kategori_lower.'/'.$berita->title_ina.'/content/'. uniqid('', true) . '.' . $mimeType;
+                $path = '/image/news/'.$kategori->kategori_lower.'/'.$berita->title_ina.'/content_ina/'. uniqid('', true) . '.' . $mimeType;
+                Storage::disk('public')->put($path, file_get_contents($src));
+                $image->removeAttribute('src');
+                $link = asset('storage'.$path);
+                $image->setAttribute('src', $link);
+                array_push($arrImage, $path);
+            }
+        }
+
+        foreach ($imageseng as $count => $image) {
+            $src = $image->getAttribute('src');
+            if (preg_match('/data:image/', $src)) {
+                preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
+                $mimeType = $groups['mime'];
+                $path = '/image/news/'.$kategori->kategori_lower.'/'.$berita->title_ina.'/content_eng/'. uniqid('', true) . '.' . $mimeType;
                 Storage::disk('public')->put($path, file_get_contents($src));
                 $image->removeAttribute('src');
                 $link = asset('storage'.$path);
@@ -164,6 +179,7 @@ class BeritaController extends Controller
         $domeng = new \domdocument();
         $domeng->loadHtml($detaileng, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $images = $dom->getElementsByTagName('img');
+        $imageseng = $domeng->getElementsByTagName('img');
 
 
 
@@ -175,16 +191,46 @@ class BeritaController extends Controller
                 $status = '';
         //variabel dummy
 
+        //content ina image
         foreach ($images as $count => $image) {
             $src = $image->getAttribute('src');
             if (preg_match('/data:image/', $src)) {
                 preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
                 $mimeType = $groups['mime'];
-                $path = '/image/news/'.$kategori->kategori_lower.'/'.$berita->title_ina.'/content/'. uniqid('', true) . '.' . $mimeType;
+                $path = '/image/news/'.$kategori->kategori_lower.'/'.$berita->title_ina.'/content_ina/'. uniqid('', true) . '.' . $mimeType;
                 Storage::disk('public')->put($path, file_get_contents($src));
                 $image->removeAttribute('src');
                 $link = asset('storage'.$path);
                 $image->setAttribute('src', $link);
+                array_push($arrImage, $path);
+            }
+            if($beritaImage != null){
+                foreach($beritaImage as $item){
+                    $src = str_replace('/',' ',$src);
+                    $item->image = str_replace(' ','%20',$item->image);
+                    $item->image = str_replace('/', ' ',$item->image);
+                    array_push($arrsrc, $src);
+                    array_push($arrfoto, $item->image);
+                    if(preg_match('/'.$item->image.'/',$src)){
+                        array_push($arrsrc, 'true');
+                        array_push($idImage, $item->id);
+                    break;
+                    }
+                }   
+            }
+        }
+
+        //content eng image
+        foreach ($imageseng as $count => $imageeng) {
+            $src = $imageeng->getAttribute('src');
+            if (preg_match('/data:image/', $src)) {
+                preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
+                $mimeType = $groups['mime'];
+                $path = '/image/news/'.$kategori->kategori_lower.'/'.$berita->title_ina.'/content_eng/'. uniqid('', true) . '.' . $mimeType;
+                Storage::disk('public')->put($path, file_get_contents($src));
+                $imageeng->removeAttribute('src');
+                $link = asset('storage'.$path);
+                $imageeng->setAttribute('src', $link);
                 array_push($arrImage, $path);
             }
             if($beritaImage != null){

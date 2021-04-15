@@ -29,14 +29,18 @@
                 @endforeach
             </div>
             <ul class="pagination bg-dark justify-content-center mt-5">
+                @if($agendas->lastPage() > 1)
                 <li class="page-item">
-                <a class="page-link pagination bg-black link-light border-light" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">1</a></li>
-                <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">2</a></li>
-                <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">3</a></li>
-                <li class="page-item">
-                <a class="page-link pagination bg-black link-light" href="#">Next</a>
+                    <!--pagination-->
+                    <ul class="pagination bg-dark">
+                      <a class="page-link pagination bg-black link-light border-light" tabindex="-1" aria-disabled="true" @if($agendas->currentPage() == 1) style="display: none" @endif href="{{ $agendas->url($agendas->currentPage()-1) }}">Previous</a>
+                        @for($i=1; $i <= $agendas->lastPage(); $i++)
+                          <li class="page-item"><a @if($agendas->currentPage() == $i) class="page-link pagination bg-light link-dark link-bold" @else class="page-link pagination bg-black link-light" @endif href="{{ $agendas->url($i)}}">{{ $i }}</a></li>
+                        @endfor
+                      <a role="button" href="{{ $agendas->url($agendas->currentPage()+1) }}" @if($agendas->currentPage() == $agendas->lastPage()) style="display: none"  @endif class="page-link pagination bg-black link-light border-light text-center">Next</a>
+                    </ul>
+                  </li>
+                @endif
                 </li>
             </ul>
         </div>
@@ -70,15 +74,18 @@
                 @endforeach
             </div>
             <ul class="pagination bg-dark justify-content-center mt-5">
+                @if($agendas->lastPage() > 1)
                 <li class="page-item">
-                <a class="page-link pagination bg-black link-light border-light" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">1</a></li>
-                <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">2</a></li>
-                <li class="page-item"><a class="page-link pagination bg-black link-light" href="#">3</a></li>
-                <li class="page-item">
-                <a class="page-link pagination bg-black link-light" href="#">Next</a>
-                </li>
+                    <!--pagination-->
+                    <ul class="pagination bg-dark">
+                      <a class="page-link pagination bg-black link-light border-light" tabindex="-1" aria-disabled="true" @if($agendas->currentPage() == 1) style="display: none" @endif href="{{ $agendas->url($agendas->currentPage()-1) }}">Previous</a>
+                        @for($i=1; $i <= $agendas->lastPage(); $i++)
+                          <li class="page-item"><a @if($agendas->currentPage() == $i) class="page-link pagination bg-light link-dark link-bold" @else class="page-link pagination bg-black link-light" @endif href="{{ $agendas->url($i)}}">{{ $i }}</a></li>
+                        @endfor
+                      <a role="button" href="{{ $agendas->url($agendas->currentPage()+1) }}" @if($agendas->currentPage() == $agendas->lastPage()) style="display: none"  @endif class="page-link pagination bg-black link-light border-light text-center">Next</a>
+                    </ul>
+                  </li>
+                @endif
             </ul>
         </div>
     @endif

@@ -47,12 +47,12 @@
             <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="link-light text-decoration-none ">
               <img src="{{$berita->thumbnail}}" class="card-img-top mb-1" alt="...">
               <div class="card-body p-3">
-                <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="btn btn-sm btn-danger p-1 text-uppercase my-1"><small>{{$berita->kategori->kategori_eng}}</small></a>
-                <p class="card-text h5 fw-bold mt-3"><a href="{{ route("Detail Berita", ['language'=>app()->getLocale(), 'title_slug' => $berita->title_slug]) }}" class="text-decoration-none link-light link-hover">{{$berita->title_eng}}</a></p>
+                <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="btn btn-sm btn-danger p-1 text-uppercase my-1"><small>{{$berita->kategori->kategori_ina}}</small></a>
+                <p class="card-text h5 fw-bold mt-3"><a href="{{ route("Detail Berita", ['language'=>app()->getLocale(), 'title_slug' => $berita->title_slug]) }}" class="text-decoration-none link-light link-hover">{{$berita->title_ina}}</a></p>
               </div>
             </a>
             <div class="card-footer p-3 text-end border-0">
-              <small class="text-muted">Posted on {{ date('d M Y', strtotime($berita->tanggal_publish)) }}</small>
+              <small class="text-muted">Diposting pada {{ date('d M Y', strtotime($berita->tanggal_publish)) }}</small>
             </div>
           </div>
         </div>

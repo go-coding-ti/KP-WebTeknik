@@ -11,7 +11,7 @@
               <div id="breakingNewsTicker" class="ticker">
                 <ul>
                   @foreach($pengumumans as $pengumuman)
-                    <li><a class="text-decoration-none" href="single-post.html">{{$pengumuman->title_eng}}</a></li>
+                    <li><a class="text-decoration-none" href="{{ route("Detail Pengumuman", ['language'=>app()->getLocale(), 'title_slug' => $pengumuman->title_slug]) }}">{{$pengumuman->title_eng}}</a></li>
                   @endforeach
                 </ul>
               </div>
@@ -109,7 +109,7 @@
               <div id="breakingNewsTicker" class="ticker">
                 <ul>
                   @foreach($pengumumans as $pengumuman)
-                    <li><a class="text-decoration-none" href="single-post.html">{{$pengumuman->title_ina}}</a></li>
+                    <li><a class="text-decoration-none" href="{{ route("Detail Pengumuman", ['language'=>app()->getLocale(), 'title_slug' => $pengumuman->title_slug]) }}">{{$pengumuman->title_ina}}</a></li>
                   @endforeach
                 </ul>
               </div>

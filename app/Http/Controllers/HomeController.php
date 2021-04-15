@@ -15,6 +15,7 @@ use App\AgendaKategori;
 use App\Header;
 use App\Menu;
 use App\Pengumuman;
+use App\PengumumanKategori;
 use App\Preference;
 use App\Submenu;
 use Illuminate\Support\Facades\Storage;
@@ -25,9 +26,9 @@ class HomeController extends Controller
 {
     public function index(){
         $kategoris = Kategori::get();
-        $beritas = Berita::with('kategori')->get();
+        $beritas = Berita::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(6)->get();
         $popularBeritas = Berita::with('kategori')->orderBy('read_count', 'DESC')->get();
-        $agendas = Agenda::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
+        $agendas = Agenda::with('kategori')->where('status', 'aktif')->orderBy('id', 'DESC')->limit(6)->get();
         $galeris = Galeri::orderBy('id', 'DESC')->limit(3)->get();
         $videos = Video::limit(3)->get();
        
@@ -39,14 +40,14 @@ class HomeController extends Controller
         $menus = Menu::with('submenu')->get();
         $submenus = Submenu::get();
 
-        $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
+        $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
 
         return view('pages/index', compact('preference', 'videos', 'kategoris', 'beritas', 'popularBeritas', 'agendas', 'galeris', 'pengumumans', 'headers', 'menus', 'submenus', 'sosmeds'));
     }
 
     //AGENDA PAGE
     public function agenda(){
-        $agendas = Agenda::with('kategori')->orderBy('id', 'DESC')->get();
+        $agendas = Agenda::with('kategori')->where('status', 'aktif')->orderBy('id', 'DESC')->paginate(6);
         
         //ALL FUNCTION MUST APPLY CODES BELOW
         $sosmeds = Social::get();
@@ -55,14 +56,14 @@ class HomeController extends Controller
         $menus = Menu::with('submenu')->get();
         $submenus = Submenu::get();
 
-        $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
+        $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
 
         return view('pages/agenda', compact('preference', 'agendas', 'pengumumans', 'headers', 'menus', 'submenus', 'sosmeds'));
     }
 
     public function agendaKategori($language, $kategori){
         $idkategori = AgendaKategori::where('kategori_lower', $kategori)->first();
-        $agendas = Agenda::with('kategori')->where('id_kategori', $idkategori->id)->orderBy('id', 'DESC')->get();
+        $agendas = Agenda::with('kategori')->where('id_kategori', $idkategori->id)->where('status', 'aktif')->orderBy('id', 'DESC')->paginate(6);
 
         //ALL FUNCTION MUST APPLY CODES BELOW
         $sosmeds = Social::get();
@@ -71,7 +72,7 @@ class HomeController extends Controller
         $menus = Menu::with('submenu')->get();
         $submenus = Submenu::get();
 
-        $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
+        $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
 
         return view('pages/agenda', compact('preference', 'agendas', 'pengumumans', 'headers', 'menus', 'submenus', 'sosmeds'));
     }
@@ -86,7 +87,7 @@ class HomeController extends Controller
         $menus = Menu::with('submenu')->get();
         $submenus = Submenu::get();
 
-        $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
+        $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
 
 
         return view('pages/detail-agenda', compact('preference', 'agenda', 'pengumumans', 'headers', 'menus', 'submenus', 'sosmeds'));
@@ -94,7 +95,7 @@ class HomeController extends Controller
 
     //BERITA PAGE
     public function berita(){
-        $beritas = Berita::with('kategori')->get();
+        $beritas = Berita::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->paginate(6);
 
         //ALL FUNCTION MUST APPLY CODES BELOW
         $sosmeds = Social::get();
@@ -103,7 +104,7 @@ class HomeController extends Controller
         $menus = Menu::with('submenu')->get();
         $submenus = Submenu::get();
 
-        $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
+        $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
 
 
         return view('pages/berita', compact('preference', 'beritas', 'pengumumans', 'headers', 'menus', 'submenus', 'sosmeds'));
@@ -111,7 +112,7 @@ class HomeController extends Controller
 
     public function beritaKategori($language, $kategori){
         $idkategori = Kategori::where('kategori_lower', $kategori)->first();
-        $beritas = Berita::with('kategori')->where('id_kategori', $idkategori->id)->orderBy('id', 'DESC')->get();
+        $beritas = Berita::with('kategori')->where('id_kategori', $idkategori->id)->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->paginate(6);
 
         //ALL FUNCTION MUST APPLY CODES BELOW
         $sosmeds = Social::get();
@@ -120,7 +121,7 @@ class HomeController extends Controller
         $menus = Menu::with('submenu')->get();
         $submenus = Submenu::get();
 
-        $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
+        $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
 
 
         return view('pages/berita', compact('beritas', 'pengumumans', 'headers', 'menus', 'submenus', 'preference', 'sosmeds'));
@@ -131,7 +132,7 @@ class HomeController extends Controller
         $berita->read_count = $berita->read_count + 1;
         $berita->update();
 
-        $beritas = Berita::where('id', '!=', $berita->id)->where('id_kategori', $berita->id_kategori)->orderBy('read_count', 'DESC')->limit(10)->get();
+        $beritas = Berita::where('id', '!=', $berita->id)->where('status', 'aktif')->orderBy('id', 'DESC')->limit(10)->get();
 
         //ALL FUNCTION MUST APPLY CODES BELOW
         $sosmeds = Social::get();
@@ -140,7 +141,7 @@ class HomeController extends Controller
         $menus = Menu::with('submenu')->get();
         $submenus = Submenu::get();
 
-        $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
+        $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
 
         return view('pages/detail-berita', compact('berita', 'beritas', 'pengumumans', 'headers', 'menus', 'submenus', 'preference', 'sosmeds'));
     }
@@ -148,7 +149,7 @@ class HomeController extends Controller
 
     //PENGUMUMAN PAGE
     public function pengumuman(){
-        $pengumumans = Pengumuman::with('kategori')->get();
+        $all_pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->paginate(6);
 
         $sosmeds = Social::get();
         $preference = Preference::first();
@@ -156,8 +157,25 @@ class HomeController extends Controller
         $menus = Menu::with('submenu')->get();
         $submenus = Submenu::get();
 
-        $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
-        return view('pages/pengumuman', compact('pengumumans','headers', 'menus', 'submenus', 'preference', 'sosmeds'));
+        $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
+        return view('pages/pengumuman', compact('all_pengumumans', 'pengumumans','headers', 'menus', 'submenus', 'preference', 'sosmeds'));
+    }
+
+    public function pengumumanKategori($language, $kategori){
+        $idkategori = PengumumanKategori::where('kategori_lower', $kategori)->first();
+        $all_pengumumans = Pengumuman::with('kategori')->where('id_kategori', $idkategori->id)->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->paginate(6);
+
+        //ALL FUNCTION MUST APPLY CODES BELOW
+        $sosmeds = Social::get();
+        $preference = Preference::first();
+        $headers = Header::with('menu')->get();
+        $menus = Menu::with('submenu')->get();
+        $submenus = Submenu::get();
+
+        $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
+
+
+        return view('pages/pengumuman', compact('all_pengumumans', 'pengumumans', 'headers', 'menus', 'submenus', 'preference', 'sosmeds'));
     }
 
     public function showPengumuman($language, $title_slug){
@@ -171,7 +189,7 @@ class HomeController extends Controller
         $menus = Menu::with('submenu')->get();
         $submenus = Submenu::get();
 
-        $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
+        $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
 
         return view('pages/detail-pengumuman', compact('pengumuman', 'pengumumans', 'headers', 'menus', 'submenus', 'preference', 'sosmeds'));
     }
@@ -179,7 +197,7 @@ class HomeController extends Controller
 
     //GALERI PAGE
     public function galeri(){
-        $galeris = Galeri::orderBy('id', 'DESC')->get();
+        $galeris = Galeri::orderBy('id', 'DESC')->paginate(9);
         
         //ALL FUNCTION MUST APPLY CODES BELOW
         $sosmeds = Social::get();
@@ -188,7 +206,7 @@ class HomeController extends Controller
         $menus = Menu::with('submenu')->get();
         $submenus = Submenu::get();
 
-        $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
+        $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
 
         return view('pages/galeri', compact('galeris', 'pengumumans', 'headers', 'menus', 'submenus', 'preference', 'sosmeds'));
     }
@@ -205,7 +223,7 @@ class HomeController extends Controller
         $menus = Menu::with('submenu')->get();
         $submenus = Submenu::get();
 
-        $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
+        $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
 
         return view('pages/video', compact('videos', 'pengumumans', 'headers', 'menus', 'submenus', 'preference', 'sosmeds'));
     }
@@ -220,7 +238,7 @@ class HomeController extends Controller
         $menus = Menu::with('submenu')->get();
         $submenus = Submenu::get();
 
-        $pengumumans = Pengumuman::with('kategori')->orderBy('id', 'DESC')->limit(6)->get();
+        $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
 
         return view('pages/detail-video', compact('video','videos', 'pengumumans', 'headers', 'menus', 'submenus', 'preference', 'sosmeds'));
     }
