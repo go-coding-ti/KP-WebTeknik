@@ -47,11 +47,12 @@
                     @foreach ($beritas as $berita)
                     <div class="card bg-grey text-light mb-3">
                         <div class="row g-0">
-                            <div class="col-md-5 my-auto">
+                            <div class="col-md-3 my-auto">
                                 <img src="{{$berita->thumbnail}}" class="w-100 h-100" alt="...">
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-9">
                                 <div class="card-body">
+                                    <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="btn btn-sm btn-danger p-1 text-uppercase my-1"><small>{{$berita->kategori->kategori_ina}}</small></a>
                                     <h5 class="card-title fw-bold"><a href="{{ route("Detail Berita",  [app()->getLocale(), $berita->title_slug]) }}" class="text-decoration-none link-light">{{$berita->title_eng}}</a></h5>
                                     <p class="card-text text-start small">
                                         <span class="text-muted">By Admin A</span>
@@ -117,11 +118,12 @@
                     @foreach ($beritas as $berita)
                     <div class="card bg-grey text-light mb-3">
                         <div class="row g-0">
-                            <div class="col-md-5 my-auto">
+                            <div class="col-md-3 my-auto">
                                 <img src="{{$berita->thumbnail}}" class="w-100 h-100" alt="...">
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-9">
                                 <div class="card-body">
+                                    <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="btn btn-sm btn-danger p-1 text-uppercase my-1"><small>{{$berita->kategori->kategori_ina}}</small></a><a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="btn btn-sm btn-danger p-1 text-uppercase my-1"><small>{{$berita->kategori->kategori_ina}}</small></a>
                                     <h5 class="card-title fw-bold"><a href="{{ route("Detail Berita",  [app()->getLocale(), $berita->title_slug]) }}" class="text-decoration-none link-light">{{$berita->title_ina}}</a></h5>
                                     <p class="card-text text-start small">
                                         <span class="text-muted">Oleh Admin A</span>

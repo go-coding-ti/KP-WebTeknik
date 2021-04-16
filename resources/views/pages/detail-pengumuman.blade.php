@@ -35,7 +35,7 @@
                 {!! $pengumuman->content_eng !!}
                 @if($pengumuman->lampiran != NULL)
                 <h5 class="text-start fw-bold mt-5">Attachment</h5>
-                <a class="text-start text-light" href="{{$pengumuman->lampiran}}" target="_blank"><p><i class="fas fa-download"></i> Download Attachment</p></a>
+                <a class="text-start text-light text-decoration-none" href="{{$pengumuman->lampiran}}" target="_blank"><p><i class="fas fa-download"></i> Download Attachment</p></a>
                 @endif    
             </div>
             <hr class="border border-dark dropdown-divider mt-5 mb-4 mx-5">
@@ -52,12 +52,12 @@
                             <img src="{{$pengumuman->kategori->icon}}" style="height: 8em" alt="...">
                         </div>
                         <div class="col-md-9">
-                            <div class="card-body">
-                                <h5 class="card-title fw-bold"><a href="" class="text-decoration-none link-light">{{$pengumuman->title_eng}}</a></h5>
-                                <p class="card-text text-start small">
-                                    <span class="text-muted">By Admin A</span>
-                                    <span class="fw-bold mx-2"> | </span>
-                                    <span class="text-muted">Posted on {{ date('d M Y', strtotime($pengumuman->created_at)) }}</span>
+                            <div class="card-body text-center text-md-start">
+                                <a href="{{ route("Pengumuman Kategori", ['language'=>app()->getLocale(), 'kategori' => $pengumuman->kategori->kategori_lower]) }}" class="btn btn-sm my-1 bg-red text-light fw-bold text-uppercase"><small>{{$pengumuman->kategori->kategori_ina}}</small></a>
+                                <h5 class="card-title fw-bold"><a href="{{ route("Detail Pengumuman", ['language'=>app()->getLocale(), 'title_slug' => $pengumuman->title_slug]) }}" class="text-decoration-none link-light">{{$pengumuman->title_eng}}</a></h5>
+                                <p class="card-text small"><span class="text-muted">By Admin A</span>
+                                    <span class="text-muted"> | </span>
+                                    <span class="text-muted">Posted on {{ date('d M Y', strtotime($pengumuman->created_at)) }}</span></p>
                                 </p>
                             </div>
                         </div>
@@ -116,16 +116,16 @@
                     @foreach($pengumumans as $pengumuman)
                     <div class="card bg-grey text-light mb-3">
                         <div class="row g-0">
-                            <div class="col-md-5 text-center p-3">
+                            <div class="col-md-3 text-center p-3">
                                 <img src="{{$pengumuman->kategori->icon}}" style="height: 8em" alt="...">
                             </div>
-                            <div class="col-md-7">
-                                <div class="card-body">
-                                    <h5 class="card-title fw-bold"><a href="" class="text-decoration-none link-light">{{$pengumuman->title_ina}}</a></h5>
-                                    <p class="card-text text-start small">
-                                        <span class="text-muted">Oleh Admin A</span>
-                                        <span class="fw-bold mx-2"> | </span>
-                                        <span class="text-muted">Diposting pada {{ date('d M Y', strtotime($pengumuman->created_at)) }}</span>
+                            <div class="col-md-9">
+                                <div class="card-body text-center text-md-start">
+                                    <a href="{{ route("Pengumuman Kategori", ['language'=>app()->getLocale(), 'kategori' => $pengumuman->kategori->kategori_lower]) }}" class="btn btn-sm my-1 bg-red text-light fw-bold text-uppercase"><small>{{$pengumuman->kategori->kategori_ina}}</small></a>
+                                    <h5 class="card-title fw-bold"><a href="{{ route("Detail Pengumuman", ['language'=>app()->getLocale(), 'title_slug' => $pengumuman->title_slug]) }}" class="text-decoration-none link-light">{{$pengumuman->title_ina}}</a></h5>
+                                    <p class="card-text small"><span class="text-muted">Oleh Admin A</span>
+                                        <span class="text-muted"> | </span>
+                                        <span class="text-muted">Diposting pada {{ date('d M Y', strtotime($pengumuman->created_at)) }}</span></p>
                                     </p>
                                 </div>
                             </div>
