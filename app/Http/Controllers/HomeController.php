@@ -18,6 +18,7 @@ use App\Pengumuman;
 use App\PengumumanKategori;
 use App\Preference;
 use App\Submenu;
+use App\Page;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File; 
@@ -241,5 +242,24 @@ class HomeController extends Controller
         $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
 
         return view('pages/detail-video', compact('video','videos', 'pengumumans', 'headers', 'menus', 'submenus', 'preference', 'sosmeds'));
+    }
+
+    //PAGE CONTROLLER
+    public function showPage($language, $title_slug){
+        $page = Page::where('title_slug', $title_slug)->get()->first();
+
+        //ALL FUNCTION MUST APPLY CODES BELOW
+        $sosmeds = Social::get();
+        $preference = Preference::first();
+        $headers = Header::with('menu')->get();
+        $menus = Menu::with('submenu')->get();
+        $submenus = Submenu::get();
+        $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
+
+
+        if($page->status == 'tidak_aktif'){
+            return view('pages/notfound', compact('preference', 'page', 'pengumumans', 'headers', 'menus', 'submenus', 'sosmeds'));
+        }
+        return view('pages/base-page', compact('preference', 'page', 'pengumumans', 'headers', 'menus', 'submenus', 'sosmeds'));
     }
 }

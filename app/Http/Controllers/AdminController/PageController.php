@@ -45,24 +45,8 @@ class PageController extends Controller
         $page->title_eng = $request->title_eng;
         $page->title_slug = Str::slug($request->title_ina);
         $page->status = 'aktif';
-        $page->tanggal_publish = $request->tanggal;
-        
-
-        if($request->urlvideo != ""){
-            $page->url_video = $request->urlvideo;
-        }
 
 
-        if($request->file('galeri')!=""){
-            $galeri = $request->file('galeri');
-            $galeriLocation = '/image/pages/'.$request->title_ina.'/galeri';
-            $galeriname = $galeri->getClientOriginalName();
-            $path = $galeriLocation."/".$galeriname;
-            $page->galeri = '/storage'.$path;
-            $page->galeri_name = $galeriname;
-            Storage::disk('public')->put($path, file_get_contents($galeri));
-            //$galeri->move($galeriLocation, $page->galeri);
-        }
         if($request->file('lampiran')!=""){
             $file = $request->file('lampiran');
             $fileLocation = '/file/pages/'.$request->title_ina.'/lampiran';
@@ -82,13 +66,28 @@ class PageController extends Controller
         $domeng = new \domdocument();
         $domeng->loadHtml($detaileng, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $images = $dom->getElementsByTagName('img');
+        $imageseng = $domeng->getElementsByTagName('img');
 
         foreach ($images as $count => $image) {
             $src = $image->getAttribute('src');
             if (preg_match('/data:image/', $src)) {
                 preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
                 $mimeType = $groups['mime'];
-                $path = '/image/pages/'.$page->title_ina.'/content/'. uniqid('', true) . '.' . $mimeType;
+                $path = '/image/pages/'.$page->title_ina.'/content_ina/'. uniqid('', true) . '.' . $mimeType;
+                Storage::disk('public')->put($path, file_get_contents($src));
+                $image->removeAttribute('src');
+                $link = asset('storage'.$path);
+                $image->setAttribute('src', $link);
+                array_push($arrImage, $path);
+            }
+        }
+
+        foreach ($imageseng as $count => $image) {
+            $src = $image->getAttribute('src');
+            if (preg_match('/data:image/', $src)) {
+                preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
+                $mimeType = $groups['mime'];
+                $path = '/image/pages/'.$page->title_ina.'/content_eng/'. uniqid('', true) . '.' . $mimeType;
                 Storage::disk('public')->put($path, file_get_contents($src));
                 $image->removeAttribute('src');
                 $link = asset('storage'.$path);
@@ -146,23 +145,7 @@ class PageController extends Controller
         $page->title_eng = $request->title_eng;
         $page->title_slug = Str::slug($request->title_ina);
         $page->status = 'aktif';
-        $page->tanggal_publish = $request->tanggal;
         
-
-        if($request->urlvideo != ""){
-            $page->url_video = $request->urlvideo;
-        }
-
-
-        if($request->file('galeri')!=""){
-            $galeri = $request->file('galeri');
-            $galeriLocation = '/image/pages/'.$request->title_ina.'/galeri';
-            $galeriname = $galeri->getClientOriginalName();
-            $path = $galeriLocation."/".$galeriname;
-            $page->galeri = '/storage'.$path;
-            $page->galeri_name = $galeriname;
-            Storage::disk('public')->put($path, file_get_contents($galeri));
-        }
         if($request->file('lampiran')!=""){
             $file = $request->file('lampiran');
             $fileLocation = '/file/pages/'.$request->title_ina.'/lampiran';
@@ -182,6 +165,7 @@ class PageController extends Controller
         $domeng = new \domdocument();
         $domeng->loadHtml($detaileng, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $images = $dom->getElementsByTagName('img');
+        $imageseng = $domeng->getElementsByTagName('img');
 
 
 
@@ -198,7 +182,35 @@ class PageController extends Controller
             if (preg_match('/data:image/', $src)) {
                 preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
                 $mimeType = $groups['mime'];
-                $path = '/image/pages/'.$page->title_ina.'/content/'. uniqid('', true) . '.' . $mimeType;
+                $path = '/image/pages/'.$page->title_ina.'/content_ina/'. uniqid('', true) . '.' . $mimeType;
+                Storage::disk('public')->put($path, file_get_contents($src));
+                $image->removeAttribute('src');
+                $link = asset('storage'.$path);
+                $image->setAttribute('src', $link);
+                array_push($arrImage, $path);
+            }
+            if($pageImage != null){
+                foreach($pageImage as $item){
+                    $src = str_replace('/',' ',$src);
+                    $item->image = str_replace(' ','%20',$item->image);
+                    $item->image = str_replace('/', ' ',$item->image);
+                    array_push($arrsrc, $src);
+                    array_push($arrfoto, $item->image);
+                    if(preg_match('/'.$item->image.'/',$src)){
+                        array_push($arrsrc, 'true');
+                        array_push($idImage, $item->id);
+                    break;
+                    }
+                }   
+            }
+        }
+
+        foreach ($imageseng as $count => $image) {
+            $src = $image->getAttribute('src');
+            if (preg_match('/data:image/', $src)) {
+                preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
+                $mimeType = $groups['mime'];
+                $path = '/image/pages/'.$page->title_ina.'/content_eng/'. uniqid('', true) . '.' . $mimeType;
                 Storage::disk('public')->put($path, file_get_contents($src));
                 $image->removeAttribute('src');
                 $link = asset('storage'.$path);
