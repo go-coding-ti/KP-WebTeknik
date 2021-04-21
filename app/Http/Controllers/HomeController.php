@@ -247,13 +247,6 @@ class HomeController extends Controller
     //PAGE CONTROLLER
     public function showPage($language, $title_slug){
         $page = Page::where('title_slug', $title_slug)->get()->first();
-
-        //ALL FUNCTION MUST APPLY CODES BELOW
-        $sosmeds = Social::get();
-        $preference = Preference::first();
-        $headers = Header::with('menu')->get();
-        $menus = Menu::with('submenu')->get();
-        $submenus = Submenu::get();
         $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
 
 
@@ -261,5 +254,20 @@ class HomeController extends Controller
             return view('pages/notfound', compact('preference', 'page', 'pengumumans', 'headers', 'menus', 'submenus', 'sosmeds'));
         }
         return view('pages/base-page', compact('preference', 'page', 'pengumumans', 'headers', 'menus', 'submenus', 'sosmeds'));
+    }
+  
+    //DOWNLOAD DOCUMENT
+    public function downloadDocument()
+    {
+        //ALL FUNCTION MUST APPLY CODES BELOW
+        $sosmeds = Social::get();
+        $preference = Preference::first();
+        $headers = Header::with('menu')->get();
+        $menus = Menu::with('submenu')->get();
+        $submenus = Submenu::get();
+
+        $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
+
+        return view('pages/download-dokument', compact('pengumumans', 'headers', 'menus', 'submenus', 'preference', 'sosmeds'));
     }
 }
