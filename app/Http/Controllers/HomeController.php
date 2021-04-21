@@ -249,6 +249,13 @@ class HomeController extends Controller
         $page = Page::where('title_slug', $title_slug)->get()->first();
         $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
 
+        //ALL FUNCTION MUST APPLY CODES BELOW
+        $sosmeds = Social::get();
+        $preference = Preference::first();
+        $headers = Header::with('menu')->get();
+        $menus = Menu::with('submenu')->get();
+        $submenus = Submenu::get();
+        $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
 
         if($page->status == 'tidak_aktif'){
             return view('pages/notfound', compact('preference', 'page', 'pengumumans', 'headers', 'menus', 'submenus', 'sosmeds'));

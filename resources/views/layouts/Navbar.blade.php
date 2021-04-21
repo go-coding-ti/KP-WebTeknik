@@ -81,9 +81,10 @@
                 @endforeach
                   <li><a href="#">About</a>
                     <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
-                      <li class="p-0"><a class="hover" href="{{ route('About', app()->getLocale() ) }}"><i class="fas fa-link"></i> About Faculty of Engineering</a></li>
+                      <li class="p-0"><a class="hover" href="{{ route('About', app()->getLocale() ) }}"><i class="fas fa-link"></i> About</a></li>
                       <li class="p-0"><a class="hover" href="{{ route("Management", app()->getLocale() ) }}"><i class="fas fa-link"></i> Management</a></li>
                       <li class="p-0"><a class="hover" href="{{ route("Staff Pengajar", app()->getLocale() ) }}"><i class="fas fa-link"></i> Staf</a></li>
+                      <li class="p-0"><a class="hover" href="{{ route("Download Document", app()->getLocale() ) }}"><i class="fas fa-link"></i> Download Documents</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -121,10 +122,6 @@
                 @foreach($sosmeds as $sosmed)
                   <a href="{{$sosmed->link}}" target="_blank"><img src="{{$sosmed->logo}}" style="width: 25px; height: 25px;"></a>
                 @endforeach
-                {{-- <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-google-plus-g"></i></a> --}}
               </div>
               <div class="top-search-area">
                 <div class="btn-group" bis_skin_checked="1">
@@ -188,6 +185,7 @@
                       <li class="p-0"><a class="hover" href="{{ route('About', app()->getLocale() ) }}"><i class="fas fa-link"></i> Tentang Teknik</a></li>
                       <li class="p-0"><a class="hover" href="{{ route("Management", app()->getLocale() ) }}"><i class="fas fa-link"></i> Management</a></li>
                       <li class="p-0"><a class="hover" href="{{ route("Staff Pengajar", app()->getLocale() ) }}"><i class="fas fa-link"></i> Staf Pengajar</a></li>
+                      <li class="p-0"><a class="hover" href="{{ route("Download Document", app()->getLocale() ) }}"><i class="fas fa-link"></i> Download Dokumen</a></li>
                     </ul>
                   </li>
               </div>
