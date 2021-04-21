@@ -242,4 +242,20 @@ class HomeController extends Controller
 
         return view('pages/detail-video', compact('video','videos', 'pengumumans', 'headers', 'menus', 'submenus', 'preference', 'sosmeds'));
     }
+
+    
+    //DOWNLOAD DOCUMENT
+    public function downloadDocument()
+    {
+        //ALL FUNCTION MUST APPLY CODES BELOW
+        $sosmeds = Social::get();
+        $preference = Preference::first();
+        $headers = Header::with('menu')->get();
+        $menus = Menu::with('submenu')->get();
+        $submenus = Submenu::get();
+
+        $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
+
+        return view('pages/download-dokument', compact('pengumumans', 'headers', 'menus', 'submenus', 'preference', 'sosmeds'));
+    }
 }

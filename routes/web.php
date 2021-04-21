@@ -207,6 +207,8 @@ Route::group(['prefix' => '{language}'], function () {
     Route::get('/about', function () {
         return view('pages/tentang-teknik');
     })->name('About');
+
+    Route::get('/document', 'HomeController@downloadDocument')->name('Download Document');
 });
 
 //Pages Front End Routes

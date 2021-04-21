@@ -59,12 +59,12 @@
                   @foreach($headers as $header)
                     <li @if($header->header_ina == "Beranda") class="active" @endif><a href="{{$header->header_url}}" @if($header->id_page == NULL && $header->header_url != "#") target="_blank" @endif>{{$header->header_eng}} </a>
                       @if($header->menu->count() > 0)
-                      <ul class="list-group list-group-flush dropdown" style="width: 250px ">
+                      <ul class="list-group list-group-flush dropdown" >
                         @foreach($menus as $menu)
                           @if($menu->id_header == $header->id)
                             <li class="p-0"><a class="hover" href="{{$menu->menu_url}}" @if($menu->id_page == NULL) target="_blank" @endif><i @if($menu->id_page == NULL && $menu->menu_url != "#") class="fas fa-external-link" @else class="fas fa-link" @endif></i> {{$menu->menu_eng}}</a>
                               @if($menu->submenu->count() > 0)
-                              <ul class="list-group list-group-flush dropdown" style="width: wrap-content;>
+                              <ul class="list-group list-group-flush dropdown" style="width: wrap-content;">
                                 @foreach($submenus as $submenu)
                                   @if($submenu->id_menu == $menu->id)
                                     <li class="p-0"><a class="hover" href="{{$submenu->menu_url}}" @if($submenu->id_page == NULL) target="_blank" @endif><i @if($submenu->id_page == NULL && $submenu->menu_url != "#") class="fas fa-external-link" @else class="fas fa-link" @endif></i> {{$submenu->menu_eng}}</a></li>
@@ -164,7 +164,7 @@
                     <li>
                       <a href="{{$header->header_url}}" @if($header->id_page == NULL) target="_blank" @endif>{{$header->header_ina}}</a>
                       @if($header->menu->count() > 0)
-                      <ul class="list-group list-group-flush dropdown" style="width: 250px ">
+                      <ul class="list-group list-group-flush dropdown">
                         @foreach($menus as $menu)
                           @if($menu->id_header == $header->id)
                             <li class="p-0">
