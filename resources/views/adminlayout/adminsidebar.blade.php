@@ -141,7 +141,8 @@
           <div id="collapseStaff" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Staf & Manajemen:</h6>
-              <a class="collapse-item" href="/admin/manajemen" ><i class="fas fa-fw fa-sitemap"></i>   Manajemen</a>
+              <a class="collapse-item" href="/admin/jabatan"><i class="fas fa-fw fa-user-tie"></i>  Jabatan</a>
+              <a class="collapse-item" href="/admin/management" ><i class="fas fa-fw fa-sitemap"></i>   Manajemen</a>
               <a class="collapse-item" href="/admin/staf"><i class="fas fa-fw fa-user"></i>  Staf Pengajar</a>
             </div>
           </div>

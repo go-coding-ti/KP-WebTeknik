@@ -123,7 +123,7 @@
                             </div>
                             <div class="col-md-9">
                                 <div class="card-body">
-                                    <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="btn btn-sm btn-danger p-1 text-uppercase my-1"><small>{{$berita->kategori->kategori_ina}}</small></a><a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="btn btn-sm btn-danger p-1 text-uppercase my-1"><small>{{$berita->kategori->kategori_ina}}</small></a>
+                                    <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="btn btn-sm btn-danger p-1 text-uppercase my-1"><small>{{$berita->kategori->kategori_ina}}</small></a>
                                     <h5 class="card-title fw-bold"><a href="{{ route("Detail Berita",  [app()->getLocale(), $berita->title_slug]) }}" class="text-decoration-none link-light">{{$berita->title_ina}}</a></h5>
                                     <p class="card-text text-start small">
                                         <span class="text-muted">Oleh Admin A</span>

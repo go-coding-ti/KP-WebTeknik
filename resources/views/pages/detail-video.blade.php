@@ -28,7 +28,7 @@
         <ul class="nav vizew-nav-tab" role="tablist">
           @foreach($videos as $video)
           <li class="nav-item hover d-flex align-items-center w-100 my-auto">
-            <a class="nav-link @if($loop->iteration == 1) active @endif w-100 h-100 my-auto href="{{ route("Detail Video", ['language'=>app()->getLocale(), 'title_slug' => $video->judul_slug]) }}" data-toggle="pill" href="#post-{{$video->id}}" role="tab" aria-controls="post-{{$video->id}}" aria-selected="true">
+            <a class="nav-link @if($loop->iteration == 1) active @endif w-100 h-100 my-auto" href="{{ route("Detail Video", ['language'=>app()->getLocale(), 'title_slug' => $video->judul_slug]) }}">
               <div class="single-blog-post style-2 d-flex align-items-center m-0">
                 <div class="post-thumbnail">
                   <img src="http://img.youtube.com/vi/{{$video->link}}/hqdefault.jpg" class="h-100" alt="">
@@ -73,7 +73,7 @@
         <ul class="nav vizew-nav-tab" role="tablist">
           @foreach($videos as $video)
           <li class="nav-item hover d-flex align-items-center w-100 my-auto">
-            <a class="nav-link @if($loop->iteration == 1) active @endif w-100 h-100 my-auto href="{{ route("Detail Video", ['language'=>app()->getLocale(), 'title_slug' => $video->judul_slug]) }}" data-toggle="pill" href="#post-{{$video->id}}" role="tab" aria-controls="post-{{$video->id}}" aria-selected="true">
+            <a class="nav-link @if($loop->iteration == 1) active @endif w-100 h-100 my-auto" href="{{ route("Detail Video", ['language'=>app()->getLocale(), 'title_slug' => $video->judul_slug]) }}">
               <div class="single-blog-post style-2 d-flex align-items-center m-0">
                 <div class="post-thumbnail">
                   <img src="http://img.youtube.com/vi/{{$video->link}}/hqdefault.jpg" class="h-100" alt="">
