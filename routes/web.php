@@ -103,7 +103,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/staf/{id}/edit', 'AdminController\StaffController@edit')->name('admin-staff-edit');
     Route::post('/staf/{id}', 'AdminController\StaffController@update')->name('admin-staff-update');
     Route::get('/staf/delete/{id}', 'AdminController\StaffController@destroy')->name('admin-staff-delete');
-    Route::get('/staf/show/{kategori}/{judul_slug}', 'AdminController\StaffController@show')->name('admin-staff-show');
+    Route::get('/staf/show/{id}', 'AdminController\StaffController@show')->name('admin-staff-show');
 
     //Manajemen Controller
     Route::get('/management', 'AdminController\ManajemenController@index')->name('admin-management-home');
@@ -201,15 +201,14 @@ Route::group(['prefix' => '{language}'], function () {
 
     //Video
     Route::get('/videos', 'HomeController@video')->name('Video');
-    Route::get('/videos/{title_slug}', 'HomeController@videoShow')->name('Detail Video');
+    Route::get('/videos/{title_slug}', 'HomeController@videoShow')->name('Detail Video');\
 
-    Route::get('/staff-pengajar', function () {
-        return view('pages/staff-pengajar');
-    })->name('Staff Pengajar');
+    //About
+    Route::get('/about', 'HomeController@about')->name('About');
 
-    Route::get('/staff-pengajar/detail', function () {
-        return view('pages/detail-staff-pengajar');
-    })->name('Detail Staff Pengajar');
+    Route::get('/staf', 'HomeController@staf')->name('Staff Pengajar');
+
+    Route::get('/staf/{nama_slug}', 'HomeController@showStaf')->name('Detail Staff Pengajar');
 
     Route::get('/management', function () {
         return view('pages/management');
@@ -219,9 +218,7 @@ Route::group(['prefix' => '{language}'], function () {
         return view('pages/detail-management');
     })->name('Detail Management');
 
-    Route::get('/about', function () {
-        return view('pages/tentang-teknik');
-    })->name('About');
+
 
     Route::get('/document', 'HomeController@downloadDocument')->name('Download Document');
 });

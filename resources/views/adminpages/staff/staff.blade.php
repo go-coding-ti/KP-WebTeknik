@@ -69,7 +69,7 @@
                       <td>{{$staff->nip}}</td>
                       <td>{{ date('d M Y', strtotime($staff->tanggal_lahir)) }}</td>
                       <td>{{$staff->prodi->prodi_ina}}
-                      <td><a style="margin-right:7px" href="#"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/news/{{$staff->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a><a class="btn btn-danger btn-sm" onclick="deleteberita({{$staff->id}})" href="#"><i class="fas fa-trash"></i></a></td>
+                      <td><a style="margin-right:7px" href="/admin/staf/show/{{$staff->id}}"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a><a style="margin-right:7px" class="btn btn-info btn-sm" href="/admin/staf/{{$staff->id}}/edit" ><i class="fas fa-pencil-alt" ></i></a><a class="btn btn-danger btn-sm" onclick="deletestaf({{$staff->id}})" href="#"><i class="fas fa-trash"></i></a></td>
                     </tr>
                   @endforeach
                   </tbody>
@@ -127,15 +127,15 @@
 
 
 //Soft Delete Page
-function deleteberita(id){
+function deletestaf(id){
   swal({
-    title: 'Anda yakin ingin menghapus berita ini?',
+    title: 'Anda yakin ingin menghapus staff ini?',
     icon: 'warning',
     buttons: ["Tidak", "Ya"],
   }).then(function(value) {
     if (value) {
     jQuery.ajax({  
-      url: 'news/delete/'+id,
+      url: 'staf/delete/'+id,
       type: "GET",
         success: function(result){
           location.reload();
