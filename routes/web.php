@@ -169,6 +169,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::put('/videos/{id}', 'AdminController\VideoController@update')->name('admin-video-update');
     Route::delete('/videos/{id}/delete', 'AdminController\VideoController@destroy')->name('admin-video-destroy');
     Route::get('/videos/show/{judul_slug}', 'AdminController\VideoController@show')->name('admin-video-show');
+    Route::get('/videos/status/{id}/{status}', 'AdminController\VideoController@status')->name('admin-video-status');
 });
 
 Route::redirect('/', '/id');
@@ -201,7 +202,7 @@ Route::group(['prefix' => '{language}'], function () {
 
     //Video
     Route::get('/videos', 'HomeController@video')->name('Video');
-    Route::get('/videos/{title_slug}', 'HomeController@videoShow')->name('Detail Video');\
+    Route::get('/videos/{title_slug}', 'HomeController@videoShow')->name('Detail Video');
 
     //About
     Route::get('/about', 'HomeController@about')->name('About');

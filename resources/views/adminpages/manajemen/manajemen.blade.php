@@ -190,9 +190,9 @@
                @csrf
                <div class="form-group">
                  <label for="jabatan">Jabatan</label>
-                 <select class="form-control" data-live-search="true" id="edit_jabatan" rows="3" name="edit_jabatan" required>
+                 <select class="form-control" data-live-search="true" id="edit_jabatan" rows="3" name="edit_jabatan" disabled>
                    <option value="">Pilih Jabatan</option>
-                     @foreach ($jabatans as $jabatan)
+                     @foreach ($all_jabatans as $jabatan)
                          <option value="{{$jabatan->id}}">{{$jabatan->jabatan_ina}}</option>
                      @endforeach
                  </select>

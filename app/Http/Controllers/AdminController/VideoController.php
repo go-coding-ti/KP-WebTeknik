@@ -92,4 +92,25 @@ class VideoController extends Controller
         $video->delete();
         return redirect('/admin/videos')->with('statusInput', 'Video successfully deleted');
     }
+
+    public function status($id, $status)
+    {
+        $videos = Video::get();
+        foreach($videos as $video){
+            $video->is_profile=0;
+            $video->update();
+        }
+        if($status == 1){
+            $myVideo = Video::find($id);
+            $myVideo->is_profile = $status;
+            $myVideo->save();
+        }else if($status == 0){
+            $myVideo = Video::find(Video::max('id'));
+            $myVideo->is_profile = 1;
+            $myVideo->save();
+        }
+
+
+        return response()->json(['success' => 'berhasil terganti']);
+    }
 }

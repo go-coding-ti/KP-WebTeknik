@@ -15,10 +15,25 @@ use Illuminate\Support\Facades\File;
 class ManajemenController extends Controller
 {
     public function index(){
-        $jabatans = Jabatan::where('deleted_at', NULL)->get();
-        $stafs = Staff::where('deleted_at', NULL)->get();
+        //GET ALL MANAJEMEN
         $data = Staff::where('deleted_at', NULL)->where('id_jabatan', '!=', NULL)->with('jabatan')->get();
-        return view('adminpages.manajemen.manajemen', compact('data', 'jabatans', 'stafs'));
+
+        //GET ID JABATAN N STAF IN MANAJEMEN
+        $idJabatan = [];
+        $idStaf = [];
+        foreach($data as $i){
+            array_push($idJabatan, $i->id_jabatan);
+            array_push($idStaf, $i->id_staf);
+        }
+
+        //GET JABATAN WHERE NOT IN MANAJEMEN
+        $jabatans = Jabatan::whereNotIn('id', $idJabatan)->get();
+        $all_jabatans = Jabatan::get();
+
+        //GET STAFF
+        $stafs = Staff::where('deleted_at', NULL)->get();
+        
+        return view('adminpages.manajemen.manajemen', compact('data', 'jabatans', 'stafs', 'all_jabatans'));
     }
 
 
