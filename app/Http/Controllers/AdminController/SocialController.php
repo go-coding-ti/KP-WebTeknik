@@ -29,16 +29,18 @@ class SocialController extends Controller
         $sosmed = new Social();
         $sosmed->nama_sosmed = $request->sosmed;
         $sosmed->link = $request->link_sosmed;
-        
-        if($request->file('logo')!=""){
-            $file = $request->file('logo');
-            $fileLocation = '/image/socials/'.$request->sosmed.'/logo';
-            $filename = $file->getClientOriginalName();
-            $path = $fileLocation."/".$filename;
-            $sosmed->logo = '/storage'.$path;
-            $sosmed->logo_name = $filename;
-            Storage::disk('public')->put($path, file_get_contents($file));
-        }
+    
+
+        $image_parts = explode(';base64', $request->logo);
+        $image_type_aux = explode('image/', $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $filename = uniqid().'.png';
+        $fileLocation = '/image/socials/'.$request->sosmed.'/logo';
+        $path = $fileLocation."/".$filename;
+        $sosmed->logo = '/storage'.$path;
+        $sosmed->logo_name = $filename;
+        Storage::disk('public')->put($path, $image_base64);
 
         $sosmed->save();
 
@@ -66,14 +68,17 @@ class SocialController extends Controller
         $sosmed->nama_sosmed = $request->edit_sosmed;
         $sosmed->link = $request->edit_link_sosmed;
         
-        if($request->file('edit_logo')!=""){
-            $file = $request->file('edit_logo');
+        if($request->edit_logo!=""){
+            $image_parts = explode(';base64', $request->edit_logo);
+            $image_type_aux = explode('image/', $image_parts[0]);
+            $image_type = $image_type_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+            $filename = uniqid().'.png';
             $fileLocation = '/image/socials/'.$request->sosmed.'/logo';
-            $filename = $file->getClientOriginalName();
             $path = $fileLocation."/".$filename;
             $sosmed->logo = '/storage'.$path;
             $sosmed->logo_name = $filename;
-            Storage::disk('public')->put($path, file_get_contents($file));
+            Storage::disk('public')->put($path, $image_base64);
         }
 
         $sosmed->update();

@@ -43,15 +43,26 @@ class GaleriController extends Controller
         $galeri->deskripsi_eng = $request->deskripsi_eng;
         $galeri->title_slug = Str::slug($request->title_ina);
 
-        if($request->file('galeri')!=""){
-            $file = $request->file('galeri');
-            $fileLocation = '/image/galeri/'.$galeri->title_slug;
-            $filename = $file->getClientOriginalName();
-            $path = $fileLocation."/".$filename;
-            $galeri->galeri = '/storage'.$path;
-            $galeri->galeri_name = $filename;
-            Storage::disk('public')->put($path, file_get_contents($file));
-        }
+        // if($request->file('galeri')!=""){
+        //     $file = $request->file('galeri');
+        //     $fileLocation = '/image/galeri/'.$galeri->title_slug;
+        //     $filename = $file->getClientOriginalName();
+        //     $path = $fileLocation."/".$filename;
+        //     $galeri->galeri = '/storage'.$path;
+        //     $galeri->galeri_name = $filename;
+        //     Storage::disk('public')->put($path, file_get_contents($file));
+        // }
+
+        $image_parts = explode(';base64', $request->galeri);
+        $image_type_aux = explode('image/', $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $filename = uniqid().'.png';
+        $fileLocation = '/image/galeri/'.$galeri->title_slug;
+        $path = $fileLocation."/".$filename;
+        $galeri->galeri = '/storage'.$path;
+        $galeri->galeri_name = $filename;
+        Storage::disk('public')->put($path, $image_base64);
         $galeri->save();
 
         return redirect('/admin/galery')->with('statusInput', 'Galery successfully added to record');
@@ -92,6 +103,20 @@ class GaleriController extends Controller
             $galeri->galeri_name = $filename;
             Storage::disk('public')->put($path, file_get_contents($file));
         }
+
+        if($request->galeri!=""){
+            $image_parts = explode(';base64', $request->galeri);
+            $image_type_aux = explode('image/', $image_parts[0]);
+            $image_type = $image_type_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+            $filename = uniqid().'.png';
+            $fileLocation = '/image/galeri/'.$galeri->title_slug;
+            $path = $fileLocation."/".$filename;
+            $galeri->galeri = '/storage'.$path;
+            $galeri->galeri_name = $filename;
+            Storage::disk('public')->put($path, $image_base64);
+        }
+
         $galeri->update();
 
         return redirect('/admin/galery')->with('statusInput', 'Galery successfully updated');

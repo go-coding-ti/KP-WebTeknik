@@ -133,12 +133,10 @@
                 <div class="form-group mt-4">
                     <label for="icon">Icon Kategori</label>
                     <br>
-                    <div class="text-center">
-                      <img src="{{asset('assets/admin/img/pictures_placeholder.png')}}" class="mb-3" style="border: 2px solid #DCDCDC;height:30%;width:30%;" id="icon">
-                    </div>
+                    <input type="text" class="form-control" name="logo" id="logo" placeholder="url" hidden>
+                    <img src="{{asset('assets/admin/img/pictures_placeholder1.png')}}" style="border: 2px solid #DCDCDC;padding: 5px;height:25%;width:25%;" id="propic">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="logo" name="logo" required>
-                        <label for="logo_label" id="logo_label" class="custom-file-label">Pilih Icon</label>
+                        <button type="button" class="btn btn-primary mt-1" data-target="#crop-image" data-toggle="modal"><i class="fa fa-images"></i> Pilih Icon</button>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -212,14 +210,13 @@
                 <div class="form-group mt-4">
                   <label for="icon">Icon Kategori</label>
                   <br>
-                  <div class="text-center">
-                    <img src="{{asset('assets/admin/img/pictures_placeholder.png')}}" class="mb-3" style="border: 2px solid #DCDCDC;height:30%;width:30%;" id="edit_icon">
-                  </div>
+                  <input type="text" class="form-control" name="edit_logo" id="edit_logo" placeholder="url" hidden>
+                  <img src="{{asset('assets/admin/img/pictures_placeholder1.png')}}" style="border: 2px solid #DCDCDC;padding: 5px;height:25%;width:25%;" id="edit_propic">
                   <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="edit_logo" name="edit_logo">
-                      <label for="edit_logo_label" id="edit_logo_label" class="custom-file-label">Pilih Icon</label>
+                      <button type="button" class="btn btn-primary mt-1" data-target="#edit_crop-image" data-toggle="modal"><i class="fa fa-images"></i> Ganti Icon</button>
                   </div>
               </div>
+
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal" onclick="closeModal('editCategory')">Cancel</button>
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -256,6 +253,60 @@
         </div>
     </div>
 </div>
+
+{{-- CROPPER ADD --}}
+<div class="modal fade" id="crop-image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title">Pilih Icon</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+          <div class="row" style="margin: 20px">
+              <img  src="{{asset('')}}assets/admin/img/pictures_placeholder1.png" id="image-preview"  width="100%" height="100%" alt="">
+              <div class="custom-file" style="margin-top: 20px">
+                  <input type="file" class="custom-file-input" id="profile-image" name="galeri" accept="images/*" required>
+                  <label for="thumbnail_label" id="thumbnail_labell" class="custom-file-label">Pilih Icon</label>
+              </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" id="modal-close" class="btn btn-danger" data-dismiss="modal">Kembali</button>
+          <button type="button" id="update-foto-profile" class="btn btn-primary" data-dismiss="modal">Pilih</button>
+      </div>
+      </div>
+  </div>
+</div>
+
+{{-- CROPPER EDIT --}}
+<div class="modal fade" id="edit_crop-image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title">Ganti Icon</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+          <div class="row" style="margin: 20px">
+              <img  src="{{asset('')}}assets/admin/img/pictures_placeholder.png" id="edit_image-preview"  width="100%" height="100%" alt="">
+              <div class="custom-file" style="margin-top: 20px">
+                  <input type="file" class="custom-file-input" id="edit_profile-image" name="galeri" accept="images/*" required>
+                  <label for="thumbnail_label" id="thumbnail_labell" class="custom-file-label">Pilih Icon</label>
+              </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" id="modal-close" class="btn btn-danger" data-dismiss="modal">Kembali</button>
+          <button type="button" id="edit_update-foto-profile" class="btn btn-primary" data-dismiss="modal">Pilih</button>
+      </div>
+      </div>
+  </div>
+</div>
 @endsection
 
 @section('custom_javascript')
@@ -275,7 +326,8 @@ function show(id,status){
                         $("#edit_kategori_ina").val(result.kategori['kategori_ina']);
                         $("#edit_kategori_eng").val(result.kategori['kategori_eng']);
                         $('#edit_logo_label').text(result.kategori['icon_name']);
-                        $('#edit_icon').attr('src', result.kategori['icon']);
+                        $('#edit_propic').attr('src', result.kategori['icon']);
+                        $('#edit_image-preview').attr('src', result.kategori['icon']);
                         $("#edit-form-category").attr("action", "/admin/category/pengumuman/"+result.kategori['id']);
                         $('#editCategory').modal('show');
                     }                   
@@ -293,25 +345,145 @@ function show(id,status){
       $('#'+jenis).modal('hide'); 
     }
 
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-            $('#icon').attr('src', e.target.result);
-            $('#edit_icon').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]); // convert to base64 string
-        }
-    }
+  //CROPPER
+  function changeProfile(){
+		$('#profile-image').trigger('click');
+	}
 
-    $("#logo").change(function() {
-    readURL(this);
-    document.getElementById('logo_label').innerHTML = document.getElementById('logo').files[0].name;
-    });
+	var cropper;
+	var imageadd = document.getElementById('image-preview');
 
-    $("#edit_logo").change(function() {
-    readURL(this);
-    document.getElementById('edit_logo_label').innerHTML = document.getElementById('edit_logo').files[0].name;
-    });
+	$(document).ready(function(){
+	    $.ajaxSetup({
+	        headers: {
+	            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+	            'Accept-Encoding' : 'gzip',
+	        }
+	    });
+		$('#link-back').attr('href', '{{url("/siswa/dashboard")}}');
+		$('#link-back-mini').attr('href', '{{url("/siswa/dashboard")}}');
+		$('#profile-image').on('change', function(){
+			var filedata = this.files[0];
+			var imgtype = filedata.type;
+			var match = ['image/jpg', 'image/jpeg', 'image/png'];
+			if (!(filedata.type==match[0]||filedata.type==match[1]||filedata.type==match[2])) {
+	            alert("Format gambar Salah");
+	        }else{
+	        	var reader=new FileReader();
+	            reader.onload=function(ev){
+	                $('#image-preview').attr('src', ev.target.result);
+					cropper.destroy();
+   					cropper = null;
+					cropper = new Cropper(imageadd, {
+						aspectRatio: 1,
+						viewMode: 1,
+						preview: '.preview'
+					});
+	            }
+	            reader.readAsDataURL(this.files[0]);
+	            var postData=new FormData();
+	            var id = $('input[name=id_siswa]').val();
+	            postData.append('file', this.files[0]);
+	        }
+		});
+		$('#crop-image').on('shown.bs.modal', function(){
+			cropper = new Cropper(imageadd, {
+				aspectRatio: 1,
+				viewMode: 3,
+				preview: '.preview'
+			});
+		}).on('hidden.bs.modal', function(){
+			cropper.destroy();
+   			cropper = null;
+		});
+
+		$('#update-foto-profile').on('click', function(){
+			canvas = cropper.getCroppedCanvas({
+				width: 1080,
+				height: 1920,
+			});
+			canvas.toBlob(function(blob){
+				url = URL.createObjectURL(blob);
+				var reader = new FileReader();
+				reader.readAsDataURL(blob);
+                
+				reader.onloadend = function() {
+                    $('#propic').attr('src', reader.result);
+					var base64data = reader.result;
+                    $('#logo').val(reader.result);
+                    
+				}
+			});
+		});
+	});
+
+
+
+	var cropper;
+	var image = document.getElementById('edit_image-preview');
+
+	$(document).ready(function(){
+	    $.ajaxSetup({
+	        headers: {
+	            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+	            'Accept-Encoding' : 'gzip',
+	        }
+	    });
+		$('#link-back').attr('href', '{{url("/siswa/dashboard")}}');
+		$('#link-back-mini').attr('href', '{{url("/siswa/dashboard")}}');
+		$('#edit_profile-image').on('change', function(){
+			var filedata = this.files[0];
+			var imgtype = filedata.type;
+			var match = ['image/jpg', 'image/jpeg', 'image/png'];
+			if (!(filedata.type==match[0]||filedata.type==match[1]||filedata.type==match[2])) {
+	            alert("Format gambar Salah");
+	        }else{
+	        	var reader=new FileReader();
+	            reader.onload=function(ev){
+	                $('#edit_image-preview').attr('src', ev.target.result);
+					cropper.destroy();
+   					cropper = null;
+					cropper = new Cropper(image, {
+						aspectRatio: 1,
+						viewMode: 1,
+						preview: '.preview'
+					});
+	            }
+	            reader.readAsDataURL(this.files[0]);
+	            var postData=new FormData();
+	            var id = $('input[name=id_siswa]').val();
+	            postData.append('file', this.files[0]);
+	        }
+		});
+		$('#edit_crop-image').on('shown.bs.modal', function(){
+			cropper = new Cropper(image, {
+				aspectRatio: 1,
+				viewMode: 3,
+				preview: '.preview'
+			});
+		}).on('hidden.bs.modal', function(){
+			cropper.destroy();
+   			cropper = null;
+		});
+
+		$('#edit_update-foto-profile').on('click', function(){
+			canvas = cropper.getCroppedCanvas({
+				width: 1080,
+				height: 1920,
+			});
+			canvas.toBlob(function(blob){
+				url = URL.createObjectURL(blob);
+				var reader = new FileReader();
+				reader.readAsDataURL(blob);
+                
+				reader.onloadend = function() {
+                    $('#edit_propic').attr('src', reader.result);
+					var base64data = reader.result;
+                    $('#edit_logo').val(reader.result);
+                    
+				}
+			});
+		});
+	});
 </script>
 @endsection

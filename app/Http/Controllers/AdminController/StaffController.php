@@ -66,15 +66,27 @@ class StaffController extends Controller
         $staf->biografi_ina = $request->biografi_ina;
         $staf->biografi_eng = $request->biografi_eng;
 
-        if($request->file('foto')!=""){
-            $file = $request->file('foto');
-            $fileLocation = '/image/staff/'.$request->nip;
-            $filename = $file->getClientOriginalName();
-            $path = $fileLocation."/".$filename;
-            $staf->foto = '/storage'.$path;
-            $staf->foto_name = $filename;
-            Storage::disk('public')->put($path, file_get_contents($file));
-        }
+        // if($request->file('foto')!=""){
+        //     $file = $request->file('foto');
+        //     $fileLocation = '/image/staff/'.$request->nip;
+        //     $filename = $file->getClientOriginalName();
+        //     $path = $fileLocation."/".$filename;
+        //     $staf->foto = '/storage'.$path;
+        //     $staf->foto_name = $filename;
+        //     Storage::disk('public')->put($path, file_get_contents($file));
+        // }
+
+        $image_parts = explode(';base64', $request->foto);
+        $image_type_aux = explode('image/', $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $filename = uniqid().'.png';
+        $file = $request->file('foto');
+        $fileLocation = '/image/staff/'.$request->nip;
+        $path = $fileLocation."/".$filename;
+        $staf->foto = '/storage'.$path;
+        $staf->foto_name = $filename;
+        Storage::disk('public')->put($path, $image_base64);
 
         $staf->save();
 
@@ -135,14 +147,18 @@ class StaffController extends Controller
         $staf->biografi_ina = $request->biografi_ina;
         $staf->biografi_eng = $request->biografi_eng;
 
-        if($request->file('foto')!=""){
+        if($request->foto!=""){
+            $image_parts = explode(';base64', $request->foto);
+            $image_type_aux = explode('image/', $image_parts[0]);
+            $image_type = $image_type_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+            $filename = uniqid().'.png';
             $file = $request->file('foto');
             $fileLocation = '/image/staff/'.$request->nip;
-            $filename = $file->getClientOriginalName();
             $path = $fileLocation."/".$filename;
             $staf->foto = '/storage'.$path;
             $staf->foto_name = $filename;
-            Storage::disk('public')->put($path, file_get_contents($file));
+            Storage::disk('public')->put($path, $image_base64);
         }
 
         $staf->update();

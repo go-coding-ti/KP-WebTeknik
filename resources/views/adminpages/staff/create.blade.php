@@ -122,10 +122,10 @@
                 <div class="form-group mt-4">
                     <label for="thumbnail">Foto Profil</label>
                     <br>
-                    <img src="{{asset('assets/admin/img/pictures_placeholder.png')}}" class="mb-3" style="border: 2px solid #DCDCDC;padding: 5px;height:20%;width:20%;" id="propic">
+                    <input type="text" class="form-control" name="foto" id="foto" placeholder="url" hidden>
+                    <img src="{{asset('assets/admin/img/profile.png')}}" style="border: 2px solid #DCDCDC;padding: 5px;height:20%;width:20%;" id="propic">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="foto" name="foto" required>
-                        <label for="foto_label" id="foto_label" class="custom-file-label">Pilih Foto</label>
+                        <button type="button" class="btn btn-primary mt-1" data-target="#crop-image" data-toggle="modal"><i class="fa fa-images"></i> Pilih Foto Profil</button>
                     </div>
                 </div>
                 <div class="form-group mt-4">
@@ -136,6 +136,32 @@
                 </form>
             </div>
           </div>
+            {{-- CROPPER --}}
+            <div class="modal fade" id="crop-image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Pilih Foto Profil</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row" style="margin: 20px">
+                            <img  src="{{asset('')}}assets/admin/img/profile.png" id="image-preview"  width="100%" height="100%" alt="">
+                            <div class="custom-file" style="margin-top: 20px">
+                                <input type="file" class="custom-file-input" id="profile-image" name="thumbnail" accept="images/*" required>
+                                <label for="thumbnail_label" id="thumbnail_labell" class="custom-file-label">Pilih Foto</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="modal-close" class="btn btn-danger" data-dismiss="modal">Kembali</button>
+                        <button type="button" id="update-foto-profile" class="btn btn-primary" data-dismiss="modal">Pilih</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
 @endsection
 
 @section('custom_javascript')
@@ -144,21 +170,75 @@
 <script>
     $(document).ready(function(e){
         var status;
-
-    function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
-        $('#propic').attr('src', e.target.result);
-        }
-        reader.readAsDataURL(input.files[0]); // convert to base64 string
-    }
-    }
-
-    $("#foto").change(function() {
-    readURL(this);
-    document.getElementById('foto_label').innerHTML = document.getElementById('foto').files[0].name;
     });
-});
+
+    //CROPPER
+function changeProfile(){
+		$('#profile-image').trigger('click');
+	}
+
+	var cropper;
+	var image = document.getElementById('image-preview');
+
+	$(document).ready(function(){
+	    $.ajaxSetup({
+	        headers: {
+	            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+	            'Accept-Encoding' : 'gzip',
+	        }
+	    });
+		$('#profile-image').on('change', function(){
+			var filedata = this.files[0];
+			var imgtype = filedata.type;
+			var match = ['image/jpg', 'image/jpeg', 'image/png'];
+			if (!(filedata.type==match[0]||filedata.type==match[1]||filedata.type==match[2])) {
+	            alert("Format gambar Salah");
+	        }else{
+	        	var reader=new FileReader();
+	            reader.onload=function(ev){
+	                $('#image-preview').attr('src', ev.target.result);
+					cropper.destroy();
+   					cropper = null;
+					cropper = new Cropper(image, {
+						aspectRatio: 1,
+						viewMode: 1,
+						preview: '.preview'
+					});
+	            }
+	            reader.readAsDataURL(this.files[0]);
+	            var postData=new FormData();
+	            postData.append('file', this.files[0]);
+	        }
+		});
+		$('#crop-image').on('shown.bs.modal', function(){
+			cropper = new Cropper(image, {
+				aspectRatio: 1,
+				viewMode: 3,
+				preview: '.preview'
+			});
+		}).on('hidden.bs.modal', function(){
+			cropper.destroy();
+   			cropper = null;
+		});
+
+		$('#update-foto-profile').on('click', function(){
+			canvas = cropper.getCroppedCanvas({
+				width: 720,
+				height: 1280,
+			});
+			canvas.toBlob(function(blob){
+				url = URL.createObjectURL(blob);
+				var reader = new FileReader();
+				reader.readAsDataURL(blob);
+                
+				reader.onloadend = function() {
+                    $('#propic').attr('src', reader.result);
+					var base64data = reader.result;
+                    $('#foto').val(reader.result);
+                    
+				}
+			});
+		});
+	});
 </script>
 @endsection

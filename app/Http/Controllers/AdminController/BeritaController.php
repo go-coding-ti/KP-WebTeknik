@@ -34,7 +34,8 @@ class BeritaController extends Controller
             'title_eng' => 'required|min:3',
             'content_eng' => 'required|min:8',
             'kategori' => 'required',
-            'tanggal' => 'required'
+            'tanggal' => 'required',
+            'thumbnail' => 'required'
         ]);
 
         $kategori = Kategori::find($request->kategori);
@@ -53,15 +54,26 @@ class BeritaController extends Controller
         $berita->tanggal_publish = $request->tanggal;
         $berita->id_kategori = $request->kategori;
 
-        if($request->file('thumbnail')!=""){
-            $file = $request->file('thumbnail');
-            $fileLocation = '/image/news/'.$kategori->kategori_lower.'/'.$request->title_ina.'/thumbnail';
-            $filename = $file->getClientOriginalName();
-            $path = $fileLocation."/".$filename;
-            $berita->thumbnail = '/storage'.$path;
-            $berita->thumbnail_name = $filename;
-            Storage::disk('public')->put($path, file_get_contents($file));
-        }
+        // if($request->file('thumbnail')!=""){
+        //     $file = $request->file('thumbnail');
+        //     $fileLocation = '/image/news/'.$kategori->kategori_lower.'/'.$request->title_ina.'/thumbnail';
+        //     $filename = $file->getClientOriginalName();
+        //     $path = $fileLocation."/".$filename;
+        //     $berita->thumbnail = '/storage'.$path;
+        //     $berita->thumbnail_name = $filename;
+        //     Storage::disk('public')->put($path, file_get_contents($file));
+        // }
+
+        $image_parts = explode(';base64', $request->thumbnail);
+        $image_type_aux = explode('image/', $image_parts[0]);
+        $image_type = $image_type_aux[1];
+        $image_base64 = base64_decode($image_parts[1]);
+        $filename = uniqid().'.png';
+        $fileLocation = '/image/news/'.$kategori->kategori_lower.'/'.$request->title_ina.'/thumbnail';
+        $path = $fileLocation."/".$filename;
+        $berita->thumbnail = '/storage'.$path;
+        $berita->thumbnail_name = $filename;
+        Storage::disk('public')->put($path, $image_base64);
 
         
         $detailina = $request->content_ina;
@@ -159,16 +171,33 @@ class BeritaController extends Controller
         $berita->tanggal_publish = $request->tanggal;
         $berita->id_kategori = $request->kategori;
 
-        if($request->file('thumbnail')!=""){
+        // if($request->file('thumbnail')!=""){
+        //     Storage::disk('public')->delete($berita->thumbnail);
+        //     $file = $request->file('thumbnail');
+        //     $fileLocation = '/image/news/'.$kategori->kategori_lower.'/'.$request->title_ina.'/thumbnail';
+        //     $filename = $file->getClientOriginalName();
+        //     $path = $fileLocation."/".$filename;
+        //     $berita->thumbnail = '/storage'.$path;
+        //     $berita->thumbnail_name = $filename;
+        //     Storage::disk('public')->put($path, file_get_contents($file));
+        // }
+
+        if($request->thumbnail!=""){
             Storage::disk('public')->delete($berita->thumbnail);
-            $file = $request->file('thumbnail');
+            $image_parts = explode(';base64', $request->thumbnail);
+            $image_type_aux = explode('image/', $image_parts[0]);
+            $image_type = $image_type_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+            $filename = uniqid().'.png';
             $fileLocation = '/image/news/'.$kategori->kategori_lower.'/'.$request->title_ina.'/thumbnail';
-            $filename = $file->getClientOriginalName();
             $path = $fileLocation."/".$filename;
             $berita->thumbnail = '/storage'.$path;
             $berita->thumbnail_name = $filename;
-            Storage::disk('public')->put($path, file_get_contents($file));
+            Storage::disk('public')->put($path, $image_base64);
         }
+
+
+
 
         
         $detailina = $request->content_ina;
