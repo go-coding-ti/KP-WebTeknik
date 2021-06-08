@@ -221,7 +221,7 @@
 @section('custom_javascript')
 <script>
 
-function show(id,status){
+  function show(id,status){
         jQuery.ajax({
                 url: "/admin/category/"+id+"/edit",
                 method: 'get',

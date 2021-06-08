@@ -23,7 +23,7 @@
               <h6 class="m-0 font-weight-bold text-primary">Tambah Download</h6>
             </div>
             <div class="card-body">
-            <form id="form-product" method="post" action="{{route('admin-download-update')}}" enctype="multipart/form-data">
+            <form id="form-product" method="post" action="{{route('admin-download-store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="form group mt-5">
                     <label for="title">Nama Dokumen Ina</label>

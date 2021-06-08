@@ -1,6 +1,5 @@
 
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
         <!-- Sidebar - Brand -->
         <a style="height:60px !important;" class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/dashboard">
           <div class="sidebar-brand-icon">
@@ -22,18 +21,18 @@
         <!-- Divider -->
         <hr style="margin-top: 20px" class="sidebar-divider my-0">
   
-<!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
+      <!-- Nav Item - Dashboard -->
+      <li class="nav-item" id="sidebarDashboard">
         <a class="nav-link" href="/admin/dashboard">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
+      <!-- Divider -->
+      <hr style="margin-top: 20px" class="sidebar-divider my-0">
 
       <!-- Divider -->
-      <hr class="sidebar-divider">
-  
+      {{-- <hr class="sidebar-divider">
         <!-- Nav Item - Pages Collapse Menu -->
-
         <li class="nav-item">
           <a class="nav-link collapsed"href="#" aria-expanded="true" aria-controls="collapseCategory" data-toggle="collapse" data-target="#collapseCategory">
             <i class="fas fa-fw fa-list"></i>
@@ -47,7 +46,7 @@
               <a class="collapse-item" href="/admin/category/agenda"><i class="fas fa-fw fa-list"></i>  Kategori Agenda</a>
             </div>
           </div>
-        </li>
+        </li> --}}
 
         {{-- <li class="nav-item">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePost" aria-expanded="true" aria-controls="collapsePost">
@@ -63,7 +62,7 @@
           </div>
         </li> --}}
 
-        <li class="nav-item">
+        <li class="nav-item" id="sidebarBerita">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBerita" aria-expanded="true" aria-controls="collapseBerita">
             <i class="fas fa-fw fa-newspaper"></i>
             <span>Berita</span>
@@ -71,13 +70,13 @@
           <div id="collapseBerita" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Berita Menu:</h6>
-              <a class="collapse-item" href="/admin/news/create" ><i class="fas fa-fw fa-plus"></i>   Add Berita</a>
-              <a class="collapse-item" href="/admin/news"><i class="fas fa-fw fa-list"></i>  List Berita</a>
+              <a class="collapse-item" href="/admin/category"><i class="fas fa-fw fa-list"></i>  Kategori Berita</a>
+              <a class="collapse-item" href="/admin/news"><i class="fas fa-fw fa-list"></i>  Daftar Berita</a>
             </div>
           </div>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item" id="sidebarPengumuman">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePengumuman" aria-expanded="true" aria-controls="collapsePengumuman">
             <i class="fas fa-fw fa-bullhorn"></i>
             <span>Pengumuman</span>
@@ -85,13 +84,13 @@
           <div id="collapsePengumuman" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Pengumuman Menu:</h6>
-              <a class="collapse-item" href="/admin/announcement/create" ><i class="fas fa-fw fa-plus"></i>   Add Pengumuman</a>
-              <a class="collapse-item" href="/admin/announcement"><i class="fas fa-fw fa-list"></i>  List Pengumuman</a>
+              <a class="collapse-item" href="/admin/category/pengumuman"><i class="fas fa-fw fa-list"></i>  Kategori Pengumuman</a>
+              <a class="collapse-item" href="/admin/announcement"><i class="fas fa-fw fa-list"></i>  Daftar Pengumuman</a>
             </div>
           </div>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item" id="sidebarAgenda">
           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAgenda" aria-expanded="true" aria-controls="collapseAgenda">
             <i class="fas fa-fw fa-calendar-week"></i>
             <span>Agenda</span>
@@ -99,8 +98,8 @@
           <div id="collapseAgenda" class="collapse" aria-labelledby="headingKI" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
               <h6 class="collapse-header">Agenda Menu:</h6>
-              <a class="collapse-item" href="/admin/events/create" ><i class="fas fa-fw fa-plus"></i>   Add Agenda</a>
-              <a class="collapse-item" href="/admin/events"><i class="fas fa-fw fa-list"></i>  List Agenda</a>
+              <a class="collapse-item" href="/admin/category/agenda"><i class="fas fa-fw fa-list"></i>  Kategori Agenda</a>
+              <a class="collapse-item" href="/admin/events"><i class="fas fa-fw fa-list"></i>  Daftar Agenda</a>
             </div>
           </div>
         </li>

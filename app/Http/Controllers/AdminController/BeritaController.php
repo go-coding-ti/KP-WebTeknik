@@ -36,6 +36,15 @@ class BeritaController extends Controller
             'kategori' => 'required',
             'tanggal' => 'required',
             'thumbnail' => 'required'
+        ],[
+            'title_ina.unique' => "Judul berita yang sama telah ada sebelumnya",
+            'title_ina.required' => "Judul Bahasa Indonesia berita wajib diisi",
+            'content_ina.required' => "Konten Bahasa Indonesia berita wajib diisi",
+            'title_eng.required' => "Judul Bahasa Inggris berita wajib diisi",
+            'content_eng.required' => "Konten Bahasa Inggris berita wajib diisi",
+            'kategori.required' => "Kategori berita wajib dipilih",
+            'tanggal.required' => "Tanggal berita wajib diisi",
+            'thumbnail.required' => "Thumbnail berita wajib diisi",
         ]);
 
         $kategori = Kategori::find($request->kategori);
@@ -127,14 +136,14 @@ class BeritaController extends Controller
             $beritaImage->save();
         }
 
-        return redirect('/admin/news')->with('statusInput', 'Berita successfully added to record');
+        return redirect('/admin/news')->with('statusInput', 'Berita berhasil ditambahkan');
     }
 
     public function destroy($id)
     {
     	$berita = Berita::find($id);
         $berita->delete();
-        return redirect('/admin/news')->with('statusInput', 'Berita successfully deleted from the record');
+        return redirect('/admin/news')->with('statusInput', 'Berita berhasil dihapus');
     }
 
     public function edit($id){
@@ -152,6 +161,14 @@ class BeritaController extends Controller
             'content_eng' => 'required|min:8',
             'kategori' => 'required',
             'tanggal' => 'required'
+        ],[
+            'title_ina.required' => "Judul Bahasa Indonesia berita wajib diisi",
+            'content_ina.required' => "Konten Bahasa Indonesia berita wajib diisi",
+            'title_eng.required' => "Judul Bahasa Inggris berita wajib diisi",
+            'content_eng.required' => "Konten Bahasa Inggris berita wajib diisi",
+            'kategori.required' => "Kategori berita wajib dipilih",
+            'tanggal.required' => "Tanggal berita wajib diisi",
+            'thumbnail.required' => "Thumbnail berita wajib diisi",
         ]);
 
         $kategori = Kategori::find($request->kategori);
@@ -297,7 +314,7 @@ class BeritaController extends Controller
             $pageImage->save();
         }
 
-        return redirect('admin/news')->with('statusInput', 'Berita successfully updated from the record');
+        return redirect('admin/news')->with('statusInput', 'Berita berhasil diperbaharui');
     }
 
 
