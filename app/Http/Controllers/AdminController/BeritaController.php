@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\File;
 
 class BeritaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
 
         $data = Berita::where('deleted_at', NULL)->with('kategori')->get();

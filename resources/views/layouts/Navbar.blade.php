@@ -30,7 +30,7 @@
                     <a href="{{ route('Index', 'id') }}" class="btn btn-sm btn-outline-danger border-0 text-decoration-none">ID</a>
                 </div>
               </div>
-              <a href="login.html" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
+              <a href="{{route ('admin-login-form')}}" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
@@ -129,7 +129,7 @@
                     <a href="{{ route('Index', 'id') }}" class="btn btn-sm btn-danger border-0 text-decoration-none">ID</a>
                 </div>
               </div>
-              <a href="login.html" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
+              <a href="{{route ('admin-login-form')}}" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>

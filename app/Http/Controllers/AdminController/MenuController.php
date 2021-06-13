@@ -15,7 +15,11 @@ use PhpParser\Node\Expr\FuncCall;
 
 class MenuController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function getMenu($id){
         $menus = Menu::where('id_header', $id)->get();
         return response()->json(

@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\File;
 
 class ManajemenController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
         //GET ALL MANAJEMEN
         $data = Staff::where('deleted_at', NULL)->where('id_jabatan', '!=', NULL)->with('jabatan')->get();
@@ -58,7 +63,7 @@ class ManajemenController extends Controller
         $staf->id_jabatan = $request->jabatan;
         $staf->update();
 
-        return redirect('/admin/management')->with('statusInput', 'Manajemen successfully added to record');
+        return redirect('/admin/management')->with('statusInput', 'Manajemen berhasil ditambahkan');
     }
 
     public function destroy($id)
@@ -67,7 +72,7 @@ class ManajemenController extends Controller
         $staf->id_jabatan = NULL;
         $staf->update();
 
-        return redirect('/admin/management')->with('statusInput', 'Manajemen successfully deleted');
+        return redirect('/admin/management')->with('statusInput', 'Manajemen berhasil dihapus');
     }
 
     public function edit($id)
@@ -98,7 +103,7 @@ class ManajemenController extends Controller
         $staf->id_jabatan = $request->edit_jabatan;
         $staf->update();
 
-        return redirect('/admin/management')->with('statusInput', 'Manajemen successfully updated from the record');
+        return redirect('/admin/management')->with('statusInput', 'Manajemen berhasil diperbaharui');
     }
 
 

@@ -1,105 +1,76 @@
 @extends('adminlayout.layout')
-@section('title', 'List Jabatan')
+@section('title', 'Daftar Jabatan')
 @section('content')
-    <!-- Begin Page Content -->
-    <div class="container-fluid">
-        <!-- <hr style="margin-top: 20px" class="sidebar-divider my-0"> -->
-        <h1 class="h3 mb-2 text-gray-800">Jabatan Manajemen</h1>
-          <p class="mb-4">Daftar Jabatan Manajemen Fakultas Teknik Universitas Udayana</p>
-          @if (session()->has('statusInput'))
-              <div class="row">
-                <div class="col-sm-12 alert alert-success alert-dismissible fade show" role="alert">
-                    {{session()->get('statusInput')}}
-                    <button type="button" class="close" data-dismiss="alert"
-                        aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-              </div>
-            @endif
 
-            @if (count($errors)>0)
-            <div class="row">
-              <div class="col-sm-12 alert alert-danger alert-dismissible fade show" role="alert">
-                  <ul>
-                    @foreach ($errors->all() as $item)
-                        <li>{{$item}}</li>
-                    @endforeach
-                  </ul>
-                  <button type="button" class="close" data-dismiss="alert"
-                      aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                  </button>
-              </div>
-            </div>
-          @endif
-          <!-- DataTales Example -->
-          <!-- Copy drisini -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">List Jabatan</h6>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-              <a class= "btn btn-success text-white" data-toggle="modal" data-target="#addJabatan"><i class="fas fa-plus"></i>  Tambah Jabatan</a>
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>Jabatan Ina</th>
-                      <th>Jabatan Eng</th>
-                      <th  width="150">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  @foreach ($data as $i => $jabatan)
-                    <tr>
-                      <td>{{$jabatan->jabatan_ina}}</td>
-                      <td>{{$jabatan->jabatan_eng}}</td>
-                      <td><a style="margin-right:7px" onclick="show({{$jabatan->id}},'show')"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a><a style="margin-right:7px" class="btn btn-info btn-sm" onclick="show({{$jabatan->id}},'edit')" href="#"><i class="fas fa-pencil-alt" ></i></a><a class="btn btn-danger btn-sm" onclick="deletebc({{$jabatan->id}})" href="#"><i class="fas fa-trash"></i></a></td>
-                    </tr>
-                  @endforeach
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-          <!-- smpe sini -->
-        <!-- Content Row -->
+<div class="container-fluid">
+    <h1 class="h3 mb-2 text-gray-800">Jabatan Manajemen</h1>
+      <p class="mb-4">Daftar Jabatan Manajemen Fakultas Teknik Universitas Udayana</p>
+      @if (session()->has('statusInput'))
         <div class="row">
-        </div>
-        <div class="row"> 
-        </div>
-        <!-- Content Row -->
-        <div class="row">
-
-          <!-- Content Column -->
-          <div class="col-lg-6 mb-4">
-
-            <!-- Color System -->
-            <div class="row">
-              <div class="card mb-4">
-<!--                 <div class="card-header">
-                  Default Card Example
-                </div>
-                <div class="card-body">
-                  This card uses Bootstrap's default styling with no utility classes added. Global styles are the only things modifying the look and feel of this default card example.
-                </div> -->
-              </div>
-          </div>
-
-          </div>
-
-          <div class="col-lg-6 mb-4">
-
+          <div class="col-sm-12 alert alert-success alert-dismissible fade show" role="alert">
+              {{session()->get('statusInput')}}
+              <button type="button" class="close" data-dismiss="alert"
+                  aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
           </div>
         </div>
+      @endif
 
+      @if (count($errors)>0)
+      <div class="row">
+        <div class="col-sm-12 alert alert-danger alert-dismissible fade show" role="alert">
+            <ul>
+              @foreach ($errors->all() as $item)
+                  <li>{{$item}}</li>
+              @endforeach
+            </ul>
+            <button type="button" class="close" data-dismiss="alert"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
       </div>
-      <!-- /.container-fluid -->
+    @endif
 
-<!-- Add News Category Modal-->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Daftar Jabatan</h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <button class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#addJabatan">
+            <span class="icon text-white-50">
+                <i class="fas fa-plus"></i>
+            </span>
+            <span class="text">Tambah Jabatan</span>
+          </button>
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Jabatan Bahasa Indonesia</th>
+                <th>Jabatan Bahasa Inggris</th>
+                <th  width="150">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+            @foreach ($data as $i => $jabatan)
+              <tr>
+                <td>{{$jabatan->jabatan_ina}}</td>
+                <td>{{$jabatan->jabatan_eng}}</td>
+                <td><a style="margin-right:7px" onclick="show({{$jabatan->id}},'show')"><button type="button" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></button></a><a style="margin-right:7px" class="btn btn-info btn-sm" onclick="show({{$jabatan->id}},'edit')" href="#"><i class="fas fa-pencil-alt" ></i></a><a class="btn btn-danger btn-sm" onclick="deletebc({{$jabatan->id}})" href="#"><i class="fas fa-trash"></i></a></td>
+              </tr>
+            @endforeach
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Add Jabatan Category Modal-->
 <div class="modal fade" id="addJabatan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="addJabatan">Tambah Jabatan</h5>
@@ -109,19 +80,37 @@
         </div>
         <div class="modal-body">
             <p>Masukkan Jabatan Baru</p>
-            <form method="post" action="/admin/jabatan/store" enctype="multipart/form-data">
+            <form method="post" action="/admin/jabatan/store" enctype="multipart/form-data" class="needs-validation" novalidate>
                 @csrf
                 <div class="form-group">
-                  <label for="jabatan_ina">Jabatan Ina</label>
-                  <input type="text" class="form-control" id="jabatan_ina" name="jabatan_ina">
+                  <label for="jabatan_ina">Jabatan Bahasa Indonesia</label>
+                  <input type="text" class="form-control @error ('jabatan_ina') is-invalid @enderror" id="jabatan_ina" name="jabatan_ina" required>
+                  @error('jabatan_ina')
+                      <div class="invalid-feedback text-start">
+                          {{ $message }}
+                      </div>
+                  @else
+                      <div class="invalid-feedback">
+                          Jabatan Bahasa Indonesia wajib diisi
+                      </div>
+                  @enderror
                 </div>
                 <div class="form-group">
-                  <label for="jabatan_eng">Jabatan Eng</label>
-                  <input type="text" class="form-control" id="jabatan_eng" name="jabatan_eng">
+                  <label for="jabatan_eng">Jabatan Bahasa Inggris</label>
+                  <input type="text" class="form-control @error ('jabatan_eng') is-invalid @enderror" id="jabatan_eng" name="jabatan_eng" required>
+                  @error('jabatan_eng')
+                      <div class="invalid-feedback text-start">
+                          {{ $message }}
+                      </div>
+                  @else
+                      <div class="invalid-feedback">
+                          Jabatan Bahasa Inggris wajib diisi
+                      </div>
+                  @enderror
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
               </form>              
         </div>
@@ -131,7 +120,7 @@
 </div>
 
 <div class="modal fade" id="showJabatan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-dialog" role="document">
       <div class="modal-content">
       <div class="modal-header">
           <h5 class="modal-title" id="showJabatan">Show Jabatan</h5>
@@ -141,15 +130,15 @@
       </div>
         <div class="modal-body">
                 <div class="form-group">
-                  <label for="show_jabatan_ina">Jabatan Ina</label>
+                  <label for="show_jabatan_ina">Jabatan Bahasa Indonesia</label>
                   <input type="text" class="form-control" id="show_jabatan_ina" readonly>
                 </div>
                 <div class="form-group">
-                  <label for="show_jabatan_eng">Jabatan Eng</label>
+                  <label for="show_jabatan_eng">Jabatan Bahasa Inggris</label>
                   <input type="text" class="form-control" id="show_jabatan_eng" readonly>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal" onclick="closeModal('showJabatan')">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal" onclick="closeModal('showJabatan')">Tutup</button>
                 </div>
         </div>
 
@@ -159,7 +148,7 @@
 
 <!-- Edit News Category Modal-->
 <div class="modal fade" id="editJabatan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabeledit">Edit Jabatan</h5>
@@ -169,20 +158,38 @@
         </div>
         <div class="modal-body">
             <p>Masukkan Data Jabatan yang Hendak Diubah.</p>
-            <form id="edit-form-jabatan" method="post" action="" enctype="multipart/form-data">
+            <form id="edit-form-jabatan" method="post" action="" enctype="multipart/form-data" class="needs-validation" novalidate>
                @method('PUT')
                 @csrf
                 <div class="form-group">
-                  <label for="edit_jabatan_ina">Jabatan Ina</label>
-                  <input type="text" class="form-control" id="edit_jabatan_ina" name="edit_jabatan_ina">
+                  <label for="edit_jabatan_ina">Jabatan Bahasa Indonesia</label>
+                  <input type="text" class="form-control @error ('edit_jabatan_ina') is-invalid @enderror" id="edit_jabatan_ina" name="edit_jabatan_ina" required>
+                  @error('edit_jabatan_ina')
+                      <div class="invalid-feedback text-start">
+                          {{ $message }}
+                      </div>
+                  @else
+                      <div class="invalid-feedback">
+                          Jabatan Bahasa Indonesia wajib diisi
+                      </div>
+                  @enderror
                 </div>
                 <div class="form-group">
-                  <label for="edit_jabatan_eng">Kategori Eng</label>
-                  <input type="text" class="form-control" id="edit_jabatan_eng" name="edit_jabatan_eng">
+                  <label for="edit_jabatan_eng">Jabatan Bahasa Inggris</label>
+                  <input type="text" class="form-control @error ('edit_jabatan_eng') is-invalid @enderror" id="edit_jabatan_eng" name="edit_jabatan_eng" required>
+                  @error('edit_jabatan_eng')
+                      <div class="invalid-feedback text-start">
+                          {{ $message }}
+                      </div>
+                  @else
+                      <div class="invalid-feedback">
+                          Jabatan Bahasa Inggris wajib diisi
+                      </div>
+                  @enderror
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal" onclick="closeModal('editJabatan')">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal" onclick="closeModal('editJabatan')">Batal</button>
+                    <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
               </form>              
         </div>
@@ -193,10 +200,10 @@
 
 <!-- Hapus News Category Modal-->
 <div class="modal fade" id="deleteCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabelhapus">Delete Jabatan</h5>
+            <h5 class="modal-title" id="exampleModalLabelhapus">Hapus Jabatan</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal('deleteCategory')">
             <span aria-hidden="true">×</span>
             </button>
@@ -207,8 +214,8 @@
                 @method('delete')
                 @csrf
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" onclick="closeModal('deleteCategory')" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button class="btn btn-secondary" type="button" onclick="closeModal('deleteCategory')" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger">Hapus</button>
                 </div>
               </form>              
         </div>
@@ -221,23 +228,23 @@
 @section('custom_javascript')
 <script>
 
-function show(id,status){
+    function show(id,status){
         jQuery.ajax({
-                url: "/admin/jabatan/"+id+"/edit",
-                method: 'get',
-                success: function(result){
-                    if(status == 'show'){
-                        $("#show_jabatan_ina").val(result.jabatan['jabatan_ina']);
-                        $("#show_jabatan_eng").val(result.jabatan['jabatan_eng']);
-                        $('#showJabatan').modal('show');
-                    }else{
-                        $("#edit_jabatan_ina").val(result.jabatan['jabatan_ina']);
-                        $("#edit_jabatan_eng").val(result.jabatan['jabatan_eng']);
-                        $("#edit-form-jabatan").attr("action", "/admin/jabatan/"+result.jabatan['id']);
-                        $('#editJabatan').modal('show');
-                    }                   
-                    
-                }
+            url: "/admin/jabatan/"+id+"/edit",
+            method: 'get',
+            success: function(result){
+                if(status == 'show'){
+                    $("#show_jabatan_ina").val(result.jabatan['jabatan_ina']);
+                    $("#show_jabatan_eng").val(result.jabatan['jabatan_eng']);
+                    $('#showJabatan').modal('show');
+                }else{
+                    $("#edit_jabatan_ina").val(result.jabatan['jabatan_ina']);
+                    $("#edit_jabatan_eng").val(result.jabatan['jabatan_eng']);
+                    $("#edit-form-jabatan").attr("action", "/admin/jabatan/"+result.jabatan['id']);
+                    $('#editJabatan').modal('show');
+                }                   
+                
+            }
         });
     }
 
@@ -249,5 +256,25 @@ function show(id,status){
     function closeModal(jenis){
       $('#'+jenis).modal('hide'); 
     }
+
+    // Validasi Form
+  (function () {
+    'use strict'
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+    })
+  })()
+
+  $('#sidebarManajemen').addClass("active");
 </script>
 @endsection

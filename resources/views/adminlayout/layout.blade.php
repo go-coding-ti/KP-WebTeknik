@@ -8,10 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
-  <title>@yield('title')</title>
-  <link rel="shortcut icon" type="image/x-icon" href="assets/admin/img/unud.png" />
-
+  <title>Fakultas Teknik | @yield('title')</title>
+  <link rel="shortcut icon" href="{{asset('assets/admin/img/unud.png')}}" type="image/png">
   <style>
     select {
         -webkit-appearance: none;
@@ -89,14 +87,14 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Apakah anda yakin untuk logout?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body">Tekan tombol logout berikut untuk melakukan logout</div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
           <a class="btn btn-primary" href="/admin/logout">Logout</a>
         </div>
       </div>

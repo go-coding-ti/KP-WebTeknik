@@ -14,6 +14,11 @@ use Illuminate\Support\Facades\File;
 
 class PageController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
         $data = Page::where('deleted_at', NULL)->get();
         // dd(isset($data));
@@ -32,6 +37,12 @@ class PageController extends Controller
             'content_ina' => 'required|min:8',
             'title_eng' => 'required|min:3',
             'content_eng' => 'required|min:8'
+        ],[
+            'title_ina.unique' => "Judul page yang sama telah ada sebelumnya",
+            'title_ina.required' => "Judul Bahasa Indonesia page wajib diisi",
+            'content_ina.required' => "Konten Bahasa Indonesia page wajib diisi",
+            'title_eng.required' => "Judul Bahasa Inggris page wajib diisi",
+            'content_eng.required' => "Konten Bahasa Inggris page wajib diisi",
         ]);
 
         if($validator->fails()){
@@ -109,7 +120,7 @@ class PageController extends Controller
             $pageImage->save();
         }
 
-        return redirect('/admin/pages')->with('statusInput', 'Page successfully added to record');
+        return redirect('/admin/pages')->with('statusInput', 'Page berhasil ditambahkan');
     }
 
     public function destroy($id)
@@ -131,6 +142,11 @@ class PageController extends Controller
             'content_ina' => 'required|min:8',
             'title_eng' => 'required|min:3',
             'content_eng' => 'required|min:8'
+        ],[
+            'title_ina.required' => "Judul Bahasa Indonesia page wajib diisi",
+            'content_ina.required' => "Konten Bahasa Indonesia page wajib diisi",
+            'title_eng.required' => "Judul Bahasa Inggris page wajib diisi",
+            'content_eng.required' => "Konten Bahasa Inggris page wajib diisi",
         ]);
 
         if($validator->fails()){
@@ -254,7 +270,7 @@ class PageController extends Controller
 
         $page->update();
 
-        return redirect('admin/pages')->with('statusInput', 'Post successfully updated from the record');
+        return redirect('admin/pages')->with('statusInput', 'Page berhasil diperbaharui');
     }
 
 

@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Storage;
 
 class SocialController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
         $data = Social::get();
         return view('adminpages.sosialmedia.social', compact('data'));
@@ -44,7 +49,7 @@ class SocialController extends Controller
 
         $sosmed->save();
 
-        return back()->with('statusInput', 'Social Media successfully added to record');
+        return back()->with('statusInput', 'Sosial media berhasil ditambahkan');
     }
 
     public function edit($id)
@@ -83,7 +88,7 @@ class SocialController extends Controller
 
         $sosmed->update();
 
-        return back()->with('statusInput', 'Social Media successfully updated');
+        return back()->with('statusInput', 'Sosial media berhasil diperbaharui');
     }
 
 
@@ -91,6 +96,6 @@ class SocialController extends Controller
     {
     	$social = Social::find($id);
         $social->delete();
-        return redirect('/admin/setting/social')->with('statusInput', 'Social media successfully deleted from the record');
+        return redirect('/admin/setting/social')->with('statusInput', 'Sosial media berhasil dihapus');
     }
 }

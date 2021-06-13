@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Storage;
 
 class PreferenceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
         $preference = Preference::first();
         return view('adminpages.pengaturan.preferences', compact('preference'));
@@ -37,6 +42,6 @@ class PreferenceController extends Controller
 
 
         $preference->save();
-        return redirect('/admin/setting/preferences')->with('statusInput', 'Preferences successfully updated');
+        return redirect('/admin/setting/preferences')->with('statusInput', 'Preferences berhasil disimpan');
     }
 }

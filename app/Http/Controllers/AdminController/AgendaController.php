@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\File;
 
 class AgendaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
 
         $data = Agenda::where('deleted_at', NULL)->with('kategori')->get();
@@ -39,6 +44,18 @@ class AgendaController extends Controller
             'waktu_mulai' => 'required',
             'waktu_akhir' => 'required',
             'lokasi' => 'required|min:2'
+        ],[
+            'title_ina.unique' => "Judul agenda yang sama telah ada sebelumnya",
+            'title_ina.required' => "Judul Bahasa Indonesia agenda wajib diisi",
+            'content_ina.required' => "Konten Bahasa Indonesia agenda wajib diisi",
+            'title_eng.required' => "Judul Bahasa Inggris agenda wajib diisi",
+            'content_eng.required' => "Konten Bahasa Inggris agenda wajib diisi",
+            'kategori.required' => "Kategori agenda wajib dipilih",
+            'tanggal.required' => "Tanggal agenda wajib diisi",
+            'waktu_mulai.required' => "Waktu mulai agenda wajib diisi",
+            'waktu_akhir.required' => "Waktu berakhir agenda wajib diisi",
+            'lokasi.required' => "Lokasi agenda wajib diisi",
+            'thumbnail.required' => "Thumbnail agenda wajib diisi",
         ]);
 
         $kategori = AgendaKategori::find($request->kategori);
@@ -146,14 +163,14 @@ class AgendaController extends Controller
             $agendaImage->save();
         }
 
-        return redirect('/admin/events')->with('statusInput', 'Agenda successfully added to record');
+        return redirect('/admin/events')->with('statusInput', 'Agenda berhasil ditambahkan');
     }
 
     public function destroy($id)
     {
         $agenda = Agenda::find($id);
         $agenda->delete();
-        return redirect('/admin/events')->with('statusInput', 'Agenda successfully deleted from the record');
+        return redirect('/admin/events')->with('statusInput', 'Agenda berhasil dihapus');
     }
 
     public function edit($id){
@@ -174,6 +191,16 @@ class AgendaController extends Controller
             'waktu_mulai' => 'required',
             'waktu_akhir' => 'required',
             'lokasi' => 'required|min:2'
+        ],[
+            'title_ina.required' => "Judul Bahasa Indonesia agenda wajib diisi",
+            'content_ina.required' => "Konten Bahasa Indonesia agenda wajib diisi",
+            'title_eng.required' => "Judul Bahasa Inggris agenda wajib diisi",
+            'content_eng.required' => "Konten Bahasa Inggris agenda wajib diisi",
+            'kategori.required' => "Kategori agenda wajib dipilih",
+            'tanggal.required' => "Tanggal agenda wajib diisi",
+            'waktu_mulai.required' => "Waktu mulai agenda wajib diisi",
+            'waktu_akhir.required' => "Waktu berakhir agenda wajib diisi",
+            'lokasi.required' => "Lokasi agenda wajib diisi",
         ]);
 
         $kategori = AgendaKategori::find($request->kategori);
@@ -330,7 +357,7 @@ class AgendaController extends Controller
             $agendaImage->save();
         }
 
-        return redirect('admin/events')->with('statusInput', 'Agenda successfully updated from the record');
+        return redirect('admin/events')->with('statusInput', 'Agenda berhasil diperbaharui');
     }
 
 

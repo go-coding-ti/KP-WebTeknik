@@ -1,5 +1,5 @@
 @extends('adminlayout.layout')
-@section('title', 'Add Berita')
+@section('title', 'Tambah Berita')
 @section('content')
 
 <div class="container-fluid">

@@ -15,6 +15,20 @@ use Illuminate\Support\Facades\Route;
 
 //ADMIN ROUTE
 Route::group(['prefix' => 'admin'], function () {
+    //Auth Controller
+    Route::get('/login', 'AdminController\AuthController@loginForm')->name('admin-login-form')->middleware('guest');
+    Route::post('/login', 'AdminController\AuthController@login')->name('admin-login-post');
+    Route::get('/logout', 'AdminController\AuthController@logout')->name('admin-logout');
+    Route::get('/profile', 'AdminController\AuthController@profile')->name('admin-profile-edit');
+    Route::post('/profile-update', 'AdminController\AuthController@updateProfile')->name('admin-profile-update');
+    Route::get('/password', 'AdminController\AuthController@password')->name('admin-password-edit');
+    Route::post('/editpassword', 'AdminController\AuthController@editpassword')->name('admin-password-update');
+
+    //Admin Route
+    Route::get('/admins', 'AdminController\AdminController@index')->name('admin-admin-home');
+    Route::post('/admins/store', 'AdminController\AdminController@store')->name('admin-admin-store');
+    Route::get('/admins/{id}/delete', 'AdminController\AdminController@destroy')->name('admin-admin-delete');
+    Route::get('/admins/role/{id}/{role}', 'AdminController\AdminController@role')->name('admin-admin-role');
 
 	//Admin Dashboard
     Route::get('/dashboard', 'AdminController\HomeController@index')->name('admin-home');

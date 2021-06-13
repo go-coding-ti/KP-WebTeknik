@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Validator;
 
 class VideoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
         $data = Video::where('deleted_at', NULL)->get();
         // dd(isset($data));
@@ -30,6 +35,13 @@ class VideoController extends Controller
             'deskripsi' => 'required|min:10',
             'deskripsi_eng' => 'required|min:10',
             'urlvideo' => 'required|min:5'
+        ],[
+            'judul.unique' => "Judul video yang sama telah ada sebelumnya",
+            'judul.required' => "Judul Bahasa Indonesia video wajib diisi",
+            'deskripsi.required' => "Deskripsi Bahasa Indonesia video wajib diisi",
+            'judul_eng.required' => "Judul Bahasa Inggris video wajib diisi",
+            'deskripsi_eng.required' => "Deskripsi Bahasa Inggris video wajib diisi",
+            'urlvideo.required' => "URL video wajib diisi",
         ]);
 
         if($validator->fails()){
@@ -45,7 +57,7 @@ class VideoController extends Controller
         $video->link = $request->urlvideo;
         $video->save();
 
-        return redirect('/admin/videos')->with('statusInput', 'Video successfully added to record');
+        return redirect('/admin/videos')->with('statusInput', 'Video berhasil ditambahkan');
     }
 
     public function edit($id){
@@ -57,9 +69,16 @@ class VideoController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'judul' => 'required|min:3',
+            'judul_eng' => 'required|min:3',
             'deskripsi' => 'required|min:10',
             'deskripsi_eng' => 'required|min:10',
             'urlvideo' => 'required|min:5'
+        ],[
+            'judul.required' => "Judul Bahasa Indonesia video wajib diisi",
+            'deskripsi.required' => "Deskripsi Bahasa Indonesia video wajib diisi",
+            'judul_eng.required' => "Judul Bahasa Inggris video wajib diisi",
+            'deskripsi_eng.required' => "Deskripsi Bahasa Inggris video wajib diisi",
+            'urlvideo.required' => "URL video wajib diisi",
         ]);
 
         if($validator->fails()){
@@ -75,7 +94,7 @@ class VideoController extends Controller
         $video->link = $request->urlvideo;
         $video->save();
 
-        return redirect('/admin/videos')->with('statusInput', 'Video successfully updated');
+        return redirect('/admin/videos')->with('statusInput', 'Video berhasil diperbaharui');
 
     }
 
@@ -90,7 +109,7 @@ class VideoController extends Controller
     {
     	$video = Video::find($id);
         $video->delete();
-        return redirect('/admin/videos')->with('statusInput', 'Video successfully deleted');
+        return redirect('/admin/videos')->with('statusInput', 'Video berhasil dihapus');
     }
 
     public function status($id, $status)

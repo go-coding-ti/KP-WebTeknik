@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Validator;
 
 class JabatanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
         $data = Jabatan::where('deleted_at', NULL)->get();
         // dd(isset($data));
@@ -33,7 +38,7 @@ class JabatanController extends Controller
         $jabatan->jabatan_eng = $request->jabatan_eng;
         $jabatan->save();
 
-        return back()->with('statusInput', 'Jabatan successfully added to record');
+        return back()->with('statusInput', 'Jabatan berhasil ditambahkan');
     }
 
     public function edit($id)
@@ -59,7 +64,7 @@ class JabatanController extends Controller
         $jabatan->jabatan_eng = $request->edit_jabatan_eng;
         $jabatan->save();
 
-        return back()->with('statusInput', 'Jabatan successfully updated');
+        return back()->with('statusInput', 'Jabatan berhasil diperbaharui');
     }
 
 
@@ -67,6 +72,6 @@ class JabatanController extends Controller
     {
         $jabatan = Jabatan::find($id);
         $jabatan->delete();
-        return back()->with('statusInput', 'Category successfully deleted');
+        return back()->with('statusInput', 'Jabatan berhasil dihapus');
     }
 }

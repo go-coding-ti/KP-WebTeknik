@@ -177,5 +177,7 @@ function deleteSubmenu(id){
     }
   });
 }
+
+$('#sidebarPengaturan').addClass("active");
 </script>
 @endsection

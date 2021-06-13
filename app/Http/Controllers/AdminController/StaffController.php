@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Validator;
 
 class StaffController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
 
         $data = Staff::where('deleted_at', NULL)->with('prodi')->get();
@@ -90,14 +95,14 @@ class StaffController extends Controller
 
         $staf->save();
 
-        return redirect('/admin/staf')->with('statusInput', 'Staf successfully added to record');
+        return redirect('/admin/staf')->with('statusInput', 'Staf pengajar berhasil ditambahkan');
     }
 
     public function destroy($id)
     {
     	$staf = Staff::find($id);
         $staf->delete();
-        return redirect('/admin/staf')->with('statusInput', 'Staf successfully deleted from the record');
+        return redirect('/admin/staf')->with('statusInput', 'Staf pengajar berhasil dihapus');
     }
 
     public function edit($id){
@@ -163,7 +168,7 @@ class StaffController extends Controller
 
         $staf->update();
 
-        return redirect('/admin/staf')->with('statusInput', 'Staf successfully updated from record');
+        return redirect('/admin/staf')->with('statusInput', 'Staf pengajar berhasil diperbaharui');
     }
 
 
