@@ -107,14 +107,14 @@
                                 </div>
                             @enderror
                         </div>
-                        <div class="form-group mt-5">
-                            <a href="{{route('admin-home')}}" class="btn btn-danger btn-icon-split mt-5">
+                        <div class="form-group mt-4">
+                            <a href="{{route('admin-home')}}" class="btn btn-danger btn-icon-split">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-times"></i>
                                 </span>
                                 <span class="text">Batal</span>
                             </a>
-                            <button  type="submit" class="btn btn-primary btn-icon-split mt-5">
+                            <button  type="submit" class="btn btn-primary btn-icon-split">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-save"></i>
                                 </span>
@@ -127,7 +127,7 @@
             </div>
         </div>
     </div>
-
+</div>
 {{-- CROPPER --}}
 <div class="modal fade" id="crop-image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

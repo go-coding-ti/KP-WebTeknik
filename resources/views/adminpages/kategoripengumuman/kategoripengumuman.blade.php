@@ -152,7 +152,14 @@
           <span aria-hidden="true">×</span>
           </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="loadingShow">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body" id="bodyShow">
         <div class="form-group">
           <label for="show_kategori_ina">Kategori Bahasa Indonesia</label>
           <input type="text" class="form-control" id="show_kategori_ina" readonly>
@@ -187,7 +194,14 @@
         <span aria-hidden="true">×</span>
         </button>
     </div>
-    <div class="modal-body">
+    <div class="modal-body" id="loadingEdit">
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+    <div class="modal-body" id="bodyEdit">
       <p>Masukkan Data Kategori yang Hendak Diubah.</p>
       <form id="edit-form-category" method="post" action="" enctype="multipart/form-data" class="needs-validation" novalidate>
           @method('PUT')
@@ -320,6 +334,15 @@
 @section('custom_javascript')
 <script>
   function show(id,status){
+    $("#bodyEdit").hide();
+    $("#bodyShow").hide();
+    $("#loadingShow").show();
+    $("#loadingEdit").show();
+    if(status=='show'){
+      $('#showCategory').modal('show');
+    }else if(status=='edit'){
+      $('#editCategory').modal('show');
+    }
     jQuery.ajax({
       url: "/admin/category/pengumuman/"+id+"/edit",
       method: 'get',
@@ -328,7 +351,8 @@
               $("#show_kategori_ina").val(result.kategori['kategori_ina']);
               $("#show_kategori_eng").val(result.kategori['kategori_eng']);
               $('#show_icon').attr('src', result.kategori['icon']);
-              $('#showCategory').modal('show');
+              $("#loadingShow").hide();
+              $("#bodyShow").show();
           }else{
               $("#edit_kategori_ina").val(result.kategori['kategori_ina']);
               $("#edit_kategori_eng").val(result.kategori['kategori_eng']);
@@ -336,7 +360,8 @@
               $('#edit_propic').attr('src', result.kategori['icon']);
               $('#edit_image-preview').attr('src', result.kategori['icon']);
               $("#edit-form-category").attr("action", "/admin/category/pengumuman/"+result.kategori['id']);
-              $('#editCategory').modal('show');
+              $("#loadingEdit").hide();
+              $("#bodyEdit").show();
           }                    
         }
       });

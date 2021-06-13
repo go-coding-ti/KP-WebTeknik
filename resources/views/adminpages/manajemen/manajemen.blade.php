@@ -142,7 +142,14 @@
           <span aria-hidden="true">×</span>
           </button>
       </div>
-        <div class="modal-body">
+      <div class="modal-body" id="loadingShow">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div>
+        <div class="modal-body" id="bodyShow">
                 <div class="form-group">
                   <label for="show_manajemen_jabatan">Jabatan</label>
                   <input type="text" class="form-control" id="show_manajemen_jabatan" readonly>
@@ -174,7 +181,14 @@
             <span aria-hidden="true">×</span>
             </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" id="loadingEdit">
+            <div class="d-flex justify-content-center">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          </div>
+        <div class="modal-body" id="bodyEdit">
             <p>Masukkan Data Manajemen yang Hendak Diubah.</p>
             <form id="edit-form-manajemen" method="post" action="/admin/management/update" enctype="multipart/form-data" class="needs-validation" novalidate>
                @csrf
@@ -247,6 +261,15 @@
 <script>
 
     function show(id,status){
+        $("#bodyEdit").hide();
+        $("#bodyShow").hide();
+        $("#loadingShow").show();
+        $("#loadingEdit").show();
+        if(status=='show'){
+        $('#showManajemen').modal('show');
+        }else if(status=='edit'){
+        $('#editManajemen').modal('show');
+        }
         jQuery.ajax({
             url: "/admin/management/"+id+"/edit",
             method: 'get',
@@ -256,10 +279,14 @@
                     $("#show_manajemen_nip").val(result.staf['nip']);
                     $("#show_manajemen_nama").val(result.staf['nama']);
                     $('#showManajemen').modal('show');
+                    $("#loadingShow").hide();
+                    $("#bodyShow").show();
                 }else{
                     $("#edit_jabatan").val(result.staf['id_jabatan']);
                     $("#edit_staf").val(result.staf['id']);
                     $('#editManajemen').modal('show');
+                    $("#loadingEdit").hide();
+                    $("#bodyEdit").show();
                 }                   
                 
             }

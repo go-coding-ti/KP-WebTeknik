@@ -76,8 +76,18 @@
                         </div>
                 </div>
                 <div class="form-group mt-4">
-                    <a href="/admin/pages" class="btn btn-danger"><i class="fa fa-times"></i> Batal</a>
-                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
+                    <a href="{{route('admin-page-home')}}" class="btn btn-danger btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-times"></i>
+                        </span>
+                        <span class="text">Batal</span>
+                    </a>
+                    <button  type="submit" class="btn btn-success btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-save"></i>
+                        </span>
+                        <span class="text">Simpan</span>
+                    </button>
                 </div>
             </form>
         </div>

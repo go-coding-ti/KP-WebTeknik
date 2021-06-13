@@ -12,7 +12,10 @@
         <hr class="sidebar-divider my-0">
         <div class="sidebar-brand d-flex align-items-center justify-content" href="/admin">
           <div class="sidebar-brand-icon">
-            <img style="height:45px;width:45px;" src="{{asset('assets/admin/img/profile.png')}}">
+            <img style="height:45px;width:45px;" class="img-profile rounded-circle"
+            @if(auth()->guard()->user()->foto == NULL) src="{{asset('assets/admin/img/profile.png')}}"
+            @else src="{{auth()->guard()->user()->foto}}"
+            @endif>
           </div>
           <div style="font-size: 10px !important;margin-left:10px;" class="sidebar-brand-text my-3">
             {{auth()->guard()->user()->nama}}

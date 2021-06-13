@@ -152,7 +152,14 @@
           <span aria-hidden="true">×</span>
           </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="loadingEdit">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body" id="bodyEdit">
           <p>Masukkan data sosial media</p>
           <form method="post" id="edit_social_form" action="/admin/setting/social/store" enctype="multipart/form-data"  class="needs-validation" novalidate>
               @csrf
@@ -212,12 +219,19 @@
   <div class="modal-dialog" role="document">
       <div class="modal-content">
       <div class="modal-header">
-          <h5 class="modal-title" id="showSocial">Detail Social Media</h5>
+          <h5 class="modal-title" id="showSocial">Detail Sosial Media</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal('showSocial')">
           <span aria-hidden="true">×</span>
           </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="loadingShow">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body" id="bodyShow">
           <form method="post" action="" enctype="multipart/form-data">
               @csrf
               <div class="form-group">
@@ -302,6 +316,15 @@
 <script>
 
     function show(id,status){
+        $("#bodyEdit").hide();
+        $("#bodyShow").hide();
+        $("#loadingShow").show();
+        $("#loadingEdit").show();
+        if(status=='show'){
+          $('#showSocial').modal('show');
+        }else if(status=='edit'){
+          $('#editSocial').modal('show');
+        }
         jQuery.ajax({
             url: "/admin/setting/social/"+id+"/edit",
             method: 'get',
@@ -311,6 +334,8 @@
                     $("#show_link_sosmed").val(result.social['link']);
                     $('#show_propic').attr('src', result.social['logo']);;
                     $('#showSocial').modal('show');
+                    $("#loadingShow").hide();
+                    $("#bodyShow").show();
                 }else{
                     $("#edit_sosmed").val(result.social['nama_sosmed']);
                     $("#edit_link_sosmed").val(result.social['link']);
@@ -319,6 +344,8 @@
                     $('#edit_image-preview').attr('src', result.social['logo']);
                     $("#edit_social_form").attr("action", "/admin/setting/social/"+result.social['id']);
                     $('#editSocial').modal('show');
+                    $("#loadingEdit").hide();
+                    $("#bodyEdit").show();
                 }                   
                 
             }

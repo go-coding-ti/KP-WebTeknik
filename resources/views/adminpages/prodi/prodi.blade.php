@@ -131,7 +131,14 @@
           <span aria-hidden="true">×</span>
           </button>
       </div>
-        <div class="modal-body">
+      <div class="modal-body" id="loadingShow">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div>
+        <div class="modal-body" id="bodyShow">
                 <div class="form-group">
                   <label for="show_prodi_ina">Nama Prodi Bahasa Indonesia</label>
                   <input type="text" class="form-control" id="show_prodi_ina" readonly>
@@ -158,7 +165,14 @@
             <span aria-hidden="true">×</span>
             </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" id="loadingEdit">
+          <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body" id="bodyEdit">
             <p>Masukkan Data Program Studi yang Hendak Diubah.</p>
             <form id="edit-form-prodi" method="post" action="" enctype="multipart/form-data" class="needs-validation" novalidate>
                @method('PUT')
@@ -229,8 +243,17 @@
 
 @section('custom_javascript')
 <script>
-
-function show(id,status){
+  
+    function show(id,status){
+        $("#bodyEdit").hide();
+        $("#bodyShow").hide();
+        $("#loadingShow").show();
+        $("#loadingEdit").show();
+        if(status=='show'){
+          $('#showProdi').modal('show');
+        }else if(status=='edit'){
+          $('#editProdi').modal('show');
+        }
         jQuery.ajax({
                 url: "/admin/prodi/"+id+"/edit",
                 method: 'get',
@@ -238,12 +261,14 @@ function show(id,status){
                     if(status == 'show'){
                         $("#show_prodi_ina").val(result.prodi['prodi_ina']);
                         $("#show_prodi_eng").val(result.prodi['prodi_eng']);
-                        $('#showProdi').modal('show');
+                        $("#loadingShow").hide();
+                        $("#bodyShow").show();
                     }else{
                         $("#edit_prodi_ina").val(result.prodi['prodi_ina']);
                         $("#edit_prodi_eng").val(result.prodi['prodi_eng']);
                         $("#edit-form-prodi").attr("action", "/admin/prodi/"+result.prodi['id']);
-                        $('#editProdi').modal('show');
+                        $("#loadingEdit").hide();
+                        $("#bodyEdit").show();
                     }                   
                     
                 }

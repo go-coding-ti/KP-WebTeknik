@@ -128,7 +128,14 @@
           <span aria-hidden="true">×</span>
           </button>
       </div>
-        <div class="modal-body">
+      <div class="modal-body" id="loadingShow">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div>
+        <div class="modal-body" id="bodyShow">
                 <div class="form-group">
                   <label for="show_jabatan_ina">Jabatan Bahasa Indonesia</label>
                   <input type="text" class="form-control" id="show_jabatan_ina" readonly>
@@ -156,7 +163,14 @@
             <span aria-hidden="true">×</span>
             </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" id="loadingEdit">
+          <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-body" id="bodyEdit">
             <p>Masukkan Data Jabatan yang Hendak Diubah.</p>
             <form id="edit-form-jabatan" method="post" action="" enctype="multipart/form-data" class="needs-validation" novalidate>
                @method('PUT')
@@ -229,6 +243,15 @@
 <script>
 
     function show(id,status){
+        $("#bodyEdit").hide();
+        $("#bodyShow").hide();
+        $("#loadingShow").show();
+        $("#loadingEdit").show();
+        if(status=='show'){
+          $('#showJabatan').modal('show');
+        }else if(status=='edit'){
+          $('#editJabatan').modal('show');
+        }
         jQuery.ajax({
             url: "/admin/jabatan/"+id+"/edit",
             method: 'get',
@@ -236,12 +259,15 @@
                 if(status == 'show'){
                     $("#show_jabatan_ina").val(result.jabatan['jabatan_ina']);
                     $("#show_jabatan_eng").val(result.jabatan['jabatan_eng']);
-                    $('#showJabatan').modal('show');
+                    $("#loadingShow").hide();
+                    $("#bodyShow").show();
                 }else{
                     $("#edit_jabatan_ina").val(result.jabatan['jabatan_ina']);
                     $("#edit_jabatan_eng").val(result.jabatan['jabatan_eng']);
                     $("#edit-form-jabatan").attr("action", "/admin/jabatan/"+result.jabatan['id']);
                     $('#editJabatan').modal('show');
+                    $("#loadingEdit").hide();
+                    $("#bodyEdit").show();
                 }                   
                 
             }
