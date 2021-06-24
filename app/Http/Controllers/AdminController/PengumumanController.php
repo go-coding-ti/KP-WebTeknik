@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\File;
 
 class PengumumanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
 
         $data = Pengumuman::where('deleted_at', NULL)->with('kategori')->get();;
@@ -37,6 +42,14 @@ class PengumumanController extends Controller
             'content_eng' => 'required|min:8',
             'kategori' => 'required',
             'tanggal' => 'required'
+        ],[
+            'title_ina.unique' => "Judul berita yang sama telah ada sebelumnya",
+            'title_ina.required' => "Judul Bahasa Indonesia berita wajib diisi",
+            'content_ina.required' => "Konten Bahasa Indonesia berita wajib diisi",
+            'title_eng.required' => "Judul Bahasa Inggris berita wajib diisi",
+            'content_eng.required' => "Konten Bahasa Inggris berita wajib diisi",
+            'kategori.required' => "Kategori berita wajib dipilih",
+            'tanggal.required' => "Tanggal berita wajib diisi",
         ]);
 
         if($validator->fails()){
@@ -114,14 +127,14 @@ class PengumumanController extends Controller
             $pengumumanImage->save();
         }
 
-        return redirect('/admin/announcement')->with('statusInput', 'Pengumuman successfully added to record');
+        return redirect('/admin/announcement')->with('statusInput', 'Pengumuman berhasil ditambahkan');
     }
 
     public function destroy($id)
     {
     	$berita = Pengumuman::find($id);
         $berita->delete();
-        return redirect('/admin/announcement')->with('statusInput', 'Pengumuman successfully deleted from the record');
+        return redirect('/admin/announcement')->with('statusInput', 'Pengumuman berhasil dihapus');
     }
 
     public function edit($id){
@@ -139,6 +152,13 @@ class PengumumanController extends Controller
             'content_eng' => 'required|min:8',
             'kategori' => 'required',
             'tanggal' => 'required'
+        ],[
+            'title_ina.required' => "Judul Bahasa Indonesia berita wajib diisi",
+            'content_ina.required' => "Konten Bahasa Indonesia berita wajib diisi",
+            'title_eng.required' => "Judul Bahasa Inggris berita wajib diisi",
+            'content_eng.required' => "Konten Bahasa Inggris berita wajib diisi",
+            'kategori.required' => "Kategori berita wajib dipilih",
+            'tanggal.required' => "Tanggal berita wajib diisi",
         ]);
 
         if($validator->fails()){
@@ -262,7 +282,7 @@ class PengumumanController extends Controller
             $pengumumanImage->save();
         }
 
-        return redirect('admin/announcement')->with('statusInput', 'Pengumuman successfully updated from the record');
+        return redirect('admin/announcement')->with('statusInput', 'Pengumuman berhasil diperbaharui');
     }
 
 

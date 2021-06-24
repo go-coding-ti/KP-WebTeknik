@@ -1,89 +1,99 @@
 @extends('adminlayout.layout')
-@section('title', $video->judul)
+@section('title', 'Detail Video')
 @section('content')
-
-    <!-- Begin Page Content -->
-    <div class="container-fluid">
-
-        <h1 class="h3 mb-2 text-gray-800">Video</h1>
-          <p class="mb-4">Video {{$video->judul}}</p>
-
-          @if (session()->has('statusInput'))
-              <div class="row">
-                <div class="col-sm-12 alert alert-success alert-dismissible fade show" role="alert">
-                    {{session()->get('statusInput')}}
-                    <button type="button" class="close" data-dismiss="alert"
-                        aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-              </div>
-            @endif
-          <!-- DataTales Example -->
-          <!-- Copy drisini -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Detail Video</h6>
-            </div>
-            <div class="card-body">
-                <div class="col px-12 mb-1">
-                    <div class="card border-0 bg-grey hover">
-                        <div class="card-body text-center">
-                        <iframe style="width:75%; height:550px" src="{{$video->link}}" title="YouTube video" allowfullscreen></iframe>
-                            </div>
-                        <div class="card-body text-center">
-                            <h5 class="card-title text-dark fw-bold">{{$video->judul}}</h5>
-                            <p class="card-text lh-sm text-dark">{{$video->deskripsi}}</p>
-                            <a href="{{$video->link}}" class="card-text text-black small text-decoration-none text-link"><i class="fab fa-youtube"></i> See on YouTube</a>
-                        </div>
-                        <div class="form-group mt-4">
-                            <a href="/admin/videos" class="btn btn-danger"><i class="fa sm fa-arrow-left"></i>   Kembali</a>
-                        </div>
+<div class="container-fluid">
+    <h1 class="h3 mb-2 text-gray-800">Video</h1>
+    <p class="mb-4">Detail Video Fakultas Teknik Universitas Udayana</p>
+        
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Detail Video</h6>
+        </div>
+        <div class="card-body">
+        <form id="form-product" method="post" action="{{route('admin-video-update',$video->id)}}" enctype="multipart/form-data" class="needs-validation" novalidate>
+            @csrf
+            @method('PUT')
+            <div class="form group mt-1">
+                <label for="title">Judul Bahasa Indonesia</label>
+                <input type="text" class="form-control @error ('judul') is-invalid @enderror" id="judul" name="judul" placeholder="Judul Video Bahasa Indonesia" value="{{$video->judul}}" required readonly>
+                @error('judul')
+                    <div class="invalid-feedback text-start">
+                        {{ $message }}
                     </div>
-                </div>
+                @else
+                    <div class="invalid-feedback">
+                        Judul Bahasa Indonesia wajib diisi
+                    </div>
+                @enderror
             </div>
-          </div>
-          <!-- smpe sini -->
-        
-        <!-- Content Row -->
-        <div class="row">
-        <form method="POST" enctype="multipart/form-data" action="/admin/profile">
-        
+            <div class="form group mt-4">
+                <label for="title">Judul Bahasa Inggris</label>
+                <input type="text" class="form-control @error ('judul_eng') is-invalid @enderror" id="judul_eng" name="judul_eng" placeholder="Judul Video Bahasa Inggris" value="{{$video->judul_eng}}" required readonly>
+                @error('judul_eng')
+                    <div class="invalid-feedback text-start">
+                        {{ $message }}
+                    </div>
+                @else
+                    <div class="invalid-feedback">
+                        Judul Bahasa Inggris wajib diisi
+                    </div>
+                @enderror
+            </div>
+            <div class="form-group form-group mt-4">
+                <label for="description">Deskripsi Bahasa Indonesia</label>
+                <textarea id="deskripsi" class="form-control @error ('deskripsi') is-invalid @enderror" name="deskripsi" placeholder="Deskripsi Video Bahasa Indonesia" rows="10" required readonly>{{$video->deskripsi}}</textarea>
+                @error('deskripsi')
+                    <div class="invalid-feedback text-start">
+                        {{ $message }}
+                    </div>
+                @else
+                    <div class="invalid-feedback">
+                        Deskripsi Bahasa Indonesia wajib diisi
+                    </div>
+                @enderror
+            </div>
+            <div class="form-group form-group mt-4">
+                <label for="description">Deskripsi Bahasa Inggris</label>
+                <textarea id="deskripsi_deskripsi_eng" class="form-control @error ('deskripsi_eng') is-invalid @enderror" name="deskripsi_eng" placeholder="Deskripsi Video Bahasa Inggris" rows="10" required readonly>{{$video->deskripsi_eng}}</textarea>
+                @error('deskripsi_eng')
+                    <div class="invalid-feedback text-start">
+                        {{ $message }}
+                    </div>
+                @else
+                    <div class="invalid-feedback">
+                        Deskripsi Bahasa Inggris wajib diisi
+                    </div>
+                @enderror
+            </div>
+            <div class="form group mt-4">
+                <label for="urlvideo">URL Video</label>
+                <input type="text" class="form-control @error ('urlvideo') is-invalid @enderror" id="urlvideo" name="urlvideo" placeholder="URL Video" value="{{$video->link}}" required readonly>
+                @error('urlvideo')
+                    <div class="invalid-feedback text-start">
+                        {{ $message }}
+                    </div>
+                @else
+                    <div class="invalid-feedback">
+                        URL video wajib diisi
+                    </div>
+                @enderror
+            </div>
+            <div class="form-group mt-4">
+                <a href="{{route('admin-video-home')}}" class="btn btn-danger btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-arrow-left"></i>
+                    </span>
+                    <span class="text">Kembali</span>
+                </a>
+            </div>
         </form>
+            </form>
         </div>
-
-        <!-- Content Row -->
-
-        <div class="row">
-          
-        </div>
-
-        <!-- Content Row -->
-        <div class="row">
-
-          <!-- Content Column -->
-          <div class="col-lg-6 mb-4">
-
-            <!-- Color System -->
-            <div class="row">
-              <div class="card mb-4">
-<!--                 <div class="card-header">
-                  Default Card Example
-                </div>
-                <div class="card-body">
-                  This card uses Bootstrap's default styling with no utility classes added. Global styles are the only things modifying the look and feel of this default card example.
-                </div> -->
-              </div>
-          </div>
-
-          </div>
-
-          <div class="col-lg-6 mb-4">
-
-          </div>
-        </div>
-
-      </div>
-      <!-- /.container-fluid -->
-
+    </div>
+</div>
+@endsection
+@section('custom_javascript')
+<script>
+    $('#sidebarVideo').addClass("active")
+</script>
 @endsection

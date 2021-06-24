@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Validator;
 
 class KategoriController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
         $data = Kategori::where('deleted_at', NULL)->get();
         // dd(isset($data));
@@ -34,7 +39,7 @@ class KategoriController extends Controller
         $kategori->kategori_lower = Str::lower($request->kategori_eng);
         $kategori->save();
 
-        return back()->with('statusInput', 'Category successfully added to record');
+        return back()->with('statusInput', 'Kategori berita berhasil ditambahkan');
     }
 
     public function edit($id)
@@ -61,7 +66,7 @@ class KategoriController extends Controller
         $kategori->kategori_lower = Str::lower($request->edit_kategori_eng);
         $kategori->save();
 
-        return back()->with('statusInput', 'Category successfully edited');
+        return back()->with('statusInput', 'Kategori berita berhasil diperbaharui');
     }
 
 
@@ -69,6 +74,6 @@ class KategoriController extends Controller
     {
         $kategori = Kategori::find($id);
         $kategori->delete();
-        return back()->with('statusInput', 'Category successfully deleted');
+        return back()->with('statusInput', 'Kategori berita berhasil dihapus');
     }
 }

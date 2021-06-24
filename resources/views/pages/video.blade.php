@@ -8,19 +8,21 @@
         <div class="slide">
             <div class="carousel-item active">
               <div class="card border-0 bg-grey h-100">
-                <div class="ratio ratio-21x9 card-img-top">
-                  <iframe src="https://www.youtube.com/embed/aFItsrv3n-Q?autoplay=1" title="Judul Videonya" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope;" allowfullscreen></iframe>
-                </div>
-                <div class="card-body text-center">
-                  <h5 class="card-title text-light fw-bold">Faculty of Engineering Profile</h5>
-                  <p class="card-text text-light lh-sm">Faculty of Engineering Udayana University</p>
-                  <p class="card-text text-light lh-sm">Jl. Kampus Unud Jimbaran Badung, Bali 80361</p>
-                  <p class="card-text text-light lh-sm">Phone Number: +62 (361) 703320</p>
-                  {{-- <a href="" class="card-text text-black small text-decoration-none link-danger"><i class="fab fa-youtube"></i> See on YouTube</a> --}}
-                </div>
-                <div class="card-footer text-center">
-                  <small class="text-muted">Posted on 18 Sep 2020</small>
-                </div>
+                @foreach($videos as $video)
+                  @if($video->is_profile == 1)
+                  <div class="ratio ratio-21x9 card-img-top">
+                    <iframe src="https://www.youtube.com/embed/{{$video->link}}?autoplay=1" title="Judul Videonya" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope;" allowfullscreen></iframe>
+                  </div>
+                  <div class="card-body text-center">
+                    <h5 class="card-title text-light fw-bold">{{$video->judul_eng}}</h5>
+                    <p class="card-text text-light lh-sm">{{$video->deskripsi_eng}}</p>
+                  </div>
+                  <div class="card-footer text-center">
+                    <small class="text-muted">Posted on {{ date('d M Y', strtotime($video->created_at)) }}</small>
+                  </div>
+                  @break
+                  @endif
+                @endforeach
               </div>
             </div>
         </div>
@@ -55,18 +57,21 @@
         <div class="slide">
             <div class="carousel-item active">
               <div class="card border-0 bg-grey h-100">
-                <div class="ratio ratio-21x9 card-img-top">
-                  <iframe src="https://www.youtube.com/embed/aFItsrv3n-Q?autoplay=1" title="Judul Videonya" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope;" allowfullscreen></iframe>
-                </div>
-                <div class="card-body text-center">
-                  <h5 class="card-title text-light fw-bold">Profile Fakultas Teknik Universitas Udayana</h5>
-                  <p class="card-text text-light lh-sm">Fakultas Teknik Universitas Udayana</p>
-                  <p class="card-text text-light lh-sm">Jl. Kampus Unud Jimbaran Badung, Bali 80361</p>
-                  <p class="card-text text-light lh-sm">Phone Number: +62 (361) 703320</p>
-                </div>
-                <div class="card-footer text-center">
-                  <small class="text-muted">Diposting pada 18 Sep 2020</small>
-                </div>
+                @foreach($videos as $video)
+                  @if($video->is_profile == 1)
+                  <div class="ratio ratio-21x9 card-img-top">
+                    <iframe src="https://www.youtube.com/embed/{{$video->link}}?autoplay=1" title="Judul Videonya" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope;" allowfullscreen></iframe>
+                  </div>
+                  <div class="card-body text-center">
+                    <h5 class="card-title text-light fw-bold">{{$video->judul}}</h5>
+                    <p class="card-text text-light lh-sm">{{$video->deskripsi}}</p>
+                  </div>
+                  <div class="card-footer text-center">
+                    <small class="text-muted">Posted on {{ date('d M Y', strtotime($video->created_at)) }}</small>
+                  </div>
+                  @break
+                  @endif
+                @endforeach
               </div>
             </div>
         </div>

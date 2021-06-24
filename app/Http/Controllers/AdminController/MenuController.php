@@ -15,7 +15,11 @@ use PhpParser\Node\Expr\FuncCall;
 
 class MenuController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function getMenu($id){
         $menus = Menu::where('id_header', $id)->get();
         return response()->json(
@@ -59,7 +63,7 @@ class MenuController extends Controller
             $header->header_url = "#";
         }
         $header->save();
-        return redirect('/admin/menus')->with('statusInput', 'Header successfully added to record');
+        return redirect('/admin/menus')->with('statusInput', 'Header berhasil ditambahkan');
     }
 
     public function headerEdit($id){
@@ -95,13 +99,13 @@ class MenuController extends Controller
             $header->id_page = NULL;
         }
         $header->update();
-        return redirect('/admin/menus')->with('statusInput', 'Header successfully updated from record');
+        return redirect('/admin/menus')->with('statusInput', 'Header berhasil diperbaharui');
     }
 
     public function headerDestroy($id){
         $header = Header::find($id);
         $header->delete();
-        return redirect('/admin/menus')->with('statusInput', 'Header successfully deleted');
+        return redirect('/admin/menus')->with('statusInput', 'Header berhasil dihapus');
     }
 
     //MENU FUCNTION
@@ -135,7 +139,7 @@ class MenuController extends Controller
             $menu->menu_url = $page->title_slug;
         }
         $menu->save();
-        return redirect('/admin/menus')->with('statusInput', 'Menu successfully added to record');
+        return redirect('/admin/menus')->with('statusInput', 'Menu berhasil ditambahkan');
     }
 
     public function menuEdit($id){
@@ -170,13 +174,13 @@ class MenuController extends Controller
             $menu->menu_url = $page->title_slug;
         }
         $menu->update();
-        return redirect('/admin/menus')->with('statusInput', 'Menu successfully updated from the record');
+        return redirect('/admin/menus')->with('statusInput', 'Menu berhasil diperbaharui');
     }
 
     public function menuDestroy($id){
         $menu = Menu::find($id);
         $menu->delete();
-        return redirect('/admin/menus')->with('statusInput', 'Menu successfully deleted');
+        return redirect('/admin/menus')->with('statusInput', 'Menu berhasil dihapus');
     }
 
     //SUBMENU FUNCTION
@@ -211,7 +215,7 @@ class MenuController extends Controller
             $submenu->menu_url = $page->title_slug;
         }
         $submenu->save();
-        return redirect('/admin/menus')->with('statusInput', 'Sub Menu successfully added to record');
+        return redirect('/admin/menus')->with('statusInput', 'Sub Menu berhasil ditambahkan');
     }
 
     public function submenuEdit($id){
@@ -252,13 +256,13 @@ class MenuController extends Controller
             $submenu->id_page = NULL;
         }
         $submenu->update();
-        return redirect('/admin/menus')->with('statusInput', 'Sub Menu successfully updated from the record');
+        return redirect('/admin/menus')->with('statusInput', 'Sub Menu berhasil diperbaharui');
     }
 
     public function submenuDestroy($id){
         $submenu = Submenu::find($id);
         $submenu->delete();
-        return redirect('/admin/menus')->with('statusInput', 'Sub Menu successfully deleted');
+        return redirect('/admin/menus')->with('statusInput', 'Sub Menu berhasil dihapus');
     }
 
 }

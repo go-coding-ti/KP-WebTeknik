@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Validator;
 
 class AgendaKategoriController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
         $data = AgendaKategori::where('deleted_at', NULL)->get();
         // dd(isset($data));
@@ -34,7 +39,7 @@ class AgendaKategoriController extends Controller
         $kategori->kategori_lower = Str::lower($request->kategori_eng);
         $kategori->save();
 
-        return back()->with('statusInput', 'Category successfully added to record');
+        return back()->with('statusInput', 'Kategori agenda berhasil ditambahkan');
     }
 
     public function edit($id)
@@ -61,7 +66,7 @@ class AgendaKategoriController extends Controller
         $kategori->kategori_lower = Str::lower($request->edit_kategori_eng);
         $kategori->save();
 
-        return back()->with('statusInput', 'Category successfully edited');
+        return back()->with('statusInput', 'Kategori agenda berhasil diperbaharui');
     }
 
 
@@ -69,6 +74,6 @@ class AgendaKategoriController extends Controller
     {
         $kategori = AgendaKategori::find($id);
         $kategori->delete();
-        return back()->with('statusInput', 'Category successfully deleted');
+        return back()->with('statusInput', 'Kategori agenda berhasil dihapus');
     }
 }
