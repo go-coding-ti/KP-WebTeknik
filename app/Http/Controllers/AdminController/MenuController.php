@@ -31,7 +31,7 @@ class MenuController extends Controller
 
     //HEADER FUNCTION
     public function headerCreate(){
-        $pages = Page::where('deleted_at', NULL)->get();
+        $pages = Page::where('deleted_at', NULL)->where('status', 'aktif')->get();
         return view('adminpages.menu.createHeader', compact('pages'));
     }
 
@@ -54,7 +54,7 @@ class MenuController extends Controller
         }else if($request->page != "" && $request->url_header!= ""){
             $header->id_page = $request->page;
             $page = Page::find($request->page);
-            $header->header_url = "/admin/pages/".$page->title_slug;
+            $header->header_url = $page->title_slug;
         }else if($request->page == "" && $request->url_header== ""){
             $header->header_url = "#";
         }
@@ -64,7 +64,7 @@ class MenuController extends Controller
 
     public function headerEdit($id){
         $header = Header::find($id);
-        $pages = Page::where('deleted_at', NULL)->get();
+        $pages = Page::where('deleted_at', NULL)->where('status', 'aktif')->get();
 
         return view('adminpages.menu.editHeader', compact('pages', 'header'));
     }
@@ -89,7 +89,7 @@ class MenuController extends Controller
         }else if($request->page != ""){
             $header->id_page = $request->page;
             $page = Page::find($request->page);
-            $header->header_url = "/admin/pages/".$page->title_slug;
+            $header->header_url = $page->title_slug;
         }else if($request->page == "" && $request->url_header== ""){
             $header->header_url = "#";
             $header->id_page = NULL;
@@ -107,7 +107,7 @@ class MenuController extends Controller
     //MENU FUCNTION
     public function menuCreate(){
         $headers = Header::where('deleted_at', NULL)->get();
-        $pages = Page::where('deleted_at', NULL)->get();
+        $pages = Page::where('deleted_at', NULL)->where('status', 'aktif')->get();
         return view('adminpages.menu.createMenu', compact('pages', 'headers'));
     }
 
@@ -132,7 +132,7 @@ class MenuController extends Controller
         }else if($request->page != ""){
             $menu->id_page = $request->page;
             $page = Page::find($request->page);
-            $menu->menu_url = "/admin/show/".$page->title_slug;
+            $menu->menu_url = $page->title_slug;
         }
         $menu->save();
         return redirect('/admin/menus')->with('statusInput', 'Menu successfully added to record');
@@ -140,7 +140,7 @@ class MenuController extends Controller
 
     public function menuEdit($id){
         $headers = Header::where('deleted_at', NULL)->get();
-        $pages = Page::where('deleted_at', NULL)->get();
+        $pages = Page::where('deleted_at', NULL)->where('status', 'aktif')->get();
         $menu = Menu::find($id);
 
         return view('adminpages.menu.editMenu', compact('pages', 'headers', 'menu'));
@@ -167,7 +167,7 @@ class MenuController extends Controller
         }else if($request->page != ""){
             $menu->id_page = $request->page;
             $page = Page::find($request->page);
-            $menu->menu_url = "/admin/show/".$page->title_slug;
+            $menu->menu_url = $page->title_slug;
         }
         $menu->update();
         return redirect('/admin/menus')->with('statusInput', 'Menu successfully updated from the record');
@@ -183,7 +183,7 @@ class MenuController extends Controller
     public function submenuCreate(){
         $headers = Header::where('deleted_at', NULL)->get();
         $menus = Menu::where('deleted_at', NULL)->get();
-        $pages = Page::where('deleted_at', NULL)->get();
+        $pages = Page::where('deleted_at', NULL)->where('status', 'aktif')->get();
         return view('adminpages.menu.createSubmenu', compact('pages', 'headers', 'menus'));
     }
 
@@ -208,7 +208,7 @@ class MenuController extends Controller
         }else if($request->page != ""){
             $submenu->id_page = $request->page;
             $page = Page::find($request->page);
-            $submenu->menu_url = "/admin/pages".$page->title_slug;
+            $submenu->menu_url = $page->title_slug;
         }
         $submenu->save();
         return redirect('/admin/menus')->with('statusInput', 'Sub Menu successfully added to record');
@@ -217,7 +217,7 @@ class MenuController extends Controller
     public function submenuEdit($id){
         $headers = Header::where('deleted_at', NULL)->get();
         $menus = Menu::where('deleted_at', NULL)->get();
-        $pages = Page::where('deleted_at', NULL)->get();
+        $pages = Page::where('deleted_at', NULL)->where('status', 'aktif')->get();
         $submenu = Submenu::find($id);
 
         $id_header = $submenu->id_menu;
@@ -246,7 +246,7 @@ class MenuController extends Controller
         if($request->page != ""){
             $submenu->id_page = $request->page;
             $page = Page::find($request->page);
-            $submenu->menu_url = "/admin/pages/".$page->title_slug;
+            $submenu->menu_url = $page->title_slug;
         }else if($request->page == ""){
             $submenu->menu_url = $request->url_menu;
             $submenu->id_page = NULL;

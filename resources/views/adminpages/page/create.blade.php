@@ -10,20 +10,9 @@
             <div class="card-body">
             <form id="form-product" method="post" action="{{route('admin-page-store')}}" enctype="multipart/form-data">
                 @csrf
-                <div class="row">
-                    <div class="col-lg-6 col-sm-12">
-                        <label for="title">Title Ina</label>
-                        <input type="text" class="form-control @error ('title_ina') is-invalid @enderror"  id="title_ina" name="title_ina" placeholder="Title Ina" required>
-                        @error('title_ina')
-                            <div class="invalid-feedback text-start">
-                                {{$message}}
-                            </div>
-                        @enderror 
-                    </div>
-                    <div class="col-lg-6 col-sm-12">
-                        <label for="title">Tanggal Publish</label>
-                        <input type="date" class="form-control" name="tanggal" placeholder="Tanggal Publish">
-                    </div>
+                <div class="form-group form-group mt-5">
+                    <label for="title">Title Ina</label>
+                    <input type="text" class="form-control @error ('title_ina') is-invalid @enderror"  id="title_ina" name="title_ina" placeholder="Title Ina" required>
                 </div>
                 <div class="form-group form-group mt-4">
                     <label for="description">Content Ina</label>
@@ -38,15 +27,6 @@
                     <textarea id="content_eng" class="summernote" name="content_eng" required></textarea>
                 </div>
                 <div class="form-group mt-4">
-                    <label for="galeri">Galeri</label>
-                    <br>
-                    <img src="{{asset('assets/admin/img/pictures_placeholder.png')}}" class="mb-3" style="border: 2px solid #DCDCDC;padding: 5px;height:20%;width:20%;" id="propic">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="galeri" name="galeri" required>
-                        <label for="galeri_label" id="galeri_label" class="custom-file-label">Pilih Galeri</label>
-                    </div>
-                </div>
-                <div class="form-group mt-4">
                     <label for="lampiran">File Lampiran</label>
                     <br>    
                     <div class="custom-file">
@@ -54,10 +34,6 @@
                         <label for="lampiran_label" id="lampiran_label" class="custom-file-label">Pilih Lampiran</label>
                     </div>
                     {{-- <input type="file" class="form-control-file" id="lampiran" name="lampiran"> --}}
-                </div>
-                <div class="form group mt-4">
-                    <label for="urlvideo">URL Video</label>
-                    <input type="text" class="form-control" id="urlvideo" name="urlvideo" placeholder="URL Video">
                 </div>
                 <div class="form-group mt-4">
                     <a href="/admin/pages" class="btn btn-danger"><i class="fa fa-times"></i> Batal</a>

@@ -11,20 +11,14 @@
             <form id="form-product" method="post" action="{{route('admin-page-update',$page->id)}}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                <div class="row">
-                    <div class="col-lg-6 col-sm-12">
-                        <label for="title">Title Ina</label>
-                        <input type="text" class="form-control @error ('title_ina') is-invalid @enderror"  id="title_ina" name="title_ina" value="{{$page->title_ina}}" required>
-                        @error('title_ina')
-                            <div class="invalid-feedback text-start">
-                                {{$message}}
-                            </div>
-                        @enderror 
-                    </div>
-                    <div class="col-lg-6 col-sm-12">
-                        <label for="title">Tanggal Publish</label>
-                        <input type="date" class="form-control" name="tanggal" value="{{$page->tanggal_publish}}">
-                    </div>
+                <div class="form-group form-group mt-5">
+                    <label for="title">Title Ina</label>
+                    <input type="text" class="form-control @error ('title_ina') is-invalid @enderror"  id="title_ina" name="title_ina" value="{{$page->title_ina}}" required>
+                    @error('title_ina')
+                        <div class="invalid-feedback text-start">
+                            {{$message}}
+                        </div>
+                    @enderror 
                 </div>
                 <div class="form-group form-group mt-4">
                     <label for="description">Content Ina</label>
@@ -37,22 +31,7 @@
                 <div class="form-group form-group mt-4">
                     <label for="description">Content Eng</label>
                     <textarea id="content_eng" class="summernote" name="content_eng" required>{{$page->content_eng}}</textarea>
-                </div>
-                <!-- <div class="form-group mt-4">
-                    <label for="lampiran">File Lampiran</label>
-                    <input type="file" class="form-control-file" id="lampiran" name="lampiran">
-                </div> -->
-                <div class="form-group mt-4">
-                    <label for="galeri">Galeri</label>
-                    <br>
-                    @if($page->galeri != "")
-                        <img src="{{$page->galeri}}" class="mb-3" style="border: 2px solid #DCDCDC;padding: 5px;height:20%;width:20%;" id="propic">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="galeri" name="galeri">
-                            <label for="galeri_label" id="galeri_label" class="custom-file-label">{{$page->galeri_name}}</label>
-                        </div>
-                    @endif
-                </div>
+                </div>>
                 <div class="form-group mt-4">
                     <label for="lampiran">File Lampiran</label>
                     <br>    
@@ -61,10 +40,6 @@
                             <label for="lampiran_label" id="lampiran_label" class="custom-file-label">@if($page->file != ""){{$page->file_name}}@else Pilih Lampiran @endif</label>
                         </div>
                     {{-- <input type="file" class="form-control-file" id="lampiran" name="lampiran"> --}}
-                </div>
-                <div class="form group mt-4">
-                    <label for="urlvideo">URL Video</label>
-                    <input type="text" class="form-control" id="urlvideo" name="urlvideo" placeholder="URL Video">
                 </div>
                 <div class="form-group mt-4">
                     <a href="/admin/pages" class="btn btn-danger"><i class="fa fa-times"></i> Batal</a>

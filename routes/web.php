@@ -89,6 +89,13 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/galery/show/{title_slug}', 'AdminController\GaleriController@show')->name('admin-galeri-show');
     Route::get('/galery/delete/{id}', 'AdminController\GaleriController@destroy')->name('admin-galeri-delete');
 
+    //Jabatan Manajemen Controller
+    Route::get('/jabatan', 'AdminController\JabatanController@index')->name('admin-jabatan-home');
+    Route::post('/jabatan/store', 'AdminController\JabatanController@store')->name('admin-jabatan-store');
+    Route::get('/jabatan/{id}/edit', 'AdminController\JabatanController@edit')->name('admin-jabatan-edit');
+    Route::put('/jabatan/{id}', 'AdminController\JabatanController@update')->name('admin-jabatan-update');
+    Route::delete('/jabatan/{id}/delete', 'AdminController\JabatanController@destroy')->name('admin-jabatan-destroy');
+
     //Staff Controller
     Route::get('/staf', 'AdminController\StaffController@index')->name('admin-staff-home');
     Route::get('/staf/create', 'AdminController\StaffController@create')->name('admin-staff-create');
@@ -96,7 +103,14 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/staf/{id}/edit', 'AdminController\StaffController@edit')->name('admin-staff-edit');
     Route::post('/staf/{id}', 'AdminController\StaffController@update')->name('admin-staff-update');
     Route::get('/staf/delete/{id}', 'AdminController\StaffController@destroy')->name('admin-staff-delete');
-    Route::get('/staf/show/{kategori}/{judul_slug}', 'AdminController\StaffController@show')->name('admin-staff-show');
+    Route::get('/staf/show/{id}', 'AdminController\StaffController@show')->name('admin-staff-show');
+
+    //Manajemen Controller
+    Route::get('/management', 'AdminController\ManajemenController@index')->name('admin-management-home');
+    Route::post('/management/store', 'AdminController\ManajemenController@store')->name('admin-management-store');
+    Route::get('/management/{id}/edit', 'AdminController\ManajemenController@edit')->name('admin-management-edit');
+    Route::post('/management/update', 'AdminController\ManajemenController@update')->name('admin-management-update');
+    Route::delete('/management/{id}/delete', 'AdminController\ManajemenController@destroy')->name('admin-management-delete');
 
     //Menu Controller
     Route::get('/menus', 'AdminController\MenuController@index')->name('admin-menu-home');
@@ -164,6 +178,8 @@ Route::group(['prefix' => '{language}'], function () {
     Route::get('/test', function() {
         return view("pages/base-page");
     })->name('Black Page');
+    //Blank Page
+    Route::get('/pages/{title_slug}', 'HomeController@showPage')->name('Detail Page');
 
     //Berita
     Route::get('/news', 'HomeController@berita')->name('Berita');
@@ -185,16 +201,14 @@ Route::group(['prefix' => '{language}'], function () {
 
     //Video
     Route::get('/videos', 'HomeController@video')->name('Video');
-    
-    Route::get('/videos/{title_slug}', 'HomeController@videoShow')->name('Detail Video');
+    Route::get('/videos/{title_slug}', 'HomeController@videoShow')->name('Detail Video');\
 
-    Route::get('/staff-pengajar', function () {
-        return view('pages/staff-pengajar');
-    })->name('Staff Pengajar');
+    //About
+    Route::get('/about', 'HomeController@about')->name('About');
 
-    Route::get('/staff-pengajar/detail', function () {
-        return view('pages/detail-staff-pengajar');
-    })->name('Detail Staff Pengajar');
+    Route::get('/staf', 'HomeController@staf')->name('Staff Pengajar');
+
+    Route::get('/staf/{nama_slug}', 'HomeController@showStaf')->name('Detail Staff Pengajar');
 
     Route::get('/management', function () {
         return view('pages/management');
@@ -204,9 +218,9 @@ Route::group(['prefix' => '{language}'], function () {
         return view('pages/detail-management');
     })->name('Detail Management');
 
-    Route::get('/about', function () {
-        return view('pages/tentang-teknik');
-    })->name('About');
+
+
+    Route::get('/document', 'HomeController@downloadDocument')->name('Download Document');
 });
 
 //Pages Front End Routes

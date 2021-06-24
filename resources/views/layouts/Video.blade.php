@@ -10,13 +10,15 @@
     @foreach($videos as $video)
     <div class="col p-0 px-1 mb-3">
       <div class="card border-0 bg-grey hover h-100">
+        <a class="nav-link" href="{{ route("Detail Video", ['language'=>app()->getLocale(), 'title_slug' => $video->judul_slug]) }}">
         <div class="ratio ratio-16x9 card-img-top">
-          <iframe src="https://www.youtube.com/embed/{{$video->link}}" title="YouTube video" allowfullscreen></iframe>
+          <img src="http://img.youtube.com/vi/{{$video->link}}/hqdefault.jpg" class="h-100" alt="">
         </div>
         <div class="card-body text-center">
           <h5 class="card-title text-light fw-bold">{{$video->judul_eng}}</h5>
           <p class="card-text lh-sm text-light">{{$video->deskripsi_eng}}</p>
         </div>
+        </a>
       </div>
     </div>
     @endforeach
@@ -39,13 +41,15 @@
       @foreach($videos as $video)
       <div class="col p-0 px-1 mb-3">
         <div class="card border-0 bg-grey hover h-100">
+          <a class="nav-link" href="{{ route("Detail Video", ['language'=>app()->getLocale(), 'title_slug' => $video->judul_slug]) }}">
           <div class="ratio ratio-16x9 card-img-top">
-            <iframe src="https://www.youtube.com/embed/{{$video->link}}" title="YouTube video" allowfullscreen></iframe>
+            <img src="http://img.youtube.com/vi/{{$video->link}}/hqdefault.jpg" class="h-100" alt="">
           </div>
           <div class="card-body text-center">
             <h5 class="card-title text-light fw-bold">{{$video->judul}}</h5>
             <p class="card-text lh-sm text-light">{{$video->deskripsi}}</p>
           </div>
+          </a>
         </div>
       </div>
       @endforeach
