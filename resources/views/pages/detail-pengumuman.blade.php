@@ -48,8 +48,9 @@
                                 <div class="card bg-grey text-light">
                                     <img src="{{$pengumuman->kategori->icon}}" class="mx-auto" style="height: 8em; width: 8em" alt="another-announcement-{{ $loop->iteration }}">
                                     <div class="card-body">
+                                        <a href="{{ route("Pengumuman Kategori", ['language'=>app()->getLocale(), 'kategori' => $pengumuman->kategori->kategori_lower]) }}" class="text-decoration-none mb-3 btn btn-sm btn-danger page-scroll">{{$pengumuman->kategori->kategori_eng}}</a>
                                         <h5 class="card-title text-center">
-                                            <a href="{{ route("Pengumuman Kategori", ['language'=>app()->getLocale(), 'kategori' => $pengumuman->kategori->kategori_lower]) }}" class="text-decoration-none page-scroll">{{$pengumuman->kategori->kategori_eng}}</a>
+                                            <a href="{{ route("Detail Pengumuman", ['language'=>app()->getLocale(), 'title_slug' => $pengumuman->title_slug]) }}" class="text-decoration-none link-light fw-bold page-scroll">{{$pengumuman->title_eng}}</a>
                                         </h5>
                                     </div>
                                     <div class="card-footer text-center">
@@ -118,8 +119,9 @@
                                 <div class="card bg-grey text-light">
                                     <img src="{{$pengumuman->kategori->icon}}" class="mx-auto" style="height: 8em; width: 8em" alt="pengumuman-lainya-{{ $loop->iteration }}">
                                     <div class="card-body">
+                                        <a href="{{ route("Pengumuman Kategori", ['language'=>app()->getLocale(), 'kategori' => $pengumuman->kategori->kategori_lower]) }}" class="text-decoration-none mb-3 btn btn-sm btn-danger page-scroll">{{$pengumuman->kategori->kategori_ina}}</a>
                                         <h5 class="card-title text-center">
-                                            <a href="{{ route("Pengumuman Kategori", ['language'=>app()->getLocale(), 'kategori' => $pengumuman->kategori->kategori_lower]) }}" class="text-decoration-none page-scroll">{{$pengumuman->kategori->kategori_ina}}</a>
+                                            <a href="{{ route("Detail Pengumuman", ['language'=>app()->getLocale(), 'title_slug' => $pengumuman->title_slug]) }}" class="text-decoration-none link-light fw-bold page-scroll">{{$pengumuman->title_ina}}</a>
                                         </h5>
                                     </div>
                                     <div class="card-footer text-center">

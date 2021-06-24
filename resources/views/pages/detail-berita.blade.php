@@ -50,8 +50,9 @@
                                 <div class="card bg-grey text-light h-100">
                                     <img src="{{$berita->thumbnail}}" class="card-img-top" alt="berita-lainya-{{ $loop->iteration }}">
                                     <div class="card-body">
+                                        <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="text-decoration-none mb-3 btn btn-sm btn-danger page-scroll">{{$berita->kategori->kategori_eng}}</a>
                                         <h5 class="card-title text-center">
-                                            <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="text-decoration-none page-scroll">{{$berita->kategori->kategori_eng}}</a>
+                                            <a href="{{ route("Detail Berita", ['language'=>app()->getLocale(), 'title_slug' => $berita->title_slug]) }}" class="text-decoration-none link-light fw-bold page-scroll">{{$berita->title_eng}}</a>
                                         </h5>
                                     </div>
                                     <div class="card-footer text-center">
@@ -117,13 +118,14 @@
                         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap my-auto mb-4">
                             <h1 class="h4 fw-bold border-2 border-bottom border-danger p-2">Berita Lainnya</h1>
                         </div>
-                        @foreach ($beritas->take(5) as $berita)
+                        @foreach ($beritas->take(3) as $berita)
                             <div class="col my-2">
                                 <div class="card bg-grey text-light h-100">
                                     <img src="{{$berita->thumbnail}}" class="card-img-top" alt="berita-lainya-{{ $loop->iteration }}">
                                     <div class="card-body">
+                                        <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="text-decoration-none mb-3 btn btn-sm btn-danger page-scroll">{{$berita->kategori->kategori_ina}}</a>
                                         <h5 class="card-title text-center">
-                                            <a href="{{ route("Berita Kategori", ['language'=>app()->getLocale(), 'kategori' => $berita->kategori->kategori_lower]) }}" class="text-decoration-none page-scroll">{{$berita->kategori->kategori_ina}}</a>
+                                            <a href="{{ route("Detail Berita", ['language'=>app()->getLocale(), 'title_slug' => $berita->title_slug]) }}" class="text-decoration-none link-light fw-bold page-scroll">{{$berita->title_ina}}</a>
                                         </h5>
                                     </div>
                                     <div class="card-footer text-center">
