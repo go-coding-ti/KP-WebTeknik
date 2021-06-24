@@ -43,7 +43,7 @@
             <nav class="navbar">
               <div class="container-fluid p-0 m-0 justify-content-center">
                 <img class="navbar-brand p-0 m-0" src="{{$preference->logo}}" alt="" width="65" height="65">
-                <a class="navbar-brand link-light fw-bold fs-6 text-wrap text-start mx-2" style="max-width: 150px; color: white" href="{{ route('Index', app()->getLocale() ) }}">{{$preference->nama_website_eng}}</a>
+                <a class="navbar-brand link-light fw-bold fs-6 text-wrap text-start" style="max-width: 150px; color: black" href="{{ route('Index', app()->getLocale() ) }}">{{$preference->nama_website_eng}}</a>
               </div>
             </nav>
             <div class="classy-navbar-toggler">
@@ -142,7 +142,7 @@
             <nav class="navbar">
               <div class="container-fluid p-0 m-0 justify-content-center">
                 <img class="navbar-brand p-0 m-0" src="{{$preference->logo}}" alt="" width="65" height="65">
-                <a class="navbar-brand link-light fw-bold fs-6 text-wrap text-start mx-2" style="max-width: 150px; color: white" href="{{ route('Index', app()->getLocale() ) }}">{{$preference->nama_website_ina}}</a>
+                <a class="navbar-brand link-light fw-bold fs-6 text-wrap text-start mx-2" style="max-width: 150px; color: black" href="{{ route('Index', app()->getLocale() ) }}">{{$preference->nama_website_ina}}</a>
               </div>
             </nav>
             <div class="classy-navbar-toggler">
