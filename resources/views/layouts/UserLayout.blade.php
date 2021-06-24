@@ -6,6 +6,8 @@
 
         <title>Fakultas Teknik - Universitas Udayana</title>
 
+        <link rel="shortcut icon" href="{{asset('assets/admin/img/unud.png')}}" type="image/png">
+
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
