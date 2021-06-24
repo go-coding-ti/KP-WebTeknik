@@ -30,7 +30,7 @@
                     <a href="{{ route('Index', 'id') }}" class="btn btn-sm btn-outline-danger border-0 text-decoration-none">ID</a>
                 </div>
               </div>
-              <a href="login.html" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
+              <a href="{{route ('admin-login-form')}}" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
@@ -81,6 +81,28 @@
                       @endif
                     </li>
                   @endforeach
+                  <li @if($header->header_ina == "Beranda") class="active" @endif><a @if($header->id_page == NULL && $header->header_url != "#") href="{{$header->header_url}}" target="_blank" @elseif($header->id_page != NULL) href="{{ route("Detail Page", ['language'=>app()->getLocale(), 'title_slug' => $header->header_url]) }}" @endif>{{$header->header_eng}} </a>
+                    @if($header->menu->count() > 0)
+                    <ul class="list-group list-group-flush dropdown" style="width: 250px ">
+                      @foreach($menus as $menu)
+                        @if($menu->id_header == $header->id)
+                          <li class="p-0"><a class="hover"  @if($menu->id_page == NULL) target="_blank" href="{{$menu->menu_url}}" @elseif($menu->id_page != NULL) href="{{ route("Detail Page", ['language'=>app()->getLocale(), 'title_slug' => $menu->menu_url]) }}" @endif><i @if($menu->id_page == NULL && $menu->menu_url != "#") class="fas fa-external-link" @else class="fas fa-link" @endif></i> {{$menu->menu_eng}}</a>
+                            @if($menu->submenu->count() > 0)
+                            <ul class="list-group list-group-flush dropdown" style="width: wrap-content; margin-left: 65px">
+                              @foreach($submenus as $submenu)
+                                @if($submenu->id_menu == $menu->id)
+                                  <li class="p-0"><a class="hover"  @if($submenu->id_page == NULL) target="_blank" href="{{$submenu->menu_url}}" @elseif($submenu->id_page != NULL) href="{{ route("Detail Page", ['language'=>app()->getLocale(), 'title_slug' => $submenu->menu_url]) }}" @endif><i @if($submenu->id_page == NULL && $submenu->menu_url != "#") class="fas fa-external-link" @else class="fas fa-link" @endif></i> {{$submenu->menu_eng}}</a></li>
+                                @endif
+                              @endforeach
+                            </ul>
+                            @endif
+                          </li>
+                        @endif
+                      @endforeach
+                    </ul>
+                    @endif
+                  </li>
+                @endforeach
                   <li><a href="#">About</a>
                     <ul class="list-group list-group-flush dropdown" style="width: wrap-content">
                       <li class="p-0"><a class="hover" href="{{ route('About', app()->getLocale() ) }}"><i class="fas fa-link"></i> About</a></li>
@@ -131,7 +153,7 @@
                     <a href="{{ route('Index', 'id') }}" class="btn btn-sm btn-danger border-0 text-decoration-none">ID</a>
                 </div>
               </div>
-              <a href="login.html" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
+              <a href="{{route ('admin-login-form')}}" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
@@ -167,7 +189,7 @@
                         @if($menu->id_header == $header->id)
                           <li class="p-0"><a class="hover"  @if($menu->id_page == NULL) target="_blank" href="{{$menu->menu_url}}" @elseif($menu->id_page != NULL) href="{{ route("Detail Page", ['language'=>app()->getLocale(), 'title_slug' => $menu->menu_url]) }}" @endif><i @if($menu->id_page == NULL && $menu->menu_url != "#") class="fas fa-external-link" @else class="fas fa-link" @endif></i> {{$menu->menu_ina}}</a>
                             @if($menu->submenu->count() > 0)
-                            <ul class="list-group list-group-flush dropdown" style="width: wrap-content;">
+                            <ul class="list-group list-group-flush dropdown" style="width: wrap-content; margin-left: 65px">
                               @foreach($submenus as $submenu)
                                 @if($submenu->id_menu == $menu->id)
                                   <li class="p-0"><a class="hover"  @if($submenu->id_page == NULL) target="_blank" href="{{$submenu->menu_url}}" @elseif($submenu->id_page != NULL) href="{{ route("Detail Page", ['language'=>app()->getLocale(), 'title_slug' => $submenu->menu_url]) }}" @endif><i @if($submenu->id_page == NULL && $submenu->menu_url != "#") class="fas fa-external-link" @else class="fas fa-link" @endif></i> {{$submenu->menu_ina}}</a></li>

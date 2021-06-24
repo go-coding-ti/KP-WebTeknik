@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Validator;
 
 class DownloadController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
         $data = Download::where('deleted_at', NULL)->get();
         // dd(isset($data));
@@ -41,7 +46,7 @@ class DownloadController extends Controller
         $download->url_download = $request->urlfile;
         $download->save();
 
-        return redirect('/admin/downloads')->with('statusInput', 'Download successfully added to record');
+        return redirect('/admin/downloads')->with('statusInput', 'Dokumen berhasil ditambahkan');
     }
 
     public function edit($id){
@@ -68,7 +73,7 @@ class DownloadController extends Controller
         $download->url_download = $request->urlfile;
         $download->save();
 
-        return redirect('/admin/downloads')->with('statusInput', 'Download successfully updated');
+        return redirect('/admin/downloads')->with('statusInput', 'Dokumen berhasil diperbaharui');
     }
 
 
@@ -76,6 +81,6 @@ class DownloadController extends Controller
     {
     	$download = Download::find($id);
         $download->delete();
-        return redirect('/admin/downloads')->with('statusInput', 'Download successfully deleted');
+        return redirect('/admin/downloads')->with('statusInput', 'Dokumen berhasil dihapus');
     }
 }

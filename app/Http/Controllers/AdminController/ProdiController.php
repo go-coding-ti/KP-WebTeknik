@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Validator;
 
 class ProdiController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
         $data = Prodi::where('deleted_at', NULL)->get();
         // dd(isset($data));
@@ -33,7 +38,7 @@ class ProdiController extends Controller
         $prodi->prodi_eng = $request->prodi_eng;
         $prodi->save();
 
-        return back()->with('statusInput', 'Prodi successfully added to record');
+        return back()->with('statusInput', 'Program studi berhasil ditambahkan');
     }
 
     public function edit($id)
@@ -59,7 +64,7 @@ class ProdiController extends Controller
         $prodi->prodi_eng = $request->edit_prodi_eng;
         $prodi->save();
 
-        return back()->with('statusInput', 'Program Studi successfully edited');
+        return back()->with('statusInput', 'Program studi berhasil diperbaharui');
     }
 
 
@@ -67,6 +72,6 @@ class ProdiController extends Controller
     {
         $prodi = Prodi::find($id);
         $prodi->delete();
-        return back()->with('statusInput', 'Program Studi successfully deleted');
+        return back()->with('statusInput', 'Program studi berhasil dihapus');
     }
 }

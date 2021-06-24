@@ -1,37 +1,72 @@
 @extends('adminlayout.layout')
-@section('title', 'Edit Pages')
+@section('title', 'Edit Page')
 @section('content')
 
+<div class="container-fluid">
+    <h1 class="h3 mb-2 text-gray-800">Pages</h1>
+    <p class="mb-4">Edit Page Fakultas Teknik Universitas Udayana</p>
 
-<div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Edit Page {{$page->title_ina}}</h6>
-            </div>
-            <div class="card-body">
-            <form id="form-product" method="post" action="{{route('admin-page-update',$page->id)}}" enctype="multipart/form-data">
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Edit Page</h6>
+        </div>
+        <div class="card-body">
+            <form id="form-product" method="post" action="{{route('admin-page-update',$page->id)}}" enctype="multipart/form-data" class="needs-validation" novalidate>
                 @csrf
                 @method('PUT')
-                <div class="form-group form-group mt-5">
-                    <label for="title">Title Ina</label>
-                    <input type="text" class="form-control @error ('title_ina') is-invalid @enderror"  id="title_ina" name="title_ina" value="{{$page->title_ina}}" required>
+                <div class="form-group form-group mt-1">
+                    <label for="title">Judul Bahasa Indonesia</label>
+                    <input type="text" class="form-control @error ('title_ina') is-invalid @enderror"  id="title_ina" name="title_ina" value="{{$page->title_ina}}" placeholder="Judul Bahasa Indonesia" required>
                     @error('title_ina')
                         <div class="invalid-feedback text-start">
-                            {{$message}}
+                            {{ $message }}
                         </div>
-                    @enderror 
+                    @else
+                        <div class="invalid-feedback">
+                            Judul Bahasa Indonesia wajib diisi
+                        </div>
+                    @enderror
                 </div>
                 <div class="form-group form-group mt-4">
-                    <label for="description">Content Ina</label>
+                    <label for="description">Konten Bahasa Indonesia</label>
                     <textarea id="content_ina" class="summernote" name="content_ina" required>{{$page->content_ina}}</textarea>
+                    @error('content_ina')
+                        <div class="invalid-feedback text-start">
+                            {{ $message }}
+                        </div>
+                    @else
+                        <div class="invalid-feedback">
+                            Konten Bahasa Indonesia wajib diisi
+                        </div>
+                    @enderror
                 </div>
-                <div class="form group mt-5">
-                    <label for="title">Title Eng</label>
-                    <input type="text" class="form-control" id="title_eng" name="title_eng" value="{{$page->title_eng}}" required>
+                <div class="form group mt-4">
+                    <label for="title">Judul Bahasa Inggris</label>
+                    <input type="text" class="form-control @error ('title_eng') is-invalid @enderror" id="title_eng" name="title_eng" value="{{$page->title_eng}}" placeholder="Judul Bahasa Inggris" required>
+                    @error('title_eng')
+                        <div class="invalid-feedback text-start">
+                            {{ $message }}
+                        </div>
+                    @else
+                        <div class="invalid-feedback">
+                            Judul Bahasa Inggris wajib diisi
+                        </div>
+                    @enderror
                 </div>
                 <div class="form-group form-group mt-4">
-                    <label for="description">Content Eng</label>
+                    <label for="description">Konten Bahasa Inggris</label>
                     <textarea id="content_eng" class="summernote" name="content_eng" required>{{$page->content_eng}}</textarea>
-                </div>>
+                    @error('content_eng')
+                        <div class="invalid-feedback text-start">
+                            {{ $message }}
+                        </div>
+                    @else
+                        <div class="invalid-feedback">
+                            Konten Bahasa Inggris wajib diisi
+                        </div>
+                    @enderror
+                </div>
                 <div class="form-group mt-4">
                     <label for="lampiran">File Lampiran</label>
                     <br>    
@@ -39,16 +74,25 @@
                             <input type="file" class="custom-file-input" id="lampiran" name="lampiran">
                             <label for="lampiran_label" id="lampiran_label" class="custom-file-label">@if($page->file != ""){{$page->file_name}}@else Pilih Lampiran @endif</label>
                         </div>
-                    {{-- <input type="file" class="form-control-file" id="lampiran" name="lampiran"> --}}
                 </div>
                 <div class="form-group mt-4">
-                    <a href="/admin/pages" class="btn btn-danger"><i class="fa fa-times"></i> Batal</a>
-                    <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Update</button>
+                    <a href="{{route('admin-page-home')}}" class="btn btn-danger btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-times"></i>
+                        </span>
+                        <span class="text">Batal</span>
+                    </a>
+                    <button  type="submit" class="btn btn-success btn-icon-split">
+                        <span class="icon text-white-50">
+                            <i class="fas fa-save"></i>
+                        </span>
+                        <span class="text">Simpan</span>
+                    </button>
                 </div>
             </form>
-                </form>
-            </div>
-          </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('custom_javascript')
@@ -102,13 +146,33 @@
         }
 
         $("#thumbnail").change(function() {
-        readURL(this);
+            readURL(this);
         document.getElementById('thumbnail_label').innerHTML = document.getElementById('thumbnail').files[0].name;
         });
 
         $("#lampiran").change(function() {
-        document.getElementById('lampiran_label').innerHTML = document.getElementById('lampiran').files[0].name;
+            document.getElementById('lampiran_label').innerHTML = document.getElementById('lampiran').files[0].name;
         });
     });
+
+    // Validasi Form
+    (function () {
+        'use strict'
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+    
+    $('#sidebarPage').addClass("active")
 </script>
 @endsection

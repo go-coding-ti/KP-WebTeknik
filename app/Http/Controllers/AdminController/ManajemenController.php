@@ -14,11 +14,31 @@ use Illuminate\Support\Facades\File;
 
 class ManajemenController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
-        $jabatans = Jabatan::where('deleted_at', NULL)->get();
-        $stafs = Staff::where('deleted_at', NULL)->get();
+        //GET ALL MANAJEMEN
         $data = Staff::where('deleted_at', NULL)->where('id_jabatan', '!=', NULL)->with('jabatan')->get();
-        return view('adminpages.manajemen.manajemen', compact('data', 'jabatans', 'stafs'));
+
+        //GET ID JABATAN N STAF IN MANAJEMEN
+        $idJabatan = [];
+        $idStaf = [];
+        foreach($data as $i){
+            array_push($idJabatan, $i->id_jabatan);
+            array_push($idStaf, $i->id_staf);
+        }
+
+        //GET JABATAN WHERE NOT IN MANAJEMEN
+        $jabatans = Jabatan::whereNotIn('id', $idJabatan)->get();
+        $all_jabatans = Jabatan::get();
+
+        //GET STAFF
+        $stafs = Staff::where('deleted_at', NULL)->get();
+        
+        return view('adminpages.manajemen.manajemen', compact('data', 'jabatans', 'stafs', 'all_jabatans'));
     }
 
 
@@ -43,7 +63,7 @@ class ManajemenController extends Controller
         $staf->id_jabatan = $request->jabatan;
         $staf->update();
 
-        return redirect('/admin/management')->with('statusInput', 'Manajemen successfully added to record');
+        return redirect('/admin/management')->with('statusInput', 'Manajemen berhasil ditambahkan');
     }
 
     public function destroy($id)
@@ -52,7 +72,7 @@ class ManajemenController extends Controller
         $staf->id_jabatan = NULL;
         $staf->update();
 
-        return redirect('/admin/management')->with('statusInput', 'Manajemen successfully deleted');
+        return redirect('/admin/management')->with('statusInput', 'Manajemen berhasil dihapus');
     }
 
     public function edit($id)
@@ -83,7 +103,7 @@ class ManajemenController extends Controller
         $staf->id_jabatan = $request->edit_jabatan;
         $staf->update();
 
-        return redirect('/admin/management')->with('statusInput', 'Manajemen successfully updated from the record');
+        return redirect('/admin/management')->with('statusInput', 'Manajemen berhasil diperbaharui');
     }
 
 
