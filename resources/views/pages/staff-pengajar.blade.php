@@ -13,7 +13,7 @@
       <div class="col-sm-12 col-md-12">
         <div class="tab-content bg-grey text-white rounded p-3" id="v-pills-tabContent">
           <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-            <div class="row row-cols-1 row-cols-lg-2 px-3 pt-2">
+            <div class="row row-cols-1 row-cols-lg-3 row-cols-lg-3 px-3 pt-2">
               @foreach($stafs as $staf)
               <div class="col p-0 px-1 mb-3">
                 <div class="card bg-grey hover border-0 h-100">
@@ -56,7 +56,7 @@
       <div class="col-sm-12 col-md-12">
         <div class="tab-content bg-grey text-white rounded p-3" id="v-pills-tabContent">
           <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-            <div class="row row-cols-1 row-cols-lg-2 px-3 pt-2">
+            <div class="row row-cols-1 row-cols-lg-3 row-cols-lg-3 px-3 pt-2">
               @foreach($stafs as $staf)
               <div class="col p-0 px-1 mb-3">
                 <div class="card bg-grey hover border-0 h-100">
