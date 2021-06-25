@@ -320,5 +320,31 @@ class HomeController extends Controller
         $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
         return view('pages/detail-staff-pengajar', compact('pengumumans', 'headers', 'menus', 'submenus', 'preference', 'sosmeds', 'staf'));
     }
+
+    public function manajemen(){
+        $stafs = Staff::with('prodi')->with('jabatan')->where('deleted_at', NULL)->where('id_jabatan', '!=', NULL)->paginate(10);
+        //ALL FUNCTION MUST APPLY CODES BELOW
+        $sosmeds = Social::get();
+        $preference = Preference::first();
+        $headers = Header::with('menu')->get();
+        $menus = Menu::with('submenu')->get();
+        $submenus = Submenu::get();
+
+        $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
+        return view('pages/management', compact('pengumumans', 'headers', 'menus', 'submenus', 'preference', 'sosmeds', 'stafs'));
+    }
+
+    public function showManajemen($language, $nama_slug){
+        $staf = Staff::where('nama_slug', $nama_slug)->first();
+        //ALL FUNCTION MUST APPLY CODES BELOW
+        $sosmeds = Social::get();
+        $preference = Preference::first();
+        $headers = Header::with('menu')->get();
+        $menus = Menu::with('submenu')->get();
+        $submenus = Submenu::get();
+
+        $pengumumans = Pengumuman::with('kategori')->where('status', 'aktif')->whereDate('tanggal_publish', '<=', date('Y-m-d'))->orderBy('id', 'DESC')->limit(4)->get();
+        return view('pages/detail-management', compact('pengumumans', 'headers', 'menus', 'submenus', 'preference', 'sosmeds', 'staf'));
+    }
     
 }
