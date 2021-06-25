@@ -221,28 +221,16 @@ Route::group(['prefix' => '{language}'], function () {
     //About
     Route::get('/about', 'HomeController@about')->name('About');
 
+    //Staf
     Route::get('/staf', 'HomeController@staf')->name('Staff Pengajar');
-
     Route::get('/staf/{nama_slug}', 'HomeController@showStaf')->name('Detail Staff Pengajar');
 
-    Route::get('/management', function () {
-        return view('pages/management');
-    })->name('Management');
+    //Manajemen
+    Route::get('/management', 'HomeController@manajemen')->name('Management');
+    Route::get('/management/{nama_slug}', 'HomeController@showManajemen')->name('Detail Management');
 
-    Route::get('/management/detail', function () {
-        return view('pages/detail-management');
-    })->name('Detail Management');
-
-
-
+    //Dokumen
     Route::get('/document', 'HomeController@downloadDocument')->name('Download Document');
 });
 
 //Pages Front End Routes
-
-
-
-
-//Admin Route
-//Route::get('/', 'AdminController\BeritaController@index')->name('admin-berita');
-
